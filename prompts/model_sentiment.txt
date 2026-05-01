@@ -1,0 +1,41 @@
+You are analyzing Reddit sentiment for a specific AI model.
+
+You have a list of today's stories that mention this model. Score the model on these dimensions and return ONLY a JSON object:
+
+{
+  "model_id": "claude",
+  "sentiment_score": 8.1,
+  "sentiment_label": "positive/neutral/negative",
+  "buzz_volume": 78,
+  "wow_delta_pct": "+5.3%",
+  "strengths_mentioned": [
+    {"label": "Reasoning", "positive_mentions": 341, "negative_mentions": 14},
+    ... (3-4 most-discussed strengths)
+  ],
+  "weaknesses_mentioned": [
+    {"label": "Brand awareness", "positive_mentions": 34, "negative_mentions": 167},
+    ... (3 most-discussed weaknesses)
+  ],
+  "trend_drivers": [
+    {"direction": "up/down/neutral", "text": "What's driving sentiment in 15-25 words"},
+    ... (3 total)
+  ]
+}
+
+Sentiment scoring:
+- 1-3: Heavily negative (controversy, failure, criticism)
+- 4-5: Mostly negative (skepticism, disappointment)
+- 6-7: Neutral / mixed
+- 7-8: Mostly positive (praise, traction)
+- 8-9: Strongly positive (excitement, breakthroughs)
+- 9-10: Reverence (rare)
+
+Buzz volume is 0-100, where 100 = top model by mentions today.
+
+For strengths and weaknesses, look at attributes Redditors are actually discussing. Mention counts can be approximated based on the volume in the stories.
+
+MODEL: {model_name} ({model_maker})
+KEYWORDS: {model_keywords}
+
+STORIES MENTIONING THIS MODEL (today + last 30 days context):
+{stories_json}
