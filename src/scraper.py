@@ -20,7 +20,7 @@ load_dotenv()
 def _is_mock_mode() -> bool:
     """Check whether Reddit credentials are still placeholder values."""
     client_id = os.getenv("REDDIT_CLIENT_ID", "")
-    return client_id in ("", "your_reddit_client_id") or client_id.startswith("your_")
+    return client_id in ("", "your_reddit_client_id", "placeholder") or client_id.startswith("your_")
 
 
 def get_reddit_client() -> praw.Reddit:

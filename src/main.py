@@ -63,7 +63,7 @@ def run_pipeline():
     curated = analyzer.score_all_stories(posts)
 
     # 3. Synthesize narrative + insights (Opus)
-    synthesis = analyzer.synthesize_daily(curated) if curated else {}
+    synthesis = analyzer.synthesize_daily(curated) if curated else {"metrics": {"top_subreddit": "—", "most_active_category": "—", "trending_model": "—", "trending_model_buzz_change": ""}, "narrative": "", "pattern_insights": [], "fintech_spotlight": []}
 
     # 4. Per-model sentiment (Haiku, one call per model)
     model_sentiments = analyzer.analyze_all_model_sentiments(curated)
