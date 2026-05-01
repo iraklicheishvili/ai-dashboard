@@ -2,7 +2,7 @@ name: Daily AI Dashboard
 
 on:
   schedule:
-    - cron: '0 4 * * *'  # 8am Tbilisi (GMT+4) = 4am UTC
+    #- cron: '0 4 * * *'  # 8am Tbilisi (GMT+4) = 4am UTC
   workflow_dispatch:  # allows manual trigger from GitHub
 
 jobs:
