@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Intelligence Dashboard — 2026-05-01</title>
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f4f0;
+    --bg-tertiary: #fafaf8;
+    --text-primary: #1a1a18;
+    --text-secondary: #5f5e5a;
+    --text-tertiary: #888780;
+    --text-info: #185fa5;
+    --border: rgba(26,26,24,0.12);
+    --border-strong: rgba(26,26,24,0.25);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --bg-info: #e6f1fb;
+    --border-info: #378add;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1f1f1d;
+      --bg-secondary: #2a2a27;
+      --bg-tertiary: #181816;
+      --text-primary: #f0efe8;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --text-info: #85b7eb;
+      --border: rgba(240,239,232,0.12);
+      --border-strong: rgba(240,239,232,0.25);
+      --bg-info: #0c447c;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg-tertiary);color:var(--text-primary);font-size:14px;line-height:1.5;}
+  .container{max-width:1100px;margin:0 auto;padding:1.5rem 1rem;}
+  .head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .h-title{font-size:20px;font-weight:500;}
+  .h-sub{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+  .tabs{display:flex;gap:4px;background:var(--bg-secondary);padding:4px;border-radius:var(--radius-md);margin-bottom:14px;position:sticky;top:0;z-index:5;flex-wrap:wrap;}
+  .tab{flex:1;min-width:120px;padding:8px 12px;font-size:13px;border-radius:var(--radius-md);border:none;background:transparent;color:var(--text-secondary);cursor:pointer;text-align:center;transition:all 0.15s;font-family:inherit;}
+  .tab:hover{color:var(--text-primary);}
+  .tab.active{background:var(--bg-primary);color:var(--text-primary);font-weight:500;box-shadow:0 0 0 0.5px var(--border);}
+  .page{display:none;}
+  .page.active{display:block;}
+  .card{background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:12px;}
+  .card-info{border:2px solid var(--border-info);}
+  .sec-title{font-size:13px;font-weight:500;margin-bottom:4px;}
+  .sec-sub{font-size:11px;color:var(--text-secondary);margin-bottom:12px;}
+  .sec-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .mcard{background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px;}
+  .mlabel{font-size:11px;color:var(--text-secondary);margin-bottom:4px;}
+  .mvalue{font-size:20px;font-weight:500;}
+  .up{color:#3b6d11;}
+  .down{color:#a32d2d;}
+  .neu{color:var(--text-secondary);}
+  .pill{font-size:11px;padding:2px 9px;border-radius:99px;font-weight:500;display:inline-block;}
+  .sent-pos{background:#eaf3de;color:#3b6d11;}
+  .sent-neu{background:#f1efe8;color:#5f5e5a;}
+  @media (prefers-color-scheme: dark) {
+    .sent-pos{background:#27500a;color:#c0dd97;}
+    .sent-neu{background:#444441;color:#d3d1c7;}
+  }
+  .cat-tag{font-size:10px;padding:2px 7px;border-radius:99px;border:0.5px solid var(--border);color:var(--text-secondary);white-space:nowrap;}
+  .score-pill{font-size:10px;padding:2px 7px;border-radius:99px;background:#eeedfe;color:#3c3489;font-weight:500;}
+  @media (prefers-color-scheme: dark) {
+    .score-pill{background:#3c3489;color:#cecbf6;}
+  }
+  .linkrow{display:block;text-decoration:none;color:inherit;padding:10px 0;border-bottom:0.5px solid var(--border);transition:background 0.15s;}
+  .linkrow:hover{background:var(--bg-secondary);}
+  .linkrow:last-child{border-bottom:none;}
+  .story-title{font-size:13px;font-weight:500;line-height:1.4;}
+  .story-meta{font-size:11px;color:var(--text-secondary);margin-top:4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .pattern-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:6px 10px;border-radius:var(--radius-md);margin:3px 4px 3px 0;}
+  .pat-up{background:#eaf3de;color:#3b6d11;}
+  .pat-down{background:#fcebeb;color:#a32d2d;}
+  .pat-neu{background:#e6f1fb;color:#0c447c;}
+  .pat-warn{background:#faeeda;color:#854f0b;}
+  @media (prefers-color-scheme: dark) {
+    .pat-up{background:#27500a;color:#c0dd97;}
+    .pat-down{background:#791f1f;color:#f7c1c1;}
+    .pat-neu{background:#0c447c;color:#b5d4f4;}
+    .pat-warn{background:#633806;color:#fac775;}
+  }
+  .ins-up::before{content:"\25B2";color:#3b6d11;font-size:9px;margin-right:5px;}
+  .ins-down::before{content:"\25BC";color:#a32d2d;font-size:9px;margin-right:5px;}
+  .ins-neu::before{content:"\25CF";color:#888780;font-size:7px;margin-right:5px;}
+  .ins-warning::before{content:"\26A0";color:#854f0b;font-size:10px;margin-right:5px;}
+  .ins-row{font-size:12px;padding:5px 0;line-height:1.4;border-bottom:0.5px solid var(--border);}
+  .ins-row:last-child{border-bottom:none;}
+  .col-hdr{font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;}
+  .stat-card{background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px;}
+  .stat-label{font-size:11px;color:var(--text-secondary);margin-bottom:4px;}
+  .stat-value{font-size:20px;font-weight:500;}
+  .dot-g{width:6px;height:6px;border-radius:50%;background:#639922;flex-shrink:0;margin-top:4px;}
+  .dot-r{width:6px;height:6px;border-radius:50%;background:#e24b4a;flex-shrink:0;margin-top:4px;}
+  .cap-item{display:flex;align-items:flex-start;gap:6px;font-size:12px;margin-bottom:5px;line-height:1.4;}
+  .person-chip{display:flex;align-items:flex-start;gap:8px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:8px;}
+  .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px;}
+  .quote-text{font-size:11px;color:var(--text-secondary);margin-top:5px;line-height:1.4;font-style:italic;border-left:2px solid var(--border-strong);padding-left:7px;}
+  .quote-meta{font-size:10px;color:var(--text-tertiary);margin-top:3px;}
+  .wc-tag{display:inline-block;padding:4px 10px;border-radius:99px;background:var(--bg-secondary);margin:3px;text-decoration:none;color:var(--text-primary);}
+  .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 4px 0;margin-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-secondary);}
+  a{color:var(--text-info);}
+  select{font-family:inherit;font-size:13px;padding:6px 12px;border-radius:var(--radius-md);border:0.5px solid var(--border-strong);background:var(--bg-primary);color:var(--text-primary);cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="head">
+  <div>
+    <div class="h-title">AI intelligence dashboard</div>
+    <div class="h-sub">Daily digest from 24 subreddits and the open web — 2026-05-01</div>
+  </div>
+</div>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" data-page="p1">AI intelligence</button>
+  <button class="tab" data-page="p2">Model tracker</button>
+  <button class="tab" data-page="p3">AI finance</button>
+  <button class="tab" data-page="p4">Research & papers</button>
+</div>
+
+<!-- ==================== PAGE 1: AI INTELLIGENCE ==================== -->
+<div id="p1" class="page active">
+
+
+<div class="card card-info">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Top story today</span>
+    <span class="score-pill" style="font-size:11px;padding:3px 10px;">8.5</span>
+  </div>
+  <a href="https://reddit.com/r/fintech/mock006" target="_blank" style="text-decoration:none;color:inherit;">
+    <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">Stripe integrates Anthropic computer-use for autonomous merchant onboarding</div>
+  </a>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">r/fintech · 1840 upvotes · 215 comments</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+    <span class="cat-tag">Acquisition/Partnership</span><span class="cat-tag">Fintech/Payments</span>
+  </div>
+  
+  <div style="font-size:12px;line-height:1.5;color:var(--text-primary);">Mastercard moving from agent-commerce announcements to live Fortune 100 pilots is the most strategically relevant story for Irakli, signaling that AI-driven invoice-to-pay is shifting from concept to revenue-impacting infrastructure. It also lands the same day Stripe automates KYB with Claude and OpenAI's Operator opens payments workflows to Pro users — Mastercard is now competing on agent rails, not just card rails.</div>
+  
+</div>
+
+
+<div class="card">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;">
+    <div class="mcard"><div class="mlabel">Stories today</div><div class="mvalue">22</div><div style="font-size:11px;color:var(--text-secondary);">Pulled 25 · curated 22</div></div>
+    <div class="mcard"><div class="mlabel">Top subreddit</div><div class="mvalue" style="font-size:15px;">r/fintech</div><div class="neu" style="font-size:11px;">4 stories</div></div>
+    <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">Model Update / Product Launch</div><div class="neu" style="font-size:11px;">7 stories</div></div>
+    <div class="mcard"><div class="mlabel">Trending model</div><div class="mvalue" style="font-size:15px;">DeepSeek</div><div class="up" style="font-size:11px;">+34.2%</div></div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Today's narrative</div>
+  <div style="font-size:13px;line-height:1.6;color:var(--text-primary);">Today's news shows AI agents crossing decisively into financial infrastructure: Mastercard, Stripe, Plaid, and OpenAI Operator all shipped agentic payments or onboarding capabilities, while Visa Research published fraud-detection gains. Underneath, the model layer is repricing violently — DeepSeek's 60% API cut and R2's o1-beating benchmarks are forcing OpenAI (GPT-4.5 turbo) and Anthropic (Sonnet 4.6) to respond on latency, price, and capability simultaneously. The capital story (Mistral $1.2B, xAI $6B, Cohere $450M, Ramp $150M, Perplexity S-1) confirms the funding spigot is wide open even as EU AI Act fines arrive.</div>
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Top stories</div>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock006" target="_blank">
+    <div class="story-title">Stripe integrates Anthropic computer-use for autonomous merchant onboarding</div>
+    <div class="story-meta">
+      <span>r/fintech</span>
+      <span class="cat-tag">Acquisition/Partnership</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock007" target="_blank">
+    <div class="story-title">Mastercard pilots agent-driven B2B payments with three Fortune 100 partners</div>
+    <div class="story-meta">
+      <span>r/fintech</span>
+      <span class="cat-tag">Fintech/Payments</span><span class="cat-tag">Agents/Automation</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock009" target="_blank">
+    <div class="story-title">Plaid + OpenAI partnership: real-time financial data for ChatGPT enterprise</div>
+    <div class="story-meta">
+      <span>r/fintech</span>
+      <span class="cat-tag">Acquisition/Partnership</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock020" target="_blank">
+    <div class="story-title">Ramp adds AI-powered spend intelligence, raises $150M extension</div>
+    <div class="story-meta">
+      <span>r/fintech</span>
+      <span class="cat-tag">Funding/Investment</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/MachineLearning/mock024" target="_blank">
+    <div class="story-title">Visa Research publishes FraudRadar GNN paper — 23% fewer false positives</div>
+    <div class="story-meta">
+      <span>r/MachineLearning</span>
+      <span class="cat-tag">Research/Paper</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/LocalLLaMA/mock001" target="_blank">
+    <div class="story-title">DeepSeek R2 tops MATH benchmark — beats o1 across 5 categories</div>
+    <div class="story-meta">
+      <span>r/LocalLLaMA</span>
+      <span class="cat-tag">Model Release</span><span class="cat-tag">Benchmark/Evaluation</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/Anthropic/mock002" target="_blank">
+    <div class="story-title">Anthropic releases Claude Sonnet 4.6 with improved instruction following</div>
+    <div class="story-meta">
+      <span>r/Anthropic</span>
+      <span class="cat-tag">Model Update</span><span class="cat-tag">Product Launch</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/OpenAI/mock003" target="_blank">
+    <div class="story-title">OpenAI ships GPT-4.5 turbo — 30% latency reduction across all endpoints</div>
+    <div class="story-meta">
+      <span>r/OpenAI</span>
+      <span class="cat-tag">Model Update</span><span class="cat-tag">Product Launch</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/artificial/mock004" target="_blank">
+    <div class="story-title">Mistral raises $1.2B Series C at $14B valuation, plans European AI cloud</div>
+    <div class="story-meta">
+      <span>r/artificial</span>
+      <span class="cat-tag">Funding/Investment</span><span class="cat-tag">Acquisition/Partnership</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/technology/mock005" target="_blank">
+    <div class="story-title">EU AI Act enforcement begins — first fines target generative model providers</div>
+    <div class="story-meta">
+      <span>r/technology</span>
+      <span class="cat-tag">Regulation/Policy</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+</div>
+
+<div class="card">
+  <div class="sec-title">Trending topics</div>
+  <div style="display:flex;flex-wrap:wrap;line-height:1.6;margin-top:4px;">
+  
+    <span class="wc-tag" style="font-size:21px;font-weight:500;">DeepSeek R2</span>
+  
+    <span class="wc-tag" style="font-size:21px;font-weight:500;">Agentic payments</span>
+  
+    <span class="wc-tag" style="font-size:20px;font-weight:500;">Mastercard B2B pilot</span>
+  
+    <span class="wc-tag" style="font-size:19px;font-weight:500;">Claude Sonnet 4.6</span>
+  
+    <span class="wc-tag" style="font-size:19px;font-weight:500;">GPT-4.5 turbo</span>
+  
+    <span class="wc-tag" style="font-size:19px;font-weight:500;">API price war</span>
+  
+    <span class="wc-tag" style="font-size:18px;">OpenAI Operator</span>
+  
+    <span class="wc-tag" style="font-size:18px;">EU AI Act fines</span>
+  
+    <span class="wc-tag" style="font-size:17px;">Llama 4 leak</span>
+  
+    <span class="wc-tag" style="font-size:17px;">Visa FraudRadar GNN</span>
+  
+    <span class="wc-tag" style="font-size:16px;">Mistral sovereign cloud</span>
+  
+    <span class="wc-tag" style="font-size:16px;">Apple on-device MoE</span>
+  
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Fintech & payments spotlight</div>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock006" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
+    <div class="story-title">Stripe integrates Anthropic computer-use for autonomous merchant onboarding</div>
+    <div class="story-meta"><span>r/fintech</span><span class="score-pill">8.5</span></div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock007" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
+    <div class="story-title">Mastercard pilots agent-driven B2B payments with three Fortune 100 partners</div>
+    <div class="story-meta"><span>r/fintech</span><span class="score-pill">8.5</span></div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/fintech/mock009" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
+    <div class="story-title">Plaid + OpenAI partnership: real-time financial data for ChatGPT enterprise</div>
+    <div class="story-meta"><span>r/fintech</span><span class="score-pill">8.5</span></div>
+  </a>
+  
+  
+  <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;">
+    <strong style="font-weight:500;">Strategic read:</strong> Today crystallizes the agentic-payments thesis: Mastercard's Fortune 100 B2B pilot, Stripe's Claude-powered KYB automation, and Plaid+OpenAI's data pipe all point to AI agents becoming first-class actors in payment authorization, onboarding, and reconciliation — pressuring issuers and acquirers to rebuild trust, auth, and dispute frameworks for non-human initiators. Visa's FraudRadar GNN (23% fewer false positives on 2.1B txns) raises the bar Mastercard's risk stack must match, while DeepSeek's price collapse means fraud and underwriting models can run 90% cheaper, eroding any moat built on inference cost. EU AI Act enforcement is the near-term watch item: training-data transparency fines will extend to financial-services models, and Mastercard's agentic pilots will need a defensible audit trail before scale.
+  </div>
+  
+</div>
+
+
+
+<div class="card">
+  <div class="sec-title">Pattern insights</div>
+  
+  <span class="pattern-tag pat-up">
+    ▲
+    Agentic payments went operational today: Mastercard B2B pilots, Stripe+Claude KYB, Plaid+ChatGPT, and Operator for Pro all shipped within hours.
+  </span>
+  
+  <span class="pattern-tag pat-down">
+    ▼
+    Closed-model pricing power is eroding — DeepSeek's 60% cut plus R2 beating o1 forced same-day repricing signals from OpenAI and Anthropic.
+  </span>
+  
+  <span class="pattern-tag pat-up">
+    ▲
+    AI funding still uncapped: $8.2B+ raised today across Mistral, xAI, Cohere, and Ramp, with Perplexity filing confidentially at $9B.
+  </span>
+  
+  <span class="pattern-tag pat-neu">
+    ⚠
+    EU AI Act delivered first €45M fines targeting training-data transparency — a template that will reach financial-services AI deployments next.
+  </span>
+  
+</div>
+
+
+</div>
+
+<!-- ==================== PAGE 2: MODEL TRACKER ==================== -->
+<div id="p2" class="page">
+
+<div class="card">
+  <div class="sec-title">All models — snapshot</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">ChatGPT</div>
+          <div style="font-size:11px;color:var(--text-secondary);">OpenAI</div>
+        </div>
+        <span class="pill sent-neu">6.8</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#378ADD;width:82%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">5</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">82%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#a32d2d;">-3.2% WoW</span>
+      </div>
+    </div>
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">Claude</div>
+          <div style="font-size:11px;color:var(--text-secondary);">Anthropic</div>
+        </div>
+        <span class="pill sent-pos">7.6</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#D85A30;width:82%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">4</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">82%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#3b6d11;">+12.1% WoW</span>
+      </div>
+    </div>
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">Gemini</div>
+          <div style="font-size:11px;color:var(--text-secondary);">Google DeepMind</div>
+        </div>
+        <span class="pill sent-pos">8.4</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#1D9E75;width:89%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">1</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">89%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#3b6d11;">+12.7% WoW</span>
+      </div>
+    </div>
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">DeepSeek</div>
+          <div style="font-size:11px;color:var(--text-secondary);">DeepSeek AI</div>
+        </div>
+        <span class="pill sent-pos">8.4</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#7F77DD;width:82%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">2</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">82%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#3b6d11;">+12.7% WoW</span>
+      </div>
+    </div>
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">Grok</div>
+          <div style="font-size:11px;color:var(--text-secondary);">xAI</div>
+        </div>
+        <span class="pill sent-pos">7.6</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#D4537E;width:42%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">1</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">42%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#3b6d11;">+12.8% WoW</span>
+      </div>
+    </div>
+    
+    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+        <div>
+          <div style="font-size:14px;font-weight:500;">Copilot</div>
+          <div style="font-size:11px;color:var(--text-secondary);">Microsoft</div>
+        </div>
+        <span class="pill sent-pos">7.4</span>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:#888780;width:72%;"></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">2</span></span>
+        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">72%</span></span>
+        <span style="font-size:11px;font-weight:500;color:#3b6d11;">+12.8% WoW</span>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="card">
+  <div class="sec-title">What's driving each model's trend</div>
+  <div class="sec-sub">Signal analysis from Reddit volume, benchmark events, and news triggers</div>
+  
+  <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+    <div style="font-size:13px;font-weight:500;color:#378ADD;margin-bottom:6px;">
+      ChatGPT <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">6.8/10 · -3.2% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-down" style="padding:3px 0;">DeepSeek R2 outperforms o1 on benchmarks while costing 90% less, intensifying open-weights competition</div>
+    
+    <div class="ins-row ins-down" style="padding:3px 0;">Market-wide repricing pressure triggered by DeepSeek's 60% API price cut challenges OpenAI's pricing model</div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">GPT-4.5 turbo latency improvements and Operator expansion drive positive product momentum among users</div>
+    
+  </div>
+  
+  <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+    <div style="font-size:13px;font-weight:500;color:#D85A30;margin-bottom:6px;">
+      Claude <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">7.6/10 · +12.1% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Strong enterprise adoption through Stripe partnership demonstrates real-world computer-use value and market traction.</div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Constitutional AI research showing trillion-parameter scaling without human feedback positions Anthropic as alignment leader.</div>
+    
+    <div class="ins-row ins-down" style="padding:3px 0;">DeepSeek pricing pressure forces margin compression, raising questions about closed-model economic viability long-term.</div>
+    
+  </div>
+  
+  <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+    <div style="font-size:13px;font-weight:500;color:#1D9E75;margin-bottom:6px;">
+      Gemini <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">8.4/10 · +12.7% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Strong benchmark leadership in coding tasks drives excitement; #1 ranking validates Google's technical progress</div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Version 2.5 Pro demonstrates meaningful improvement over prior iteration, suggesting competitive momentum</div>
+    
+    <div class="ins-row ins-neutral" style="padding:3px 0;">Benchmark-heavy narrative raises questions about practical developer adoption beyond test metrics</div>
+    
+  </div>
+  
+  <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+    <div style="font-size:13px;font-weight:500;color:#7F77DD;margin-bottom:6px;">
+      DeepSeek <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">8.4/10 · +12.7% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">R2 surpasses o1 on MATH benchmarks, generating excitement around open-source model competitiveness</div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Aggressive 60% pricing cut disrupts industry economics, sparks discussion about market consolidation</div>
+    
+    <div class="ins-row ins-neutral" style="padding:3px 0;">Debate over open-weights vs. closed models intensifies as DeepSeek demonstrates viable alternatives</div>
+    
+  </div>
+  
+  <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+    <div style="font-size:13px;font-weight:500;color:#D4537E;margin-bottom:6px;">
+      Grok <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">7.6/10 · +12.8% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Major $6B funding round demonstrates investor confidence in Grok's potential and xAI's competitive positioning</div>
+    
+    <div class="ins-row ins-neutral" style="padding:3px 0;">Discussion around valuation justification and whether Grok can deliver against Claude, GPT competitors</div>
+    
+    <div class="ins-row ins-down" style="padding:3px 0;">Concerns about Elon Musk's involvement and questions about actual model capabilities versus hype</div>
+    
+  </div>
+  
+  <div style="padding:12px 0;">
+    <div style="font-size:13px;font-weight:500;color:#888780;margin-bottom:6px;">
+      Copilot <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">7.4/10 · +12.8% WoW</span>
+    </div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Microsoft's $650M acquisition of Inflection AI team signals serious R&D commitment to strengthen Copilot's competitive position and capabilities.</div>
+    
+    <div class="ins-row ins-up" style="padding:3px 0;">Multi-file editing and workspace context features show Copilot actively competing to catch up with specialized coding tools like Cursor.</div>
+    
+    <div class="ins-row ins-neutral" style="padding:3px 0;">Mixed sentiment on whether feature updates address real developer needs or are primarily reactive to competitor innovations.</div>
+    
+  </div>
+  
+</div>
+
+</div>
+
+<!-- ==================== PAGE 3: AI FINANCE ==================== -->
+<div id="p3" class="page">
+
+<div class="card">
+  <div class="sec-title">AI ETF market pulse</div>
+  <div class="sec-sub">US-listed AI ETFs — prices as of 2026-05-01</div>
+  <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;">
+    <div class="col-hdr" style="width:52px;">Ticker</div>
+    <div class="col-hdr" style="flex:1;">Name</div>
+    <div class="col-hdr" style="width:60px;text-align:right;">Price</div>
+    <div class="col-hdr" style="width:60px;text-align:right;">DoD</div>
+    <div class="col-hdr" style="width:50px;text-align:right;">1-yr</div>
+    <div class="col-hdr" style="width:50px;text-align:right;">AUM</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/CHAT" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">CHAT</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Roundhill Generative AI & Technology</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$77.99</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+2.04%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+120%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$1.0B</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/ARTY" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">ARTY</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">iShares Future AI & Technology ETF</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$61.94</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+2.14%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+87%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$2.1B</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/AIQ" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">AIQ</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Global X AI & Technology ETF</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$55.88</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.53%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+51%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$7.2B</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/IGPT" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">IGPT</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Invesco AI & Next Gen Software ETF</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$77.79</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+2.02%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+90%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$650M</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/BOTZ" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">BOTZ</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Global X Robotics & AI ETF</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$38.45</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+3.00%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+35%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$2.9B</div>
+  </div>
+  
+  <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
+    <a href="https://finance.yahoo.com/quote/AGIX" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">AGIX</a>
+    <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">KraneShares AGI ETF</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$39.29</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.39%</div>
+    <div style="font-size:12px;width:50px;text-align:right;">+53%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">$171M</div>
+  </div>
+  
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Public AI — top 10 by market cap</div>
+  <div class="sec-sub">Market cap in $B</div>
+  
+  
+  <a href="https://finance.yahoo.com/quote/NVDA" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:500;">1. Nvidia <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">NVDA</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#a32d2d;">-4.63%</span>
+        <span style="font-size:12px;font-weight:500;">$4850.5B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:100%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/GOOGL" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:500;">2. Alphabet <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">GOOGL</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+9.96%</span>
+        <span style="font-size:12px;font-weight:500;">$4662.0B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:96%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/MSFT" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:500;">3. Microsoft <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">MSFT</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#a32d2d;">-3.93%</span>
+        <span style="font-size:12px;font-weight:500;">$3029.2B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:62%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/AMZN" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">4. Amazon <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AMZN</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+0.77%</span>
+        <span style="font-size:12px;font-weight:500;">$2850.5B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:59%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/TSM" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">5. TSMC <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">TSM</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+0.57%</span>
+        <span style="font-size:12px;font-weight:500;">$2054.1B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:42%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/AVGO" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">6. Broadcom <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AVGO</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+2.95%</span>
+        <span style="font-size:12px;font-weight:500;">$1976.4B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:41%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/META" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">7. Meta <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">META</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#a32d2d;">-8.55%</span>
+        <span style="font-size:12px;font-weight:500;">$1553.3B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:32%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/AMD" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">8. AMD <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AMD</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+5.16%</span>
+        <span style="font-size:12px;font-weight:500;">$578.0B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:12%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/ORCL" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">9. Oracle <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">ORCL</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#a32d2d;">-1.49%</span>
+        <span style="font-size:12px;font-weight:500;">$464.2B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:10%;"></div></div>
+  </a>
+  
+  <a href="https://finance.yahoo.com/quote/PLTR" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+      <div style="font-size:12px;font-weight:400;">10. Palantir <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">PLTR</span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:11px;color:#3b6d11;">+0.83%</span>
+        <span style="font-size:12px;font-weight:500;">$333.5B</span>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:7%;"></div></div>
+  </a>
+  
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Coming next</div>
+  <div class="sec-sub">VC league table, arms race chart, and detailed funding rounds will populate from web search in v2 of the pipeline.</div>
+</div>
+
+</div>
+
+<!-- ==================== PAGE 4: RESEARCH & PAPERS ==================== -->
+<div id="p4" class="page">
+
+<div class="card">
+  <div class="sec-title">Research & papers</div>
+  <div class="sec-sub">arXiv integration is the next milestone after pipeline v1 ships. Currently this page surfaces research-tagged stories from Reddit.</div>
+</div>
+
+
+<div class="card">
+  <div class="sec-title">Research-tagged stories from today's Reddit pull</div>
+  
+  <a class="linkrow" href="https://reddit.com/r/MachineLearning/mock024" target="_blank">
+    <div class="story-title">Visa Research publishes FraudRadar GNN paper — 23% fewer false positives</div>
+    <div class="story-meta">
+      <span>r/MachineLearning</span>
+      <span class="cat-tag">Research/Paper</span><span class="cat-tag">Fintech/Payments</span>
+      <span class="score-pill">8.5</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/LocalLLaMA/mock001" target="_blank">
+    <div class="story-title">DeepSeek R2 tops MATH benchmark — beats o1 across 5 categories</div>
+    <div class="story-meta">
+      <span>r/LocalLLaMA</span>
+      <span class="cat-tag">Model Release</span><span class="cat-tag">Benchmark/Evaluation</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/MachineLearning/mock013" target="_blank">
+    <div class="story-title">Constitutional AI at Scale: Alignment Without Human Feedback at 1T Parameters</div>
+    <div class="story-meta">
+      <span>r/MachineLearning</span>
+      <span class="cat-tag">Research/Paper</span><span class="cat-tag">Model Update</span>
+      <span class="score-pill">8.2</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/MachineLearning/mock008" target="_blank">
+    <div class="story-title">Gemini 2.5 Pro hits #1 on coding benchmarks</div>
+    <div class="story-meta">
+      <span>r/MachineLearning</span>
+      <span class="cat-tag">Model Update</span><span class="cat-tag">Benchmark/Evaluation</span>
+      <span class="score-pill">7.8</span>
+    </div>
+  </a>
+  
+  <a class="linkrow" href="https://reddit.com/r/LocalLLaMA/mock011" target="_blank">
+    <div class="story-title">Llama 4 leak: 600B MoE architecture details surface on GitHub</div>
+    <div class="story-meta">
+      <span>r/LocalLLaMA</span>
+      <span class="cat-tag">Model Release</span><span class="cat-tag">Open Source</span>
+      <span class="score-pill">7.8</span>
+    </div>
+  </a>
+  
+</div>
+
+
+</div>
+
+<div class="foot">
+  <div>Auto-generated by Claude · last update 2026-05-01 · 22 stories curated from 25 posts</div>
+  <div>Pipeline v1.0</div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    document.getElementById(t.dataset.page).classList.add("active");
+    t.classList.add("active");
+  });
+});
+</script>
+</body>
+</html>
