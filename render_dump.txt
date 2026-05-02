@@ -1,4 +1,4 @@
-"""
+﻿"""
 HTML dashboard renderer.
 Takes the structured daily JSON and produces the 4-page interactive dashboard
 matching the design spec we agreed on in chat.
@@ -18,7 +18,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Intelligence Dashboard — {{ today }}</title>
+<title>AI Intelligence Dashboard вЂ” {{ today }}</title>
 <style>
   :root {
     --bg-primary: #ffffff;
@@ -134,7 +134,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <div class="head">
   <div>
     <div class="h-title">AI intelligence dashboard</div>
-    <div class="h-sub">Daily digest from 24 subreddits and the open web — {{ today }}</div>
+    <div class="h-sub">Daily digest from 24 subreddits and the open web вЂ” {{ today }}</div>
   </div>
 </div>
 
@@ -157,7 +157,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <a href="{{ top_story.url }}" target="_blank" style="text-decoration:none;color:inherit;">
     <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">{{ top_story.title }}</div>
   </a>
-  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ top_story.subreddit }} · {{ top_story.score }} upvotes · {{ top_story.num_comments }} comments</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ top_story.subreddit }} В· {{ top_story.score }} upvotes В· {{ top_story.num_comments }} comments</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
     {% for tag in top_story.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
   </div>
@@ -169,12 +169,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
 <div class="card">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;">
-    <div class="mcard"><div class="mlabel">Stories today</div><div class="mvalue">{{ metrics.total_stories }}</div><div style="font-size:11px;color:var(--text-secondary);">Pulled {{ metrics.posts_pulled }} · curated {{ metrics.total_stories }}</div></div>
+    <div class="mcard"><div class="mlabel">Stories today</div><div class="mvalue">{{ metrics.total_stories }}</div><div style="font-size:11px;color:var(--text-secondary);">Pulled {{ metrics.posts_pulled }} В· curated {{ metrics.total_stories }}</div></div>
     <div class="mcard"><div class="mlabel">Top subreddit</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.top_subreddit }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_subreddit_count }} stories</div></div>
     <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.most_active_category }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_category_count }} stories</div></div>
-    <div class="mcard"><div class="mlabel">Trending model</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.trending_model or "—" }}</div><div class="up" style="font-size:11px;">{{ synthesis.metrics.trending_model_buzz_change or "" }}</div></div>
+    <div class="mcard"><div class="mlabel">Trending model</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.trending_model or "вЂ”" }}</div><div class="up" style="font-size:11px;">{{ synthesis.metrics.trending_model_buzz_change or "" }}</div></div>
   </div>
-    <div class="sec-title">Story volume — last 30 days</div>
+    <div class="sec-title">Story volume вЂ” last 30 days</div>
   <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;margin-bottom:12px;">Daily story count vs 7-day rolling average</div>
   <div style="position:relative;height:160px;width:100%">
     <canvas id="volumeChart"></canvas>
@@ -183,7 +183,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <div style="margin-top:14px;padding-top:4px;display:flex;flex-wrap:wrap;gap:8px;">
     {% for ins in synthesis.pattern_insights %}
     <span class="pattern-tag pat-{{ ins.direction if ins.direction in ['up','down','neu','warn'] else 'neu' }}">
-      {% if ins.direction == 'up' %}▲{% elif ins.direction == 'down' %}▼{% elif ins.direction == 'warning' or ins.direction == 'warn' %}⚠{% else %}●{% endif %}
+      {% if ins.direction == 'up' %}в–І{% elif ins.direction == 'down' %}в–ј{% elif ins.direction == 'warning' or ins.direction == 'warn' %}вљ {% else %}в—Џ{% endif %}
       {{ ins.text }}
     </span>
     {% endfor %}
@@ -259,6 +259,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   });
 })();
 </script>
+</div>
 
 <div class="card">
   <div class="sec-title">Top stories</div>
@@ -349,7 +350,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         cumulative += (values[i]/total)*2*Math.PI;
         if(norm < cumulative){
           var pct = Math.round(values[i]/total*100);
-          tip.innerHTML = '<strong>'+labels[i]+'</strong><br>'+values[i]+' stories · '+pct+'%';
+          tip.innerHTML = '<strong>'+labels[i]+'</strong><br>'+values[i]+' stories В· '+pct+'%';
           tip.style.display='block';
           tip.style.left=(e.offsetX+10)+'px';
           tip.style.top=(e.offsetY-10)+'px';
@@ -383,7 +384,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <div class="sec-title">Subreddit hot topics this week</div>
   <select id="subSelect" onchange="filterSub(this.value)" style="width:100%;margin:10px 0 14px;">
     {% for sub, sub_stories in stories_by_subreddit.items() %}
-    <option value="{{ sub }}">{{ sub }} · {{ sub_stories | length }} stories</option>
+    <option value="{{ sub }}">{{ sub }} В· {{ sub_stories | length }} stories</option>
     {% endfor %}
   </select>
   <div id="subStories">
@@ -415,7 +416,7 @@ function filterSub(val){
 <div id="p2" class="page">
 
 <div class="card">
-  <div class="sec-title">All models — snapshot</div>
+  <div class="sec-title">All models вЂ” snapshot</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
     {% for m in model_sentiments %}
     <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
@@ -443,7 +444,7 @@ function filterSub(val){
   {% for m in model_sentiments %}
   <div style="padding:12px 0;{% if not loop.last %}border-bottom:0.5px solid var(--border);{% endif %}">
     <div style="font-size:13px;font-weight:500;color:{{ m.model_config.color }};margin-bottom:6px;">
-      {{ m.model_config.name }} <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">{{ "%.1f"|format(m.sentiment_score) }}/10 · {{ m.wow_delta_pct }} WoW</span>
+      {{ m.model_config.name }} <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">{{ "%.1f"|format(m.sentiment_score) }}/10 В· {{ m.wow_delta_pct }} WoW</span>
     </div>
     {% for d in m.trend_drivers %}
     <div class="ins-row ins-{{ d.direction }}" style="padding:3px 0;">{{ d.text }}</div>
@@ -452,14 +453,13 @@ function filterSub(val){
   {% endfor %}
 </div>
 
-</div>
 
 <!-- ==================== PAGE 3: AI FINANCE ==================== -->
 <div id="p3" class="page">
 
 <div class="card">
   <div class="sec-title">AI ETF market pulse</div>
-  <div class="sec-sub">US-listed AI ETFs — prices as of {{ today }}</div>
+  <div class="sec-sub">US-listed AI ETFs вЂ” prices as of {{ today }}</div>
   <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;">
     <div class="col-hdr" style="width:52px;">Ticker</div>
     <div class="col-hdr" style="flex:1;">Name</div>
@@ -482,7 +482,7 @@ function filterSub(val){
 
 {% if public_ai %}
 <div class="card">
-  <div class="sec-title">Public AI — top 10 by market cap</div>
+  <div class="sec-title">Public AI вЂ” top 10 by market cap</div>
   <div class="sec-sub">Market cap in $B</div>
   {% set max_cap = public_ai[0].market_cap_billions %}
   {% for p in public_ai %}
@@ -534,7 +534,7 @@ function filterSub(val){
 </div>
 
 <div class="foot">
-  <div>Auto-generated by Claude · last update {{ today }} · {{ metrics.total_stories }} stories curated from {{ metrics.posts_pulled }} posts</div>
+  <div>Auto-generated by Claude В· last update {{ today }} В· {{ metrics.total_stories }} stories curated from {{ metrics.posts_pulled }} posts</div>
   <div>Pipeline v1.0</div>
 </div>
 
