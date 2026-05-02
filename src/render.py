@@ -360,6 +360,35 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   {% endif %}
 </div>
 {% endif %}
+<div class="card">
+  <div class="sec-title">Subreddit hot topics this week</div>
+  <select id="subSelect" onchange="filterSub(this.value)" style="width:100%;margin:10px 0 14px;">
+    {% for sub, sub_stories in stories_by_subreddit.items() %}
+    <option value="{{ sub }}">{{ sub }} · {{ sub_stories | length }} stories</option>
+    {% endfor %}
+  </select>
+  <div id="subStories">
+    {% for sub, sub_stories in stories_by_subreddit.items() %}
+    <div class="sub-group" data-sub="{{ sub }}" style="{% if not loop.first %}display:none{% endif %}">
+      {% for s in sub_stories[:5] %}
+      <a class="linkrow" href="{{ s.url }}" target="_blank">
+        <div class="story-title">{{ s.title }}</div>
+        <div class="story-meta">
+          {% for tag in s.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+function filterSub(val){
+  document.querySelectorAll('.sub-group').forEach(function(g){
+    g.style.display = g.dataset.sub === val ? '' : 'none';
+  });
+}
+</script>
 
 
 </div>
@@ -519,6 +548,13 @@ def render_dashboard(daily_data: Dict) -> str:
         if any(tag in (s.get("category_tags") or []) for tag in ["Research/Paper", "Open Source", "Benchmark/Evaluation"])
     ]
 
+    stories_by_subreddit = {}
+    for s in stories:
+        sub = s.get("subreddit", "unknown")
+        if sub not in stories_by_subreddit:
+            stories_by_subreddit[sub] = []
+        stories_by_subreddit[sub].append(s)
+    stories_by_subreddit = dict(sorted(stories_by_subreddit.items(), key=lambda x: -len(x[1])))
     return template.render(
     volume_history=daily_data.get("volume_history", []),
     today=daily_data.get("_date", date.today().isoformat()),
@@ -532,4 +568,5 @@ def render_dashboard(daily_data: Dict) -> str:
     etfs=daily_data.get("etfs", []),
     public_ai=daily_data.get("public_ai", []),
     category_breakdown=daily_data.get("category_breakdown", {}),
+    stories_by_subreddit=stories_by_subreddit,
 )
