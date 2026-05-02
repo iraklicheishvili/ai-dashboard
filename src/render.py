@@ -106,6 +106,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .ins-warning::before{content:"\26A0";color:#854f0b;font-size:10px;margin-right:5px;}
   .ins-row{font-size:12px;padding:5px 0;line-height:1.4;border-bottom:0.5px solid var(--border);}
   .ins-row:last-child{border-bottom:none;}
+  .signal-row{font-size:13px;line-height:1.55;padding:11px 14px 11px 16px;background:var(--bg-secondary);border-radius:var(--radius-md);color:var(--text-primary);border-left:3px solid transparent;}
+  .signal-row::before{font-weight:500;margin-right:9px;display:inline-block;width:12px;}
+  .signal-row.signal-up{border-left-color:#1D9E75;}
+  .signal-row.signal-down{border-left-color:#E24B4A;}
+  .signal-row.signal-warning{border-left-color:#EF9F27;}
+  .signal-row.signal-neu{border-left-color:#7F77DD;}
+  .signal-row.signal-up::before{content:"\25B2";color:#1D9E75;}
+  .signal-row.signal-down::before{content:"\25BC";color:#E24B4A;}
+  .signal-row.signal-warning::before{content:"\26A0";color:#EF9F27;}
+  .signal-row.signal-neu::before{content:"\25CF";color:#7F77DD;font-size:10px;}
   .col-hdr{font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;}
   .stat-card{background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px;}
   .stat-label{font-size:11px;color:var(--text-secondary);margin-bottom:4px;}
@@ -209,26 +219,6 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       labels: labels,
       datasets: [
         {
-          label: 'Stor
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script>
-(function(){
-  var history = {{ volume_history | tojson }};
-  if(!history || history.length === 0) return;
-  var labels = history.map(function(d){ return d.date.slice(5); });
-  var counts = history.map(function(d){ return d.count; });
-  var rolling = counts.map(function(v,i){
-    var slice = counts.slice(Math.max(0,i-6),i+1);
-    return Math.round(slice.reduce(function(a,b){return a+b;},0)/slice.length);
-  });
-  var ctx = document.getElementById('volumeChart');
-  if(!ctx) return;
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
           label: 'Stories',
           data: counts,
           backgroundColor: 'rgba(127,119,221,0.7)',
@@ -278,10 +268,10 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <div style="display:grid;grid-template-columns:1fr 1fr;min-height:220px">
     <div style="padding:16px 18px;border-right:0.5px solid var(--border)">
       <div class="sec-title">Category breakdown</div>
-      <div style="display:flex;align-items:center;gap:16px;margin-top:10px;position:relative">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px;position:relative">
         <canvas id="catDonut" width="160" height="160" style="flex-shrink:0;width:160px;height:160px"></canvas>
 <div id="donutTooltip" style="display:none;position:absolute;background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-md);padding:6px 10px;font-size:12px;color:var(--text-primary);pointer-events:none;z-index:10"></div>
-        <div id="catLegend" style="display:flex;flex-direction:column;gap:5px;font-size:12px"></div>
+        <div id="catLegend" style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:12px;max-width:100%"></div>
       </div>
     </div>
     <div style="padding:16px 18px">
@@ -363,22 +353,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 })();
 </script>
 
-{% if fintech_stories %}
-<div class="card">
-  <div class="sec-title">Fintech & payments spotlight</div>
-  {% for s in fintech_stories[:3] %}
-  <a class="linkrow" href="{{ s.url }}" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
-    <div class="story-title">{{ s.title }}</div>
-    <div class="story-meta"><span>{{ s.subreddit }}</span><span class="score-pill">{{ "%.1f"|format(s.relevance_score) }}</span></div>
-  </a>
-  {% endfor %}
-  {% if synthesis.fintech_implications %}
-  <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;">
-    <strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications }}
-  </div>
-  {% endif %}
-</div>
-{% endif %}
+
 <div class="card">
   <div class="sec-title">Subreddit hot topics this week</div>
   <select id="subSelect" onchange="filterSub(this.value)" style="width:100%;margin:10px 0 14px;">
@@ -408,6 +383,22 @@ function filterSub(val){
   });
 }
 </script>
+{% if fintech_stories %}
+<div class="card">
+  <div class="sec-title">Fintech & payments spotlight</div>
+  {% for s in fintech_stories[:3] %}
+  <a class="linkrow" href="{{ s.url }}" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
+    <div class="story-title">{{ s.title }}</div>
+    <div class="story-meta"><span>{{ s.subreddit }}</span><span class="score-pill">{{ "%.1f"|format(s.relevance_score) }}</span></div>
+  </a>
+  {% endfor %}
+  {% if synthesis.fintech_implications %}
+  <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;">
+    <strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications }}
+  </div>
+  {% endif %}
+</div>
+{% endif %}
 </div>
 
 
@@ -496,8 +487,6 @@ function filterSub(val){
     {% endfor %}
   </div>
   {% endfor %}
-</div>
-
 </div>
 
 
@@ -632,83 +621,606 @@ function filterModel(val){
 {% endfor %}
 </script>
 
+</div>
 
 <!-- ==================== PAGE 3: AI FINANCE ==================== -->
 <div id="p3" class="page">
 
+<div style="margin-bottom:14px;">
+  <div style="font-size:18px;font-weight:500;">AI finance</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Funding, valuations, market pulse, and competitive capital intelligence — {{ today }}</div>
+</div>
+
+<!-- COMP 1: This week in AI funding -->
+<div class="card">
+  <div class="sec-title">This week in AI funding</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px;">
+    <div class="mcard">
+      <div class="mlabel">Total raised</div>
+      <div class="mvalue">${{ funding_summary.total_raised | default('—') }}</div>
+      <div style="font-size:11px;{% if funding_summary.total_raised_change and funding_summary.total_raised_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ funding_summary.total_raised_change | default('') }} vs last week</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Deals closed</div>
+      <div class="mvalue">{{ funding_summary.deals_closed | default('—') }}</div>
+      <div style="font-size:11px;{% if funding_summary.deals_change and funding_summary.deals_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ funding_summary.deals_change | default('') }} vs last week</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Largest round</div>
+      <div class="mvalue">${{ funding_summary.largest_round | default('—') }}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ funding_summary.largest_round_company | default('') }}</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Median pre-money</div>
+      <div class="mvalue">${{ funding_summary.median_premoney | default('—') }}</div>
+      <div style="font-size:11px;{% if funding_summary.median_trend == 'up' %}color:#3b6d11{% elif funding_summary.median_trend == 'down' %}color:#a32d2d{% else %}color:var(--text-secondary){% endif %};">{% if funding_summary.median_trend == 'up' %}Trending up{% elif funding_summary.median_trend == 'down' %}Trending down{% else %}Stable{% endif %}</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMP 2: AI ETF market pulse + bubble chart -->
 <div class="card">
   <div class="sec-title">AI ETF market pulse</div>
   <div class="sec-sub">US-listed AI ETFs — prices as of {{ today }}</div>
   <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;">
     <div class="col-hdr" style="width:52px;">Ticker</div>
     <div class="col-hdr" style="flex:1;">Name</div>
+    <div class="col-hdr" style="width:80px;">Trend</div>
     <div class="col-hdr" style="width:60px;text-align:right;">Price</div>
     <div class="col-hdr" style="width:60px;text-align:right;">DoD</div>
     <div class="col-hdr" style="width:50px;text-align:right;">1-yr</div>
-    <div class="col-hdr" style="width:50px;text-align:right;">AUM</div>
+    <div class="col-hdr" style="width:60px;text-align:right;">AUM</div>
   </div>
   {% for e in etfs %}
   <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
     <a href="https://finance.yahoo.com/quote/{{ e.ticker }}" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">{{ e.ticker }}</a>
     <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ e.name }}</div>
+    <div style="width:80px;height:18px;">
+      {% if e.sparkline %}
+      <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
+        <polyline points="{{ e.sparkline_points }}" fill="none" stroke="{% if (e.dod_pct | default(0)) >= 0 %}#3b6d11{% else %}#a32d2d{% endif %}" stroke-width="1.2"/>
+      </svg>
+      {% endif %}
+    </div>
     <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">${{ "%.2f"|format(e.price | default(0)) }}</div>
     <div style="font-size:12px;font-weight:500;width:60px;text-align:right;{% if (e.dod_pct | default(0)) >= 0 %}color:#3b6d11{% else %}color:#a32d2d{% endif %};">{% if (e.dod_pct | default(0)) >= 0 %}+{% endif %}{{ "%.2f"|format(e.dod_pct | default(0)) }}%</div>
-    <div style="font-size:12px;width:50px;text-align:right;">{% if (e.year_return_pct | default(0)) >= 0 %}+{% endif %}{{ "%.0f"|format(e.year_return_pct | default(0)) }}%</div>
-    <div style="font-size:11px;color:var(--text-secondary);width:50px;text-align:right;">{{ e.aum | default("n/a") }}</div>
+    <div style="font-size:12px;width:50px;text-align:right;{% if (e.year_return_pct | default(0)) >= 0 %}color:#3b6d11{% else %}color:#a32d2d{% endif %};">{% if (e.year_return_pct | default(0)) >= 0 %}+{% endif %}{{ "%.0f"|format(e.year_return_pct | default(0)) }}%</div>
+    <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">{{ e.aum | default("n/a") }}</div>
+  </div>
+  {% endfor %}
+  <div style="position:relative;height:280px;width:100%;margin-top:18px;">
+    <canvas id="etfBubbleChart"></canvas>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;font-size:11px;color:var(--text-secondary);">
+    {% for e in etfs %}
+    <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:{{ e.color | default('#888') }};"></span>{{ e.ticker }}</span>
+    {% endfor %}
+    <span style="margin-left:auto;font-style:italic;">· Bubble size = AUM</span>
+  </div>
+</div>
+
+<!-- COMP 3: Recent funding rounds -->
+<div class="card">
+  <div class="sec-title">Recent funding rounds</div>
+  <div class="sec-sub">Sorted by round size — this week</div>
+  <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;margin-top:8px;">
+    <div class="col-hdr" style="flex:2;">Company</div>
+    <div class="col-hdr" style="width:80px;text-align:right;">Amount</div>
+    <div class="col-hdr" style="width:80px;text-align:right;">Valuation</div>
+    <div class="col-hdr" style="width:80px;text-align:center;">Stage</div>
+    <div class="col-hdr" style="width:120px;text-align:right;">Lead investor</div>
+  </div>
+  {% for r in funding_rounds %}
+  <div style="display:flex;align-items:flex-start;gap:0;padding:10px 0;border-bottom:0.5px solid var(--border);">
+    <div style="flex:2;min-width:0;">
+      <div style="font-size:13px;font-weight:500;">{{ r.company }} <span style="font-size:10px;color:var(--text-tertiary);font-weight:400;">{{ r.country | default('') }}</span></div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ r.category | default('') }}</div>
+    </div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ r.amount }}</div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ r.valuation }}</div>
+    <div style="width:80px;text-align:center;"><span class="pill" style="background:#e6f1fb;color:#0c447c;">{{ r.stage }}</span></div>
+    <div style="width:120px;text-align:right;font-size:12px;color:var(--text-secondary);">{{ r.lead_investor }}</div>
   </div>
   {% endfor %}
 </div>
 
-{% if public_ai %}
-<div class="card">
-  <div class="sec-title">Public AI — top 10 by market cap</div>
-  <div class="sec-sub">Market cap in $B</div>
-  {% set max_cap = public_ai[0].market_cap_billions %}
-  {% for p in public_ai %}
-  <a href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
-      <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }} <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">{{ p.ticker }}</span></div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="font-size:11px;{% if p.dod_pct >= 0 %}color:#3b6d11{% else %}color:#a32d2d{% endif %};">{% if p.dod_pct >= 0 %}+{% endif %}{{ "%.2f"|format(p.dod_pct) }}%</span>
-        <span style="font-size:12px;font-weight:500;">${{ p.market_cap_billions }}B</span>
+<!-- COMP 4: Private + Public AI valuation leaderboards -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+  <div class="card" style="margin-bottom:0;">
+    <div class="sec-title">Private AI — top 10 by valuation</div>
+    <div class="sec-sub">Estimated valuations · last known round</div>
+    {% set max_priv = (private_ai[0].valuation_billions | default(1)) if private_ai else 1 %}
+    {% for p in private_ai %}
+    <div style="padding:8px 0;border-bottom:0.5px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+        <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }}</div>
+        <div style="font-size:12px;font-weight:500;color:#7F77DD;">${{ p.valuation_billions }}B</div>
       </div>
+      <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px;">${{ p.last_round | default('—') }} · {{ p.last_round_date | default('—') }}</div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#7F77DD;width:{{ ((p.valuation_billions / max_priv) * 100) | round | int }}%;"></div></div>
     </div>
-    <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:{{ ((p.market_cap_billions / max_cap) * 100) | round | int }}%;"></div></div>
-  </a>
+    {% endfor %}
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <div class="sec-title">Public AI — top 10 by market cap</div>
+    <div class="sec-sub">Market cap in $B · {{ today }} close</div>
+    {% if public_ai %}
+    {% set max_cap = public_ai[0].market_cap_billions %}
+    {% for p in public_ai %}
+    <a href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+        <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }} <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">{{ p.ticker }}</span></div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:11px;{% if p.dod_pct >= 0 %}color:#3b6d11{% else %}color:#a32d2d{% endif %};">{% if p.dod_pct >= 0 %}+{% endif %}{{ "%.2f"|format(p.dod_pct) }}%</span>
+          <span style="font-size:12px;font-weight:500;">${{ p.market_cap_billions }}B</span>
+        </div>
+      </div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:{{ ((p.market_cap_billions / max_cap) * 100) | round | int }}%;"></div></div>
+    </a>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<!-- COMP 5: The arms race -->
+<div class="card">
+  <div class="sec-title">The arms race — quarterly funding by player</div>
+  <div class="sec-sub">External capital raised per quarter, Q1 2025 — Q2 2026 · $B</div>
+  <div style="position:relative;height:240px;width:100%;margin-top:8px;">
+    <canvas id="armsRaceChart"></canvas>
+  </div>
+  <div style="font-size:10px;color:var(--text-tertiary);text-align:right;margin-top:4px;font-style:italic;">* Q2 2026 in progress</div>
+</div>
+
+<!-- COMP 6: VC league table -->
+<div class="card">
+  <div class="sec-title">VC league table — top AI investors this quarter</div>
+  <div class="sec-sub">Ranked by deals closed · Q1 2026</div>
+  <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;margin-top:8px;">
+    <div class="col-hdr" style="width:24px;">#</div>
+    <div class="col-hdr" style="flex:1;">Firm</div>
+    <div class="col-hdr" style="width:60px;text-align:right;">Deals</div>
+    <div class="col-hdr" style="width:80px;text-align:right;">Deployed</div>
+    <div class="col-hdr" style="width:160px;text-align:right;">Focus</div>
+  </div>
+  {% for v in vc_league %}
+  <div style="display:flex;align-items:center;gap:0;padding:8px 0;border-bottom:0.5px solid var(--border);">
+    <div style="width:24px;font-size:12px;color:var(--text-secondary);">{{ loop.index }}</div>
+    <div style="flex:1;font-size:13px;font-weight:500;">{{ v.firm }}</div>
+    <div style="width:60px;text-align:right;font-size:13px;font-weight:500;">{{ v.deals }}</div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ v.deployed }}</div>
+    <div style="width:160px;text-align:right;font-size:11px;color:var(--text-secondary);">{{ v.focus }}</div>
+  </div>
   {% endfor %}
 </div>
-{% endif %}
 
+<!-- COMP 7: Money flow analysis -->
 <div class="card">
-  <div class="sec-title">Coming next</div>
-  <div class="sec-sub">VC league table, arms race chart, and detailed funding rounds will populate from web search in v2 of the pipeline.</div>
+  <div class="sec-title">Money flow analysis</div>
+  <div class="sec-sub">Signal-driven directional insights from this week's capital movements</div>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+    {% for f in money_flow %}
+    <div class="signal-row signal-{{ f.direction }}">{{ f.text }}</div>
+    {% endfor %}
+  </div>
 </div>
+
+<!-- COMP 8: M&A & exits tracker -->
+<div class="card">
+  <div class="sec-title">M&A & exits tracker</div>
+  <div class="sec-sub">Acquisitions, strategic investments, IPO filings, acqui-hires</div>
+  <div style="margin-top:10px;">
+    {% for m in ma_tracker %}
+    <div style="display:flex;gap:14px;padding:10px 0;border-bottom:0.5px solid var(--border);">
+      <div style="width:48px;color:var(--text-secondary);font-size:11px;flex-shrink:0;padding-top:2px;">{{ m.date }}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:13px;font-weight:500;">{{ m.title }}</span>
+          <span class="pill" style="background:{% if m.type == 'Acquisition' %}#eaf3de;color:#3b6d11{% elif m.type == 'IPO filing' %}#e6f1fb;color:#0c447c{% elif m.type == 'Investment' %}#eeedfe;color:#3c3489{% else %}#f1efe8;color:#5f5e5a{% endif %};">{{ m.type }}</span>
+        </div>
+        <div style="font-size:11px;color:var(--text-secondary);margin-top:3px;">{{ m.detail }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- COMP 9: Fintech & payments AI spotlight -->
+<div class="card">
+  <div class="sec-title">Fintech & payments AI spotlight</div>
+  <div class="sec-sub">AI deals in payments, lending, fraud, embedded finance, and banking infrastructure — with strategic implications for card networks and issuers</div>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
+    {% for f in fintech_spotlight %}
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:14px;font-weight:500;">{{ f.company }}</span>
+        <span style="font-size:11px;color:var(--text-info);">{{ f.deal_type }}</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+        {% for tag in f.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+      </div>
+      <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;">{{ f.description }}</div>
+      <div style="font-size:10px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Strategic implication</div>
+      <div style="font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:8px;">{{ f.strategic }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+(function(){
+  // Bubble chart for ETFs
+  var etfData = {{ etfs | tojson }};
+  if(!etfData || etfData.length === 0) return;
+  var ctx = document.getElementById('etfBubbleChart');
+  if(!ctx) return;
+  // Parse AUM strings like "$1.1B" or "$711M" into billions for bubble size
+  function parseAum(a){
+    if(!a) return 0;
+    var m = String(a).match(/([0-9.]+)\s*([BMK]?)/i);
+    if(!m) return 0;
+    var v = parseFloat(m[1]);
+    var unit = (m[2]||'B').toUpperCase();
+    if(unit === 'M') v = v/1000;
+    if(unit === 'K') v = v/1000000;
+    return v;
+  }
+  var datasets = etfData.map(function(e){
+    var aum = parseAum(e.aum);
+    return {
+      label: e.ticker,
+      data: [{x: e.year_return_pct || 0, y: e.price || 0, r: Math.max(8, Math.sqrt(aum) * 14)}],
+      backgroundColor: (e.color || '#888') + 'cc',
+      borderColor: e.color || '#888',
+      borderWidth: 1
+    };
+  });
+  new Chart(ctx, {
+    type: 'bubble',
+    data: { datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function(c){ var d = etfData[c.datasetIndex]; return d.ticker + ': $' + (d.price||0).toFixed(2) + ', ' + (d.year_return_pct>=0?'+':'') + (d.year_return_pct||0).toFixed(0) + '% 1y, AUM ' + (d.aum||'—'); } } }
+      },
+      scales: {
+        x: { title: { display: true, text: '1-year return (%)', color: '#888', font: {size:11} }, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', callback: function(v){return (v>=0?'+':'')+v+'%';} } },
+        y: { title: { display: true, text: 'Current price ($)', color: '#888', font: {size:11} }, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', callback: function(v){return '$'+v;} } }
+      }
+    }
+  });
+})();
+(function(){
+  // Arms race chart
+  var arms = {{ arms_race | tojson }};
+  if(!arms || !arms.quarters || arms.quarters.length === 0) return;
+  var ctx = document.getElementById('armsRaceChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: arms.quarters,
+      datasets: arms.players.map(function(p){
+        return {
+          label: p.name,
+          data: p.data,
+          backgroundColor: p.color + 'cc',
+          borderColor: p.color,
+          borderWidth: 1,
+          borderRadius: 2
+        };
+      })
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', align: 'start', labels: { font: { size: 11 }, color: '#888', usePointStyle: true, pointStyle: 'rectRounded', boxWidth: 10, padding: 10 } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#888' } },
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 11 }, color: '#888', callback: function(v){return '$'+v+'B';} }, title: { display: true, text: 'Capital raised ($B)', color: '#888', font: {size:11} } }
+      }
+    }
+  });
+})();
+</script>
 
 </div>
 
 <!-- ==================== PAGE 4: RESEARCH & PAPERS ==================== -->
 <div id="p4" class="page">
 
-<div class="card">
-  <div class="sec-title">Research & papers</div>
-  <div class="sec-sub">arXiv integration is the next milestone after pipeline v1 ships. Currently this page surfaces research-tagged stories from Reddit.</div>
+<div style="margin-bottom:14px;">
+  <div style="font-size:18px;font-weight:500;">Research & papers</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">AI research frontier — week of {{ today }} · sourced from arXiv, Semantic Scholar, and institutional preprints</div>
 </div>
 
-{% if research_stories %}
+<!-- COMP 1: This week in AI research -->
 <div class="card">
-  <div class="sec-title">Research-tagged stories from today's Reddit pull</div>
-  {% for s in research_stories[:10] %}
-  <a class="linkrow" href="{{ s.url }}" target="_blank">
-    <div class="story-title">{{ s.title }}</div>
-    <div class="story-meta">
-      <span>{{ s.subreddit }}</span>
-      {% for tag in s.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
-      <span class="score-pill">{{ "%.1f"|format(s.relevance_score) }}</span>
+  <div class="sec-title">This week in AI research</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px;">
+    <div class="mcard">
+      <div class="mlabel">Papers published</div>
+      <div class="mvalue">{{ research_summary.papers_published | default('—') }}</div>
+      <div style="font-size:11px;{% if research_summary.papers_change and research_summary.papers_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ research_summary.papers_change | default('') }} vs last week</div>
     </div>
-  </a>
-  {% endfor %}
+    <div class="mcard">
+      <div class="mlabel">Breakthrough flagged</div>
+      <div class="mvalue">{{ research_summary.breakthroughs | default('—') }}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ research_summary.breakthrough_note | default('') }}</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Top institution</div>
+      <div class="mvalue" style="font-size:18px;">{{ research_summary.top_institution | default('—') }}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ research_summary.top_institution_papers | default('') }} papers this week</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Hottest topic</div>
+      <div class="mvalue" style="font-size:18px;">{{ research_summary.hottest_topic | default('—') }}</div>
+      <div style="font-size:11px;{% if research_summary.hottest_topic_change and research_summary.hottest_topic_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ research_summary.hottest_topic_change | default('') }} paper volume</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMP 2: Paper of the week -->
+{% if paper_of_week %}
+<div class="card card-info">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+    <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Paper of the week</span>
+    <span class="score-pill" style="font-size:11px;padding:3px 10px;">{{ "%.1f"|format(paper_of_week.score) }} / 10</span>
+  </div>
+  <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">{{ paper_of_week.title }}</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ paper_of_week.institution }} · {{ paper_of_week.team }} · arXiv:{{ paper_of_week.arxiv_id }} · {{ paper_of_week.date }}</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+    {% for tag in paper_of_week.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+  </div>
+  <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:10px;">
+    <div style="font-size:10px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Plain-english summary</div>
+    <div style="font-size:13px;line-height:1.5;color:var(--text-primary);font-weight:500;">{{ paper_of_week.plain_summary }}</div>
+  </div>
+  <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;"><strong style="font-weight:500;">Why it matters:</strong> {{ paper_of_week.why_matters }}</div>
+  <a href="{{ paper_of_week.url }}" target="_blank" style="font-size:13px;color:var(--text-info);text-decoration:none;">View on arXiv →</a>
 </div>
 {% endif %}
+
+<!-- COMP 3: Top papers this week -->
+<div class="card">
+  <div class="sec-title">Top papers this week</div>
+  <div class="sec-sub">Scored by relevance, novelty, and likely real-world impact · 8.0+ threshold</div>
+  <div style="margin-top:10px;">
+    {% for p in top_papers %}
+    <a href="{{ p.url }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:14px 0;border-bottom:0.5px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;">{{ p.title }}</div>
+        <span class="score-pill" style="flex-shrink:0;">{{ "%.1f"|format(p.score) }}</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">{{ p.authors }} · {{ p.institution }}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
+        {% for tag in p.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">{{ p.summary }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- COMP 4: Research by category + 30-day volume -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+  <div class="card" style="margin-bottom:0;">
+    <div class="sec-title">Research by category</div>
+    <div class="sec-sub">Paper count this week vs last week</div>
+    <div style="position:relative;height:260px;width:100%;margin-top:10px;">
+      <canvas id="researchCategoryChart"></canvas>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <div class="sec-title">30-day research volume</div>
+    <div class="sec-sub">Papers per category — daily rolling average</div>
+    <div style="position:relative;height:260px;width:100%;margin-top:10px;">
+      <canvas id="researchVolumeChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- COMP 5: Hot institutions this week -->
+<div class="card">
+  <div class="sec-title">Hot institutions this week</div>
+  <div class="sec-sub">Ranked by paper output × citation velocity · rising = above 4-week average</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin-top:12px;">
+    {% for i in hot_institutions %}
+    <div style="padding:8px 0;border-bottom:0.5px solid var(--border);">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px;">
+        <div style="font-size:13px;font-weight:500;">{{ loop.index }}. {{ i.name }}</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+          {% if i.rising %}<span class="pill sent-pos" style="font-size:10px;">rising</span>{% endif %}
+          <span style="font-size:13px;font-weight:500;">{{ i.papers }}</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ i.focus }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- COMP 6: Author spotlight -->
+<div class="card">
+  <div class="sec-title">Author spotlight</div>
+  <div class="sec-sub">Researchers who published notable work this week</div>
+  <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
+    {% for a in author_spotlight %}
+    <div style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
+      <div class="avatar" style="background:{{ a.color | default('#7F77DD') }}33;color:{{ a.color | default('#7F77DD') }};width:36px;height:36px;font-size:12px;flex-shrink:0;">{{ a.initials }}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+          <span style="font-size:13px;font-weight:500;">{{ a.name }}</span>
+          <span style="font-size:11px;color:var(--text-secondary);">{{ a.affiliation }}</span>
+          <span style="font-size:11px;color:var(--text-info);">{{ a.handle | default('') }}</span>
+        </div>
+        <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;">{{ a.paper_title }}</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">{{ a.note }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- COMP 7: Breakthrough radar -->
+<div class="card">
+  <div class="sec-title">Breakthrough radar</div>
+  <div class="sec-sub">Papers plotted by time-to-impact vs potential significance · hover for paper details</div>
+  <div style="position:relative;height:340px;width:100%;margin-top:12px;">
+    <canvas id="breakthroughRadarChart"></canvas>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+    <div style="background:#eaf3de40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #1D9E75;">
+      <div style="font-size:11px;font-weight:500;color:#1D9E75;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Deploy Now</div>
+      <div style="font-size:12px;color:var(--text-secondary);">Near-term · high impact</div>
+    </div>
+    <div style="background:#e6f1fb40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #378ADD;">
+      <div style="font-size:11px;font-weight:500;color:#378ADD;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Watch Closely</div>
+      <div style="font-size:12px;color:var(--text-secondary);">Long-term · paradigm shift</div>
+    </div>
+    <div style="background:rgba(136,135,128,0.12);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #888780;">
+      <div style="font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Incremental Gains</div>
+      <div style="font-size:12px;color:var(--text-secondary);">Near-term · smaller scope</div>
+    </div>
+    <div style="background:#faeeda40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #EF9F27;">
+      <div style="font-size:11px;font-weight:500;color:#EF9F27;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Long Bet</div>
+      <div style="font-size:12px;color:var(--text-secondary);">Long-term · uncertain impact</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMP 8: Research signal analysis -->
+<div class="card">
+  <div class="sec-title">Research signal analysis</div>
+  <div class="sec-sub">What this week's paper volume and topics tell us about where the field is heading</div>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+    {% for s in research_signals %}
+    <div class="signal-row signal-{{ s.direction }}">{{ s.text }}</div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- COMP 9: Fintech & payments research corner -->
+<div class="card">
+  <div class="sec-title">Fintech & payments research corner</div>
+  <div class="sec-sub">AI papers in fraud detection, credit scoring, AML, payment routing, and financial forecasting — with strategic implications for card networks and issuers</div>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
+    {% for f in fintech_research %}
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;">
+        <div style="font-size:14px;font-weight:500;line-height:1.4;flex:1;">{{ f.title }}</div>
+        <span class="score-pill" style="flex-shrink:0;">{{ "%.1f"|format(f.score) }}</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:8px;">{{ f.authors }} · arXiv:{{ f.arxiv_id }}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+        {% for tag in f.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+      </div>
+      <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;">{{ f.summary }}</div>
+      <div style="font-size:10px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Strategic implication</div>
+      <div style="font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:8px;">{{ f.strategic }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+(function(){
+  // Research by category - horizontal bar chart with this-week vs last-week
+  var data = {{ research_categories | tojson }};
+  if(!data || !data.labels || data.labels.length === 0) return;
+  var ctx = document.getElementById('researchCategoryChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.labels,
+      datasets: [
+        {label:'This week', data: data.this_week, backgroundColor:'#7F77DD', borderRadius:2},
+        {label:'Last week', data: data.last_week, backgroundColor:'rgba(207,207,207,0.5)', borderRadius:2}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888' } },
+        y: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#888' } }
+      }
+    }
+  });
+})();
+(function(){
+  // 30-day research volume - line chart per category
+  var data = {{ research_volume | tojson }};
+  if(!data || !data.labels || data.labels.length === 0) return;
+  var ctx = document.getElementById('researchVolumeChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: data.categories.map(function(c){
+        return {
+          label: c.name,
+          data: c.values,
+          borderColor: c.color,
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.3
+        };
+      })
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      layout: { padding: { top: 8, bottom: 4 } },
+      plugins: {
+        legend: { position: 'top', align: 'start', labels: { font: { size: 11 }, color: '#888', usePointStyle: true, pointStyle: 'line', boxWidth: 22, boxHeight: 2, padding: 12 } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#888', maxTicksLimit: 8 } },
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888' } }
+      }
+    }
+  });
+})();
+(function(){
+  // Breakthrough radar - bubble chart with x=time-to-impact, y=significance
+  var data = {{ breakthrough_radar | tojson }};
+  if(!data || data.length === 0) return;
+  var ctx = document.getElementById('breakthroughRadarChart');
+  if(!ctx) return;
+  var quadColors = {'deploy_now':'#1D9E75','watch_closely':'#378ADD','incremental':'#888780','long_bet':'#EF9F27','paradigm':'#7F77DD'};
+  var datasets = data.map(function(p){
+    return {
+      label: p.title,
+      data: [{x: p.time_to_impact, y: p.significance, r: 8 + (p.score - 7) * 4}],
+      backgroundColor: (quadColors[p.quadrant] || '#888') + 'cc',
+      borderColor: quadColors[p.quadrant] || '#888',
+      borderWidth: 1
+    };
+  });
+  new Chart(ctx, {
+    type: 'bubble',
+    data: { datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function(c){ var p = data[c.datasetIndex]; var ttiLabel = p.time_to_impact >= 6 ? 'long-term' : (p.time_to_impact >= 4 ? 'mid-term' : 'near-term'); var sigLabel = p.significance >= 7 ? 'paradigm shift' : (p.significance >= 4 ? 'significant' : 'incremental'); return [p.title, 'Score: ' + p.score.toFixed(1) + '  ·  ' + ttiLabel + '  ·  ' + sigLabel]; } } }
+      },
+      scales: {
+        x: { min: 0, max: 10, title: { display: true, text: 'Time to Impact   ←  Near-term      Long-term  →', color: 'rgba(255,255,255,0.7)', font: {size:12, weight: '500'} }, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { display: false } },
+        y: { min: 0, max: 10, title: { display: true, text: 'Significance   ↓  Incremental      Paradigm shift  ↑', color: 'rgba(255,255,255,0.7)', font: {size:12, weight: '500'} }, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { display: false } }
+      }
+    }
+  });
+})();
+</script>
 
 </div>
 
@@ -767,4 +1279,22 @@ def render_dashboard(daily_data: Dict) -> str:
     category_breakdown=daily_data.get("category_breakdown", {}),
     sentiment_history=daily_data.get("sentiment_history", {}),
     stories_by_subreddit=stories_by_subreddit,
+    funding_summary=daily_data.get("funding_summary", {}),
+    funding_rounds=daily_data.get("funding_rounds", []),
+    private_ai=daily_data.get("private_ai", []),
+    arms_race=daily_data.get("arms_race", {}),
+    vc_league=daily_data.get("vc_league", []),
+    money_flow=daily_data.get("money_flow", []),
+    ma_tracker=daily_data.get("ma_tracker", []),
+    fintech_spotlight=daily_data.get("fintech_spotlight", []),
+    research_summary=daily_data.get("research_summary", {}),
+    paper_of_week=daily_data.get("paper_of_week", None),
+    top_papers=daily_data.get("top_papers", []),
+    research_categories=daily_data.get("research_categories", {}),
+    research_volume=daily_data.get("research_volume", {}),
+    hot_institutions=daily_data.get("hot_institutions", []),
+    author_spotlight=daily_data.get("author_spotlight", []),
+    breakthrough_radar=daily_data.get("breakthrough_radar", []),
+    research_signals=daily_data.get("research_signals", []),
+    fintech_research=daily_data.get("fintech_research", []),
 )
