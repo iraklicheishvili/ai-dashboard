@@ -1,0 +1,458 @@
+{
+  "_finance_updated": "2026-05-03",
+  "funding_summary": {
+    "total_raised": "$6.8B",
+    "total_change": "",
+    "deals_closed": 12,
+    "deals_change": "",
+    "largest_round": {
+      "company": "Cursor (Anysphere)",
+      "amount": "$2B"
+    },
+    "median_pre_money": "$8.0B",
+    "median_change": ""
+  },
+  "funding_rounds": [
+    {
+      "company": "Ineffable Intelligence",
+      "category": "Foundation Model",
+      "amount": "$1.1B",
+      "valuation": "$5.1B",
+      "stage": "Seed",
+      "lead_investor": "Sequoia, Lightspeed",
+      "date": "Apr 28",
+      "url": "https://www.cnbc.com/2026/04/27/deepmind-ineffable-intelligence-record-seed-funding-nvidia-google.html"
+    },
+    {
+      "company": "True Anomaly",
+      "category": "AI Infra",
+      "amount": "$600M",
+      "valuation": "—",
+      "stage": "Series D",
+      "lead_investor": "Eclipse, Riot Ventures",
+      "date": "Apr 29",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-defense-aerospace-ai-fintech/"
+    },
+    {
+      "company": "Avoca",
+      "category": "Agents",
+      "amount": "$125M",
+      "valuation": "—",
+      "stage": "Series B",
+      "lead_investor": "General Catalyst, Meritech Capital Partners",
+      "date": "Apr 29",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-defense-aerospace-ai-fintech/"
+    },
+    {
+      "company": "Netomi",
+      "category": "Agents",
+      "amount": "$110M",
+      "valuation": "—",
+      "stage": "Series C",
+      "lead_investor": "Accenture Ventures",
+      "date": "Apr 29",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-defense-aerospace-ai-fintech/"
+    },
+    {
+      "company": "Scout AI",
+      "category": "Vertical SaaS",
+      "amount": "$100M",
+      "valuation": "—",
+      "stage": "Series A",
+      "lead_investor": "Align Ventures, Draper Associates",
+      "date": "Apr 29",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-defense-aerospace-ai-fintech/"
+    },
+    {
+      "company": "Cursor (Anysphere)",
+      "category": "Dev Tools",
+      "amount": "$2B",
+      "valuation": "$50B+",
+      "stage": "Growth",
+      "lead_investor": "—",
+      "date": "Apr 19",
+      "url": "https://www.cnbc.com/2026/04/19/cursor-ai-2-billion-funding-round.html"
+    },
+    {
+      "company": "Chapter",
+      "category": "AI Health",
+      "amount": "$100M",
+      "valuation": "—",
+      "stage": "Series E",
+      "lead_investor": "Generation Investment Management",
+      "date": "Apr 13",
+      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
+    },
+    {
+      "company": "Parallel Web Systems",
+      "category": "Foundation Model",
+      "amount": "$100M",
+      "valuation": "$2B",
+      "stage": "Series A",
+      "lead_investor": "Sequoia",
+      "date": "May 01",
+      "url": "https://blog.mean.ceo/startup-funding-news-may-2026/"
+    },
+    {
+      "company": "LMArena",
+      "category": "AI Infra",
+      "amount": "$150M",
+      "valuation": "$1.7B",
+      "stage": "Series A",
+      "lead_investor": "Felicis Ventures, UC Investments",
+      "date": "Apr 21",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-xai-parabilis-medicines-soley-therapeutics/"
+    },
+    {
+      "company": "Replit",
+      "category": "Dev Tools",
+      "amount": "$400M",
+      "valuation": "$9B",
+      "stage": "Series D",
+      "lead_investor": "—",
+      "date": "Apr 22",
+      "url": "https://aifundingtracker.com/top-50-ai-startups/"
+    },
+    {
+      "company": "Reflection AI",
+      "category": "Foundation Model",
+      "amount": "$2B",
+      "valuation": "$8B",
+      "stage": "Growth",
+      "lead_investor": "—",
+      "date": "Apr 18",
+      "url": "https://aifundingtracker.com/"
+    },
+    {
+      "company": "Normal Computing",
+      "category": "AI Infra",
+      "amount": "$50M",
+      "valuation": "—",
+      "stage": "Series A",
+      "lead_investor": "Samsung Catalyst",
+      "date": "Apr 20",
+      "url": "https://aifundingtracker.com/"
+    }
+  ],
+  "private_ai": [
+    {
+      "name": "OpenAI",
+      "valuation_billions": 300,
+      "last_round": "40B (Series F, SoftBank-led)",
+      "last_round_date": "Apr 2025"
+    },
+    {
+      "name": "Anthropic",
+      "valuation_billions": 380,
+      "last_round": "30B (Series G)",
+      "last_round_date": "Feb 2026"
+    },
+    {
+      "name": "xAI",
+      "valuation_billions": 200,
+      "last_round": "10B (debt + equity, Morgan Stanley-led)",
+      "last_round_date": "Jul 2025"
+    },
+    {
+      "name": "Databricks",
+      "valuation_billions": 134,
+      "last_round": "4B+",
+      "last_round_date": "Dec 2025"
+    },
+    {
+      "name": "Anysphere (Cursor)",
+      "valuation_billions": 50,
+      "last_round": "~2B (Series E, in talks — a16z + Thrive co-lead)",
+      "last_round_date": "Apr 2026"
+    },
+    {
+      "name": "Scale AI",
+      "valuation_billions": 29,
+      "last_round": "1B",
+      "last_round_date": "May 2024"
+    },
+    {
+      "name": "Perplexity",
+      "valuation_billions": 21,
+      "last_round": "~500M (Series E-6)",
+      "last_round_date": "Early 2026"
+    },
+    {
+      "name": "Mistral",
+      "valuation_billions": 14,
+      "last_round": "1.3B (€1.3B, ASML-led)",
+      "last_round_date": "2025"
+    },
+    {
+      "name": "Cohere",
+      "valuation_billions": 6.8,
+      "last_round": "500M",
+      "last_round_date": "Jul 2024"
+    },
+    {
+      "name": "Cognition",
+      "valuation_billions": 4,
+      "last_round": "300M (Series B)",
+      "last_round_date": "Mar 2024"
+    },
+    {
+      "name": "ElevenLabs",
+      "valuation_billions": 3.3,
+      "last_round": "180M (Series C)",
+      "last_round_date": "Jan 2025"
+    },
+    {
+      "name": "Runway",
+      "valuation_billions": 3,
+      "last_round": "308M (Series D)",
+      "last_round_date": "Aug 2024"
+    }
+  ],
+  "arms_race": {
+    "quarters": [
+      "Q4 24",
+      "Q1 25",
+      "Q2 25",
+      "Q3 25",
+      "Q4 25",
+      "Q1 26"
+    ],
+    "players": [
+      {
+        "name": "OpenAI",
+        "color": "#378ADD",
+        "data": [
+          6.6,
+          40,
+          0,
+          0,
+          0,
+          122
+        ]
+      },
+      {
+        "name": "Anthropic",
+        "color": "#EF9F27",
+        "data": [
+          0,
+          3.5,
+          0,
+          13,
+          0,
+          30
+        ]
+      },
+      {
+        "name": "xAI",
+        "color": "#E24B4A",
+        "data": [
+          0,
+          0,
+          5.3,
+          10,
+          15,
+          20
+        ]
+      },
+      {
+        "name": "Mistral",
+        "color": "#7F77DD",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Cohere",
+        "color": "#1D9E75",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "vc_league": [],
+  "money_flow": [
+    {
+      "direction": "up",
+      "text": "Foundation model funding is entering hypergrowth territory — Ineffable Intelligence's $1.1B seed at a $5.1B valuation (led by Sequoia and Lightspeed) and Reflection AI's $2B growth round signal that investors are pre-emptively locking in positions before the next capability threshold, compressing timelines from seed to billion-dollar bets to near-zero."
+    },
+    {
+      "direction": "up",
+      "text": "Agentic payments infrastructure is becoming a real battleground: Mastercard's Agent Pay and Visa's Intelligent Commerce both launched within 24 hours of each other (Apr 29-30), and agent-focused startup Avoca ($125M, General Catalyst) and Netomi ($110M, Accenture Ventures) both closed simultaneously — operators building payment rails for AI agents should expect tokenization and credentialing standards to become the next network-layer fight."
+    },
+    {
+      "direction": "up",
+      "text": "AI dev tools are commanding SaaS-era multiples on steroids — Cursor closed $2B at $50B+ and Replit raised $400M at $9B, suggesting the market is pricing in winner-take-most dynamics in AI-native coding; for payments infrastructure teams, this signals an accelerating timeline to AI-written integrations and autonomous API consumption at scale."
+    },
+    {
+      "direction": "alert",
+      "text": "The Ineffable Intelligence seed round ($1.1B at $5.1B valuation) is a structural anomaly — seed-stage capital at growth-stage valuations collapses the traditional risk-adjusted return model, and if this becomes a Sequoia/Lightspeed playbook rather than an outlier, it signals that top-tier LPs are effectively backstopping foundation model bets before product-market fit is established."
+    },
+    {
+      "direction": "up",
+      "text": "AI fraud detection is entering a consolidation-and-productization phase — Experian's Transaction Forensics (with Resistant AI) posting a 200% uplift in APP fraud detection and 80% false positive reduction represents a direct competitive threat to standalone fraud vendors, and the Capital One-Brex $5.15B acquisition signals that AI spend intelligence is now table stakes for any serious B2B payments player."
+    },
+    {
+      "direction": "down",
+      "text": "Pure-play AI infrastructure without a defensible network position is cooling at the margin — Normal Computing raised only $50M (Series A, Samsung Catalyst) while LMArena pulled $150M at $1.7B, suggesting mid-tier infra plays without clear differentiation from Nvidia's stack are struggling to command the multiples seen in application and model layers."
+    }
+  ],
+  "ma_tracker": [
+    {
+      "type": "IPO Filing",
+      "acquirer": "N/A",
+      "target": "Cerebras Systems",
+      "value": "~$2B raise sought (~$23B valuation)",
+      "date": "Apr 17",
+      "description": "AI chip maker files public S-1 for Nasdaq listing under ticker CBRS, positioning as a credible Nvidia alternative with $510M in 2025 revenue and a $10B OpenAI compute contract.",
+      "url": "https://www.cnbc.com/2026/04/17/cerebras-new-ipo-ai-chips.html"
+    },
+    {
+      "type": "IPO Filing",
+      "acquirer": "N/A",
+      "target": "Quantinuum",
+      "value": "~$10B valuation (est.)",
+      "date": "Apr 2026",
+      "description": "Quantum computing company (Honeywell/Cambridge Quantum spinout) reveals confidential SEC S-1 filing, signaling a potential Q2 2026 public debut.",
+      "url": "https://accessipos.com/upcoming-ipos/"
+    },
+    {
+      "type": "Strategic Investment",
+      "acquirer": "OpenAI (led by SoftBank, Amazon, Nvidia, Microsoft)",
+      "target": "OpenAI",
+      "value": "$122B",
+      "date": "Mar 31",
+      "description": "Record-breaking funding round anchored by SoftBank, Amazon, Nvidia, and Microsoft to scale frontier AI infrastructure, compute capacity, and global ChatGPT/Codex deployment.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/"
+    },
+    {
+      "type": "Acquisition",
+      "acquirer": "OpenAI",
+      "target": "io Products (Jony Ive's AI hardware startup)",
+      "value": "$6.5B",
+      "date": "May 21",
+      "description": "OpenAI acquires Jony Ive's hardware startup to pivot toward proprietary AI-native consumer devices, with Ive assuming deep design and creative responsibilities.",
+      "url": "https://aidatainsider.com/ai/2025s-top-16-acquisitions-in-ai-data/"
+    },
+    {
+      "type": "Strategic Investment",
+      "acquirer": "Meta",
+      "target": "Scale AI (49% stake)",
+      "value": "$14.8B",
+      "date": "May 2025",
+      "description": "Meta acquires a near-majority stake in Scale AI to secure control over critical data labeling infrastructure and large-scale LLM evaluation talent for its AI ambitions.",
+      "url": "https://solganick.com/ai-mergers-acquisitions-report-update-q3-ytd-2025/"
+    },
+    {
+      "type": "Acquisition",
+      "acquirer": "ServiceNow",
+      "target": "Moveworks",
+      "value": "$2.85B",
+      "date": "Mar 2025",
+      "description": "ServiceNow acquires enterprise AI assistant platform Moveworks to embed advanced natural language automation into its IT service and workflow management stack.",
+      "url": "https://solganick.com/ai-mergers-acquisitions-report-update-q3-ytd-2025/"
+    },
+    {
+      "type": "Acqui-hire",
+      "acquirer": "Nvidia",
+      "target": "Enfabrica (CEO & staff)",
+      "value": "~$900M",
+      "date": "Sep 2025",
+      "description": "Nvidia spent over $900M to hire Enfabrica's CEO and staff while licensing its networking chip technology, securing elite AI interconnect talent through a structured acqui-hire.",
+      "url": "https://techcrunch.com/2026/01/02/nvidias-ai-empire-a-look-at-its-top-startup-investments/"
+    },
+    {
+      "type": "Acquisition",
+      "acquirer": "Salesforce",
+      "target": "Informatica",
+      "value": "$8B",
+      "date": "May 27",
+      "description": "Salesforce acquires Informatica to build an 'agent-ready data platform,' combining Data Cloud, MuleSoft, and Tableau with Informatica's governance stack for enterprise agentic AI deployment.",
+      "url": "https://aidatainsider.com/ai/2025s-top-16-acquisitions-in-ai-data/"
+    }
+  ],
+  "fintech_spotlight": [
+    {
+      "company": "Mastercard",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Agentic AI",
+        "Payments Infrastructure",
+        "Tokenization"
+      ],
+      "description": "Mastercard launched 'Agent Pay' on April 29, 2025 — an agentic payments program using Mastercard Agentic Tokens to let AI agents securely transact on behalf of consumers, with Microsoft as the first scaling partner.",
+      "strategic": "Agent Pay is Mastercard's deliberate move to make its token infrastructure the credentialing layer for AI-driven commerce — not just a rail for human-initiated transactions. By extending its existing EMV tokenization framework to AI agents, Mastercard is pre-empting a scenario where Big Tech platforms (Microsoft, Google, OpenAI) build proprietary agent-to-merchant payment pipes that bypass the network entirely. The Microsoft partnership is particularly telling: Copilot-embedded commerce running on Agentic Tokens means Mastercard stays in the flow of funds even as the 'checkout moment' disappears. For issuers, this is both an opportunity and a governance challenge — they now need to think about how agent-initiated transactions map to cardholder authorization standards, liability frameworks, and disputes, none of which current issuer processing agreements cleanly address. Acquirers and PSPs that don't invest in agent-compatible tokenization acceptance risk being disintermediated by platforms that route directly through network-level agent credentials.",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/press/2025/april/mastercard-unveils-agent-pay-pioneering-agentic-payments-technology-to-power-commerce-in-the-age-of-ai.html"
+    },
+    {
+      "company": "Visa",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Agentic AI",
+        "Embedded Finance",
+        "Developer APIs"
+      ],
+      "description": "Visa launched 'Intelligent Commerce' on April 30, 2025, opening its payments network to developers via APIs so AI agents can autonomously shop, verify identity, and enforce spending controls on behalf of consumers.",
+      "strategic": "Visa's API-first approach to agentic commerce is a direct play to become the default identity and payment trust layer for the developer ecosystem building AI agents — positioning VisaNet less as a card network and more as a programmable financial operating system. By exposing network-level controls (spend limits, merchant category restrictions, identity verification) as developer primitives, Visa is competing with Stripe and Plaid as much as with Mastercard, aiming to capture the stack before agent frameworks like LangChain or AutoGPT default to open-banking rails instead. The critical issuer implication is that granular, agent-enforced spending controls could dramatically reduce friendly fraud and authorization disputes — but issuers will need to update their processing logic to honor dynamically scoped tokens rather than static card credentials. For acquirers, the shift to agent-initiated transactions will compress checkout abandonment rates while simultaneously requiring new merchant category and risk classification frameworks, since an AI agent shopping autonomously across dozens of merchants in seconds looks nothing like a human consumer session.",
+      "url": "https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.21366.html"
+    },
+    {
+      "company": "Visa",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Fraud Detection",
+        "Dispute Resolution",
+        "AI Automation"
+      ],
+      "description": "Visa launched new AI-powered dispute resolution tools to auto-populate questionnaire responses and combat fraud losses, responding to 106M+ disputes globally processed in 2025 — up 35% since 2019.",
+      "strategic": "A 35% surge in dispute volumes since 2019 is a direct financial hemorrhage for issuers — chargeback processing costs typically run $15–$75 per dispute when you factor in ops, write-offs, and representment, meaning the 106M figure represents billions in annual industry cost. Visa's AI-driven auto-population of dispute questionnaires is a targeted attack on the operational cost side, but the deeper play is data network effects: every dispute Visa processes through its AI system trains models that improve fraud typology detection across the entire VisaNet portfolio, which no individual issuer or processor can replicate at scale. For issuers that have historically managed disputes through third-party processors or in-house servicing teams, this raises a real question about whether to further outsource dispute intelligence to the network or invest in proprietary tooling. Acquirers should pay attention to the fraud-side implications — if Visa's models become meaningfully better at identifying merchant-side fraud patterns early, the network gains leverage to tighten merchant monitoring standards and push more liability toward acquirers who sponsor high-dispute portfolios.",
+      "url": "https://www.americanbanker.com/payments/news/visa-mastercard-expand-agentic-ai-deployments"
+    },
+    {
+      "company": "Capital One x Brex",
+      "deal_type": "Acquisition",
+      "tags": [
+        "Banking Infrastructure",
+        "AI Spend Management",
+        "B2B Fintech"
+      ],
+      "description": "Capital One announced a $5.15B acquisition of Brex (January 2026, pending mid-2026 close), combining Capital One's $700B balance sheet with Brex's AI-driven spend management platform to challenge Amex and JPMorgan in corporate cards.",
+      "strategic": "This deal is the most direct assault on Amex's commercial card franchise since JPMorgan scaled Ink — Capital One is buying not just a customer base but an AI-native expense management layer that reduces corporate card churn by embedding itself into CFO workflows rather than competing purely on rewards economics. For card networks, the critical question is interchange and routing: Brex historically issued on Visa, and Capital One's commercial portfolio runs predominantly on Mastercard, so network negotiations around commercial card incentives will intensify as the combined entity reaches scale in the lucrative T&E and SaaS spend categories. For Mastercard specifically, a strengthened Capital One commercial franchise is a meaningful offset to Amex's closed-loop advantage in corporate — but it also increases issuer concentration risk on the network. Acquirers serving mid-market B2B merchants should watch closely: Brex's AI spend management data creates a powerful closed loop where Capital One can offer dynamic supplier financing and early payment programs, potentially pulling B2B payment flows off traditional ACH rails and onto card infrastructure at higher interchange — a meaningful volume shift if scaled.",
+      "url": "https://fintechlabs.com/mercury-vs-brex-vs-ramp-2026-which-finance-stack-should-smbs-use/"
+    },
+    {
+      "company": "Mercury",
+      "deal_type": "Series E",
+      "tags": [
+        "Neobanking",
+        "AI Banking",
+        "Startup Finance"
+      ],
+      "description": "Mercury is in advanced negotiations to raise fresh capital at a $5B+ valuation, following its acquisition of payroll/benefits platform Central and three consecutive years of GAAP profitability at ~$650M ARR.",
+      "strategic": "Mercury's trajectory — GAAP profitability at $650M ARR, now absorbing payroll and benefits — signals that the winning neobank model for startups and SMBs is a fully integrated finance stack, not a standalone checking account with a debit card. For card networks, Mercury's card program (Visa-issued via partner banks) is a growing source of commercial debit and charge volume in the high-value startup segment, but the real risk is that as Mercury internalizes more financial workflows, interchange-bearing transactions get displaced by on-platform treasury and payment flows that route around the network. The Central acquisition is particularly notable from a payments stack perspective: payroll processing historically drives ACH volume, not card volume, but if Mercury builds AI-driven spend categorization across payroll, benefits, and corporate cards, it creates a proprietary data moat that competes directly with issuer-processor analytics products from Fiserv, i2c, or Marqeta. Incumbent issuers serving the startup segment — SVB's successor entities, First Republic's acquirers, Mercury's own banking partners — should treat this raise as a signal that Mercury is building toward a direct bank charter, which would fundamentally reshape the BaaS revenue-sharing arrangements underpinning its current model.",
+      "url": "https://www.crowdfundinsider.com/2026/04/271581-fintech-firm-mercury-reportedly-targets-5-billion-valuation/"
+    },
+    {
+      "company": "Experian x Resistant AI",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Fraud Detection",
+        "Banking Infrastructure",
+        "AML"
+      ],
+      "description": "Experian launched 'Transaction Forensics' in April 2026 — the first joint AI fraud detection product with Resistant AI, combining 80+ AI models to deliver a 200% uplift in APP fraud detection and 80% drop in false positives for UK banks.",
+      "strategic": "Transaction Forensics lands squarely in the APP fraud problem that has reshaped UK issuer economics since the PSR's mandatory reimbursement rules took effect — issuers are now on the hook for losses they previously socialized to consumers, making a 200% detection uplift not a nice-to-have but a direct P&L line item. The Experian angle is strategically significant for the broader payments stack: Experian's credit bureau data combined with Resistant AI's behavioral and document forensics creates a cross-institutional signal that individual issuers or even card networks can't replicate with transaction data alone, because APP fraud often exploits the gap between payment authorization (which networks see) and account takeover or social engineering (which happens before the payment is initiated). For Mastercard and Visa, this is a competitive signal — it demonstrates that the richest fraud intelligence layer may sit with data aggregators outside the network, not within it, which challenges the networks' positioning of their own AI fraud scores as the primary defense. UK acquirers and payment service providers should watch whether Transaction Forensics expands to cover merchant-side mule account detection, which would make Experian a de facto compliance infrastructure provider sitting across both sides of the payment.",
+      "url": "https://fintech.global/2026/04/23/experian-launches-ai-fraud-detection-tool-for-uk-banks/"
+    }
+  ]
+}

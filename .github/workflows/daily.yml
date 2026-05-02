@@ -26,7 +26,21 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
         run: python -m src.main
-
+      
+      - name: Commit finance cache if updated
+        run: |
+          if [ -f output/finance-cache.json ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add output/finance-cache.json
+            if git diff --staged --quiet; then
+              echo "No cache changes to commit"
+            else
+              git commit -m "Update finance cache [skip ci]"
+              git push
+            fi
+          fi
+            
       - name: Deploy dashboard to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
