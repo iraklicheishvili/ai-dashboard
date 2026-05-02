@@ -174,14 +174,72 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.most_active_category }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_category_count }} stories</div></div>
     <div class="mcard"><div class="mlabel">Trending model</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.trending_model or "—" }}</div><div class="up" style="font-size:11px;">{{ synthesis.metrics.trending_model_buzz_change or "" }}</div></div>
   </div>
+    <div class="sec-title">Story volume — last 30 days</div>
+  <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;margin-bottom:12px;">Daily story count vs 7-day rolling average</div>
+  <div style="position:relative;height:160px;width:100%">
+    <canvas id="volumeChart"></canvas>
+  </div>
+  {% if synthesis.pattern_insights %}
+  <div style="margin-top:14px;padding-top:4px;display:flex;flex-wrap:wrap;gap:8px;">
+    {% for ins in synthesis.pattern_insights %}
+    <span class="pattern-tag pat-{{ ins.direction if ins.direction in ['up','down','neu','warn'] else 'neu' }}">
+      {% if ins.direction == 'up' %}▲{% elif ins.direction == 'down' %}▼{% elif ins.direction == 'warning' or ins.direction == 'warn' %}⚠{% else %}●{% endif %}
+      {{ ins.text }}
+    </span>
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>
-
-{% if synthesis.narrative %}
-<div class="card">
-  <div class="sec-title">Today's narrative</div>
-  <div style="font-size:13px;line-height:1.6;color:var(--text-primary);">{{ synthesis.narrative }}</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+  var history = {{ volume_history | tojson }};
+  if(!history || history.length === 0) return;
+  var labels = history.map(function(d){ return d.date.slice(5); });
+  var counts = history.map(function(d){ return d.count; });
+  var rolling = counts.map(function(v,i){
+    var slice = counts.slice(Math.max(0,i-6),i+1);
+    return Math.round(slice.reduce(function(a,b){return a+b;},0)/slice.length);
+  });
+  var ctx = document.getElementById('volumeChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Stories',
+          data: counts,
+          backgroundColor: 'rgba(127,119,221,0.7)',
+          borderRadius: 3,
+          order: 2
+        },
+        {
+          label: '7-day avg',
+          data: rolling,
+          type: 'line',
+          borderColor: '#EF9F27',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+          order: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#888', maxTicksLimit: 10 } },
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888' }, beginAtZero: true }
+      }
+    }
+  });
+})();
+</script>
 </div>
-{% endif %}
 
 <div class="card">
   <div class="sec-title">Top stories</div>
@@ -303,17 +361,6 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 </div>
 {% endif %}
 
-{% if synthesis.pattern_insights %}
-<div class="card">
-  <div class="sec-title">Pattern insights</div>
-  {% for ins in synthesis.pattern_insights %}
-  <span class="pattern-tag pat-{{ ins.direction if ins.direction in ['up','down','neu','warn'] else 'neu' }}">
-    {% if ins.direction == 'up' %}▲{% elif ins.direction == 'down' %}▼{% elif ins.direction == 'warning' or ins.direction == 'warn' %}⚠{% else %}●{% endif %}
-    {{ ins.text }}
-  </span>
-  {% endfor %}
-</div>
-{% endif %}
 
 </div>
 
@@ -473,6 +520,7 @@ def render_dashboard(daily_data: Dict) -> str:
     ]
 
     return template.render(
+    volume_history=daily_data.get("volume_history", []),
     today=daily_data.get("_date", date.today().isoformat()),
     top_story=stories[0] if stories else None,
     top_stories=stories,
