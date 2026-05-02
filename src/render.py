@@ -438,6 +438,52 @@ function filterSub(val){
 </div>
 
 <div class="card">
+  <div class="sec-title">Sentiment trends — last 30 days</div>
+  <div class="sec-sub">Daily Reddit sentiment score across 24 subreddits</div>
+  <div style="position:relative;height:240px;width:100%;margin-top:8px">
+    <canvas id="sentimentChart"></canvas>
+  </div>
+</div>
+<script>
+(function(){
+  var history = {{ sentiment_history | tojson }};
+  if(!history || !history.labels || history.labels.length === 0) return;
+  var ctx = document.getElementById('sentimentChart');
+  if(!ctx) return;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: history.labels,
+      datasets: history.models.map(function(m){
+        return {
+          label: m.name,
+          data: m.scores,
+          borderColor: m.color,
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.3
+        };
+      })
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      layout: { padding: { top: 8, bottom: 4 } },
+      plugins: {
+        legend: { position: 'top', align: 'start', labels: { font: { size: 12 }, color: '#888', usePointStyle: true, pointStyle: 'line', boxWidth: 28, boxHeight: 2, padding: 16 } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#888', maxTicksLimit: 8 } },
+        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', stepSize: 0.5 }, min: 4, max: 9 }
+      }
+    }
+  });
+})();
+</script>
+
+<div class="card">
   <div class="sec-title">What's driving each model's trend</div>
   <div class="sec-sub">Signal analysis from Reddit volume, benchmark events, and news triggers</div>
   {% for m in model_sentiments %}
@@ -453,6 +499,139 @@ function filterSub(val){
 </div>
 
 </div>
+
+
+<div class="card">
+  <div class="sec-title">Model deep dive</div>
+  <div class="sec-sub">Strengths, weaknesses, Reddit mention analysis, recent changes, key people</div>
+  <select id="modelSelect" onchange="filterModel(this.value)" style="width:100%;margin:6px 0 14px;">
+    {% for m in model_sentiments %}
+    <option value="{{ m.model_config.name }}">{{ m.model_config.name }} ({{ m.model_config.maker }})</option>
+    {% endfor %}
+  </select>
+
+  {% for m in model_sentiments %}
+  <div class="model-deep" data-model="{{ m.model_config.name }}" style="{% if not loop.first %}display:none{% endif %}">
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
+      <div class="mcard">
+        <div class="mlabel">Sentiment</div>
+        <div class="mvalue" style="color:{{ m.model_config.color }};">{{ "%.1f"|format(m.sentiment_score) }}</div>
+        <div style="font-size:10px;color:var(--text-secondary);">out of 10</div>
+      </div>
+      <div class="mcard">
+        <div class="mlabel">MAU</div>
+        <div class="mvalue" style="font-size:18px;">{{ m.deep.mau | default('—') }}</div>
+        <div style="font-size:10px;color:var(--text-secondary);">estimated</div>
+      </div>
+      <div class="mcard">
+        <div class="mlabel">Market share</div>
+        <div class="mvalue" style="font-size:18px;">{{ m.deep.market_share | default('—') }}</div>
+        <div style="font-size:10px;{% if m.deep.market_share_change and m.deep.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ m.deep.market_share_change | default('') }} WoW</div>
+      </div>
+      <div class="mcard">
+        <div class="mlabel">Buzz volume</div>
+        <div class="mvalue" style="font-size:18px;">{{ m.buzz_volume }}%</div>
+        <div style="font-size:10px;color:var(--text-secondary);">of peak</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div class="stat-card">
+        <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>
+        {% for s in (m.deep.strengths or []) %}
+        <div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>
+        {% endfor %}
+      </div>
+      <div class="stat-card">
+        <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>
+        {% for w in (m.deep.weaknesses or []) %}
+        <div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if m.deep.mention_chart %}
+    <div style="margin-bottom:14px;">
+      <div class="sec-title">Reddit mention sentiment — strengths vs weaknesses</div>
+      <div class="sec-sub">Positive / negative Reddit mentions — current 30 days vs prior 30 days</div>
+      <div style="position:relative;height:280px;width:100%;margin-top:8px;">
+        <canvas id="mentionChart-{{ loop.index }}"></canvas>
+      </div>
+      <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:4px;">← negative mentions  |  positive mentions →</div>
+    </div>
+    {% endif %}
+
+    {% if m.deep.recent_changes %}
+    <div style="margin-bottom:14px;">
+      <div class="sec-title">Recent changes</div>
+      {% for c in m.deep.recent_changes %}
+      <div style="display:flex;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:12px;">
+        <div style="width:48px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div>
+        <div style="color:var(--text-info);">{{ c.text }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if m.deep.key_people %}
+    <div>
+      <div class="sec-title">Key people — latest activity</div>
+      {% for p in m.deep.key_people %}
+      <div class="person-chip">
+        <div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials }}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:500;">{{ p.name }} <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">{{ p.handle }}</span></div>
+          <div class="quote-text">{{ p.quote }}</div>
+          <div class="quote-meta">{{ p.date }} · {{ p.platform | default('X') }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+</div>
+<script>
+function filterModel(val){
+  document.querySelectorAll('.model-deep').forEach(function(g){
+    g.style.display = g.dataset.model === val ? '' : 'none';
+  });
+}
+{% for m in model_sentiments %}
+{% if m.deep.mention_chart %}
+(function(){
+  var ctx = document.getElementById('mentionChart-{{ loop.index }}');
+  if(!ctx) return;
+  var data = {{ m.deep.mention_chart | tojson }};
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.labels,
+      datasets: [
+        {label:'Positive (current)', data: data.pos_current, backgroundColor:'#3b6d11', borderRadius:2},
+        {label:'Positive (prior 30d)', data: data.pos_prior, backgroundColor:'rgba(99,153,34,0.55)', borderRadius:2},
+        {label:'Negative (current)', data: data.neg_current.map(function(v){return -Math.abs(v);}), backgroundColor:'#a32d2d', borderRadius:2},
+        {label:'Negative (prior 30d)', data: data.neg_prior.map(function(v){return -Math.abs(v);}), backgroundColor:'rgba(226,75,74,0.55)', borderRadius:2}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: {
+        legend: { position: 'top', align: 'start', labels: { font:{size:11}, color:'#888', usePointStyle: true, pointStyle: 'rectRounded', boxWidth: 10, padding: 12 } }
+      },
+      scales: {
+        x: { stacked: false, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', callback: function(v){return Math.abs(v);} } },
+        y: { stacked: false, grid: { display: false }, ticks: { font: { size: 11 }, color: '#888' } }
+      }
+    }
+  });
+})();
+{% endif %}
+{% endfor %}
+</script>
+
 
 <!-- ==================== PAGE 3: AI FINANCE ==================== -->
 <div id="p3" class="page">
@@ -586,5 +765,6 @@ def render_dashboard(daily_data: Dict) -> str:
     etfs=daily_data.get("etfs", []),
     public_ai=daily_data.get("public_ai", []),
     category_breakdown=daily_data.get("category_breakdown", {}),
+    sentiment_history=daily_data.get("sentiment_history", {}),
     stories_by_subreddit=stories_by_subreddit,
 )

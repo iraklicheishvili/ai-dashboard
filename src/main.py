@@ -28,15 +28,6 @@ def compute_metrics(curated_stories: list, posts_pulled: int) -> Dict:
             "top_subreddit_count": 0,
             "top_category_count": 0,
         }
-    
-def compute_category_breakdown(curated_stories: list) -> dict:
-    """Count stories per category for the donut chart."""
-    breakdown = {}
-    for story in curated_stories:
-        tags = story.get("category_tags") or []
-        for tag in tags[:1]:  # use first tag only
-            breakdown[tag] = breakdown.get(tag, 0) + 1
-    return breakdown
 
     sub_counts = Counter(s["subreddit"] for s in curated_stories)
     cat_counts = Counter()
@@ -56,6 +47,16 @@ def compute_category_breakdown(curated_stories: list) -> dict:
         "top_category_count": top_cat[1],
         "fintech_count": sum(1 for s in curated_stories if s.get("is_fintech")),
     }
+
+
+def compute_category_breakdown(curated_stories: list) -> dict:
+    """Count stories per category for the donut chart."""
+    breakdown = {}
+    for story in curated_stories:
+        tags = story.get("category_tags") or []
+        for tag in tags[:1]:
+            breakdown[tag] = breakdown.get(tag, 0) + 1
+    return breakdown
 
 
 def run_pipeline():
