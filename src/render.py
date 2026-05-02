@@ -55,10 +55,25 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
   .h-title{font-size:20px;font-weight:500;}
   .h-sub{font-size:12px;color:var(--text-secondary);margin-top:2px;}
-  .tabs{display:flex;gap:4px;background:var(--bg-secondary);padding:4px;border-radius:var(--radius-md);margin-bottom:14px;position:sticky;top:0;z-index:5;flex-wrap:wrap;}
-  .tab{flex:1;min-width:120px;padding:8px 12px;font-size:13px;border-radius:var(--radius-md);border:none;background:transparent;color:var(--text-secondary);cursor:pointer;text-align:center;transition:all 0.15s;font-family:inherit;}
-  .tab:hover{color:var(--text-primary);}
-  .tab.active{background:var(--bg-primary);color:var(--text-primary);font-weight:500;box-shadow:0 0 0 0.5px var(--border);}
+  .nav-label{font-size:10px;font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px 4px;}
+  .tabs{display:flex;gap:6px;background:var(--bg-secondary);padding:6px;border-radius:var(--radius-md);margin-bottom:18px;position:sticky;top:0;z-index:5;flex-wrap:wrap;border:0.5px solid var(--border);}
+  .tab{flex:1;min-width:140px;padding:10px 14px;font-size:13px;border-radius:calc(var(--radius-md) - 2px);border:none;background:transparent;color:var(--text-secondary);cursor:pointer;text-align:left;transition:background 0.18s, color 0.18s;font-family:inherit;display:flex;align-items:center;gap:10px;position:relative;}
+  .tab .tab-icon{width:16px;height:16px;flex-shrink:0;opacity:0.65;transition:opacity 0.18s;}
+  .tab .tab-label{flex:1;}
+  .tab:hover{color:var(--text-primary);background:rgba(255,255,255,0.03);}
+  .tab:hover .tab-icon{opacity:1;}
+  .tab.active{background:var(--bg-primary);color:var(--text-primary);font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,0.3), 0 0 0 0.5px var(--border);}
+  .tab.active .tab-icon{opacity:1;}
+  .tab.active::before{content:"";position:absolute;left:6px;top:14px;bottom:14px;width:2px;border-radius:2px;}
+  .tab.active.tab-p1::before{background:#7F77DD;}
+  .tab.active.tab-p1{color:#7F77DD;}
+  .tab.active.tab-p2::before{background:#1D9E75;}
+  .tab.active.tab-p2{color:#1D9E75;}
+  .tab.active.tab-p3::before{background:#EF9F27;}
+  .tab.active.tab-p3{color:#EF9F27;}
+  .tab.active.tab-p4::before{background:#378ADD;}
+  .tab.active.tab-p4{color:#378ADD;}
+  .tab.active{padding-left:18px;}
   .page{display:none;}
   .page.active{display:block;}
   .card{background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:12px;}
@@ -127,6 +142,22 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px;}
   .quote-text{font-size:11px;color:var(--text-secondary);margin-top:5px;line-height:1.4;font-style:italic;border-left:2px solid var(--border-strong);padding-left:7px;}
   .quote-meta{font-size:10px;color:var(--text-tertiary);margin-top:3px;}
+  .wc-cloud{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;align-content:center;gap:4px 14px;padding:14px 8px;min-height:200px;}
+  .wc-word{display:inline-block;padding:3px 6px;line-height:1.25;letter-spacing:-0.01em;opacity:0;transform:translateY(6px) scale(0.92);animation:wcFadeIn 0.55s cubic-bezier(.22,.61,.36,1) forwards;transition:transform 0.2s ease, filter 0.2s ease;cursor:default;}
+  .wc-word:hover{transform:translateY(-1px) scale(1.04);filter:brightness(1.15);}
+  @keyframes wcFadeIn{to{opacity:var(--wc-opacity,1);transform:translateY(0) scale(1);}}
+  @keyframes wcPulse{0%,100%{filter:brightness(1);}50%{filter:brightness(1.18);}}
+  .wc-tier-xl{font-size:30px;font-weight:500;letter-spacing:-0.02em;animation:wcFadeIn 0.55s cubic-bezier(.22,.61,.36,1) forwards, wcPulse 4s ease-in-out 1.5s infinite;}
+  .wc-tier-lg{font-size:24px;font-weight:500;}
+  .wc-tier-md{font-size:18px;font-weight:500;}
+  .wc-tier-sm{font-size:14px;font-weight:400;}
+  .wc-tier-xs{font-size:12px;font-weight:400;}
+  .wc-word.wc-model_release,.wc-word.wc-model{color:#5BA3E8;}
+  .wc-word.wc-research_paper,.wc-word.wc-research{color:#9B93E8;}
+  .wc-word.wc-funding{color:#3DC48A;}
+  .wc-word.wc-regulation{color:#F0A830;}
+  .wc-word.wc-open_source{color:#E87070;}
+  .wc-word.wc-other{color:var(--text-primary);}
   .wc-tag.wc-model_release,.wc-tag.wc-model{background:transparent;color:#5BA3E8;border:none;}
 .wc-tag.wc-funding{background:transparent;color:#3DC48A;border:none;}
 .wc-tag.wc-regulation{background:transparent;color:#F0A830;border:none;}
@@ -148,11 +179,24 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   </div>
 </div>
 
+<div class="nav-label">Dashboard sections</div>
 <div class="tabs" role="tablist">
-  <button class="tab active" data-page="p1">AI intelligence</button>
-  <button class="tab" data-page="p2">Model tracker</button>
-  <button class="tab" data-page="p3">AI finance</button>
-  <button class="tab" data-page="p4">Research & papers</button>
+  <button class="tab tab-p1 active" data-page="p1">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-7 4 14 2-9 2 5h5"/></svg>
+    <span class="tab-label">AI intelligence</span>
+  </button>
+  <button class="tab tab-p2" data-page="p2">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span class="tab-label">Model tracker</span>
+  </button>
+  <button class="tab tab-p3" data-page="p3">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="12"/><line x1="10" y1="20" x2="10" y2="6"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="22" y1="20" x2="22" y2="9"/></svg>
+    <span class="tab-label">AI finance</span>
+  </button>
+  <button class="tab tab-p4" data-page="p4">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+    <span class="tab-label">Research & papers</span>
+  </button>
 </div>
 
 <!-- ==================== PAGE 1: AI INTELLIGENCE ==================== -->
@@ -276,9 +320,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     </div>
     <div style="padding:16px 18px">
       <div class="sec-title">Trending topics</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
-      {% for term in synthesis.trending_topics %}
-        <span class="wc-tag wc-{{ term.category | default('other') | lower | replace('/', '_') | replace(' ', '_') }}" style="font-size:{{ [10 + (term.weight | int) * 1.5, 20] | min | int }}px;{% if term.weight >= 8 %}font-weight:500;{% endif %}">{{ term.term }}</span>
+      <div class="wc-cloud">
+      {% set sorted_topics = synthesis.trending_topics | sort(attribute='weight', reverse=true) %}
+      {% for term in sorted_topics %}
+        {% set w = term.weight | int %}
+        {% if w >= 9 %}{% set tier = 'xl' %}{% set op = '1' %}
+        {% elif w >= 7 %}{% set tier = 'lg' %}{% set op = '0.95' %}
+        {% elif w >= 5 %}{% set tier = 'md' %}{% set op = '0.85' %}
+        {% elif w >= 3 %}{% set tier = 'sm' %}{% set op = '0.7' %}
+        {% else %}{% set tier = 'xs' %}{% set op = '0.55' %}{% endif %}
+        <span class="wc-word wc-tier-{{ tier }} wc-{{ term.category | default('other') | lower | replace('/', '_') | replace(' ', '_') }}" style="--wc-opacity:{{ op }};animation-delay:{{ loop.index0 * 0.06 }}s;">{{ term.term }}</span>
       {% endfor %}
       </div>
     </div>
@@ -363,7 +414,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   </select>
   <div id="subStories">
     {% for sub, sub_stories in stories_by_subreddit.items() %}
-    <div class="sub-group" data-sub="{{ sub }}" style="{% if not loop.first %}display:none{% endif %}">
+    <div class="sub-group" data-sub="{{ sub }}"{% if not loop.first %} style="display:none"{% endif %}>
       {% for s in sub_stories[:5] %}
       <a class="linkrow" href="{{ s.url }}" target="_blank">
         <div class="story-title">{{ s.title }}</div>
@@ -500,7 +551,7 @@ function filterSub(val){
   </select>
 
   {% for m in model_sentiments %}
-  <div class="model-deep" data-model="{{ m.model_config.name }}" style="{% if not loop.first %}display:none{% endif %}">
+  <div class="model-deep" data-model="{{ m.model_config.name }}"{% if not loop.first %} style="display:none"{% endif %}>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
       <div class="mcard">
@@ -1073,19 +1124,19 @@ function filterModel(val){
     <canvas id="breakthroughRadarChart"></canvas>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
-    <div style="background:#eaf3de40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #1D9E75;">
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #1D9E75;">
       <div style="font-size:11px;font-weight:500;color:#1D9E75;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Deploy Now</div>
       <div style="font-size:12px;color:var(--text-secondary);">Near-term · high impact</div>
     </div>
-    <div style="background:#e6f1fb40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #378ADD;">
-      <div style="font-size:11px;font-weight:500;color:#378ADD;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Watch Closely</div>
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #E24B4A;">
+      <div style="font-size:11px;font-weight:500;color:#E24B4A;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Watch Closely</div>
       <div style="font-size:12px;color:var(--text-secondary);">Long-term · paradigm shift</div>
     </div>
-    <div style="background:rgba(136,135,128,0.12);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #888780;">
-      <div style="font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Incremental Gains</div>
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #378ADD;">
+      <div style="font-size:11px;font-weight:500;color:#378ADD;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Incremental Gains</div>
       <div style="font-size:12px;color:var(--text-secondary);">Near-term · smaller scope</div>
     </div>
-    <div style="background:#faeeda40;border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #EF9F27;">
+    <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;border-left:3px solid #EF9F27;">
       <div style="font-size:11px;font-weight:500;color:#EF9F27;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Long Bet</div>
       <div style="font-size:12px;color:var(--text-secondary);">Long-term · uncertain impact</div>
     </div>
@@ -1194,7 +1245,7 @@ function filterModel(val){
   if(!data || data.length === 0) return;
   var ctx = document.getElementById('breakthroughRadarChart');
   if(!ctx) return;
-  var quadColors = {'deploy_now':'#1D9E75','watch_closely':'#378ADD','incremental':'#888780','long_bet':'#EF9F27','paradigm':'#7F77DD'};
+  var quadColors = {'deploy_now':'#1D9E75','watch_closely':'#E24B4A','incremental':'#378ADD','long_bet':'#EF9F27','paradigm':'#E24B4A'};
   var datasets = data.map(function(p){
     return {
       label: p.title,
