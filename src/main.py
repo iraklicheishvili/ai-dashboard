@@ -5,18 +5,25 @@ Main orchestrator. Runs the full pipeline:
   3. Synthesize narrative + insights via Opus
   4. Per-model sentiment analysis (Haiku)
   5. Pull ETF / market data (yfinance)
-  6. Save daily JSON
-  7. Render HTML dashboard
+  6. Pull arXiv papers (research)
+  7. Pull finance data via web search (Mondays only, cached otherwise)
+  8. Save daily JSON
+  9. Render HTML dashboard
 
 Run with:
   python -m src.main
 """
 
+import json
+import os
+import time
 from collections import Counter
 from datetime import date
 from typing import Dict
-from src.arxiv_analyzer import analyze_arxiv_papers
+
 from src import scraper, analyzer, stocks, storage, render
+from src.arxiv_analyzer import analyze_arxiv_papers
+from src.finance_analyzer import analyze_finance
 
 
 def compute_metrics(curated_stories: list, posts_pulled: int) -> Dict:
@@ -73,7 +80,17 @@ def run_pipeline():
     curated = analyzer.score_all_stories(posts)
 
     # 3. Synthesize narrative + insights (Opus)
-    synthesis = analyzer.synthesize_daily(curated) if curated else {"metrics": {"top_subreddit": "—", "most_active_category": "—", "trending_model": "—", "trending_model_buzz_change": ""}, "narrative": "", "pattern_insights": [], "fintech_spotlight": []}
+    synthesis = analyzer.synthesize_daily(curated) if curated else {
+        "metrics": {
+            "top_subreddit": "—",
+            "most_active_category": "—",
+            "trending_model": "—",
+            "trending_model_buzz_change": "",
+        },
+        "narrative": "",
+        "pattern_insights": [],
+        "fintech_spotlight": [],
+    }
 
     # 4. Per-model sentiment (Haiku, one call per model)
     model_sentiments = analyzer.analyze_all_model_sentiments(curated)
@@ -89,11 +106,43 @@ def run_pipeline():
     print()
     print("Fetching arXiv papers...")
     try:
-        from src.arxiv_analyzer import analyze_arxiv_papers
         arxiv_payload = analyze_arxiv_papers(days_back=7)
     except Exception as e:
         print(f"  arXiv analysis failed: {e}")
         arxiv_payload = {}
+
+    # 6.7 Weekly finance refresh (Mondays only — cached otherwise)
+    finance_cache_path = "output/finance-cache.json"
+    is_monday = date.today().weekday() == 0
+    finance_payload = {}
+
+    if is_monday:
+        # Buffer between arXiv (Sonnet calls) and finance (Sonnet web search)
+        # to avoid colliding on the 30K tokens/min rate limit window
+        print()
+        print("Cooling off 60s before finance pull (rate limit safety)...")
+        time.sleep(60)
+
+        print()
+        print("Monday — refreshing finance data via web search...")
+        try:
+            finance_payload = analyze_finance()
+            os.makedirs("output", exist_ok=True)
+            with open(finance_cache_path, "w", encoding="utf-8") as f:
+                json.dump(finance_payload, f, indent=2, ensure_ascii=False, default=str)
+            print(f"  Finance cache updated: {finance_cache_path}")
+        except Exception as e:
+            print(f"  Finance refresh failed: {e}")
+            finance_payload = {}
+
+    if not finance_payload and os.path.exists(finance_cache_path):
+        try:
+            with open(finance_cache_path, "r", encoding="utf-8") as f:
+                finance_payload = json.load(f)
+            print(f"  Loaded finance cache from {finance_payload.get('_finance_updated', 'unknown')}")
+        except Exception as e:
+            print(f"  Finance cache read failed: {e}")
+            finance_payload = {}
 
     # 7. Assemble JSON payload
     payload = {
@@ -104,6 +153,8 @@ def run_pipeline():
         "etfs": etfs,
         "public_ai": public_ai,
     }
+
+    # Merge arXiv data
     payload.update({
         "research_summary":   arxiv_payload.get("research_summary", {}),
         "paper_of_week":      arxiv_payload.get("paper_of_week"),
@@ -116,7 +167,20 @@ def run_pipeline():
         "research_signals":   arxiv_payload.get("research_signals", []),
         "fintech_research":   arxiv_payload.get("fintech_research", []),
     })
-    
+
+    # Merge finance data
+    payload.update({
+        "_finance_updated":   finance_payload.get("_finance_updated", ""),
+        "funding_summary":    finance_payload.get("funding_summary", {}),
+        "funding_rounds":     finance_payload.get("funding_rounds", []),
+        "private_ai":         finance_payload.get("private_ai", []),
+        "arms_race":          finance_payload.get("arms_race", {}),
+        "vc_league":          finance_payload.get("vc_league", []),
+        "money_flow":         finance_payload.get("money_flow", []),
+        "ma_tracker":         finance_payload.get("ma_tracker", []),
+        "fintech_spotlight":  finance_payload.get("fintech_spotlight", []),
+    })
+
     json_path = storage.save_daily_data(payload)
 
     # 8. Render dashboard
