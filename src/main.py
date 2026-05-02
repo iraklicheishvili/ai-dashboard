@@ -15,7 +15,7 @@ Run with:
 from collections import Counter
 from datetime import date
 from typing import Dict
-
+from src.arxiv_analyzer import analyze_arxiv_papers
 from src import scraper, analyzer, stocks, storage, render
 
 
@@ -85,6 +85,16 @@ def run_pipeline():
     # 6. Compute summary metrics
     metrics = compute_metrics(curated, len(posts))
 
+    # 6.5 Pull arXiv papers and analyze
+    print()
+    print("Fetching arXiv papers...")
+    try:
+        from src.arxiv_analyzer import analyze_arxiv_papers
+        arxiv_payload = analyze_arxiv_papers(days_back=7)
+    except Exception as e:
+        print(f"  arXiv analysis failed: {e}")
+        arxiv_payload = {}
+
     # 7. Assemble JSON payload
     payload = {
         "stories": curated,
@@ -94,7 +104,19 @@ def run_pipeline():
         "etfs": etfs,
         "public_ai": public_ai,
     }
-
+    payload.update({
+        "research_summary":   arxiv_payload.get("research_summary", {}),
+        "paper_of_week":      arxiv_payload.get("paper_of_week"),
+        "top_papers":         arxiv_payload.get("top_papers", []),
+        "research_categories":arxiv_payload.get("research_categories", {}),
+        "research_volume":    arxiv_payload.get("research_volume", {}),
+        "hot_institutions":   arxiv_payload.get("hot_institutions", []),
+        "author_spotlight":   arxiv_payload.get("author_spotlight", []),
+        "breakthrough_radar": arxiv_payload.get("breakthrough_radar", []),
+        "research_signals":   arxiv_payload.get("research_signals", []),
+        "fintech_research":   arxiv_payload.get("fintech_research", []),
+    })
+    
     json_path = storage.save_daily_data(payload)
 
     # 8. Render dashboard
