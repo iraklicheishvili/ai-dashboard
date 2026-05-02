@@ -117,7 +117,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px;}
   .quote-text{font-size:11px;color:var(--text-secondary);margin-top:5px;line-height:1.4;font-style:italic;border-left:2px solid var(--border-strong);padding-left:7px;}
   .quote-meta{font-size:10px;color:var(--text-tertiary);margin-top:3px;}
-  .wc-tag{display:inline-block;padding:4px 10px;border-radius:99px;background:var(--bg-secondary);margin:3px;text-decoration:none;color:var(--text-primary);}
+  .wc-tag.wc-model_release,.wc-tag.wc-model{background:transparent;color:#5BA3E8;border:none;}
+.wc-tag.wc-funding{background:transparent;color:#3DC48A;border:none;}
+.wc-tag.wc-regulation{background:transparent;color:#F0A830;border:none;}
+.wc-tag.wc-open_source{background:transparent;color:#E87070;border:none;}
+.wc-tag.wc-other{background:transparent;color:var(--text-secondary);border:none;}
+.wc-tag.wc-other{background:var(--bg-secondary);color:var(--text-secondary);border:0.5px solid var(--border);}
   .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 4px 0;margin-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-secondary);}
   a{color:var(--text-info);}
   select{font-family:inherit;font-size:13px;padding:6px 12px;border-radius:var(--radius-md);border:0.5px solid var(--border-strong);background:var(--bg-primary);color:var(--text-primary);cursor:pointer;}
@@ -192,14 +197,94 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   {% endfor %}
 </div>
 
-<div class="card">
-  <div class="sec-title">Trending topics</div>
-  <div style="display:flex;flex-wrap:wrap;line-height:1.6;margin-top:4px;">
-  {% for term in synthesis.trending_topics %}
-    <span class="wc-tag" style="font-size:{{ 11 + (term.weight | int) }}px;{% if term.weight >= 8 %}font-weight:500;{% endif %}">{{ term.term }}</span>
-  {% endfor %}
+<div class="card" style="padding:0">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:220px">
+    <div style="padding:16px 18px;border-right:0.5px solid var(--border)">
+      <div class="sec-title">Category breakdown</div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:10px;position:relative">
+        <canvas id="catDonut" width="160" height="160" style="flex-shrink:0;width:160px;height:160px"></canvas>
+<div id="donutTooltip" style="display:none;position:absolute;background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-md);padding:6px 10px;font-size:12px;color:var(--text-primary);pointer-events:none;z-index:10"></div>
+        <div id="catLegend" style="display:flex;flex-direction:column;gap:5px;font-size:12px"></div>
+      </div>
+    </div>
+    <div style="padding:16px 18px">
+      <div class="sec-title">Trending topics</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+      {% for term in synthesis.trending_topics %}
+        <span class="wc-tag wc-{{ term.category | default('other') | lower | replace('/', '_') | replace(' ', '_') }}" style="font-size:{{ [10 + (term.weight | int) * 1.5, 20] | min | int }}px;{% if term.weight >= 8 %}font-weight:500;{% endif %}">{{ term.term }}</span>
+      {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
+<script>
+(function(){
+  var breakdown = {{ category_breakdown | tojson }};
+  var colors = {"Model release":"#378ADD","Model_release":"#378ADD","Research/paper":"#7F77DD","Research_paper":"#7F77DD","Funding":"#1D9E75","Regulation":"#EF9F27","Open source":"#E24B4A","Open_source":"#E24B4A","Other":"#888780"};
+  var defaultColors = ["#378ADD","#7F77DD","#1D9E75","#EF9F27","#E24B4A","#D4537E","#888780"];
+  var labels = Object.keys(breakdown);
+  var values = labels.map(function(k){return breakdown[k];});
+  var bgColors = labels.map(function(k,i){return colors[k]||defaultColors[i%defaultColors.length];});
+  var canvas = document.getElementById("catDonut");
+  if(!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var total = values.reduce(function(a,b){return a+b;},0);
+  if(total===0) return;
+  var startAngle = -Math.PI/2;
+  var cx=80,cy=80,outerR=75,innerR=45;
+  values.forEach(function(v,i){
+    var slice = (v/total)*2*Math.PI;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,outerR,startAngle,startAngle+slice);
+    ctx.closePath();
+    ctx.fillStyle=bgColors[i];
+    ctx.fill();
+    startAngle+=slice;
+  });
+  ctx.beginPath();
+  ctx.arc(cx,cy,innerR,0,2*Math.PI);
+  ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--bg-primary')||'#1a1a2e';
+  ctx.fill();
+  var legend = document.getElementById("catLegend");
+  labels.forEach(function(k,i){
+    var row = document.createElement("div");
+    row.style.cssText="display:flex;align-items:center;gap:5px";
+    var dot = document.createElement("span");
+    dot.style.cssText="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:"+bgColors[i];
+    var txt = document.createElement("span");
+    txt.style.color="var(--text-secondary)";
+    txt.textContent=k+" ("+values[i]+")";
+    row.appendChild(dot);row.appendChild(txt);
+    legend.appendChild(row);
+  });
+  canvas.addEventListener('mousemove', function(e){
+    var rect = canvas.getBoundingClientRect();
+    var x = e.clientX - rect.left - cx;
+    var y = e.clientY - rect.top - cy;
+    var dist = Math.sqrt(x*x+y*y);
+    var tip = document.getElementById('donutTooltip');
+    if(dist > innerR && dist < outerR){
+      var angle = Math.atan2(y,x) + Math.PI/2;
+      var norm = ((angle % (2*Math.PI)) + 2*Math.PI) % (2*Math.PI);
+      var cumulative = 0;
+      for(var i=0;i<values.length;i++){
+        cumulative += (values[i]/total)*2*Math.PI;
+        if(norm < cumulative){
+          var pct = Math.round(values[i]/total*100);
+          tip.innerHTML = '<strong>'+labels[i]+'</strong><br>'+values[i]+' stories · '+pct+'%';
+          tip.style.display='block';
+          tip.style.left=(e.offsetX+10)+'px';
+          tip.style.top=(e.offsetY-10)+'px';
+          break;
+        }
+      }
+    } else {
+      tip.style.display='none';
+    }
+  });
+})();
+</script>
 
 {% if fintech_stories %}
 <div class="card">
@@ -388,14 +473,15 @@ def render_dashboard(daily_data: Dict) -> str:
     ]
 
     return template.render(
-        today=daily_data.get("_date", date.today().isoformat()),
-        top_story=stories[0] if stories else None,
-        top_stories=stories,
-        fintech_stories=fintech_stories,
-        research_stories=research_stories,
-        synthesis=daily_data.get("synthesis", {}),
-        metrics=daily_data.get("metrics", {}),
-        model_sentiments=daily_data.get("model_sentiments", []),
-        etfs=daily_data.get("etfs", []),
-        public_ai=daily_data.get("public_ai", []),
-    )
+    today=daily_data.get("_date", date.today().isoformat()),
+    top_story=stories[0] if stories else None,
+    top_stories=stories,
+    fintech_stories=fintech_stories,
+    research_stories=research_stories,
+    synthesis=daily_data.get("synthesis", {}),
+    metrics=daily_data.get("metrics", {}),
+    model_sentiments=daily_data.get("model_sentiments", []),
+    etfs=daily_data.get("etfs", []),
+    public_ai=daily_data.get("public_ai", []),
+    category_breakdown=daily_data.get("category_breakdown", {}),
+)

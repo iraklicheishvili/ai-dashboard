@@ -22,9 +22,9 @@ Output a JSON object with this exact shape:
     ... (3-4 total)
   ],
   "trending_topics": [
-    {"term": "DeepSeek R2", "weight": 10},
-    {"term": "Sonnet 4.6", "weight": 8},
-    ... (8-12 terms, weights 1-10 by frequency/importance)
+    {"term": "DeepSeek R2", "weight": 10, "category": "Model Release"},
+    {"term": "Sonnet 4.6", "weight": 8, "category": "Model Release"},
+    ... (8-12 terms, weights 1-10 by frequency/importance, category must be one of: Model Release, Research/Paper, Funding, Regulation, Open Source, Other)
   ],
   "fintech_implications": "If today has fintech-relevant stories, write 2-3 sentences on what these mean for card networks, issuers, acquirers, or Mastercard specifically. If none, return null.",
   "category_breakdown": {
