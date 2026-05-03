@@ -551,6 +551,7 @@ function filterSub(val){
   </select>
 
   {% for m in model_sentiments %}
+  {% set deep = m.deep or {} %}
   <div class="model-deep" data-model="{{ m.model_config.name }}"{% if not loop.first %} style="display:none"{% endif %}>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
@@ -561,13 +562,13 @@ function filterSub(val){
       </div>
       <div class="mcard">
         <div class="mlabel">MAU</div>
-        <div class="mvalue" style="font-size:18px;">{{ m.deep.mau | default('—') }}</div>
+        <div class="mvalue" style="font-size:18px;">{{ deep.mau | default('—') }}</div>
         <div style="font-size:10px;color:var(--text-secondary);">estimated</div>
       </div>
       <div class="mcard">
         <div class="mlabel">Market share</div>
-        <div class="mvalue" style="font-size:18px;">{{ m.deep.market_share | default('—') }}</div>
-        <div style="font-size:10px;{% if m.deep.market_share_change and m.deep.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ m.deep.market_share_change | default('') }} WoW</div>
+        <div class="mvalue" style="font-size:18px;">{{ deep.market_share | default('—') }}</div>
+        <div style="font-size:10px;{% if deep.market_share_change and deep.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ deep.market_share_change | default('') }} WoW</div>
       </div>
       <div class="mcard">
         <div class="mlabel">Buzz volume</div>
@@ -579,19 +580,19 @@ function filterSub(val){
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
       <div class="stat-card">
         <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>
-        {% for s in (m.deep.strengths or []) %}
+        {% for s in (deep.strengths or []) %}
         <div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>
         {% endfor %}
       </div>
       <div class="stat-card">
         <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>
-        {% for w in (m.deep.weaknesses or []) %}
+        {% for w in (deep.weaknesses or []) %}
         <div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>
         {% endfor %}
       </div>
     </div>
 
-    {% if m.deep.mention_chart %}
+    {% if deep.mention_chart %}
     <div style="margin-bottom:14px;">
       <div class="sec-title">Reddit mention sentiment — strengths vs weaknesses</div>
       <div class="sec-sub">Positive / negative Reddit mentions — current 30 days vs prior 30 days</div>
@@ -602,10 +603,10 @@ function filterSub(val){
     </div>
     {% endif %}
 
-    {% if m.deep.recent_changes %}
+    {% if deep.recent_changes %}
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
-      {% for c in m.deep.recent_changes %}
+      {% for c in deep.recent_changes %}
       <div style="display:flex;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:12px;">
         <div style="width:48px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div>
         <div style="color:var(--text-info);">{{ c.text }}</div>
@@ -614,10 +615,10 @@ function filterSub(val){
     </div>
     {% endif %}
 
-    {% if m.deep.key_people %}
+    {% if deep.key_people %}
     <div>
       <div class="sec-title">Key people — latest activity</div>
-      {% for p in m.deep.key_people %}
+      {% for p in deep.key_people %}
       <div class="person-chip">
         <div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials }}</div>
         <div style="flex:1;min-width:0;">
@@ -640,11 +641,12 @@ function filterModel(val){
   });
 }
 {% for m in model_sentiments %}
-{% if m.deep.mention_chart %}
+{% set deep = m.deep or {} %}
+{% if deep.mention_chart %}
 (function(){
   var ctx = document.getElementById('mentionChart-{{ loop.index }}');
   if(!ctx) return;
-  var data = {{ m.deep.mention_chart | tojson }};
+  var data = {{ deep.mention_chart | tojson }};
   new Chart(ctx, {
     type: 'bar',
     data: {
