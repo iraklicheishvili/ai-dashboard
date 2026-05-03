@@ -1,7 +1,38 @@
 """
 Central configuration for the AI Intelligence Dashboard.
-Edit this file to change tracked subreddits, models, ETFs, or categories.
+Edit this file to change tracked sources, models, ETFs, paths, or thresholds.
 """
+
+from pathlib import Path
+
+# ============================================================
+# Project paths — single source of truth, used everywhere
+# ============================================================
+
+PROJECT_ROOT = Path(__file__).parent
+OUTPUT_DIR = PROJECT_ROOT / "output"
+DAILY_DATA_DIR = OUTPUT_DIR / "daily-data"
+WEEKLY_STATS_DIR = OUTPUT_DIR / "weekly-stats"
+DASHBOARD_DIR = OUTPUT_DIR / "dashboard"
+
+# Persistent cache files (committed to repo so they survive across runs)
+FINANCE_CACHE_PATH = OUTPUT_DIR / "finance-cache.json"
+MODEL_DEEP_CACHE_PATH = OUTPUT_DIR / "model-deep-cache.json"
+MODEL_EVENTS_HISTORY_PATH = OUTPUT_DIR / "model-events-history.json"
+MODEL_STRENGTHS_CACHE_PATH = OUTPUT_DIR / "model-strengths-cache.json"
+MODEL_SENTIMENT_HISTORY_PATH = OUTPUT_DIR / "model-sentiment-history.json"
+GITHUB_STARS_HISTORY_PATH = OUTPUT_DIR / "github-stars-history.json"
+HEALTH_PATH = OUTPUT_DIR / "health.json"
+
+DASHBOARD_HTML_PATH = DASHBOARD_DIR / "latest.html"
+DASHBOARD_INDEX_PATH = DASHBOARD_DIR / "index.html"
+
+# Dashboard launch date (used in disclaimers + chart starting points)
+DASHBOARD_LAUNCH_DATE = "2026-05-01"
+
+# ============================================================
+# Reddit (mock until API approval; auto-activates when real creds set)
+# ============================================================
 
 # 24 tracked subreddits, organized by theme
 SUBREDDITS = {
@@ -47,19 +78,19 @@ SUBREDDITS = {
     ],
 }
 
-# Flat list of all subreddits for iteration
-ALL_SUBREDDITS = [sub for category in SUBREDDITS.values() for sub in category]
+ALL_SUBREDDITS = [sub for cat in SUBREDDITS.values() for sub in cat]
 
-# Posts per subreddit per pull
 POSTS_PER_SUBREDDIT = 25
-
-# Time filter for posts: "day" / "week" / "month"
 POST_TIME_FILTER = "day"
-
-# Minimum score to even consider a post (Reddit upvotes)
 MIN_REDDIT_SCORE = 10
 
-# Models tracked on Page 2
+# ============================================================
+# Tracked AI models for Page 2
+# Llama added in this release.
+# Each model has GitHub ecosystem repos used for daily star tracking
+# (Component 2.2's GitHub toggle on the trend chart).
+# ============================================================
+
 TRACKED_MODELS = [
     {
         "id": "chatgpt",
@@ -67,6 +98,7 @@ TRACKED_MODELS = [
         "maker": "OpenAI",
         "color": "#378ADD",
         "keywords": ["chatgpt", "gpt-4", "gpt-5", "gpt-4o", "gpt-4.5", "openai", "o1", "o3"],
+        "github_repos": ["openai/openai-python", "openai/openai-cookbook"],
     },
     {
         "id": "claude",
@@ -74,6 +106,7 @@ TRACKED_MODELS = [
         "maker": "Anthropic",
         "color": "#D85A30",
         "keywords": ["claude", "anthropic", "sonnet", "opus", "haiku"],
+        "github_repos": ["anthropics/anthropic-sdk-python", "anthropics/courses"],
     },
     {
         "id": "gemini",
@@ -81,6 +114,7 @@ TRACKED_MODELS = [
         "maker": "Google DeepMind",
         "color": "#1D9E75",
         "keywords": ["gemini", "google deepmind", "bard"],
+        "github_repos": ["google/generative-ai-python", "google-gemini/cookbook"],
     },
     {
         "id": "deepseek",
@@ -88,13 +122,15 @@ TRACKED_MODELS = [
         "maker": "DeepSeek AI",
         "color": "#7F77DD",
         "keywords": ["deepseek", "deepseek-r1", "deepseek-r2", "deepseek-v3"],
+        "github_repos": ["deepseek-ai/DeepSeek-V3", "deepseek-ai/DeepSeek-R1"],
     },
     {
         "id": "grok",
         "name": "Grok",
         "maker": "xAI",
-        "color": "#D4537E",
+        "color": "#E24B4A",
         "keywords": ["grok", "xai", "x.ai", "elon musk ai"],
+        "github_repos": ["xai-org/grok-1"],
     },
     {
         "id": "copilot",
@@ -102,10 +138,22 @@ TRACKED_MODELS = [
         "maker": "Microsoft",
         "color": "#888780",
         "keywords": ["copilot", "github copilot", "microsoft copilot", "copilot studio"],
+        "github_repos": ["github/copilot-cli"],
+    },
+    {
+        "id": "llama",
+        "name": "Llama",
+        "maker": "Meta",
+        "color": "#4267B2",
+        "keywords": ["llama", "llama-3", "llama 3", "meta ai", "llama-recipes"],
+        "github_repos": ["meta-llama/llama-recipes", "meta-llama/llama-models"],
     },
 ]
 
+# ============================================================
 # AI ETFs tracked on Page 3
+# ============================================================
+
 TRACKED_ETFS = [
     {
         "ticker": "CHAT",
@@ -157,7 +205,6 @@ TRACKED_ETFS = [
     },
 ]
 
-# Public AI companies tracked for market cap leaderboard
 TRACKED_PUBLIC_AI = [
     {"ticker": "NVDA", "name": "Nvidia"},
     {"ticker": "MSFT", "name": "Microsoft"},
@@ -171,42 +218,48 @@ TRACKED_PUBLIC_AI = [
     {"ticker": "PLTR", "name": "Palantir"},
 ]
 
-# Category tags assigned to each story (from spec)
+# ============================================================
+# Story curation
+# ============================================================
+
 CATEGORY_TAGS = [
-    # Model & Product
     "Model Release",
     "Model Update",
     "Product Launch",
     "Benchmark/Evaluation",
-    # Technical
     "Research/Paper",
     "Open Source",
     "Infrastructure/Hardware",
-    # Industry
     "Funding/Investment",
     "Acquisition/Partnership",
     "Regulation/Policy",
     "Leadership/People",
-    # Applications
     "Fintech/Payments",
     "Agents/Automation",
     "Robotics",
     "Computer Vision",
-    # Community
     "Tutorial/Guide",
     "Discussion/Opinion",
     "Controversy",
 ]
 
-# Curation criteria
-RELEVANCE_THRESHOLD = 7.0  # Only include stories scoring >= this
+# Adaptive top-15 selection — threshold is reported in logs / health
+# but the feed always shows the top 15 regardless.
+RELEVANCE_THRESHOLD = 7.0
 
+# ============================================================
 # Claude models
-HAIKU_MODEL = "claude-haiku-4-5-20251001"
-OPUS_MODEL = "claude-opus-4-7"  # Synthesis layer
+# ============================================================
 
-# Output paths
-OUTPUT_DIR = "output"
-DAILY_DATA_DIR = f"{OUTPUT_DIR}/daily-data"
-WEEKLY_STATS_DIR = f"{OUTPUT_DIR}/weekly-stats"
-DASHBOARD_DIR = f"{OUTPUT_DIR}/dashboard"
+HAIKU_MODEL = "claude-haiku-4-5"
+SONNET_MODEL = "claude-sonnet-4-6"
+OPUS_MODEL = "claude-opus-4-7"
+
+# ============================================================
+# Backward-compat string paths (legacy code expects strings)
+# ============================================================
+
+OUTPUT_DIR_STR = str(OUTPUT_DIR)
+DAILY_DATA_DIR_STR = str(DAILY_DATA_DIR)
+WEEKLY_STATS_DIR_STR = str(WEEKLY_STATS_DIR)
+DASHBOARD_DIR_STR = str(DASHBOARD_DIR)

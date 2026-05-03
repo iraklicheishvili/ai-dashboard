@@ -1,112 +1,107 @@
 """
-Reddit scraper using PRAW.
-Pulls top posts from each tracked subreddit within the configured time window.
+Source aggregator for Pages 1 and 2.
 
-Falls back to mock data if Reddit credentials are still placeholders
-(useful while waiting for Reddit API approval).
+Replaces the Reddit-only scraper with a multi-source pipeline.
+Pulls from:
+  - Hacker News (always live, free public API)
+  - GitHub Trending AI/ML repos (always live, free public API)
+  - arXiv top papers (already pulled by arxiv_analyzer for Page 4 — we
+    surface the top 5 here as Page 1 stories)
+  - Reddit (mock until API approved; auto-activates with REDDIT_MODE=live)
+
+The aggregator returns a deduplicated list in the SAME shape as the
+old scraper.py returned, so analyzer.score_story() works unchanged.
+
+Backward-compatible API:
+  scrape_all_subreddits() → kept as alias for scrape_all_sources()
+                            so existing main.py imports don't break.
 """
+from __future__ import annotations
 
-import os
-from datetime import datetime, timezone
-from typing import List, Dict
-import praw
-from dotenv import load_dotenv
+from typing import Dict, List, Optional
 
-import config
-
-load_dotenv()
+from src.sources import hn, github_trending, arxiv_stories, reddit
 
 
-def _is_mock_mode() -> bool:
-    """Check whether Reddit credentials are still placeholder values."""
-    client_id = os.getenv("REDDIT_CLIENT_ID", "")
-    return client_id in ("", "your_reddit_client_id", "placeholder") or client_id.startswith("your_")
+def scrape_all_sources(arxiv_top_papers: Optional[List[Dict]] = None) -> List[Dict]:
+    """Aggregate posts from every active source.
 
+    Args:
+        arxiv_top_papers: pre-computed top-papers list from arxiv_analyzer.
+                          If provided, top 5 surface as Page 1 stories.
+                          If None, arXiv contributes nothing here.
 
-def get_reddit_client() -> praw.Reddit:
-    """Create authenticated Reddit client from env vars."""
-    return praw.Reddit(
-        client_id=os.getenv("REDDIT_CLIENT_ID"),
-        client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
-        user_agent=os.getenv("REDDIT_USER_AGENT", "ai-dashboard/1.0"),
-    )
-
-
-def fetch_subreddit_posts(reddit: praw.Reddit, subreddit_name: str) -> List[Dict]:
+    Returns: deduplicated list of post dicts in shared schema.
     """
-    Fetch top posts from a subreddit within the time filter.
-    Returns a list of post dicts ready for analysis.
-    """
-    posts = []
+    print("\nAggregating sources for Pages 1 & 2...")
+
+    posts: List[Dict] = []
+    seen_ids: set = set()
+    counts: Dict[str, int] = {}
+
+    def _add_posts(source_name: str, source_posts: List[Dict]) -> None:
+        added = 0
+        for p in source_posts:
+            pid = p.get("id")
+            if not pid or pid in seen_ids:
+                continue
+            seen_ids.add(pid)
+            posts.append(p)
+            added += 1
+        counts[source_name] = added
+
+    # 1. Hacker News
     try:
-        subreddit = reddit.subreddit(subreddit_name)
-        for submission in subreddit.top(
-            time_filter=config.POST_TIME_FILTER,
-            limit=config.POSTS_PER_SUBREDDIT,
-        ):
-            if submission.score < config.MIN_REDDIT_SCORE:
-                continue
-            if submission.stickied:
-                continue
+        hn_posts = hn.fetch_ai_stories(max_stories=30, scan_top_n=200)
+        _add_posts("Hacker News", hn_posts)
+    except Exception as exc:
+        print(f"    HN fetch failed: {exc}")
+        counts["Hacker News"] = 0
 
-            posts.append({
-                "id": submission.id,
-                "title": submission.title,
-                "subreddit": f"r/{subreddit_name}",
-                "url": f"https://reddit.com{submission.permalink}",
-                "external_url": submission.url if not submission.is_self else None,
-                "score": submission.score,
-                "num_comments": submission.num_comments,
-                "created_utc": submission.created_utc,
-                "created_iso": datetime.fromtimestamp(
-                    submission.created_utc, tz=timezone.utc
-                ).isoformat(),
-                "author": str(submission.author) if submission.author else "[deleted]",
-                "selftext": submission.selftext[:2000] if submission.is_self else "",
-                "is_video": submission.is_video,
-            })
-    except Exception as e:
-        print(f"  ! Error fetching r/{subreddit_name}: {e}")
+    # 2. GitHub Trending
+    try:
+        gh_posts = github_trending.fetch_trending_repos(max_repos=8)
+        _add_posts("GitHub Trending", gh_posts)
+    except Exception as exc:
+        print(f"    GitHub fetch failed: {exc}")
+        counts["GitHub Trending"] = 0
 
+    # 3. arXiv (surface top papers)
+    if arxiv_top_papers:
+        try:
+            ax_posts = arxiv_stories.papers_to_stories(arxiv_top_papers, max_stories=5)
+            _add_posts("arXiv", ax_posts)
+        except Exception as exc:
+            print(f"    arXiv stories conversion failed: {exc}")
+            counts["arXiv"] = 0
+    else:
+        counts["arXiv"] = 0
+
+    # 4. Reddit (mock for now, live when API approved)
+    try:
+        rd_posts = reddit.fetch_all_reddit_posts()
+        _add_posts("Reddit", rd_posts)
+    except Exception as exc:
+        print(f"    Reddit fetch failed: {exc}")
+        counts["Reddit"] = 0
+
+    summary = " · ".join(f"{name}: {n}" for name, n in counts.items())
+    print(f"  Aggregated {len(posts)} unique posts ({summary})\n")
     return posts
 
 
+# Backward-compat alias so existing main.py continues to work
 def scrape_all_subreddits() -> List[Dict]:
+    """Deprecated alias for scrape_all_sources() — kept for backward compat.
+
+    main.py will be updated to call scrape_all_sources() directly with
+    the arxiv_top_papers argument so arXiv content surfaces on Page 1.
     """
-    Iterate every tracked subreddit and aggregate posts.
-    Deduplicates by post ID.
-
-    If Reddit credentials are placeholders, returns mock data instead.
-    """
-    if _is_mock_mode():
-        print("Reddit credentials are placeholder values — using mock data.")
-        print("(Once your Reddit app is approved, fill in .env and real scraping will resume automatically.)\n")
-        from src.mock_data import get_mock_posts
-        posts = get_mock_posts()
-        print(f"Loaded {len(posts)} mock posts.\n")
-        return posts
-
-    print(f"Scraping {len(config.ALL_SUBREDDITS)} subreddits...")
-    reddit = get_reddit_client()
-
-    all_posts = []
-    seen_ids = set()
-
-    for sub in config.ALL_SUBREDDITS:
-        posts = fetch_subreddit_posts(reddit, sub)
-        new_posts = [p for p in posts if p["id"] not in seen_ids]
-        seen_ids.update(p["id"] for p in new_posts)
-        all_posts.extend(new_posts)
-        print(f"  r/{sub}: {len(new_posts)} posts")
-
-    print(f"Total unique posts collected: {len(all_posts)}\n")
-    return all_posts
+    return scrape_all_sources(arxiv_top_papers=None)
 
 
 if __name__ == "__main__":
-    posts = scrape_all_subreddits()
-    print(f"\nSample post:")
+    posts = scrape_all_sources()
+    print(f"\nTotal: {len(posts)} posts")
     if posts:
-        print(f"  Title: {posts[0]['title']}")
-        print(f"  Subreddit: {posts[0]['subreddit']}")
-        print(f"  Score: {posts[0]['score']}")
+        print(f"Sample: {posts[0]['title']} ({posts[0]['source']})")
