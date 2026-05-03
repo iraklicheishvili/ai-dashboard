@@ -271,6 +271,20 @@ SHELL_HEAD = r"""
   a{color:var(--text-info);}
   select{font-family:inherit;font-size:13px;padding:6px 12px;border-radius:var(--radius-md);border:0.5px solid var(--border-strong);background:var(--bg-primary);color:var(--text-primary);cursor:pointer;}
 
+  .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+  .source-chip{font-size:10px;color:var(--text-secondary);background:var(--bg-secondary);border-radius:99px;padding:2px 7px;display:inline-block;}
+  .bar-track{height:8px;background:var(--bg-secondary);border-radius:99px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:99px;background:#7F77DD;}
+  .toggle-row{display:inline-flex;gap:4px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:4px;border:0.5px solid var(--border);}
+  .toggle-btn{font-family:inherit;font-size:11px;border:none;border-radius:calc(var(--radius-md) - 2px);padding:6px 10px;background:transparent;color:var(--text-secondary);cursor:pointer;}
+  .toggle-btn.active{background:var(--bg-primary);color:var(--text-primary);box-shadow:0 1px 2px rgba(0,0,0,0.15);}
+  .model-card{background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:13px 14px;}
+  .driver-row{display:block;text-decoration:none;color:inherit;font-size:12px;line-height:1.45;padding:6px 0;border-bottom:0.5px solid var(--border);}
+  .driver-row:last-child{border-bottom:none;}
+  .timeline-row{display:flex;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:12px;}
+  .timeline-row:last-child{border-bottom:none;}
+
+
   /* ============================================================
      Phase 2 universal additions (PLAN 4.1, 4.2, 4.3, 4.4)
      ============================================================ */
@@ -324,472 +338,311 @@ PAGE_1_BODY = r"""
 <div class="card card-info">
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
     <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Top story today</span>
-    <span class="score-pill" style="font-size:11px;padding:3px 10px;">{{ "%.1f"|format(top_story.relevance_score) }}</span>
+    <span class="score-pill" style="font-size:11px;padding:3px 10px;">{{ "%.1f"|format(top_story.combined_score | default(top_story.relevance_score | default(0))) }}</span>
   </div>
-  <a href="{{ top_story.url }}" target="_blank" style="text-decoration:none;color:inherit;">
+  <a class="linkable" href="{{ top_story.external_url or top_story.url }}" target="_blank" style="text-decoration:none;color:inherit;">
     <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">{{ top_story.title }}</div>
   </a>
-  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ top_story.subreddit }} · {{ top_story.score }} upvotes · {{ top_story.num_comments }} comments</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ top_story.source or top_story.subreddit }} · {{ top_story.score }} pts · {{ top_story.num_comments | default(0) }} comments</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
-    {% for tag in top_story.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+    {% for tag in top_story.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
   </div>
   {% if synthesis.top_story and synthesis.top_story.why_top %}
   <div style="font-size:12px;line-height:1.5;color:var(--text-primary);">{{ synthesis.top_story.why_top }}</div>
+  {% elif top_story.summary %}
+  <div style="font-size:12px;line-height:1.5;color:var(--text-primary);">{{ top_story.summary }}</div>
   {% endif %}
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Top story selected by combined content and engagement score · Updated daily</div>
 </div>
 {% endif %}
 
 <div class="card">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;">
-    <div class="mcard"><div class="mlabel">Stories today</div><div class="mvalue">{{ metrics.total_stories }}</div><div style="font-size:11px;color:var(--text-secondary);">Pulled {{ metrics.posts_pulled }} · curated {{ metrics.total_stories }}</div></div>
-    <div class="mcard"><div class="mlabel">Top subreddit</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.top_subreddit }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_subreddit_count }} stories</div></div>
-    <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.most_active_category }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_category_count }} stories</div></div>
-    <div class="mcard"><div class="mlabel">Trending model</div><div class="mvalue" style="font-size:15px;">{{ synthesis.metrics.trending_model or "—" }}</div><div class="up" style="font-size:11px;">{{ synthesis.metrics.trending_model_buzz_change or "" }}</div></div>
+  <div class="sec-title">Today at a glance</div>
+  <div class="sec-sub">Source-agnostic story intelligence across AI, models, research, and fintech</div>
+  <div class="mini-grid">
+    <div class="mcard"><div class="mlabel">Total stories</div><div class="mvalue">{{ metrics.total_stories | default(top_stories | length) }}</div><div style="font-size:11px;color:var(--text-secondary);">Curated today</div></div>
+    <div class="mcard"><div class="mlabel">Fintech stories</div><div class="mvalue">{{ metrics.fintech_count | default(fintech_stories | length) }}</div><div style="font-size:11px;color:var(--text-secondary);">Payments, fraud, banking, lending</div></div>
+    <div class="mcard"><div class="mlabel">Top source</div><div class="mvalue" style="font-size:15px;">{{ metrics.top_source | default('—') }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_source_count | default(0) }} stories</div></div>
+    <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">{{ metrics.most_active_category | default('—') }}</div><div class="neu" style="font-size:11px;">{{ metrics.top_category_count | default(0) }} stories</div></div>
   </div>
-    <div class="sec-title">Story volume — last 30 days</div>
-  <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;margin-bottom:12px;">Daily story count vs 7-day rolling average</div>
-  <div style="position:relative;height:160px;width:100%">
-    <canvas id="volumeChart"></canvas>
-  </div>
-  {% if synthesis.pattern_insights %}
-  <div style="margin-top:14px;padding-top:4px;display:flex;flex-wrap:wrap;gap:8px;">
-    {% for ins in synthesis.pattern_insights %}
-    <span class="pattern-tag pat-{{ ins.direction if ins.direction in ['up','down','neu','warn'] else 'neu' }}">
-      {% if ins.direction == 'up' %}▲{% elif ins.direction == 'down' %}▼{% elif ins.direction == 'warning' or ins.direction == 'warn' %}⚠{% else %}●{% endif %}
-      {{ ins.text }}
-    </span>
-    {% endfor %}
-  </div>
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Metrics computed from curated stories · Updated daily</div>
+</div>
+
+<div class="card">
+  <div class="sec-title">Story volume — last 30 days</div>
+  <div class="sec-sub">Curated stories per source · sparse until the dashboard accumulates more history</div>
+  {% if volume_history %}
+  <div style="position:relative;height:190px;width:100%"><canvas id="volumeChart"></canvas></div>
+  {% else %}
+  <div class="empty-state">No story volume history yet</div>
   {% endif %}
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Dashboard launched {{ launch_date }} · Backfills automatically as daily history accumulates</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function(){
   var history = {{ volume_history | tojson }};
-  if(!history || history.length === 0) return;
-  var labels = history.map(function(d){ return d.date.slice(5); });
-  var counts = history.map(function(d){ return d.count; });
-  var rolling = counts.map(function(v,i){
-    var slice = counts.slice(Math.max(0,i-6),i+1);
-    return Math.round(slice.reduce(function(a,b){return a+b;},0)/slice.length);
-  });
+  if(!history || history.length === 0 || typeof Chart === 'undefined') return;
+  var labels = history.map(function(d){ return String(d.date || '').slice(5); });
+  var sources = [];
+  history.forEach(function(d){ Object.keys(d.sources || {}).forEach(function(s){ if(sources.indexOf(s) < 0) sources.push(s); }); });
+  var palette = ['#7F77DD','#378ADD','#1D9E75','#EF9F27','#E24B4A','#888780'];
+  var datasets = sources.map(function(src, idx){ return {label: src, data: history.map(function(d){return (d.sources || {})[src] || 0;}), backgroundColor: palette[idx % palette.length], borderRadius: 3, stack: 'stories'}; });
   var ctx = document.getElementById('volumeChart');
   if(!ctx) return;
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Stories',
-          data: counts,
-          backgroundColor: 'rgba(127,119,221,0.7)',
-          borderRadius: 3,
-          order: 2
-        },
-        {
-          label: '7-day avg',
-          data: rolling,
-          type: 'line',
-          borderColor: '#EF9F27',
-          borderWidth: 2,
-          pointRadius: 0,
-          fill: false,
-          order: 1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#888', maxTicksLimit: 10 } },
-        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888' }, beginAtZero: true }
-      }
-    }
-  });
+  new Chart(ctx, {type:'bar', data:{labels:labels, datasets:datasets}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', align:'start', labels:{font:{size:11}, color:'#888', boxWidth:10, padding:12}}}, scales:{x:{stacked:true, grid:{display:false}, ticks:{font:{size:10}, color:'#888', maxTicksLimit:10}}, y:{stacked:true, beginAtZero:true, grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}, color:'#888', precision:0}}}}});
 })();
 </script>
 
 <div class="card">
   <div class="sec-title">Top stories</div>
-  {% for s in top_stories[:10] %}
-  <a class="linkrow" href="{{ s.url }}" target="_blank">
-    <div class="story-title">{{ s.title }}</div>
-    <div class="story-meta">
-      <span>{{ s.subreddit }}</span>
-      {% for tag in s.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
-      <span class="score-pill">{{ "%.1f"|format(s.relevance_score) }}</span>
-    </div>
-  </a>
-  {% endfor %}
+  <div class="sec-sub">15 curated stories — ranked by Claude content score plus normalized source engagement</div>
+  {% if top_stories %}
+    {% for s in top_stories[:15] %}
+    <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank">
+      <div class="story-title linkable">{{ s.title }}</div>
+      {% if s.summary %}<div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">{{ s.summary }}</div>{% endif %}
+      <div class="story-meta">
+        <span>{{ s.source or s.subreddit }}</span>
+        {% if s.source == 'Hacker News' %}<span>{{ s.score }} pts · {{ s.num_comments | default(0) }} comments</span>{% elif s.source == 'GitHub Trending' %}<span>{{ s.github_stars_total | default(s.score) }} stars</span>{% elif s.source == 'arXiv' %}<span>{{ s.arxiv_category | default('paper') }}</span>{% endif %}
+        {% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
+        <span class="score-pill">{{ "%.1f"|format(s.combined_score | default(s.relevance_score | default(0))) }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">No major AI stories today</div>
+  {% endif %}
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Stories ranked by Claude content score and normalized engagement · Updated daily</div>
 </div>
 
 <div class="card" style="padding:0">
-  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:220px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:240px">
     <div style="padding:16px 18px;border-right:0.5px solid var(--border)">
       <div class="sec-title">Category breakdown</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px;position:relative">
+      <div class="sec-sub">Today's curated stories by primary tag</div>
+      {% if category_breakdown %}
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:10px;position:relative">
         <canvas id="catDonut" width="160" height="160" style="flex-shrink:0;width:160px;height:160px"></canvas>
-<div id="donutTooltip" style="display:none;position:absolute;background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-md);padding:6px 10px;font-size:12px;color:var(--text-primary);pointer-events:none;z-index:10"></div>
         <div id="catLegend" style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:12px;max-width:100%"></div>
       </div>
+      {% else %}<div class="empty-state">No category mix today</div>{% endif %}
+      <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Categories assigned by Claude during scoring</div>
     </div>
     <div style="padding:16px 18px">
       <div class="sec-title">Trending topics</div>
-      <div class="wc-cloud">
-      {% set sorted_topics = synthesis.trending_topics | sort(attribute='weight', reverse=true) %}
-      {% for term in sorted_topics %}
+      <div class="sec-sub">Themes emerging from today's curated stories</div>
+      {% set sorted_topics = synthesis.trending_topics | default([]) | sort(attribute='weight', reverse=true) %}
+      {% if sorted_topics %}
+        {% for term in sorted_topics[:10] %}
         {% set w = term.weight | int %}
-        {% if w >= 9 %}{% set tier = 'xl' %}{% set op = '1' %}
-        {% elif w >= 7 %}{% set tier = 'lg' %}{% set op = '0.95' %}
-        {% elif w >= 5 %}{% set tier = 'md' %}{% set op = '0.85' %}
-        {% elif w >= 3 %}{% set tier = 'sm' %}{% set op = '0.7' %}
-        {% else %}{% set tier = 'xs' %}{% set op = '0.55' %}{% endif %}
-        <span class="wc-word wc-tier-{{ tier }} wc-{{ term.category | default('other') | lower | replace('/', '_') | replace(' ', '_') }}" style="--wc-opacity:{{ op }};animation-delay:{{ loop.index0 * 0.06 }}s;">{{ term.term }}</span>
-      {% endfor %}
-      </div>
+        <div style="margin:9px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>{{ term.term }}</span><span class="source-chip">{{ term.category | default('theme') }}</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:{{ [w * 10, 100] | min }}%;"></div></div>
+        </div>
+        {% endfor %}
+      {% else %}<div class="empty-state">No major trending topics today</div>{% endif %}
+      <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Themes synthesized by Claude</div>
     </div>
   </div>
 </div>
 <script>
 (function(){
   var breakdown = {{ category_breakdown | tojson }};
-  var colors = {"Model release":"#378ADD","Model_release":"#378ADD","Research/paper":"#7F77DD","Research_paper":"#7F77DD","Funding":"#1D9E75","Regulation":"#EF9F27","Open source":"#E24B4A","Open_source":"#E24B4A","Other":"#888780"};
-  var defaultColors = ["#378ADD","#7F77DD","#1D9E75","#EF9F27","#E24B4A","#D4537E","#888780"];
-  var labels = Object.keys(breakdown);
+  var labels = Object.keys(breakdown || {});
   var values = labels.map(function(k){return breakdown[k];});
-  var bgColors = labels.map(function(k,i){return colors[k]||defaultColors[i%defaultColors.length];});
-  var canvas = document.getElementById("catDonut");
-  if(!canvas) return;
-  var ctx = canvas.getContext("2d");
+  var canvas = document.getElementById('catDonut');
+  if(!canvas || labels.length === 0) return;
+  var colors = ['#378ADD','#7F77DD','#1D9E75','#EF9F27','#E24B4A','#D4537E','#888780'];
+  var ctx = canvas.getContext('2d');
   var total = values.reduce(function(a,b){return a+b;},0);
-  if(total===0) return;
-  var startAngle = -Math.PI/2;
-  var cx=80,cy=80,outerR=75,innerR=45;
-  values.forEach(function(v,i){
-    var slice = (v/total)*2*Math.PI;
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.arc(cx,cy,outerR,startAngle,startAngle+slice);
-    ctx.closePath();
-    ctx.fillStyle=bgColors[i];
-    ctx.fill();
-    startAngle+=slice;
-  });
-  ctx.beginPath();
-  ctx.arc(cx,cy,innerR,0,2*Math.PI);
-  ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--bg-primary')||'#1a1a2e';
-  ctx.fill();
-  var legend = document.getElementById("catLegend");
-  labels.forEach(function(k,i){
-    var row = document.createElement("div");
-    row.style.cssText="display:flex;align-items:center;gap:5px";
-    var dot = document.createElement("span");
-    dot.style.cssText="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:"+bgColors[i];
-    var txt = document.createElement("span");
-    txt.style.color="var(--text-secondary)";
-    txt.textContent=k+" ("+values[i]+")";
-    row.appendChild(dot);row.appendChild(txt);
-    legend.appendChild(row);
-  });
-  canvas.addEventListener('mousemove', function(e){
-    var rect = canvas.getBoundingClientRect();
-    var x = e.clientX - rect.left - cx;
-    var y = e.clientY - rect.top - cy;
-    var dist = Math.sqrt(x*x+y*y);
-    var tip = document.getElementById('donutTooltip');
-    if(dist > innerR && dist < outerR){
-      var angle = Math.atan2(y,x) + Math.PI/2;
-      var norm = ((angle % (2*Math.PI)) + 2*Math.PI) % (2*Math.PI);
-      var cumulative = 0;
-      for(var i=0;i<values.length;i++){
-        cumulative += (values[i]/total)*2*Math.PI;
-        if(norm < cumulative){
-          var pct = Math.round(values[i]/total*100);
-          tip.innerHTML = '<strong>'+labels[i]+'</strong><br>'+values[i]+' stories · '+pct+'%';
-          tip.style.display='block';
-          tip.style.left=(e.offsetX+10)+'px';
-          tip.style.top=(e.offsetY-10)+'px';
-          break;
-        }
-      }
-    } else {
-      tip.style.display='none';
-    }
-  });
+  var start = -Math.PI/2, cx=80, cy=80, outerR=75, innerR=45;
+  values.forEach(function(v,i){ var slice=(v/total)*2*Math.PI; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,outerR,start,start+slice); ctx.closePath(); ctx.fillStyle=colors[i%colors.length]; ctx.fill(); start+=slice; });
+  ctx.beginPath(); ctx.arc(cx,cy,innerR,0,2*Math.PI); ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--bg-primary')||'#fff'; ctx.fill();
+  var legend=document.getElementById('catLegend');
+  labels.forEach(function(k,i){ var row=document.createElement('div'); row.style.cssText='display:flex;align-items:center;gap:5px'; var dot=document.createElement('span'); dot.style.cssText='width:8px;height:8px;border-radius:50%;background:'+colors[i%colors.length]; var txt=document.createElement('span'); txt.style.color='var(--text-secondary)'; txt.textContent=k+' ('+values[i]+')'; row.appendChild(dot); row.appendChild(txt); legend.appendChild(row); });
 })();
 </script>
 
-
 <div class="card">
-  <div class="sec-title">Subreddit hot topics this week</div>
-  <select id="subSelect" onchange="filterSub(this.value)" style="width:100%;margin:10px 0 14px;">
-    {% for sub, sub_stories in stories_by_subreddit.items() %}
-    <option value="{{ sub }}">{{ sub }} · {{ sub_stories | length }} stories</option>
-    {% endfor %}
-  </select>
-  <div id="subStories">
-    {% for sub, sub_stories in stories_by_subreddit.items() %}
-    <div class="sub-group" data-sub="{{ sub }}"{% if not loop.first %} style="display:none"{% endif %}>
-      {% for s in sub_stories[:5] %}
-      <a class="linkrow" href="{{ s.url }}" target="_blank">
-        <div class="story-title">{{ s.title }}</div>
-        <div class="story-meta">
-          {% for tag in s.category_tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
-        </div>
+  <div class="sec-row">
+    <div><div class="sec-title">Source hot topics</div><div class="sec-sub">Top items from each source today — switch via dropdown</div></div>
+    <select id="sourceSelect" onchange="filterSource(this.value)">
+      {% for source, items in source_hot_topics.items() %}<option value="{{ source }}">{{ source }} · {{ items | length }}</option>{% endfor %}
+    </select>
+  </div>
+  {% if source_hot_topics %}
+  <div id="sourceStories">
+    {% for source, items in source_hot_topics.items() %}
+    <div class="source-group" data-source="{{ source }}"{% if not loop.first %} style="display:none"{% endif %}>
+      {% for s in items[:7] %}
+      <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank">
+        <div class="story-title linkable">{{ s.title }}</div>
+        <div class="story-meta"><span>{{ s.source or s.subreddit }}</span><span class="score-pill">{{ "%.1f"|format(s.combined_score | default(s.relevance_score | default(0))) }}</span>{% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}</div>
       </a>
       {% endfor %}
     </div>
     {% endfor %}
   </div>
+  {% else %}<div class="empty-state">No major source stories today</div>{% endif %}
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Reuses today's curated story pool · Updated daily</div>
 </div>
 <script>
-function filterSub(val){
-  document.querySelectorAll('.sub-group').forEach(function(g){
-    g.style.display = g.dataset.sub === val ? '' : 'none';
-  });
-}
+function filterSource(val){document.querySelectorAll('.source-group').forEach(function(g){g.style.display = g.dataset.source === val ? '' : 'none';});}
 </script>
-{% if fintech_stories %}
+
 <div class="card">
   <div class="sec-title">Fintech & payments spotlight</div>
-  {% for s in fintech_stories[:3] %}
-  <a class="linkrow" href="{{ s.url }}" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
-    <div class="story-title">{{ s.title }}</div>
-    <div class="story-meta"><span>{{ s.subreddit }}</span><span class="score-pill">{{ "%.1f"|format(s.relevance_score) }}</span></div>
-  </a>
-  {% endfor %}
-  {% if synthesis.fintech_implications %}
-  <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;">
-    <strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications }}
-  </div>
-  {% endif %}
+  <div class="sec-sub">AI news in payments, lending, fraud, banking — with strategic implications for card networks</div>
+  {% if fintech_stories %}
+    {% for s in fintech_stories[:5] %}
+    <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
+      <div class="story-title linkable">{{ s.title }}</div>
+      {% if s.summary %}<div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">{{ s.summary }}</div>{% endif %}
+      <div class="story-meta"><span>{{ s.source or s.subreddit }}</span>{% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}</div>
+    </a>
+    {% endfor %}
+    {% if synthesis.fintech_implications %}<div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;"><strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications }}</div>{% endif %}
+  {% else %}<div class="empty-state">No major fintech AI stories today</div>{% endif %}
+  <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Strategic implications synthesized by Claude Sonnet · Updated daily</div>
 </div>
-{% endif %}
 
 """
 PAGE_2_BODY = r"""
 
 <div class="card">
   <div class="sec-title">All models — snapshot</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+  <div class="sec-sub">Live sentiment + buzz from Hacker News discussion threads (last 3 days)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;">
     {% for m in model_sentiments %}
-    <div style="background:var(--bg-primary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
-        <div>
-          <div style="font-size:14px;font-weight:500;">{{ m.model_config.name }}</div>
-          <div style="font-size:11px;color:var(--text-secondary);">{{ m.model_config.maker }}</div>
-        </div>
-        <span class="pill {{ 'sent-pos' if m.sentiment_label == 'positive' else 'sent-neu' }}">{{ "%.1f"|format(m.sentiment_score) }}</span>
+    <div class="model-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+        <div><div style="font-size:14px;font-weight:500;">{{ m.model_config.name }}</div><div style="font-size:11px;color:var(--text-secondary);">{{ m.model_config.maker }}</div></div>
+        {% if m.story_count or m.comment_count %}<span class="pill {{ 'sent-pos' if m.sentiment_score >= 6 else 'sent-neu' }}">{{ "%.1f"|format(m.sentiment_score | default(0)) }}</span>{% else %}<span class="pill sent-neu">—</span>{% endif %}
       </div>
-      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;margin:8px 0 6px;"><div style="height:3px;border-radius:2px;background:{{ m.model_config.color }};width:{{ m.buzz_volume }}%;"></div></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <span style="font-size:11px;color:var(--text-secondary);">Stories <span style="color:var(--text-primary);font-weight:500;">{{ m.story_count }}</span></span>
-        <span style="font-size:11px;color:var(--text-secondary);">Buzz <span style="color:var(--text-primary);font-weight:500;">{{ m.buzz_volume }}%</span></span>
-        <span style="font-size:11px;font-weight:500;{% if m.wow_delta_pct.startswith('+') %}color:#3b6d11{% else %}color:#a32d2d{% endif %};">{{ m.wow_delta_pct }} WoW</span>
+      <div class="bar-track" style="height:4px;margin:8px 0 6px;"><div style="height:4px;border-radius:99px;background:{{ m.model_config.color }};width:{{ m.buzz_volume | default(0) }}%;"></div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-secondary);">
+        <span>Buzz <strong style="color:var(--text-primary);font-weight:500;">{{ m.buzz_volume | default(0) }}%</strong></span>
+        <span>Mentions <strong style="color:var(--text-primary);font-weight:500;">{{ m.comment_count | default(m.story_count | default(0)) }}</strong></span>
+        {% if m.wow_delta_pct %}<span class="{{ 'up' if m.wow_delta_pct.startswith('+') else 'down' }}" style="font-weight:500;">{{ m.wow_delta_pct }} WoW</span>{% else %}<span class="neu">— WoW</span>{% endif %}
       </div>
+      {% if not (m.story_count or m.comment_count) %}<div style="font-size:11px;color:var(--text-tertiary);margin-top:6px;">No discussion today</div>{% endif %}
     </div>
     {% endfor %}
   </div>
+  <div class="disclaimer">Sources: Hacker News comments · Sentiment classified by Claude Haiku · Updated daily</div>
 </div>
 
 <div class="card">
-  <div class="sec-title">Sentiment trends — last 30 days</div>
-  <div class="sec-sub">Daily Reddit sentiment score across 24 subreddits</div>
-  <div style="position:relative;height:240px;width:100%;margin-top:8px">
-    <canvas id="sentimentChart"></canvas>
+  <div class="sec-row">
+    <div><div class="sec-title">Sentiment trends — last 30 days</div><div class="sec-sub">Toggle between Hacker News sentiment and GitHub ecosystem star activity</div></div>
+    <div class="toggle-row"><button class="toggle-btn active" id="hnToggle" onclick="setTrendMode('hn')">Hacker News</button><button class="toggle-btn" id="ghToggle" onclick="setTrendMode('github')">GitHub</button></div>
   </div>
+  {% if sentiment_history and sentiment_history.labels %}
+  <div style="position:relative;height:250px;width:100%;margin-top:8px"><canvas id="sentimentChart"></canvas></div>
+  <div id="hnDisclaimer" class="disclaimer">Source: Hacker News comments · Sentiment scored by Claude Haiku · Each line shows average sentiment score (1–10). Backfills automatically as daily history accumulates.</div>
+  <div id="ghDisclaimer" class="disclaimer" style="display:none;">Source: GitHub stars on official ecosystem repos · Each line shows daily new stars across primary repos. Backfills automatically as daily history accumulates.</div>
+  {% else %}
+  <div class="empty-state">No model trend history yet</div>
+  <div class="disclaimer">Sources: Hacker News comments + GitHub stars · Backfills automatically as daily history accumulates</div>
+  {% endif %}
 </div>
 <script>
+var trendChart = null;
+var trendHistory = {{ sentiment_history | tojson }};
+function buildTrendDatasets(mode){
+  if(!trendHistory || !trendHistory.models) return [];
+  return trendHistory.models.map(function(m){return {label:m.name, data:(mode==='github' ? (m.github_stars || []) : (m.scores || [])), borderColor:m.color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0.3};});
+}
+function setTrendMode(mode){
+  if(!trendChart) return;
+  document.getElementById('hnToggle').classList.toggle('active', mode==='hn');
+  document.getElementById('ghToggle').classList.toggle('active', mode==='github');
+  document.getElementById('hnDisclaimer').style.display = mode==='hn' ? '' : 'none';
+  document.getElementById('ghDisclaimer').style.display = mode==='github' ? '' : 'none';
+  trendChart.data.datasets = buildTrendDatasets(mode);
+  trendChart.options.scales.y.min = mode==='hn' ? 1 : 0;
+  trendChart.options.scales.y.max = mode==='hn' ? 10 : undefined;
+  trendChart.options.scales.y.ticks.stepSize = mode==='hn' ? 1 : undefined;
+  trendChart.update();
+}
 (function(){
-  var history = {{ sentiment_history | tojson }};
-  if(!history || !history.labels || history.labels.length === 0) return;
-  var ctx = document.getElementById('sentimentChart');
-  if(!ctx) return;
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: history.labels,
-      datasets: history.models.map(function(m){
-        return {
-          label: m.name,
-          data: m.scores,
-          borderColor: m.color,
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 0,
-          tension: 0.3
-        };
-      })
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      layout: { padding: { top: 8, bottom: 4 } },
-      plugins: {
-        legend: { position: 'top', align: 'start', labels: { font: { size: 12 }, color: '#888', usePointStyle: true, pointStyle: 'line', boxWidth: 28, boxHeight: 2, padding: 16 } }
-      },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 10 }, color: '#888', maxTicksLimit: 8 } },
-        y: { grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', stepSize: 0.5 }, min: 4, max: 9 }
-      }
-    }
-  });
+  if(!trendHistory || !trendHistory.labels || trendHistory.labels.length === 0 || typeof Chart === 'undefined') return;
+  var ctx = document.getElementById('sentimentChart'); if(!ctx) return;
+  trendChart = new Chart(ctx,{type:'line',data:{labels:trendHistory.labels,datasets:buildTrendDatasets('hn')},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',align:'start',labels:{font:{size:11},color:'#888',usePointStyle:true,pointStyle:'line',boxWidth:24,padding:12}}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#888',maxTicksLimit:8}},y:{min:1,max:10,grid:{color:'rgba(128,128,128,0.1)'},ticks:{font:{size:10},color:'#888',stepSize:1}}}}});
 })();
 </script>
 
 <div class="card">
   <div class="sec-title">What's driving each model's trend</div>
-  <div class="sec-sub">Signal analysis from Reddit volume, benchmark events, and news triggers</div>
+  <div class="sec-sub">Why each model's sentiment moved this week — synthesized from discussion threads and curated stories</div>
   {% for m in model_sentiments %}
   <div style="padding:12px 0;{% if not loop.last %}border-bottom:0.5px solid var(--border);{% endif %}">
-    <div style="font-size:13px;font-weight:500;color:{{ m.model_config.color }};margin-bottom:6px;">
-      {{ m.model_config.name }} <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">{{ "%.1f"|format(m.sentiment_score) }}/10 · {{ m.wow_delta_pct }} WoW</span>
-    </div>
-    {% for d in m.trend_drivers %}
-    <div class="ins-row ins-{{ d.direction }}" style="padding:3px 0;">{{ d.text }}</div>
-    {% endfor %}
+    <div style="font-size:13px;font-weight:500;color:{{ m.model_config.color }};margin-bottom:6px;">{{ m.model_config.name }} <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">{{ "%.1f"|format(m.sentiment_score | default(0)) }}/10{% if m.wow_delta_pct %} · {{ m.wow_delta_pct }} WoW{% endif %}</span></div>
+    {% if m.trend_drivers %}
+      {% for d in m.trend_drivers[:3] %}
+      <a class="driver-row linkable" href="{{ d.url | default('#') }}"{% if d.url %} target="_blank"{% endif %}>{% if d.direction in ['up','positive'] %}↑{% elif d.direction in ['down','negative'] %}↓{% else %}→{% endif %} {{ d.text }}</a>
+      {% endfor %}
+    {% else %}<div class="empty-state">Not enough discussion this week to identify drivers.</div>{% endif %}
   </div>
   {% endfor %}
+  <div class="disclaimer">Sources: Hacker News comments + curated stories from HN/arXiv/GitHub · Drivers synthesized by Claude Sonnet</div>
 </div>
-
 
 <div class="card">
   <div class="sec-title">Model deep dive</div>
-  <div class="sec-sub">Strengths, weaknesses, Reddit mention analysis, recent changes, key people</div>
+  <div class="sec-sub">MAU, market share, mention sentiment, recent changes, and key people activity</div>
   <select id="modelSelect" onchange="filterModel(this.value)" style="width:100%;margin:6px 0 14px;">
-    {% for m in model_sentiments %}
-    <option value="{{ m.model_config.name }}">{{ m.model_config.name }} ({{ m.model_config.maker }})</option>
-    {% endfor %}
+    {% for m in model_sentiments %}<option value="{{ m.model_config.name }}">{{ m.model_config.name }} ({{ m.model_config.maker }})</option>{% endfor %}
   </select>
-
   {% for m in model_sentiments %}
   {% set deep = m.deep or {} %}
+  {% set model_id = m.model_config.id %}
   <div class="model-deep" data-model="{{ m.model_config.name }}"{% if not loop.first %} style="display:none"{% endif %}>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
-      <div class="mcard">
-        <div class="mlabel">Sentiment</div>
-        <div class="mvalue" style="color:{{ m.model_config.color }};">{{ "%.1f"|format(m.sentiment_score) }}</div>
-        <div style="font-size:10px;color:var(--text-secondary);">out of 10</div>
-      </div>
-      <div class="mcard">
-        <div class="mlabel">MAU</div>
-        <div class="mvalue" style="font-size:18px;">{{ deep.mau | default('—') }}</div>
-        <div style="font-size:10px;color:var(--text-secondary);">estimated</div>
-      </div>
-      <div class="mcard">
-        <div class="mlabel">Market share</div>
-        <div class="mvalue" style="font-size:18px;">{{ deep.market_share | default('—') }}</div>
-        <div style="font-size:10px;{% if deep.market_share_change and deep.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ deep.market_share_change | default('') }} WoW</div>
-      </div>
-      <div class="mcard">
-        <div class="mlabel">Buzz volume</div>
-        <div class="mvalue" style="font-size:18px;">{{ m.buzz_volume }}%</div>
-        <div style="font-size:10px;color:var(--text-secondary);">of peak</div>
-      </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
+      <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:{{ m.model_config.color }};">{{ "%.1f"|format(m.sentiment_score | default(0)) }}</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
+      <div class="mcard"><div class="mlabel">{% if model_id == 'llama' %}Downloads{% else %}MAU{% endif %}</div><div class="mvalue" style="font-size:18px;">{{ deep.mau | default('Not disclosed') }}</div><div style="font-size:10px;color:var(--text-secondary);">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}Phase 3 weekly cache{% endif %}</div></div>
+      <div class="mcard"><div class="mlabel">{% if model_id == 'llama' %}Derivatives{% else %}Market share{% endif %}</div><div class="mvalue" style="font-size:18px;">{{ deep.market_share | default('—') }}</div><div style="font-size:10px;color:var(--text-secondary);">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}Phase 3 weekly cache{% endif %}</div></div>
+      <div class="mcard"><div class="mlabel">Buzz volume</div><div class="mvalue" style="font-size:18px;">{{ m.buzz_volume | default(0) }}%</div><div style="font-size:10px;color:var(--text-secondary);">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card">
-        <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>
-        {% for s in (deep.strengths or []) %}
-        <div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>
-        {% endfor %}
-      </div>
-      <div class="stat-card">
-        <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>
-        {% for w in (deep.weaknesses or []) %}
-        <div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>
-        {% endfor %}
-      </div>
+      <div class="stat-card"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>{% if deep.strengths %}{% for s in deep.strengths %}<div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
+      <div class="stat-card"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>{% if deep.weaknesses %}{% for w in deep.weaknesses %}<div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
     </div>
 
-    {% if deep.mention_chart %}
     <div style="margin-bottom:14px;">
-      <div class="sec-title">Reddit mention sentiment — strengths vs weaknesses</div>
-      <div class="sec-sub">Positive / negative Reddit mentions — current 30 days vs prior 30 days</div>
-      <div style="position:relative;height:280px;width:100%;margin-top:8px;">
-        <canvas id="mentionChart-{{ loop.index }}"></canvas>
+      <div class="sec-title">Mention sentiment — current vs prior 30 days</div>
+      <div class="sec-sub">Positive vs negative HN mentions · prior bars appear after 60+ days of history</div>
+      {% set br = m.mentions_breakdown or {} %}
+      {% set pos = br.positive | default(0) %}{% set neg = br.negative | default(0) %}{% set neu = br.neutral | default(0) %}{% set total = pos + neg + neu %}
+      {% if total >= 5 %}
+      <div style="display:grid;gap:8px;margin-top:8px;">
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>{{ pos }}</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:{{ (pos / total * 100) | round(0) }}%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>{{ neg }}</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:{{ (neg / total * 100) | round(0) }}%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>{{ neu }}</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:{{ (neu / total * 100) | round(0) }}%;"></div></div></div>
       </div>
-      <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:4px;">← negative mentions  |  positive mentions →</div>
+      {% else %}<div class="empty-state">Low sample — fewer than 5 classified mentions today</div>{% endif %}
     </div>
-    {% endif %}
 
-    {% if deep.recent_changes %}
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
-      {% for c in deep.recent_changes %}
-      <div style="display:flex;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:12px;">
-        <div style="width:48px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div>
-        <div style="color:var(--text-info);">{{ c.text }}</div>
-      </div>
-      {% endfor %}
+      <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
+      {% if deep.recent_changes %}{% for c in deep.recent_changes[:7] %}<a class="timeline-row linkable" href="{{ c.url | default('#') }}"{% if c.url %} target="_blank"{% endif %}><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div><div>{{ c.text }}</div></a>{% endfor %}{% else %}<div class="empty-state">No major releases or announcements in the last 90 days.</div>{% endif %}
     </div>
-    {% endif %}
 
-    {% if deep.key_people %}
     <div>
-      <div class="sec-title">Key people — latest activity</div>
-      {% for p in deep.key_people %}
-      <div class="person-chip">
-        <div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials }}</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:500;">{{ p.name }} <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">{{ p.handle }}</span></div>
-          <div class="quote-text">{{ p.quote }}</div>
-          <div class="quote-meta">{{ p.date }} · {{ p.platform | default('X') }}</div>
-        </div>
-      </div>
-      {% endfor %}
+      <div class="sec-title">Key people quotes</div>
+      <div class="sec-sub">Recent posts from leadership and key researchers</div>
+      {% if deep.key_people %}{% for p in deep.key_people %}<a class="person-chip linkable" href="{{ p.source_url | default('#') }}"{% if p.source_url %} target="_blank"{% endif %} style="text-decoration:none;color:inherit;"><div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials | default(p.name[:2]) }}</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">{{ p.name }} <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">{{ p.role | default('') }}</span></div><div class="quote-text">{{ p.quote }}</div><div class="quote-meta">{{ p.date }} · {{ p.platform | default('X') }}</div></div></a>{% endfor %}{% else %}<div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>{% endif %}
     </div>
-    {% endif %}
-
+    <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
   {% endfor %}
 </div>
 <script>
-function filterModel(val){
-  document.querySelectorAll('.model-deep').forEach(function(g){
-    g.style.display = g.dataset.model === val ? '' : 'none';
-  });
-}
-{% for m in model_sentiments %}
-{% set deep = m.deep or {} %}
-{% if deep.mention_chart %}
-(function(){
-  var ctx = document.getElementById('mentionChart-{{ loop.index }}');
-  if(!ctx) return;
-  var data = {{ deep.mention_chart | tojson }};
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: data.labels,
-      datasets: [
-        {label:'Positive (current)', data: data.pos_current, backgroundColor:'#3b6d11', borderRadius:2},
-        {label:'Positive (prior 30d)', data: data.pos_prior, backgroundColor:'rgba(99,153,34,0.55)', borderRadius:2},
-        {label:'Negative (current)', data: data.neg_current.map(function(v){return -Math.abs(v);}), backgroundColor:'#a32d2d', borderRadius:2},
-        {label:'Negative (prior 30d)', data: data.neg_prior.map(function(v){return -Math.abs(v);}), backgroundColor:'rgba(226,75,74,0.55)', borderRadius:2}
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-      plugins: {
-        legend: { position: 'top', align: 'start', labels: { font:{size:11}, color:'#888', usePointStyle: true, pointStyle: 'rectRounded', boxWidth: 10, padding: 12 } }
-      },
-      scales: {
-        x: { stacked: false, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { font: { size: 10 }, color: '#888', callback: function(v){return Math.abs(v);} } },
-        y: { stacked: false, grid: { display: false }, ticks: { font: { size: 11 }, color: '#888' } }
-      }
-    }
-  });
-})();
-{% endif %}
-{% endfor %}
+function filterModel(val){document.querySelectorAll('.model-deep').forEach(function(g){g.style.display = g.dataset.model === val ? '' : 'none';});}
 </script>
-
 
 """
 PAGE_3_BODY = r"""
@@ -1514,6 +1367,55 @@ def _build_template_text() -> str:
     )
 
 
+
+def _source_label(story: Dict) -> str:
+    """Return the source label used by Page 1 source components."""
+    return story.get("source") or story.get("subreddit") or "Unknown"
+
+
+def _build_source_hot_topics(stories: list) -> Dict[str, list]:
+    """Group curated stories by source, ordered by combined/relevance score."""
+    grouped: Dict[str, list] = {}
+    for story in stories:
+        grouped.setdefault(_source_label(story), []).append(story)
+    for source, items in grouped.items():
+        grouped[source] = sorted(
+            items,
+            key=lambda s: float(s.get("combined_score") or s.get("relevance_score") or 0),
+            reverse=True,
+        )
+    return dict(sorted(grouped.items(), key=lambda item: -len(item[1])))
+
+
+def _fallback_volume_history(stories: list, today: str) -> list:
+    """Render-only fallback when main.py has not attached history yet."""
+    if not stories:
+        return []
+    counts: Dict[str, int] = {}
+    for story in stories:
+        source = _source_label(story)
+        counts[source] = counts.get(source, 0) + 1
+    return [{"date": today, "count": len(stories), "sources": counts}]
+
+
+def _fallback_sentiment_history(model_sentiments: list, today: str) -> Dict:
+    """Render-only fallback for a single-day model trend chart."""
+    if not model_sentiments:
+        return {"labels": [], "models": []}
+    return {
+        "labels": [today[5:] if len(today) >= 10 else today],
+        "models": [
+            {
+                "id": (m.get("model_config") or {}).get("id") or m.get("model_id"),
+                "name": (m.get("model_config") or {}).get("name") or m.get("model_id", "Model"),
+                "color": (m.get("model_config") or {}).get("color") or "#888780",
+                "scores": [float(m.get("sentiment_score") or 0)],
+                "github_stars": [0],
+            }
+            for m in model_sentiments
+        ],
+    }
+
 def render_dashboard(daily_data: Dict) -> str:
     """Render the dashboard HTML from a daily-data JSON payload.
 
@@ -1545,9 +1447,16 @@ def render_dashboard(daily_data: Dict) -> str:
         sorted(stories_by_subreddit.items(), key=lambda x: -len(x[1]))
     )
 
+    today_str = daily_data.get("_date", date.today().isoformat())
+    volume_history = daily_data.get("volume_history") or _fallback_volume_history(stories, today_str)
+    sentiment_history = daily_data.get("sentiment_history") or _fallback_sentiment_history(
+        daily_data.get("model_sentiments", []), today_str
+    )
+
     return template.render(
-        volume_history=daily_data.get("volume_history", []),
-        today=daily_data.get("_date", date.today().isoformat()),
+        volume_history=volume_history,
+        today=today_str,
+        launch_date=getattr(config, "DASHBOARD_LAUNCH_DATE", "2026-05-01"),
         top_story=stories[0] if stories else None,
         top_stories=stories,
         fintech_stories=fintech_stories,
@@ -1558,8 +1467,9 @@ def render_dashboard(daily_data: Dict) -> str:
         etfs=daily_data.get("etfs", []),
         public_ai=daily_data.get("public_ai", []),
         category_breakdown=daily_data.get("category_breakdown", {}),
-        sentiment_history=daily_data.get("sentiment_history", {}),
+        sentiment_history=sentiment_history,
         stories_by_subreddit=stories_by_subreddit,
+        source_hot_topics=daily_data.get("source_hot_topics") or _build_source_hot_topics(stories),
         funding_summary=daily_data.get("funding_summary", {}),
         funding_rounds=daily_data.get("funding_rounds", []),
         private_ai=daily_data.get("private_ai", []),

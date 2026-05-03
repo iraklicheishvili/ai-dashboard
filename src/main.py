@@ -16,19 +16,19 @@ Run with:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import time
 from collections import Counter
 from datetime import date
-from typing import Dict, List
+from pathlib import Path
+from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
 
 import config
-from src import scraper, analyzer, stocks, storage, render
-from src.arxiv_analyzer import analyze_arxiv_papers
-from src.finance_analyzer import analyze_finance
+from src import storage, render
 
 load_dotenv()
 
@@ -108,8 +108,179 @@ def _empty_synthesis() -> Dict:
     }
 
 
+
+def _source_label(story: Dict) -> str:
+    """Shared source label used for Page 1 history and source hot topics."""
+    return story.get("source") or story.get("subreddit") or "Unknown"
+
+
+def build_source_hot_topics(curated_stories: List[Dict]) -> Dict[str, List[Dict]]:
+    """Group today's curated stories by source for Page 1 Component 1.6."""
+    grouped: Dict[str, List[Dict]] = {}
+    for story in curated_stories:
+        grouped.setdefault(_source_label(story), []).append(story)
+    for source, items in grouped.items():
+        grouped[source] = sorted(
+            items,
+            key=lambda s: float(s.get("combined_score") or s.get("relevance_score") or 0),
+            reverse=True,
+        )
+    return dict(sorted(grouped.items(), key=lambda x: -len(x[1])))
+
+
+def build_volume_history(current_payload: Optional[Dict] = None, days: int = 30) -> List[Dict]:
+    """Build Page 1's 30-day source-stacked story history from saved JSON files.
+
+    This is render-side only: it reads committed daily JSON snapshots and does
+    not call Anthropic, HN, GitHub, arXiv, yfinance, or web search.
+    """
+    rows: List[Dict] = []
+    seen_dates = set()
+    data_dir = Path(config.DAILY_DATA_DIR)
+    if data_dir.exists():
+        for path in sorted(data_dir.glob("*.json"))[-days:]:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            stories = payload.get("stories") or []
+            sources: Dict[str, int] = {}
+            for story in stories:
+                source = _source_label(story)
+                sources[source] = sources.get(source, 0) + 1
+            row_date = payload.get("_date") or path.stem
+            rows.append({"date": row_date, "count": len(stories), "sources": sources})
+            seen_dates.add(row_date)
+
+    if current_payload:
+        current_date = current_payload.get("_date") or date.today().isoformat()
+        if current_date not in seen_dates:
+            stories = current_payload.get("stories") or []
+            sources: Dict[str, int] = {}
+            for story in stories:
+                source = _source_label(story)
+                sources[source] = sources.get(source, 0) + 1
+            rows.append({"date": current_date, "count": len(stories), "sources": sources})
+
+    rows = sorted(rows, key=lambda r: r.get("date", ""))[-days:]
+    return rows
+
+
+def _load_github_stars_history() -> Dict[str, Dict[str, int]]:
+    """Load optional GitHub star history if Phase 3/workflow has created it."""
+    path = Path(config.GITHUB_STARS_HISTORY_PATH)
+    if not path.exists():
+        return {}
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if isinstance(raw, dict):
+        return raw
+    return {}
+
+
+def build_sentiment_history(current_payload: Optional[Dict] = None, days: int = 30) -> Dict:
+    """Build Page 2's trend chart data from saved daily JSON files.
+
+    HN sentiment comes from each day's `model_sentiments`. GitHub star values
+    are read only if `output/github-stars-history.json` exists; otherwise they
+    safely default to 0 so the GitHub toggle renders without API calls.
+    """
+    model_meta = {m["id"]: m for m in config.TRACKED_MODELS}
+    by_date: Dict[str, Dict[str, float]] = {}
+    data_dir = Path(config.DAILY_DATA_DIR)
+
+    if data_dir.exists():
+        for path in sorted(data_dir.glob("*.json"))[-days:]:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            row_date = payload.get("_date") or path.stem
+            by_date.setdefault(row_date, {})
+            for item in payload.get("model_sentiments") or []:
+                mid = item.get("model_id") or (item.get("model_config") or {}).get("id")
+                if mid:
+                    by_date[row_date][mid] = float(item.get("sentiment_score") or 0)
+
+    if current_payload:
+        current_date = current_payload.get("_date") or date.today().isoformat()
+        by_date.setdefault(current_date, {})
+        for item in current_payload.get("model_sentiments") or []:
+            mid = item.get("model_id") or (item.get("model_config") or {}).get("id")
+            if mid:
+                by_date[current_date][mid] = float(item.get("sentiment_score") or 0)
+
+    labels_full = sorted(by_date.keys())[-days:]
+    github_history = _load_github_stars_history()
+    models = []
+    for mid, meta in model_meta.items():
+        carried = None
+        scores = []
+        github_stars = []
+        for d in labels_full:
+            val = by_date.get(d, {}).get(mid)
+            if val is not None and val > 0:
+                carried = val
+            scores.append(carried if carried is not None else None)
+            gh_val = 0
+            if isinstance(github_history.get(d), dict):
+                gh_val = int(github_history[d].get(mid) or 0)
+            github_stars.append(gh_val)
+        models.append({
+            "id": mid,
+            "name": meta.get("name", mid),
+            "color": meta.get("color", "#888780"),
+            "scores": scores,
+            "github_stars": github_stars,
+        })
+
+    return {"labels": [d[5:] if len(d) >= 10 else d for d in labels_full], "models": models}
+
+
+def enrich_payload_for_render(payload: Dict) -> Dict:
+    """Attach Phase 2B render-only derived structures to a daily payload."""
+    enriched = dict(payload)
+    enriched.setdefault("source_hot_topics", build_source_hot_topics(enriched.get("stories") or []))
+    enriched["volume_history"] = build_volume_history(enriched)
+    enriched["sentiment_history"] = build_sentiment_history(enriched)
+    return enriched
+
+
+def load_latest_daily_payload() -> Dict:
+    """Load the most recent daily JSON snapshot for --render-only."""
+    dates = storage.list_recent_dates(1)
+    if not dates:
+        raise FileNotFoundError(
+            f"No daily JSON files found in {config.DAILY_DATA_DIR}. Run the full pipeline once first."
+        )
+    latest_date = date.fromisoformat(dates[0])
+    payload = storage.load_daily_data(latest_date)
+    if payload is None:
+        raise FileNotFoundError(f"Daily JSON not found for {latest_date.isoformat()}")
+    return payload
+
+
+def render_only() -> None:
+    """Render latest.html from saved JSON only. Intended for $0 local UI testing."""
+    print("=" * 60)
+    print("AI Intelligence Dashboard — render-only")
+    print("No source fetches, no Anthropic calls, no yfinance calls.")
+    print("=" * 60)
+    payload = enrich_payload_for_render(load_latest_daily_payload())
+    html = render.render_dashboard(payload)
+    html_path = storage.save_dashboard(html)
+    print(f"Render-only dashboard saved: {html_path}")
+
 def run_pipeline() -> None:
     """Run the full daily pipeline."""
+    # Heavy/API-touching modules are imported lazily so --render-only remains
+    # dependency-light and cannot accidentally trigger source/API setup.
+    from src import scraper, analyzer, stocks
+    from src.arxiv_analyzer import analyze_arxiv_papers
+    from src.finance_analyzer import analyze_finance
+
     print("=" * 60)
     print("AI Intelligence Dashboard — daily pipeline")
     print(f"Date: {date.today().isoformat()}")
@@ -218,6 +389,8 @@ def run_pipeline() -> None:
         "fintech_spotlight":  finance_payload.get("fintech_spotlight", []),
     })
 
+    payload = enrich_payload_for_render(payload)
+
     print("\n[8/8] Save + render")
     json_path = storage.save_daily_data(payload)
     html = render.render_dashboard(payload)
@@ -232,4 +405,10 @@ def run_pipeline() -> None:
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    parser = argparse.ArgumentParser(description="AI Intelligence Dashboard pipeline")
+    parser.add_argument("--render-only", action="store_true", help="Re-render from saved JSON without any API calls")
+    args = parser.parse_args()
+    if args.render_only:
+        render_only()
+    else:
+        run_pipeline()
