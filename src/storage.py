@@ -4,7 +4,6 @@ For now everything is local. Easy to swap in GCS or Drive later.
 """
 
 import json
-import os
 from datetime import date, datetime
 from pathlib import Path
 from typing import Dict, Optional
@@ -48,9 +47,27 @@ def list_recent_dates(n: int = 30) -> list:
 
 
 def save_dashboard(html: str, filename: str = "latest.html") -> str:
-    """Write the rendered HTML dashboard."""
+    """Write the rendered HTML dashboard.
+
+    Phase 2 (PLAN sec.3, sec.11.13): also writes index.html as a meta-refresh
+    redirect to latest.html, so the bare GitHub Pages URL works.
+    """
     ensure_dirs()
     path = Path(config.DASHBOARD_DIR) / filename
     path.write_text(html, encoding="utf-8")
     print(f"Dashboard saved: {path}")
+
+    # Also write index.html — small redirect that points at latest.html.
+    # We import lazily to avoid a circular import (render imports config too).
+    if filename == "latest.html":
+        try:
+            from src.render import render_index_redirect
+            index_path = Path(config.DASHBOARD_DIR) / "index.html"
+            index_path.write_text(render_index_redirect(), encoding="utf-8")
+            print(f"Index redirect saved: {index_path}")
+        except Exception as exc:
+            # Don't fail the pipeline if redirect generation hiccups; the
+            # dashboard itself has been saved successfully.
+            print(f"  (index.html redirect skipped: {exc})")
+
     return str(path)

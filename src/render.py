@@ -1,19 +1,122 @@
 """
-HTML dashboard renderer.
-Takes the structured daily JSON and produces the 4-page interactive dashboard
-matching the design spec we agreed on in chat.
-"""
+HTML dashboard renderer (Phase 2 refactor).
 
-import json
+Architecture (PLAN.md sec.3 and sec.4.11):
+    SHELL_HEAD       — head + body open + page header + tabs
+    PAGE_N_BODY      — content-only string for each of the 4 pages
+    SHELL_TAIL       — closing footer + tab JS + body close
+    render_dashboard — concatenates SHELL_HEAD + page wrappers + bodies + SHELL_TAIL
+                       then validates structure and runs Jinja once.
+
+Page bodies are content only — they DO NOT contain their own
+`<div id="pN" class="page">` wrapper. The shell adds those wrappers
+when assembling the final HTML, which makes page-bleed structurally
+impossible: a component cannot accidentally close its parent page
+because the page wrapper is added programmatically AFTER the body
+content is concatenated.
+
+The structural validator (validate_html_structure) runs before Jinja
+processes the assembled string. It catches:
+  - Unbalanced page open/close pairs
+  - Missing or duplicate page IDs
+  - Truncated `{%` / `{{` Jinja markers
+  - Negative div nesting depth
+
+Universal Phase 2 polish applied to Pages 3 and 4 ONLY:
+  - .disclaimer line on every component card (PLAN sec.4.1, sec.7.1)
+  - .empty-state pattern for missing data (PLAN sec.4.2)
+  - .linkable hover treatment for clickable items (PLAN sec.4.3, sec.7.2)
+  - 3-line professional footer replaces the debug-style footer (PLAN sec.4.4)
+
+Pages 1 and 2 bodies are preserved byte-for-byte from the previous
+version. Phase 2B will rebuild them with the new component designs.
+"""
+from __future__ import annotations
+
+import re
 from datetime import date
-from pathlib import Path
 from typing import Dict
+
 from jinja2 import Template
 
-import config
+# config is imported here even though not directly referenced in this file
+# yet — Phase 3 will use config.DASHBOARD_LAUNCH_DATE for the volume chart
+# starting point.
+import config  # noqa: F401
 
 
-HTML_TEMPLATE = r"""<!DOCTYPE html>
+# ============================================================
+# Pre-render structural validator (PLAN sec.4.11)
+# ============================================================
+
+class HTMLStructureError(Exception):
+    """Raised when the assembled HTML fails structural validation."""
+
+
+def validate_html_structure(html: str) -> None:
+    """Validate the assembled HTML before Jinja render.
+
+    Checks (PLAN sec.4.11):
+      1. Each `<div id="pN" class="page...">` has exactly one open + one close.
+      2. No truncated Jinja markers (`{%` without matching `%}`, etc.).
+      3. No duplicate `id="pN"` page IDs.
+      4. Overall div open/close counts match.
+
+    Raises HTMLStructureError with a clear message if anything is broken.
+    """
+    # 1. Page IDs — every id="pN" should appear exactly once
+    page_id_opens = re.findall(r'<div\s+id="(p[1-4])"\s+class="page', html)
+    seen: Dict[str, int] = {}
+    for pid in page_id_opens:
+        seen[pid] = seen.get(pid, 0) + 1
+    duplicates = [pid for pid, n in seen.items() if n > 1]
+    if duplicates:
+        raise HTMLStructureError(
+            "Duplicate page IDs in shell: " + str(duplicates) +
+            ". Each id=\"pN\" must appear exactly once."
+        )
+    missing = [f"p{n}" for n in (1, 2, 3, 4) if f"p{n}" not in seen]
+    if missing:
+        raise HTMLStructureError(
+            "Missing page IDs in assembled HTML: " + str(missing) +
+            ". Shell must wrap every page body."
+        )
+
+    # 2. Truncated Jinja markers — only flag when there are MORE opens than
+    # closes (which clearly indicates truncation). Excess `}}` can come from
+    # CSS keyframe blocks like `{0%,100%{filter:brightness(1);}}` — those are
+    # legal CSS, not Jinja, and Jinja parses them correctly.
+    open_block = html.count("{%")
+    close_block = html.count("%}")
+    if open_block > close_block:
+        raise HTMLStructureError(
+            "Truncated Jinja block: " + str(open_block) +
+            " '{%' opens vs " + str(close_block) +
+            " '%}' closes. Likely a copy-paste truncation."
+        )
+    open_var = html.count("{{")
+    close_var = html.count("}}")
+    if open_var > close_var:
+        raise HTMLStructureError(
+            "Truncated Jinja variable: " + str(open_var) +
+            " '{{' opens vs " + str(close_var) + " '}}' closes."
+        )
+
+    # 3. Overall div nesting — should land at zero
+    div_opens = len(re.findall(r"<div\b", html))
+    div_closes = len(re.findall(r"</div\s*>", html))
+    if div_opens != div_closes:
+        raise HTMLStructureError(
+            "Unbalanced <div> count: " + str(div_opens) + " opens vs " +
+            str(div_closes) + " closes. Page-bleed risk — likely a missing "
+            "or stray </div>."
+        )
+
+
+# ========================================================# Shell + Page bodies# ========================================================
+
+SHELL_HEAD = r"""
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"> 
@@ -167,6 +270,21 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 4px 0;margin-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-secondary);}
   a{color:var(--text-info);}
   select{font-family:inherit;font-size:13px;padding:6px 12px;border-radius:var(--radius-md);border:0.5px solid var(--border-strong);background:var(--bg-primary);color:var(--text-primary);cursor:pointer;}
+
+  /* ============================================================
+     Phase 2 universal additions (PLAN 4.1, 4.2, 4.3, 4.4)
+     ============================================================ */
+  .disclaimer{font-size:10px;color:var(--text-tertiary);margin-top:10px;padding-top:8px;border-top:0.5px dashed var(--border);font-style:italic;line-height:1.45;}
+  .empty-state{padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;}
+  .linkable{cursor:default;border-bottom:1px solid transparent;transition:border-color 150ms ease, color 150ms ease;color:inherit;text-decoration:none;}
+  .linkable:hover{cursor:pointer;border-bottom:1px dashed var(--text-tertiary);color:var(--text-primary);}
+  .linkable:hover::after{content:" \2197";font-size:0.85em;color:var(--text-tertiary);margin-left:2px;}
+  .pro-foot{margin-top:20px;padding:18px 4px 8px;border-top:0.5px solid var(--border);text-align:center;font-size:11px;color:var(--text-secondary);line-height:1.7;}
+  .pro-foot .pf-line1{font-weight:500;color:var(--text-primary);}
+  .pro-foot .pf-line2{color:var(--text-secondary);}
+  .pro-foot .pf-line3{color:var(--text-tertiary);font-style:italic;}
+  .health-indicator{display:inline-flex;align-items:center;gap:5px;font-size:11px;margin-left:8px;}
+  .health-indicator .health-dot{width:6px;height:6px;border-radius:50%;display:inline-block;}
 </style>
 </head>
 <body>
@@ -199,8 +317,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   </button>
 </div>
 
-<!-- ==================== PAGE 1: AI INTELLIGENCE ==================== -->
-<div id="p1" class="page active">
+"""
+PAGE_1_BODY = r"""
 
 {% if top_story %}
 <div class="card card-info">
@@ -450,11 +568,9 @@ function filterSub(val){
   {% endif %}
 </div>
 {% endif %}
-</div>
 
-
-<!-- ==================== PAGE 2: MODEL TRACKER ==================== -->
-<div id="p2" class="page">
+"""
+PAGE_2_BODY = r"""
 
 <div class="card">
   <div class="sec-title">All models — snapshot</div>
@@ -674,11 +790,9 @@ function filterModel(val){
 {% endfor %}
 </script>
 
-</div>
 
-<!-- ==================== PAGE 3: AI FINANCE ==================== -->
-<div id="p3" class="page">
-
+"""
+PAGE_3_BODY = r"""
 <div style="margin-bottom:14px;">
   <div style="font-size:18px;font-weight:500;">AI finance</div>
   <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Funding, valuations, market pulse, and competitive capital intelligence — {{ today }}</div>
@@ -709,6 +823,7 @@ function filterModel(val){
       <div style="font-size:11px;color:var(--text-secondary);">{% if funding_summary.median_premoney == 'N/A' %}most undisclosed{% elif funding_summary.median_trend == 'up' %}Trending up{% elif funding_summary.median_trend == 'down' %}Trending down{% else %}across disclosed rounds{% endif %}</div>
     </div>
   </div>
+  <div class="disclaimer">Sources: TechCrunch, The Information, Reuters, Bloomberg, PitchBook &middot; Aggregated by Claude Sonnet via web search &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 2: AI ETF market pulse + bubble chart -->
@@ -726,7 +841,7 @@ function filterModel(val){
   </div>
   {% for e in etfs %}
   <div style="display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:0.5px solid var(--border);">
-    <a href="https://finance.yahoo.com/quote/{{ e.ticker }}" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">{{ e.ticker }}</a>
+    <a class="linkable" href="https://finance.yahoo.com/quote/{{ e.ticker }}" target="_blank" style="font-size:13px;font-weight:500;color:var(--text-info);width:52px;text-decoration:none;">{{ e.ticker }}</a>
     <div style="font-size:11px;color:var(--text-secondary);flex:1;min-width:0;padding-right:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ e.name }}</div>
     <div style="width:80px;height:18px;">
       {% if e.sparkline %}
@@ -750,6 +865,7 @@ function filterModel(val){
     {% endfor %}
     <span style="margin-left:auto;font-style:italic;">· Bubble size = AUM</span>
   </div>
+  <div class="disclaimer">Sources: Yahoo Finance &middot; Live ETF prices and 90-day sparkline &middot; Updated daily</div>
 </div>
 
 <!-- COMP 3: Recent funding rounds -->
@@ -764,10 +880,11 @@ function filterModel(val){
     <div class="col-hdr" style="width:80px;text-align:center;">Stage</div>
     <div class="col-hdr" style="width:120px;text-align:right;">Lead investor</div>
   </div>
-  {% for r in funding_rounds %}
+  {% if funding_rounds %}
+{% for r in funding_rounds %}
   <div style="display:flex;align-items:flex-start;gap:0;padding:10px 0;border-bottom:0.5px solid var(--border);">
     <div style="flex:2;min-width:0;">
-      <div style="font-size:13px;font-weight:500;">{% if r.url %}<a href="{{ r.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;">{{ r.company }}</a>{% else %}{{ r.company }}{% endif %} <span style="font-size:10px;color:var(--text-tertiary);font-weight:400;">{{ r.country | default('') }}</span></div>
+      <div style="font-size:13px;font-weight:500;">{% if r.url %}<a class="linkable" href="{{ r.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;">{{ r.company }}</a>{% else %}{{ r.company }}{% endif %} <span style="font-size:10px;color:var(--text-tertiary);font-weight:400;">{{ r.country | default('') }}</span></div>
       <div style="font-size:11px;color:var(--text-secondary);">{{ r.category | default('') }}</div>
     </div>
     <div style="width:60px;text-align:right;font-size:12px;color:var(--text-secondary);">{{ r.date | default('—') }}</div>
@@ -777,6 +894,11 @@ function filterModel(val){
     <div style="width:120px;text-align:right;font-size:12px;{% if r.lead_investor == 'N/A' %}color:var(--text-tertiary){% else %}color:var(--text-secondary){% endif %};">{{ r.lead_investor }}</div>
   </div>
   {% endfor %}
+{% else %}
+<div class="empty-state">No major AI funding rounds tracked in the past 2 weeks.</div>
+{% endif %}
+
+  <div class="disclaimer">Sources: TechCrunch, The Information, Reuters, Bloomberg, PitchBook &middot; Rounds verified via primary press releases &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 4: Private + Public AI valuation leaderboards -->
@@ -795,14 +917,15 @@ function filterModel(val){
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#7F77DD;width:{{ ((p.valuation_billions / max_priv) * 100) | round | int }}%;"></div></div>
     </div>
     {% endfor %}
-  </div>
+    <div class="disclaimer">Sources: Web search of analyst reports + PitchBook estimates &middot; Estimated valuations from public sources &middot; Refreshed Mondays</div>
+</div>
   <div class="card" style="margin-bottom:0;">
     <div class="sec-title">Public AI — top 10 by market cap</div>
     <div class="sec-sub">Market cap in $B · {{ today }} close</div>
     {% if public_ai %}
     {% set max_cap = public_ai[0].market_cap_billions %}
     {% for p in public_ai %}
-    <a href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <a class="linkable" href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }} <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">{{ p.ticker }}</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
@@ -814,7 +937,8 @@ function filterModel(val){
     </a>
     {% endfor %}
     {% endif %}
-  </div>
+    <div class="disclaimer">Sources: Yahoo Finance &middot; Live market caps in USD billions &middot; Updated daily</div>
+</div>
 </div>
 
 <!-- COMP 5: The arms race -->
@@ -825,6 +949,7 @@ function filterModel(val){
     <canvas id="armsRaceChart"></canvas>
   </div>
   <div style="font-size:10px;color:var(--text-tertiary);text-align:right;margin-top:4px;font-style:italic;">* Q2 2026 in progress</div>
+  <div class="disclaimer">Sources: TechCrunch, The Information, PitchBook &middot; Quarterly external capital aggregated by Claude Sonnet &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 6: VC league table -->
@@ -851,6 +976,7 @@ function filterModel(val){
   {% else %}
   <div style="padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;">VC league data unavailable for this quarter — quarterly aggregates publish with delay.</div>
   {% endif %}
+  <div class="disclaimer">Sources: PitchBook, Crunchbase, TechCrunch &middot; Deal counts verified via firm press releases &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 7: Money flow analysis -->
@@ -858,10 +984,16 @@ function filterModel(val){
   <div class="sec-title">Money flow analysis</div>
   <div class="sec-sub">Signal-driven directional insights from this week's capital movements</div>
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
-    {% for f in money_flow %}
+    {% if money_flow %}
+{% for f in money_flow %}
     <div class="signal-row signal-{{ f.direction }}">{{ f.text }}</div>
     {% endfor %}
+{% else %}
+<div class="empty-state">No directional signals identified this week.</div>
+{% endif %}
+
   </div>
+  <div class="disclaimer">Sources: This week's funding rounds, M&amp;A, and fintech deals &middot; Synthesized by Claude Sonnet &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 8: M&A & exits tracker -->
@@ -875,7 +1007,7 @@ function filterModel(val){
       <div style="width:48px;color:var(--text-secondary);font-size:11px;flex-shrink:0;padding-top:2px;">{{ m.date }}</div>
       <div style="flex:1;min-width:0;">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <span style="font-size:13px;font-weight:500;">{% if m.url %}<a href="{{ m.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;border-bottom:1px dashed var(--border-strong);">{{ m.title }}</a>{% else %}{{ m.title }}{% endif %}</span>
+          <span style="font-size:13px;font-weight:500;">{% if m.url %}<a class="linkable" href="{{ m.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;">{{ m.title }}</a>{% else %}{{ m.title }}{% endif %}</span>
           <span class="pill" style="background:{% if m.type == 'Acquisition' %}#eaf3de;color:#3b6d11{% elif m.type == 'IPO filing' %}#e6f1fb;color:#0c447c{% elif m.type == 'Investment' %}#eeedfe;color:#3c3489{% else %}#f1efe8;color:#5f5e5a{% endif %};">{{ m.type }}</span>
         </div>
         <div style="font-size:11px;color:var(--text-secondary);margin-top:3px;">{{ m.detail }}</div>
@@ -886,6 +1018,7 @@ function filterModel(val){
   {% else %}
   <div style="padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;">No major M&A activity tracked in the past 30 days.</div>
   {% endif %}
+  <div class="disclaimer">Sources: TechCrunch, Reuters, Bloomberg, SEC filings &middot; Verified against primary filings where applicable &middot; Refreshed Mondays</div>
 </div>
 
 <!-- COMP 9: Fintech & payments AI spotlight -->
@@ -893,10 +1026,11 @@ function filterModel(val){
   <div class="sec-title">Fintech & payments AI spotlight</div>
   <div class="sec-sub">AI deals in payments, lending, fraud, embedded finance, and banking infrastructure — with strategic implications for card networks and issuers</div>
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
-    {% for f in fintech_spotlight %}
+    {% if fintech_spotlight %}
+{% for f in fintech_spotlight %}
     <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
-        <span style="font-size:14px;font-weight:500;">{% if f.url %}<a href="{{ f.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;border-bottom:1px dashed var(--border-strong);">{{ f.company }}</a>{% else %}{{ f.company }}{% endif %}</span>
+        <span style="font-size:14px;font-weight:500;">{% if f.url %}<a class="linkable" href="{{ f.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;">{{ f.company }}</a>{% else %}{{ f.company }}{% endif %}</span>
         <span style="font-size:11px;color:var(--text-info);">{{ f.deal_type }}</span>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
@@ -912,7 +1046,12 @@ function filterModel(val){
       {% endif %}
     </div>
     {% endfor %}
+{% else %}
+<div class="empty-state">No major fintech AI deals this week.</div>
+{% endif %}
+
   </div>
+  <div class="disclaimer">Sources: TechCrunch, The Information, Reuters, Bloomberg &middot; Strategic implications by Claude Sonnet &middot; Refreshed Mondays</div>
 </div>
 
 <script>
@@ -994,11 +1133,9 @@ function filterModel(val){
 })();
 </script>
 
-</div>
 
-<!-- ==================== PAGE 4: RESEARCH & PAPERS ==================== -->
-<div id="p4" class="page">
-
+"""
+PAGE_4_BODY = r"""
 <div style="margin-bottom:14px;">
   <div style="font-size:18px;font-weight:500;">Research & papers</div>
   <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">AI research frontier — week of {{ today }} · sourced from arXiv, Semantic Scholar, and institutional preprints</div>
@@ -1029,6 +1166,7 @@ function filterModel(val){
       <div style="font-size:11px;{% if research_summary.hottest_topic_change and research_summary.hottest_topic_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ research_summary.hottest_topic_change | default('') }} paper volume</div>
     </div>
   </div>
+  <div class="disclaimer">Sources: arXiv (cs.AI, cs.LG, cs.CL, cs.CV, cs.MA) &middot; Aggregated by Claude during paper scoring &middot; Updated daily</div>
 </div>
 
 <!-- COMP 2: Paper of the week -->
@@ -1048,7 +1186,8 @@ function filterModel(val){
     <div style="font-size:13px;line-height:1.5;color:var(--text-primary);font-weight:500;">{{ paper_of_week.plain_summary }}</div>
   </div>
   <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;"><strong style="font-weight:500;">Why it matters:</strong> {{ paper_of_week.why_matters }}</div>
-  <a href="{{ paper_of_week.url }}" target="_blank" style="font-size:13px;color:var(--text-info);text-decoration:none;">View on arXiv →</a>
+  <a class="linkable" href="{{ paper_of_week.url }}" target="_blank" style="font-size:13px;color:var(--text-info);text-decoration:none;">View on arXiv →</a>
+  <div class="disclaimer">Sources: arXiv &middot; Selected and summarized by Claude Sonnet &middot; Updated daily</div>
 </div>
 {% endif %}
 
@@ -1057,8 +1196,9 @@ function filterModel(val){
   <div class="sec-title">Top papers this week</div>
   <div class="sec-sub">Scored by relevance, novelty, and likely real-world impact · 8.0+ threshold</div>
   <div style="margin-top:10px;">
-    {% for p in top_papers %}
-    <a href="{{ p.url }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:14px 0;border-bottom:0.5px solid var(--border);">
+    {% if top_papers %}
+{% for p in top_papers %}
+    <a class="linkable" href="{{ p.url }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:14px 0;border-bottom:0.5px solid var(--border);">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
         <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;">{{ p.title }}</div>
         <span class="score-pill" style="flex-shrink:0;">{{ "%.1f"|format(p.score) }}</span>
@@ -1070,7 +1210,12 @@ function filterModel(val){
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">{{ p.summary }}</div>
     </a>
     {% endfor %}
+{% else %}
+<div class="empty-state">No papers above the relevance threshold this week.</div>
+{% endif %}
+
   </div>
+  <div class="disclaimer">Sources: arXiv &middot; Scored by Claude Haiku, summarized by Sonnet &middot; Updated daily</div>
 </div>
 
 <!-- COMP 4: Research by category + 30-day volume -->
@@ -1081,14 +1226,16 @@ function filterModel(val){
     <div style="position:relative;height:260px;width:100%;margin-top:10px;">
       <canvas id="researchCategoryChart"></canvas>
     </div>
-  </div>
+    <div class="disclaimer">Sources: arXiv categories &middot; Paper counts: this week vs last week &middot; Updated daily</div>
+</div>
   <div class="card" style="margin-bottom:0;">
     <div class="sec-title">30-day research volume</div>
     <div class="sec-sub">Papers per category — daily rolling average</div>
     <div style="position:relative;height:260px;width:100%;margin-top:10px;">
       <canvas id="researchVolumeChart"></canvas>
     </div>
-  </div>
+    <div class="disclaimer">Sources: arXiv categories &middot; Daily paper volume per category &middot; Backfills as daily history accumulates</div>
+</div>
 </div>
 
 <!-- COMP 5: Hot institutions this week -->
@@ -1109,6 +1256,7 @@ function filterModel(val){
     </div>
     {% endfor %}
   </div>
+  <div class="disclaimer">Sources: arXiv author affiliations &middot; Ranked by paper output and citation velocity &middot; Updated daily</div>
 </div>
 
 <!-- COMP 6: Author spotlight -->
@@ -1131,6 +1279,7 @@ function filterModel(val){
     </div>
     {% endfor %}
   </div>
+  <div class="disclaimer">Sources: arXiv author tracking &middot; Synthesized by Claude Sonnet &middot; Updated daily</div>
 </div>
 
 <!-- COMP 7: Breakthrough radar -->
@@ -1158,6 +1307,7 @@ function filterModel(val){
       <div style="font-size:12px;color:var(--text-secondary);">Long-term · uncertain impact</div>
     </div>
   </div>
+  <div class="disclaimer">Sources: arXiv &middot; Breakthroughs flagged by Claude Sonnet at score 8.0+ &middot; Updated daily</div>
 </div>
 
 <!-- COMP 8: Research signal analysis -->
@@ -1165,10 +1315,16 @@ function filterModel(val){
   <div class="sec-title">Research signal analysis</div>
   <div class="sec-sub">What this week's paper volume and topics tell us about where the field is heading</div>
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
-    {% for s in research_signals %}
+    {% if research_signals %}
+{% for s in research_signals %}
     <div class="signal-row signal-{{ s.direction }}">{{ s.text }}</div>
     {% endfor %}
+{% else %}
+<div class="empty-state">No directional research signals this week.</div>
+{% endif %}
+
   </div>
+  <div class="disclaimer">Sources: This week's arXiv papers &middot; Synthesized by Claude Sonnet &middot; Updated daily</div>
 </div>
 
 <!-- COMP 9: Fintech & payments research corner -->
@@ -1176,7 +1332,8 @@ function filterModel(val){
   <div class="sec-title">Fintech & payments research corner</div>
   <div class="sec-sub">AI papers in fraud detection, credit scoring, AML, payment routing, and financial forecasting — with strategic implications for card networks and issuers</div>
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
-    {% for f in fintech_research %}
+    {% if fintech_research %}
+{% for f in fintech_research %}
     <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;">
         <div style="font-size:14px;font-weight:500;line-height:1.4;flex:1;">{{ f.title }}</div>
@@ -1191,7 +1348,12 @@ function filterModel(val){
       <div style="font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:8px;">{{ f.strategic }}</div>
     </div>
     {% endfor %}
+{% else %}
+<div class="empty-state">No fintech-relevant arXiv papers this week.</div>
+{% endif %}
+
   </div>
+  <div class="disclaimer">Sources: arXiv (filtered for payments, fintech, fraud topics) &middot; Strategic implications by Claude Sonnet &middot; Updated daily</div>
 </div>
 
 <script>
@@ -1290,11 +1452,14 @@ function filterModel(val){
 })();
 </script>
 
-</div>
 
-<div class="foot">
-  <div>Auto-generated by Claude · last update {{ today }} · {{ metrics.total_stories }} stories curated from {{ metrics.posts_pulled }} posts</div>
-  <div>Pipeline v1.0</div>
+"""
+SHELL_TAIL = r"""
+
+<div class="pro-foot">
+  <div class="pf-line1">AI Intelligence Dashboard &middot; Updated daily &middot; Last refresh: {{ today }}</div>
+  <div class="pf-line2">Sources: Hacker News &middot; arXiv &middot; GitHub Trending &middot; Yahoo Finance &middot; Web search</div>
+  <div class="pf-line3">Curated and synthesized by Claude (Anthropic)</div>
 </div>
 
 </div>
@@ -1311,58 +1476,128 @@ document.querySelectorAll(".tab").forEach(t => {
 </script>
 </body>
 </html>
+
 """
 
 
+# ============================================================
+# Page wrappers — opening + closing tags injected by shell, NOT
+# by page bodies. This is the structural fix that makes page-bleed
+# impossible.
+# ============================================================
+
+def _wrap_page(page_id: str, body: str, active: bool = False) -> str:
+    klass = "page active" if active else "page"
+    return (
+        '\n<!-- ==================== PAGE ' + page_id[1:].upper()
+        + ' ==================== -->\n'
+        + '<div id="' + page_id + '" class="' + klass + '">\n'
+        + body
+        + '\n</div>\n'
+    )
+
+
+def _build_template_text() -> str:
+    """Concatenate the shell + 4 page wrappers + shell tail.
+
+    This is the only place where page wrappers are added. By construction,
+    each page body is wrapped exactly once, so HTML structure is provably
+    balanced (the structural validator double-checks this).
+    """
+    return (
+        SHELL_HEAD
+        + _wrap_page("p1", PAGE_1_BODY, active=True)
+        + _wrap_page("p2", PAGE_2_BODY)
+        + _wrap_page("p3", PAGE_3_BODY)
+        + _wrap_page("p4", PAGE_4_BODY)
+        + SHELL_TAIL
+    )
+
+
 def render_dashboard(daily_data: Dict) -> str:
-    """Render the dashboard HTML from a daily-data JSON payload."""
-    template = Template(HTML_TEMPLATE)
+    """Render the dashboard HTML from a daily-data JSON payload.
+
+    Phase 2 changes:
+      - Page bodies assembled in Python (no monolithic template)
+      - Structural validator runs on assembled template before Jinja
+      - HTMLStructureError raised on broken structure (helpful messages)
+    """
+    template_text = _build_template_text()
+    validate_html_structure(template_text)
+
+    template = Template(template_text)
 
     stories = daily_data.get("stories", [])
     fintech_stories = [s for s in stories if s.get("is_fintech")]
     research_stories = [
         s for s in stories
-        if any(tag in (s.get("category_tags") or []) for tag in ["Research/Paper", "Open Source", "Benchmark/Evaluation"])
+        if any(
+            tag in (s.get("category_tags") or [])
+            for tag in ["Research/Paper", "Open Source", "Benchmark/Evaluation"]
+        )
     ]
 
     stories_by_subreddit = {}
     for s in stories:
-        sub = s.get("subreddit", "unknown")
-        if sub not in stories_by_subreddit:
-            stories_by_subreddit[sub] = []
-        stories_by_subreddit[sub].append(s)
-    stories_by_subreddit = dict(sorted(stories_by_subreddit.items(), key=lambda x: -len(x[1])))
+        sub = s.get("subreddit") or s.get("source") or "unknown"
+        stories_by_subreddit.setdefault(sub, []).append(s)
+    stories_by_subreddit = dict(
+        sorted(stories_by_subreddit.items(), key=lambda x: -len(x[1]))
+    )
+
     return template.render(
-    volume_history=daily_data.get("volume_history", []),
-    today=daily_data.get("_date", date.today().isoformat()),
-    top_story=stories[0] if stories else None,
-    top_stories=stories,
-    fintech_stories=fintech_stories,
-    research_stories=research_stories,
-    synthesis=daily_data.get("synthesis", {}),
-    metrics=daily_data.get("metrics", {}),
-    model_sentiments=daily_data.get("model_sentiments", []),
-    etfs=daily_data.get("etfs", []),
-    public_ai=daily_data.get("public_ai", []),
-    category_breakdown=daily_data.get("category_breakdown", {}),
-    sentiment_history=daily_data.get("sentiment_history", {}),
-    stories_by_subreddit=stories_by_subreddit,
-    funding_summary=daily_data.get("funding_summary", {}),
-    funding_rounds=daily_data.get("funding_rounds", []),
-    private_ai=daily_data.get("private_ai", []),
-    arms_race=daily_data.get("arms_race", {}),
-    vc_league=daily_data.get("vc_league", []),
-    money_flow=daily_data.get("money_flow", []),
-    ma_tracker=daily_data.get("ma_tracker", []),
-    fintech_spotlight=daily_data.get("fintech_spotlight", []),
-    research_summary=daily_data.get("research_summary", {}),
-    paper_of_week=daily_data.get("paper_of_week", None),
-    top_papers=daily_data.get("top_papers", []),
-    research_categories=daily_data.get("research_categories", {}),
-    research_volume=daily_data.get("research_volume", {}),
-    hot_institutions=daily_data.get("hot_institutions", []),
-    author_spotlight=daily_data.get("author_spotlight", []),
-    breakthrough_radar=daily_data.get("breakthrough_radar", []),
-    research_signals=daily_data.get("research_signals", []),
-    fintech_research=daily_data.get("fintech_research", []),
-)
+        volume_history=daily_data.get("volume_history", []),
+        today=daily_data.get("_date", date.today().isoformat()),
+        top_story=stories[0] if stories else None,
+        top_stories=stories,
+        fintech_stories=fintech_stories,
+        research_stories=research_stories,
+        synthesis=daily_data.get("synthesis", {}),
+        metrics=daily_data.get("metrics", {}),
+        model_sentiments=daily_data.get("model_sentiments", []),
+        etfs=daily_data.get("etfs", []),
+        public_ai=daily_data.get("public_ai", []),
+        category_breakdown=daily_data.get("category_breakdown", {}),
+        sentiment_history=daily_data.get("sentiment_history", {}),
+        stories_by_subreddit=stories_by_subreddit,
+        funding_summary=daily_data.get("funding_summary", {}),
+        funding_rounds=daily_data.get("funding_rounds", []),
+        private_ai=daily_data.get("private_ai", []),
+        arms_race=daily_data.get("arms_race", {}),
+        vc_league=daily_data.get("vc_league", []),
+        money_flow=daily_data.get("money_flow", []),
+        ma_tracker=daily_data.get("ma_tracker", []),
+        fintech_spotlight=daily_data.get("fintech_spotlight", []),
+        research_summary=daily_data.get("research_summary", {}),
+        paper_of_week=daily_data.get("paper_of_week", None),
+        top_papers=daily_data.get("top_papers", []),
+        research_categories=daily_data.get("research_categories", {}),
+        research_volume=daily_data.get("research_volume", {}),
+        hot_institutions=daily_data.get("hot_institutions", []),
+        author_spotlight=daily_data.get("author_spotlight", []),
+        breakthrough_radar=daily_data.get("breakthrough_radar", []),
+        research_signals=daily_data.get("research_signals", []),
+        fintech_research=daily_data.get("fintech_research", []),
+    )
+
+
+def render_index_redirect() -> str:
+    """Generate index.html — a tiny meta-refresh redirect to latest.html.
+
+    PLAN sec.3, sec.11.13: bare GitHub Pages URL should land on the dashboard.
+    """
+    return (
+        '<!DOCTYPE html>\n'
+        '<html lang="en">\n'
+        '<head>\n'
+        '<meta charset="utf-8">\n'
+        '<meta http-equiv="refresh" content="0; url=latest.html">\n'
+        '<title>AI Intelligence Dashboard</title>\n'
+        '<link rel="canonical" href="latest.html">\n'
+        '</head>\n'
+        '<body>\n'
+        '<p>Redirecting to <a href="latest.html">latest dashboard</a>&hellip;</p>\n'
+        '<script>window.location.replace("latest.html");</script>\n'
+        '</body>\n'
+        '</html>\n'
+    )

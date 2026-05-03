@@ -9,6 +9,30 @@ import yfinance as yf
 import config
 
 
+def build_sparkline_points(prices_90d: List[float], width: int = 80, height: int = 18) -> str:
+    """Convert a 90-day price history into an SVG polyline points string.
+
+    Returns an empty string if there are fewer than 2 prices. The polyline is
+    rendered by render.py inside a fixed-size SVG (width x height) with a
+    1.2px stroke colored green if dod_pct >= 0, otherwise red.
+
+    PLAN.md sec.7.3 — fixes the Page 3 ETF Trend column which has been blank
+    because the template references e.sparkline / e.sparkline_points but
+    stocks.py never produced them.
+    """
+    if not prices_90d or len(prices_90d) < 2:
+        return ""
+    lo, hi = min(prices_90d), max(prices_90d)
+    rng = hi - lo or 1
+    n = len(prices_90d)
+    pts = []
+    for i, p in enumerate(prices_90d):
+        x = (i / (n - 1)) * width
+        y = height - ((p - lo) / rng) * height
+        pts.append(f"{x:.1f},{y:.1f}")
+    return " ".join(pts)
+
+
 def fetch_etf_data(ticker: str) -> Optional[Dict]:
     """
     Fetch current price, DoD change, 1-year return, AUM, and 90-day price history.
@@ -54,6 +78,9 @@ def fetch_etf_data(ticker: str) -> Optional[Dict]:
             "aum_billions": round(aum_n, 2),
             "spark_12d": spark12,
             "spark_90d": spark,
+            # Page 3 Trend column rendering — PLAN.md sec.7.3
+            "sparkline": bool(spark and len(spark) >= 2),
+            "sparkline_points": build_sparkline_points(spark),
         }
     except Exception as e:
         print(f"  ! Error fetching {ticker}: {e}")
