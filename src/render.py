@@ -16,7 +16,7 @@ import config
 HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Intelligence Dashboard — {{ today }}</title>
 <style>
@@ -551,7 +551,6 @@ function filterSub(val){
   </select>
 
   {% for m in model_sentiments %}
-  {% set dd = m.deep or {} %}
   <div class="model-deep" data-model="{{ m.model_config.name }}"{% if not loop.first %} style="display:none"{% endif %}>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
@@ -562,13 +561,13 @@ function filterSub(val){
       </div>
       <div class="mcard">
         <div class="mlabel">MAU</div>
-        <div class="mvalue" style="font-size:18px;">{{ dd.mau | default('—') }}</div>
+        <div class="mvalue" style="font-size:18px;">{{ m.deep.mau | default('—') }}</div>
         <div style="font-size:10px;color:var(--text-secondary);">estimated</div>
       </div>
       <div class="mcard">
         <div class="mlabel">Market share</div>
-        <div class="mvalue" style="font-size:18px;">{{ dd.market_share | default('—') }}</div>
-        <div style="font-size:10px;{% if dd.market_share_change and dd.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ dd.market_share_change | default('') }} WoW</div>
+        <div class="mvalue" style="font-size:18px;">{{ m.deep.market_share | default('—') }}</div>
+        <div style="font-size:10px;{% if m.deep.market_share_change and m.deep.market_share_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ m.deep.market_share_change | default('') }} WoW</div>
       </div>
       <div class="mcard">
         <div class="mlabel">Buzz volume</div>
@@ -580,19 +579,19 @@ function filterSub(val){
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
       <div class="stat-card">
         <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>
-        {% for s in (dd.strengths or []) %}
+        {% for s in (m.deep.strengths or []) %}
         <div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>
         {% endfor %}
       </div>
       <div class="stat-card">
         <div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>
-        {% for w in (dd.weaknesses or []) %}
+        {% for w in (m.deep.weaknesses or []) %}
         <div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>
         {% endfor %}
       </div>
     </div>
 
-    {% if dd.mention_chart %}
+    {% if m.deep.mention_chart %}
     <div style="margin-bottom:14px;">
       <div class="sec-title">Reddit mention sentiment — strengths vs weaknesses</div>
       <div class="sec-sub">Positive / negative Reddit mentions — current 30 days vs prior 30 days</div>
@@ -603,10 +602,10 @@ function filterSub(val){
     </div>
     {% endif %}
 
-    {% if dd.recent_changes %}
+    {% if m.deep.recent_changes %}
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
-      {% for c in dd.recent_changes %}
+      {% for c in m.deep.recent_changes %}
       <div style="display:flex;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:12px;">
         <div style="width:48px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div>
         <div style="color:var(--text-info);">{{ c.text }}</div>
@@ -615,10 +614,10 @@ function filterSub(val){
     </div>
     {% endif %}
 
-    {% if dd.key_people %}
+    {% if m.deep.key_people %}
     <div>
       <div class="sec-title">Key people — latest activity</div>
-      {% for p in dd.key_people %}
+      {% for p in m.deep.key_people %}
       <div class="person-chip">
         <div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials }}</div>
         <div style="flex:1;min-width:0;">
@@ -641,12 +640,11 @@ function filterModel(val){
   });
 }
 {% for m in model_sentiments %}
-{% set dd = m.deep or {} %}
-{% if dd.mention_chart %}
+{% if m.deep.mention_chart %}
 (function(){
   var ctx = document.getElementById('mentionChart-{{ loop.index }}');
   if(!ctx) return;
-  var data = {{ dd.mention_chart | tojson }};
+  var data = {{ m.deep.mention_chart | tojson }};
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -690,23 +688,23 @@ function filterModel(val){
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px;">
     <div class="mcard">
       <div class="mlabel">Total raised</div>
-      <div class="mvalue">${{ funding_summary.total_raised | default('—') }}</div>
-      <div style="font-size:11px;{% if funding_summary.total_raised_change and funding_summary.total_raised_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ funding_summary.total_raised_change | default('') }} vs last week</div>
+      <div class="mvalue">{% if funding_summary.total_raised and funding_summary.total_raised != 'N/A' %}${{ funding_summary.total_raised }}{% else %}N/A{% endif %}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{% if funding_summary.total_raised_change %}{{ funding_summary.total_raised_change }} vs last week{% else %}{{ funding_summary.deals_closed | default(0) }} deals tracked{% endif %}</div>
     </div>
     <div class="mcard">
       <div class="mlabel">Deals closed</div>
-      <div class="mvalue">{{ funding_summary.deals_closed | default('—') }}</div>
-      <div style="font-size:11px;{% if funding_summary.deals_change and funding_summary.deals_change.startswith('+') %}color:#3b6d11{% else %}color:var(--text-secondary){% endif %};">{{ funding_summary.deals_change | default('') }} vs last week</div>
+      <div class="mvalue">{{ funding_summary.deals_closed | default('N/A') }}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{% if funding_summary.deals_change %}{{ funding_summary.deals_change }} vs last week{% else %}past 2 weeks{% endif %}</div>
     </div>
     <div class="mcard">
       <div class="mlabel">Largest round</div>
-      <div class="mvalue">${{ funding_summary.largest_round | default('—') }}</div>
-      <div style="font-size:11px;color:var(--text-secondary);">{{ funding_summary.largest_round_company | default('') }}</div>
+      <div class="mvalue">{% if funding_summary.largest_round and funding_summary.largest_round != 'N/A' %}${{ funding_summary.largest_round }}{% else %}N/A{% endif %}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{{ funding_summary.largest_round_company | default('—') }}</div>
     </div>
     <div class="mcard">
-      <div class="mlabel">Median pre-money</div>
-      <div class="mvalue">${{ funding_summary.median_premoney | default('—') }}</div>
-      <div style="font-size:11px;{% if funding_summary.median_trend == 'up' %}color:#3b6d11{% elif funding_summary.median_trend == 'down' %}color:#a32d2d{% else %}color:var(--text-secondary){% endif %};">{% if funding_summary.median_trend == 'up' %}Trending up{% elif funding_summary.median_trend == 'down' %}Trending down{% else %}Stable{% endif %}</div>
+      <div class="mlabel">Median valuation</div>
+      <div class="mvalue">{% if funding_summary.median_premoney and funding_summary.median_premoney != 'N/A' %}${{ funding_summary.median_premoney }}{% else %}N/A{% endif %}</div>
+      <div style="font-size:11px;color:var(--text-secondary);">{% if funding_summary.median_premoney == 'N/A' %}most undisclosed{% elif funding_summary.median_trend == 'up' %}Trending up{% elif funding_summary.median_trend == 'down' %}Trending down{% else %}across disclosed rounds{% endif %}</div>
     </div>
   </div>
 </div>
@@ -755,9 +753,10 @@ function filterModel(val){
 <!-- COMP 3: Recent funding rounds -->
 <div class="card">
   <div class="sec-title">Recent funding rounds</div>
-  <div class="sec-sub">Sorted by round size — this week</div>
+  <div class="sec-sub">Sorted by round size — past 2 weeks</div>
   <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;margin-top:8px;">
     <div class="col-hdr" style="flex:2;">Company</div>
+    <div class="col-hdr" style="width:60px;text-align:right;">Date</div>
     <div class="col-hdr" style="width:80px;text-align:right;">Amount</div>
     <div class="col-hdr" style="width:80px;text-align:right;">Valuation</div>
     <div class="col-hdr" style="width:80px;text-align:center;">Stage</div>
@@ -766,13 +765,14 @@ function filterModel(val){
   {% for r in funding_rounds %}
   <div style="display:flex;align-items:flex-start;gap:0;padding:10px 0;border-bottom:0.5px solid var(--border);">
     <div style="flex:2;min-width:0;">
-      <div style="font-size:13px;font-weight:500;">{{ r.company }} <span style="font-size:10px;color:var(--text-tertiary);font-weight:400;">{{ r.country | default('') }}</span></div>
+      <div style="font-size:13px;font-weight:500;">{% if r.url %}<a href="{{ r.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;">{{ r.company }}</a>{% else %}{{ r.company }}{% endif %} <span style="font-size:10px;color:var(--text-tertiary);font-weight:400;">{{ r.country | default('') }}</span></div>
       <div style="font-size:11px;color:var(--text-secondary);">{{ r.category | default('') }}</div>
     </div>
-    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ r.amount }}</div>
-    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ r.valuation }}</div>
+    <div style="width:60px;text-align:right;font-size:12px;color:var(--text-secondary);">{{ r.date | default('—') }}</div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">{% if r.amount and r.amount != 'N/A' %}${{ r.amount }}{% else %}N/A{% endif %}</div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">{% if r.valuation and r.valuation != 'N/A' %}${{ r.valuation }}{% else %}<span style="color:var(--text-tertiary);font-weight:400;">N/A</span>{% endif %}</div>
     <div style="width:80px;text-align:center;"><span class="pill" style="background:#e6f1fb;color:#0c447c;">{{ r.stage }}</span></div>
-    <div style="width:120px;text-align:right;font-size:12px;color:var(--text-secondary);">{{ r.lead_investor }}</div>
+    <div style="width:120px;text-align:right;font-size:12px;{% if r.lead_investor == 'N/A' %}color:var(--text-tertiary){% else %}color:var(--text-secondary){% endif %};">{{ r.lead_investor }}</div>
   </div>
   {% endfor %}
 </div>
@@ -828,7 +828,8 @@ function filterModel(val){
 <!-- COMP 6: VC league table -->
 <div class="card">
   <div class="sec-title">VC league table — top AI investors this quarter</div>
-  <div class="sec-sub">Ranked by deals closed · Q1 2026</div>
+  <div class="sec-sub">Ranked by deals closed · this quarter</div>
+  {% if vc_league %}
   <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;margin-top:8px;">
     <div class="col-hdr" style="width:24px;">#</div>
     <div class="col-hdr" style="flex:1;">Firm</div>
@@ -841,10 +842,13 @@ function filterModel(val){
     <div style="width:24px;font-size:12px;color:var(--text-secondary);">{{ loop.index }}</div>
     <div style="flex:1;font-size:13px;font-weight:500;">{{ v.firm }}</div>
     <div style="width:60px;text-align:right;font-size:13px;font-weight:500;">{{ v.deals }}</div>
-    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">${{ v.deployed }}</div>
+    <div style="width:80px;text-align:right;font-size:13px;font-weight:500;">{% if v.deployed and v.deployed != 'N/A' %}${{ v.deployed }}{% else %}N/A{% endif %}</div>
     <div style="width:160px;text-align:right;font-size:11px;color:var(--text-secondary);">{{ v.focus }}</div>
   </div>
   {% endfor %}
+  {% else %}
+  <div style="padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;">VC league data unavailable for this quarter — quarterly aggregates publish with delay.</div>
+  {% endif %}
 </div>
 
 <!-- COMP 7: Money flow analysis -->
@@ -862,13 +866,14 @@ function filterModel(val){
 <div class="card">
   <div class="sec-title">M&A & exits tracker</div>
   <div class="sec-sub">Acquisitions, strategic investments, IPO filings, acqui-hires</div>
+  {% if ma_tracker %}
   <div style="margin-top:10px;">
     {% for m in ma_tracker %}
     <div style="display:flex;gap:14px;padding:10px 0;border-bottom:0.5px solid var(--border);">
       <div style="width:48px;color:var(--text-secondary);font-size:11px;flex-shrink:0;padding-top:2px;">{{ m.date }}</div>
       <div style="flex:1;min-width:0;">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <span style="font-size:13px;font-weight:500;">{{ m.title }}</span>
+          <span style="font-size:13px;font-weight:500;">{% if m.url %}<a href="{{ m.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;border-bottom:1px dashed var(--border-strong);">{{ m.title }}</a>{% else %}{{ m.title }}{% endif %}</span>
           <span class="pill" style="background:{% if m.type == 'Acquisition' %}#eaf3de;color:#3b6d11{% elif m.type == 'IPO filing' %}#e6f1fb;color:#0c447c{% elif m.type == 'Investment' %}#eeedfe;color:#3c3489{% else %}#f1efe8;color:#5f5e5a{% endif %};">{{ m.type }}</span>
         </div>
         <div style="font-size:11px;color:var(--text-secondary);margin-top:3px;">{{ m.detail }}</div>
@@ -876,6 +881,9 @@ function filterModel(val){
     </div>
     {% endfor %}
   </div>
+  {% else %}
+  <div style="padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;">No major M&A activity tracked in the past 30 days.</div>
+  {% endif %}
 </div>
 
 <!-- COMP 9: Fintech & payments AI spotlight -->
@@ -886,15 +894,20 @@ function filterModel(val){
     {% for f in fintech_spotlight %}
     <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
-        <span style="font-size:14px;font-weight:500;">{{ f.company }}</span>
+        <span style="font-size:14px;font-weight:500;">{% if f.url %}<a href="{{ f.url }}" target="_blank" style="color:var(--text-primary);text-decoration:none;border-bottom:1px dashed var(--border-strong);">{{ f.company }}</a>{% else %}{{ f.company }}{% endif %}</span>
         <span style="font-size:11px;color:var(--text-info);">{{ f.deal_type }}</span>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
         {% for tag in f.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
       </div>
       <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;">{{ f.description }}</div>
+      {% if f.strategic %}
       <div style="font-size:10px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Strategic implication</div>
       <div style="font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:8px;">{{ f.strategic }}</div>
+      {% endif %}
+      {% if f.url %}
+      <div style="margin-top:8px;font-size:11px;"><a href="{{ f.url }}" target="_blank" style="color:var(--text-info);text-decoration:none;">Read source →</a></div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>

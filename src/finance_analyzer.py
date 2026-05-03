@@ -2,29 +2,22 @@
 Finance analyzer for Page 3 of the AI Intelligence Dashboard.
 
 Pulls real-world AI funding/valuation/M&A data via Anthropic's native
-web search tool, then uses Haiku for categorization and Sonnet for
-synthesis (the "money flow" insights and fintech strategic angle).
+web search tool, then uses Sonnet for synthesis (the "money flow" insights
+and fintech strategic angle).
 
 Designed to run WEEKLY (Mondays) — the result is cached to
 output/finance-cache.json and re-used by the daily pipeline on other days.
 
-Cost per weekly run (~$0.18-0.25):
-  - 6-8 web searches @ $10/1000 = ~$0.08
-  - Haiku categorization: ~$0.02
-  - Sonnet synthesis: ~$0.10
+Cost per weekly run (~$0.20):
+  - 6 web searches @ $10/1000 = ~$0.06
+  - Sonnet synthesis: ~$0.14
 
-Output schema matches what render.py already expects on Page 3:
-  - funding_summary (4 metric cards)
-  - funding_rounds (sortable table)
-  - private_ai (valuation leaderboard)
-  - arms_race (quarterly bar chart)
-  - vc_league (top investors)
-  - money_flow (directional signal insights)
-  - ma_tracker (M&A timeline)
-  - fintech_spotlight (Mastercard/payments angle)
+Throttled with 40s sleeps between every Sonnet call to stay under the
+30K tokens/min free-tier rate limit. Total runtime: ~7 min.
 
-Note: ETF pulse and public_ai are pulled separately by stocks.py
-(yfinance) and don't go through this analyzer.
+Resumable: progress is saved to output/finance-progress.json after every
+step, so a rate-limit failure mid-run can be retried without re-paying for
+completed steps. The progress file is deleted on successful completion.
 """
 from __future__ import annotations
 
@@ -32,22 +25,52 @@ import json
 import os
 import re
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from typing import Any, Dict, List, Optional
 
 from anthropic import Anthropic
 
 
 # Models
-HAIKU_MODEL = "claude-haiku-4-5"
 SONNET_MODEL = "claude-sonnet-4-6"
 
-# Web search tool spec (Feb 2026 version)
+# Web search tool spec
 WEB_SEARCH_TOOL = {"type": "web_search_20250305", "name": "web_search", "max_uses": 3}
+
+# Throttle (seconds) before each Sonnet call to stay under 30K input tokens/min
+THROTTLE_SECONDS = 40
 
 
 # ============================================================
-# Web search helpers
+# Date context — anchor model on actual current date
+# ============================================================
+
+def _date_context() -> str:
+    """Returns a date anchor block to prepend to every prompt.
+
+    Without this, the model often defaults to its training-cutoff dates
+    (e.g. 2025) when web searching, returning stale archived content
+    instead of current news.
+    """
+    today = date.today()
+    two_weeks_ago = today - timedelta(days=14)
+    one_month_ago = today - timedelta(days=30)
+    return f"""IMPORTANT DATE CONTEXT:
+- Today's date is {today.strftime('%B %d, %Y')} ({today.isoformat()}).
+- The current year is {today.year}.
+- "This week" means {today - timedelta(days=7):%B %d} to {today:%B %d, %Y}.
+- "Past 2 weeks" means after {two_weeks_ago:%B %d, %Y}.
+- "Past 30 days" means after {one_month_ago:%B %d, %Y}.
+
+When you search the web, only return results from these recent date ranges.
+Reject any older content that appears in search results — those are stale.
+All dates in your output should be in {today.year} (or late {today.year - 1} if explicitly within range).
+
+"""
+
+
+# ============================================================
+# Web search & response helpers
 # ============================================================
 
 def _extract_text(response) -> str:
@@ -61,13 +84,11 @@ def _extract_text(response) -> str:
 
 def _ws_search(client: Anthropic, prompt: str, max_uses: int = 3) -> str:
     """Run a single web-search-enabled Claude call and return text.
-    
-    Throttled with a 40-second sleep BEFORE each call to stay under the
-    30K tokens/min free-tier rate limit (each web search call ingests
-    ~15-20K tokens of search result content).
+
+    Throttled before each call to stay under the 30K tokens/min rate limit.
     """
-    print(f"    (waiting 40s for rate limit window...)")
-    time.sleep(40)
+    print(f"    (waiting {THROTTLE_SECONDS}s for rate limit window...)")
+    time.sleep(THROTTLE_SECONDS)
     tool = {**WEB_SEARCH_TOOL, "max_uses": max_uses}
     resp = client.messages.create(
         model=SONNET_MODEL,
@@ -78,22 +99,16 @@ def _ws_search(client: Anthropic, prompt: str, max_uses: int = 3) -> str:
     return _extract_text(resp)
 
 
-# ============================================================
-# JSON extraction helpers
-# ============================================================
-
 def _extract_json(text: str) -> Optional[Any]:
     """Extract a JSON object/array from a model response."""
     if not text:
         return None
-    # Try fenced ```json blocks first
     m = re.search(r"```(?:json)?\s*(\{.*?\}|\[.*?\])\s*```", text, re.DOTALL)
     if m:
         try:
             return json.loads(m.group(1))
         except json.JSONDecodeError:
             pass
-    # Try first { ... } or [ ... ]
     for opener, closer in [("{", "}"), ("[", "]")]:
         s = text.find(opener)
         e = text.rfind(closer)
@@ -106,37 +121,94 @@ def _extract_json(text: str) -> Optional[Any]:
 
 
 # ============================================================
+# Helpers for data normalization
+# ============================================================
+
+def _na(value: Any) -> str:
+    """Normalize empty/missing values to 'N/A'."""
+    if value is None:
+        return "N/A"
+    s = str(value).strip()
+    if not s or s in ("-", "—", "Undisclosed", "undisclosed", "null", "None", "TBD", "tbd"):
+        return "N/A"
+    return s
+
+
+def _strip_dollar(value: str) -> str:
+    """Strip leading $ from values that come back already prefixed.
+
+    Render template prepends $, so we should not double it.
+    """
+    if value is None:
+        return ""
+    s = str(value).strip()
+    if s.startswith("$"):
+        s = s[1:].strip()
+    return s
+
+
+def _parse_amount_billions(value: str) -> float:
+    """Parse '$2B', '500M', '$1.2B' etc. to billions."""
+    if not value:
+        return 0.0
+    s = str(value).strip().lstrip("$").upper().replace(",", "")
+    m = re.match(r"([\d.]+)\s*([BM])", s)
+    if not m:
+        return 0.0
+    val = float(m.group(1))
+    return val if m.group(2) == "B" else val / 1000
+
+
+# ============================================================
 # Data fetchers (one per Page 3 component)
 # ============================================================
 
 def fetch_funding_rounds(client: Anthropic) -> List[Dict]:
     """Pull recent (last 14 days) AI funding rounds via web search."""
-    prompt = """Search the web for AI startup funding rounds announced in the past 2 weeks. Look at TechCrunch, The Information, Reuters, Bloomberg.
+    prompt = _date_context() + """Search the web for AI startup funding rounds announced in the past 2 weeks. Focus on TechCrunch, The Information, Reuters, Bloomberg, PitchBook.
 
-Find 8-12 notable rounds and return ONLY a JSON array (no prose, no markdown fences) with this exact schema for each round:
+Find 8-12 notable rounds. CRITICAL — only include rounds announced in the past 2 weeks. Skip anything older.
+
+Return ONLY a JSON array (no prose, no markdown fences) with this exact schema:
 
 [
   {
     "company": "Company name",
     "category": "Foundation Model" | "AI Infra" | "Agents" | "Vertical SaaS" | "Fintech AI" | "Robotics" | "AI Health" | "Dev Tools",
-    "amount": "$XB" or "$XXXM",
-    "valuation": "$XB" or "—" if undisclosed,
+    "amount": "2B" or "500M" (NO leading $),
+    "valuation": "5B" or "N/A" (NO leading $; use N/A if undisclosed),
     "stage": "Seed" | "Series A" | "Series B" | "Series C" | "Series D" | "Series E" | "Growth" | "Strategic",
-    "lead_investor": "Lead investor name(s)",
-    "date": "Mon DD" (e.g. "May 02"),
+    "lead_investor": "Lead investor name(s)" or "N/A" if undisclosed,
+    "date": "Mon DD" (e.g. "Apr 28") — must be from the past 2 weeks,
     "url": "Source URL"
   }
 ]
 
+Use "N/A" string (not dashes, not empty) for any undisclosed field. Do NOT include a leading $ in amount/valuation values.
+
 Return ONLY the JSON array. No explanations."""
     text = _ws_search(client, prompt, max_uses=4)
     data = _extract_json(text)
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    cleaned = []
+    for r in data:
+        cleaned.append({
+            "company": _na(r.get("company")),
+            "category": _na(r.get("category")),
+            "amount": _strip_dollar(_na(r.get("amount"))),
+            "valuation": _strip_dollar(_na(r.get("valuation"))),
+            "stage": _na(r.get("stage")),
+            "lead_investor": _na(r.get("lead_investor")),
+            "date": _na(r.get("date")),
+            "url": r.get("url", ""),
+        })
+    return cleaned
 
 
 def fetch_private_valuations(client: Anthropic) -> List[Dict]:
     """Pull current top private AI company valuations."""
-    prompt = """Search the web for the current valuations of the top private AI companies as of this week. Cross-reference TechCrunch, The Information, Bloomberg, Forbes.
+    prompt = _date_context() + """Search the web for the current valuations of the top private AI companies as of this week. Cross-reference TechCrunch, The Information, Bloomberg, Forbes, PitchBook.
 
 Return ONLY a JSON array (no prose) of the top 12 private AI companies sorted by valuation desc:
 
@@ -144,46 +216,75 @@ Return ONLY a JSON array (no prose) of the top 12 private AI companies sorted by
   {
     "name": "OpenAI",
     "valuation_billions": 500,
-    "last_round": "40B",
+    "last_round": "40B" (NO leading $),
     "last_round_date": "Oct 2024"
   }
 ]
 
-Use the most recent confirmed valuation (post-money). Include: OpenAI, Anthropic, xAI, Mistral, Perplexity, Cohere, Scale AI, Databricks, Cognition, Sakana, Character.AI, Imbue, Anysphere/Cursor, Runway, ElevenLabs — pick the top 12 by current valuation.
+Use the most recent confirmed post-money valuation. Candidates to evaluate: OpenAI, Anthropic, xAI, Mistral, Perplexity, Cohere, Scale AI, Databricks, Cognition, Sakana, Character.AI, Imbue, Anysphere/Cursor, Runway, ElevenLabs, Glean. Pick the top 12 by current valuation.
 
-Return ONLY the JSON array."""
+valuation_billions must be a number (not a string). Return ONLY the JSON array."""
     text = _ws_search(client, prompt, max_uses=3)
     data = _extract_json(text)
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    cleaned = []
+    for p in data:
+        try:
+            val_b = float(p.get("valuation_billions", 0))
+        except (TypeError, ValueError):
+            val_b = 0.0
+        cleaned.append({
+            "name": _na(p.get("name")),
+            "valuation_billions": val_b,
+            "last_round": _strip_dollar(_na(p.get("last_round"))),
+            "last_round_date": _na(p.get("last_round_date")),
+        })
+    cleaned.sort(key=lambda x: x["valuation_billions"], reverse=True)
+    return cleaned[:12]
 
 
 def fetch_ma_activity(client: Anthropic) -> List[Dict]:
     """Pull recent M&A and exits in AI."""
-    prompt = """Search the web for AI-related acquisitions, IPO filings, and major strategic deals in the past 30 days.
+    prompt = _date_context() + """Search the web for AI-related acquisitions, IPO filings, and major strategic deals announced in the past 30 days. Skip anything older than 30 days from today.
 
-Return ONLY a JSON array (no prose) with 6-8 most notable items:
+Find 6-10 notable items. Return ONLY a JSON array (no prose) with this EXACT schema:
 
 [
   {
-    "type": "Acquisition" | "IPO Filing" | "Strategic Investment" | "Acqui-hire",
-    "acquirer": "Acquirer name",
-    "target": "Target name",
-    "value": "$XB" or "Undisclosed",
-    "date": "Mon DD",
-    "description": "One-line description of strategic rationale",
+    "type": "Acquisition" | "IPO filing" | "Investment" | "Acqui-hire",
+    "title": "Acquirer acquires Target" or "Company files for IPO" or "Acquirer invests in Target" — short headline format,
+    "detail": "One sentence describing the strategic rationale, deal value if known, and any other key context.",
+    "date": "Mon DD" (e.g. "Apr 28") — must be from the past 30 days,
     "url": "Source URL"
   }
 ]
 
+The "title" field should be a short headline like "Salesforce acquires Cloudera" or "Cohere files for IPO" — NOT a description.
+The "detail" field has the full context.
+
 Return ONLY the JSON array."""
     text = _ws_search(client, prompt, max_uses=3)
     data = _extract_json(text)
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    cleaned = []
+    for m in data:
+        cleaned.append({
+            "type": _na(m.get("type")),
+            "title": _na(m.get("title")),
+            "detail": _na(m.get("detail")),
+            "date": _na(m.get("date")),
+            "url": m.get("url", ""),
+        })
+    return cleaned
 
 
 def fetch_vc_activity(client: Anthropic) -> List[Dict]:
     """Pull top AI VCs by deal count this quarter."""
-    prompt = """Search the web for the most active AI venture capital firms in the current quarter. Look at PitchBook, Crunchbase, TechCrunch.
+    prompt = _date_context() + """Search the web for the most active AI venture capital firms in the current quarter (this quarter of the current year). Look at PitchBook, Crunchbase, TechCrunch, Bloomberg.
+
+Find 6-10 firms. CRITICAL — return data ONLY for firms where you found verifiable activity in the current quarter. Do NOT guess or fabricate.
 
 Return ONLY a JSON array (no prose) of the top 8 VCs by AI deal count this quarter:
 
@@ -191,20 +292,39 @@ Return ONLY a JSON array (no prose) of the top 8 VCs by AI deal count this quart
   {
     "firm": "Andreessen Horowitz",
     "deals": 14,
-    "deployed": "2.1B",
+    "deployed": "2.1B" (NO leading $; use a number with B or M suffix),
     "focus": "Foundation models, infra"
   }
 ]
 
-Sort by deal count desc. Return ONLY the JSON array."""
-    text = _ws_search(client, prompt, max_uses=2)
+Sort by deal count desc. The "deals" field must be a number. Return ONLY the JSON array.
+
+If you cannot find verifiable data for any AI VC, return an empty array []."""
+    text = _ws_search(client, prompt, max_uses=3)
     data = _extract_json(text)
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    cleaned = []
+    for v in data:
+        try:
+            deals = int(v.get("deals", 0))
+        except (TypeError, ValueError):
+            deals = 0
+        cleaned.append({
+            "firm": _na(v.get("firm")),
+            "deals": deals,
+            "deployed": _strip_dollar(_na(v.get("deployed"))),
+            "focus": _na(v.get("focus")),
+        })
+    cleaned.sort(key=lambda x: x["deals"], reverse=True)
+    return cleaned[:8]
 
 
 def fetch_fintech_ai_deals(client: Anthropic) -> List[Dict]:
     """Pull recent fintech/payments AI deals — the strategic Mastercard angle."""
-    prompt = """Search the web for AI deals, partnerships, and product launches specifically in fintech, payments, lending, fraud detection, or banking infrastructure in the past 30 days. Focus on companies like Stripe, Plaid, Ramp, Brex, Mercury, Mastercard, Visa, plus AI-native fintech entrants.
+    prompt = _date_context() + """Search the web for AI deals, partnerships, and product launches in fintech, payments, lending, fraud detection, or banking infrastructure announced in the past 30 days. Focus on Stripe, Plaid, Ramp, Brex, Mercury, Mastercard, Visa, Adyen, Block, Klarna, Affirm, plus AI-native fintech entrants.
+
+CRITICAL — only include deals from the past 30 days. Skip anything older.
 
 Return ONLY a JSON array (no prose) of 4-6 most strategic items:
 
@@ -213,70 +333,139 @@ Return ONLY a JSON array (no prose) of 4-6 most strategic items:
     "company": "Stripe x Anthropic",
     "deal_type": "Partnership" | "Series E" | "Acquisition" | "Product Launch",
     "tags": ["Payments AI", "Embedded finance"],
-    "description": "One-line description of what happened",
-    "url": "Source URL"
+    "description": "One-line description of what happened, including the date the deal was announced (e.g. 'Stripe announced on Apr 28 that...')",
+    "url": "Source URL — full article link"
   }
 ]
 
-Return ONLY the JSON array."""
+The url field MUST be a real article URL, not a publication homepage. Return ONLY the JSON array."""
     text = _ws_search(client, prompt, max_uses=3)
     data = _extract_json(text)
-    return data if isinstance(data, list) else []
+    if not isinstance(data, list):
+        return []
+    cleaned = []
+    for f in data:
+        cleaned.append({
+            "company": _na(f.get("company")),
+            "deal_type": _na(f.get("deal_type")),
+            "tags": f.get("tags") or [],
+            "description": _na(f.get("description")),
+            "url": f.get("url", ""),
+        })
+    return cleaned
+
+
+def build_arms_race(client: Anthropic) -> Dict:
+    """Build quarterly funding chart for top 5 AI labs over the last 6 quarters."""
+    prompt = _date_context() + """Search the web for total capital raised per quarter by these 5 AI companies over the past 6 quarters: OpenAI, Anthropic, xAI, Mistral, Cohere.
+
+Use the 6 most recent quarters ending with the current quarter. Values in $B. Use 0 for quarters where they didn't raise.
+
+Return ONLY a JSON object (no prose):
+
+{
+  "quarters": ["Q4 24", "Q1 25", "Q2 25", "Q3 25", "Q4 25", "Q1 26"],
+  "players": [
+    {"name": "OpenAI",    "color": "#378ADD", "data": [0, 6.6, 0, 0, 0, 40]},
+    {"name": "Anthropic", "color": "#EF9F27", "data": [0, 0, 0, 3.5, 0, 0]},
+    {"name": "xAI",       "color": "#E24B4A", "data": [0, 6, 0, 5, 10, 0]},
+    {"name": "Mistral",   "color": "#7F77DD", "data": [0.5, 0, 0, 0, 0, 0]},
+    {"name": "Cohere",    "color": "#1D9E75", "data": [0, 0, 0.45, 0, 0, 0]}
+  ]
+}
+
+Quarters should match the 6 most recent including the CURRENT quarter (which is the quarter containing today's date).
+Return ONLY the JSON object."""
+    text = _ws_search(client, prompt, max_uses=3)
+    data = _extract_json(text)
+    if isinstance(data, dict) and "quarters" in data and "players" in data:
+        return data
+    today = date.today()
+    cur_q = (today.month - 1) // 3 + 1
+    quarters = []
+    yr = today.year
+    q = cur_q
+    for _ in range(6):
+        quarters.append(f"Q{q} {yr % 100:02d}")
+        q -= 1
+        if q == 0:
+            q = 4
+            yr -= 1
+    quarters.reverse()
+    return {
+        "quarters": quarters,
+        "players": [
+            {"name": "OpenAI",    "color": "#378ADD", "data": [0]*6},
+            {"name": "Anthropic", "color": "#EF9F27", "data": [0]*6},
+            {"name": "xAI",       "color": "#E24B4A", "data": [0]*6},
+            {"name": "Mistral",   "color": "#7F77DD", "data": [0]*6},
+            {"name": "Cohere",    "color": "#1D9E75", "data": [0]*6},
+        ],
+    }
 
 
 # ============================================================
-# Synthesis (Sonnet) — the IQ layer
+# Synthesis — Sonnet
 # ============================================================
 
-def synthesize_funding_summary(client: Anthropic, rounds: List[Dict]) -> Dict:
-    """Build the 4 metric cards at the top of Page 3."""
+def synthesize_funding_summary(rounds: List[Dict]) -> Dict:
+    """Build the 4 metric cards at the top of Page 3.
+
+    Returns dict with field names matching what render.py expects:
+      total_raised, total_raised_change,
+      deals_closed, deals_change,
+      largest_round, largest_round_company,
+      median_premoney, median_trend
+    """
     if not rounds:
         return {
-            "total_raised": "—",
-            "total_change": "",
+            "total_raised": "N/A",
+            "total_raised_change": "",
             "deals_closed": 0,
             "deals_change": "",
-            "largest_round": {"company": "—", "amount": "—"},
-            "median_pre_money": "—",
-            "median_change": "",
+            "largest_round": "N/A",
+            "largest_round_company": "",
+            "median_premoney": "N/A",
+            "median_trend": "flat",
         }
 
-    # Calculate from rounds data
-    def parse_amount(s: str) -> float:
-        """Parse '$2B', '$500M', etc. to $B."""
-        s = s.strip().lstrip("$").upper()
-        m = re.match(r"([\d.]+)([BM])", s)
-        if not m:
-            return 0
-        val = float(m.group(1))
-        return val if m.group(2) == "B" else val / 1000
-
-    amounts_b = [parse_amount(r.get("amount", "")) for r in rounds]
+    amounts_b = [_parse_amount_billions(r.get("amount", "")) for r in rounds]
     amounts_b = [a for a in amounts_b if a > 0]
     total_b = sum(amounts_b)
-    largest = max(rounds, key=lambda r: parse_amount(r.get("amount", "")), default={})
 
-    # Median valuation (parse '$XB' from valuation field, skip undisclosed)
+    largest = max(rounds, key=lambda r: _parse_amount_billions(r.get("amount", "")), default={})
+    largest_amount = largest.get("amount", "N/A") or "N/A"
+
     vals = []
     for r in rounds:
         v = r.get("valuation", "")
-        if v and v != "—":
-            v_b = parse_amount(v)
+        if v and v != "N/A":
+            v_b = _parse_amount_billions(v)
             if v_b > 0:
                 vals.append(v_b)
-    median_val = sorted(vals)[len(vals)//2] if vals else 0
+    if vals:
+        sorted_vals = sorted(vals)
+        median_val = sorted_vals[len(sorted_vals)//2]
+        median_str = f"{median_val:.1f}B" if median_val >= 1 else f"{int(median_val*1000)}M"
+    else:
+        median_str = "N/A"
+
+    if total_b >= 1:
+        total_str = f"{total_b:.1f}B"
+    elif total_b > 0:
+        total_str = f"{int(total_b*1000)}M"
+    else:
+        total_str = "N/A"
 
     return {
-        "total_raised": f"${total_b:.1f}B" if total_b >= 1 else f"${total_b*1000:.0f}M",
-        "total_change": "",  # Filled by synthesis if comparing to prior week
+        "total_raised": total_str,
+        "total_raised_change": "",
         "deals_closed": len(rounds),
         "deals_change": "",
-        "largest_round": {
-            "company": largest.get("company", "—"),
-            "amount": largest.get("amount", "—"),
-        },
-        "median_pre_money": f"${median_val:.1f}B" if median_val >= 1 else f"${median_val*1000:.0f}M",
-        "median_change": "",
+        "largest_round": largest_amount,
+        "largest_round_company": largest.get("company", ""),
+        "median_premoney": median_str,
+        "median_trend": "flat",
     }
 
 
@@ -288,7 +477,7 @@ def synthesize_money_flow(client: Anthropic, rounds: List[Dict], ma: List[Dict],
         "ma": ma[:8],
         "fintech": fintech[:6],
     }
-    prompt = f"""You are an AI market analyst writing for a strategic operator with a Mastercard/payments background.
+    prompt = _date_context() + f"""You are an AI market analyst writing for a strategic operator with a Mastercard/payments background.
 
 Below is recent AI capital markets activity. Generate 5-6 directional signal insights about where money is flowing, what's heating up, what's cooling.
 
@@ -307,8 +496,8 @@ Return ONLY a JSON array, no prose:
   {{"direction": "up", "text": "Foundation model funding hit $X this week, up X% WoW, driven by..."}},
   ...
 ]"""
-    print(f"    (waiting 40s for rate limit window...)")
-    time.sleep(40)
+    print(f"    (waiting {THROTTLE_SECONDS}s for rate limit window...)")
+    time.sleep(THROTTLE_SECONDS)
     resp = client.messages.create(
         model=SONNET_MODEL,
         max_tokens=1500,
@@ -324,14 +513,14 @@ def synthesize_fintech_implications(client: Anthropic, fintech: List[Dict]) -> L
     if not fintech:
         return []
 
-    prompt = f"""You are writing for someone with a Mastercard/payments background. For each AI deal in fintech below, add a one-paragraph "strategic implication" that focuses on what this means for card networks (Visa/Mastercard), issuers, acquirers, or the broader payments stack.
+    prompt = _date_context() + f"""You are writing for someone with a Mastercard/payments background. For each AI deal in fintech below, add a one-paragraph "strategic implication" that focuses on what this means for card networks (Visa/Mastercard), issuers, acquirers, or the broader payments stack.
 
 Be specific and sharp — avoid generic statements. Connect the deal to real network/issuer/processor dynamics.
 
 Deals:
 {json.dumps(fintech, indent=2)}
 
-Return ONLY a JSON array with the same items, but each item now has an extra "strategic" field:
+Return ONLY a JSON array with the same items, but each item now has an extra "strategic" field. Preserve the "url" field exactly as provided:
 [
   {{
     "company": "...",
@@ -342,8 +531,8 @@ Return ONLY a JSON array with the same items, but each item now has an extra "st
     "url": "..."
   }}
 ]"""
-    print(f"    (waiting 40s for rate limit window...)")
-    time.sleep(40)
+    print(f"    (waiting {THROTTLE_SECONDS}s for rate limit window...)")
+    time.sleep(THROTTLE_SECONDS)
     resp = client.messages.create(
         model=SONNET_MODEL,
         max_tokens=2500,
@@ -351,64 +540,23 @@ Return ONLY a JSON array with the same items, but each item now has an extra "st
     )
     text = _extract_text(resp)
     data = _extract_json(text)
-    return data if isinstance(data, list) else fintech
+    if not isinstance(data, list):
+        return [{**f, "strategic": ""} for f in fintech]
+    by_company = {f.get("company"): f for f in fintech}
+    for item in data:
+        if not item.get("url"):
+            orig = by_company.get(item.get("company"))
+            if orig:
+                item["url"] = orig.get("url", "")
+    return data
 
 
 # ============================================================
-# Arms race chart builder
-# ============================================================
-
-def build_arms_race(client: Anthropic) -> Dict:
-    """Build quarterly funding chart for top 5 AI labs.
-    
-    Uses web search to refresh quarterly totals for OpenAI/Anthropic/xAI/Mistral/Cohere
-    over the last 6 quarters."""
-    prompt = """Search the web for total capital raised per quarter by these 5 AI companies over the past 6 quarters: OpenAI, Anthropic, xAI, Mistral, Cohere.
-
-Return ONLY a JSON object (no prose) with this structure. Use 0 for quarters where they didn't raise:
-
-{
-  "quarters": ["Q4 24", "Q1 25", "Q2 25", "Q3 25", "Q4 25", "Q1 26"],
-  "players": [
-    {"name": "OpenAI",    "color": "#378ADD", "data": [0, 6.6, 0, 0, 0, 40]},
-    {"name": "Anthropic", "color": "#EF9F27", "data": [0, 0, 0, 3.5, 0, 0]},
-    {"name": "xAI",       "color": "#E24B4A", "data": [0, 6, 0, 5, 10, 0]},
-    {"name": "Mistral",   "color": "#7F77DD", "data": [0.5, 0, 0, 0, 0, 0]},
-    {"name": "Cohere",    "color": "#1D9E75", "data": [0, 0, 0.45, 0, 0, 0]}
-  ]
-}
-
-Values in $B. Use the 6 most recent quarters ending with the current quarter. Return ONLY the JSON object."""
-    text = _ws_search(client, prompt, max_uses=3)
-    data = _extract_json(text)
-    if isinstance(data, dict) and "quarters" in data and "players" in data:
-        return data
-    # Fallback to safe default
-    return {
-        "quarters": ["Q1 25", "Q2 25", "Q3 25", "Q4 25", "Q1 26", "Q2 26"],
-        "players": [
-            {"name": "OpenAI",    "color": "#378ADD", "data": [0, 0, 0, 0, 0, 0]},
-            {"name": "Anthropic", "color": "#EF9F27", "data": [0, 0, 0, 0, 0, 0]},
-            {"name": "xAI",       "color": "#E24B4A", "data": [0, 0, 0, 0, 0, 0]},
-            {"name": "Mistral",   "color": "#7F77DD", "data": [0, 0, 0, 0, 0, 0]},
-            {"name": "Cohere",    "color": "#1D9E75", "data": [0, 0, 0, 0, 0, 0]},
-        ],
-    }
-
-
-# ============================================================
-# Main orchestrator
+# Main orchestrator with progress caching
 # ============================================================
 
 def analyze_finance() -> Dict:
-    """Run full Page 3 finance refresh.
-    
-    Returns dict with all Page 3 component data, ready to merge into payload.
-    
-    Uses an intermediate cache (output/finance-progress.json) so that if any
-    step fails (e.g. rate limit), restarting picks up from where it left off
-    without re-paying for completed steps.
-    """
+    """Run full Page 3 finance refresh. Resumable on failure."""
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         raise RuntimeError("ANTHROPIC_API_KEY not set")
@@ -417,7 +565,6 @@ def analyze_finance() -> Dict:
     progress_path = "output/finance-progress.json"
     os.makedirs("output", exist_ok=True)
 
-    # Load any existing progress
     progress = {}
     if os.path.exists(progress_path):
         try:
@@ -433,6 +580,7 @@ def analyze_finance() -> Dict:
 
     print("=" * 60)
     print("Finance analyzer — weekly refresh")
+    print(f"Date anchor: {date.today().isoformat()}")
     print("=" * 60)
 
     if "rounds" not in progress:
@@ -485,7 +633,9 @@ def analyze_finance() -> Dict:
 
     if "money_flow" not in progress:
         print("\n[Synthesis] Money flow analysis (Sonnet)...")
-        progress["money_flow"] = synthesize_money_flow(client, progress["rounds"], progress["ma"], progress["fintech_raw"])
+        progress["money_flow"] = synthesize_money_flow(
+            client, progress["rounds"], progress["ma"], progress["fintech_raw"]
+        )
         save_progress()
         print(f"  Got {len(progress['money_flow'])} signals")
     else:
@@ -493,14 +643,16 @@ def analyze_finance() -> Dict:
 
     if "fintech_spotlight" not in progress:
         print("\n[Synthesis] Fintech strategic implications (Sonnet)...")
-        progress["fintech_spotlight"] = synthesize_fintech_implications(client, progress["fintech_raw"])
+        progress["fintech_spotlight"] = synthesize_fintech_implications(
+            client, progress["fintech_raw"]
+        )
         save_progress()
         print(f"  Enriched {len(progress['fintech_spotlight'])} fintech deals")
     else:
         print(f"\n[Synthesis] [cached] {len(progress['fintech_spotlight'])} fintech deals")
 
     print("\n[Compute] Funding summary metrics...")
-    funding_summary = synthesize_funding_summary(client, progress["rounds"])
+    funding_summary = synthesize_funding_summary(progress["rounds"])
 
     payload = {
         "_finance_updated": date.today().isoformat(),
@@ -514,7 +666,6 @@ def analyze_finance() -> Dict:
         "fintech_spotlight": progress["fintech_spotlight"],
     }
 
-    # Clear progress cache on successful completion
     try:
         os.remove(progress_path)
     except OSError:
