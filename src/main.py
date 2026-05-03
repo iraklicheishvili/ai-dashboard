@@ -1,17 +1,15 @@
-"""
-Main orchestrator. Runs the full pipeline:
-  1. arXiv pull (free) — also feeds Page 1 stories
-  2. Multi-source aggregation: HN + arXiv + GitHub Trending + Reddit (mock)
-  3. Score every story via Haiku (source-agnostic content rubric)
-  4. Synthesize narrative + insights via Sonnet/Opus
-  5. Per-model sentiment from HN comments (Haiku)
-  6. ETF + market cap data via yfinance
-  7. Weekly finance refresh on Mondays (cached otherwise)
-  8. Save daily JSON
-  9. Render HTML dashboard
+"""Main orchestrator for the AI Intelligence Dashboard.
 
-Run with:
-  python -m src.main
+Modes:
+  python -m src.main                 # full pipeline
+  python -m src.main --render-only   # $0 local render from saved JSON/caches
+
+Phase 3 additions:
+  - Persistent model sentiment and GitHub stars histories
+  - Weekly model deep-dive cache (MAU, market share, key people, recent changes)
+  - Monthly strengths/weaknesses cache
+  - Daily model events history
+  - Health check output
 """
 
 from __future__ import annotations
@@ -23,7 +21,7 @@ import time
 from collections import Counter
 from datetime import date
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from dotenv import load_dotenv
 
@@ -32,6 +30,10 @@ from src import storage, render
 
 load_dotenv()
 
+
+# ============================================================
+# Basic derived structures
+# ============================================================
 
 def compute_metrics(curated_stories: List[Dict], posts_pulled: int) -> Dict:
     """Compute summary metrics for the dashboard header (Component 1.1)."""
@@ -108,10 +110,13 @@ def _empty_synthesis() -> Dict:
     }
 
 
-
 def _source_label(story: Dict) -> str:
     """Shared source label used for Page 1 history and source hot topics."""
-    return story.get("source") or story.get("subreddit") or "Unknown"
+    source = story.get("source") or story.get("subreddit") or "Unknown"
+    # Phase 3: keep mock Reddit out of the source-volume story unless it is live.
+    if source.startswith("r/"):
+        return "Reddit"
+    return source
 
 
 def build_source_hot_topics(curated_stories: List[Dict]) -> Dict[str, List[Dict]]:
@@ -124,110 +129,222 @@ def build_source_hot_topics(curated_stories: List[Dict]) -> Dict[str, List[Dict]
             items,
             key=lambda s: float(s.get("combined_score") or s.get("relevance_score") or 0),
             reverse=True,
-        )
-    return dict(sorted(grouped.items(), key=lambda x: -len(x[1])))
+        )[:7]
+    # Prefer live sources first, then any remaining source.
+    preferred = ["Hacker News", "GitHub Trending", "arXiv", "Reddit"]
+    ordered: Dict[str, List[Dict]] = {}
+    for src in preferred:
+        if src in grouped:
+            ordered[src] = grouped[src]
+    for src in sorted(grouped.keys()):
+        if src not in ordered:
+            ordered[src] = grouped[src]
+    return ordered
+
+
+# ============================================================
+# Persistent history helpers
+# ============================================================
+
+def _read_json(path: Path, default: Any) -> Any:
+    try:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        pass
+    return default
+
+
+def _write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+
+
+def _normalize_github_history(raw: Any) -> Dict[str, Any]:
+    if not isinstance(raw, dict):
+        return {"daily_totals": {}, "daily_deltas": {}}
+    if "daily_totals" in raw or "daily_deltas" in raw:
+        raw.setdefault("daily_totals", {})
+        raw.setdefault("daily_deltas", {})
+        return raw
+    # Backward-compatible old shape: {date: {model_id: delta}}
+    return {"daily_totals": {}, "daily_deltas": raw}
+
+
+def load_github_stars_history() -> Dict[str, Any]:
+    return _normalize_github_history(_read_json(Path(config.GITHUB_STARS_HISTORY_PATH), {}))
+
+
+def load_model_sentiment_history() -> Dict[str, Any]:
+    raw = _read_json(Path(config.MODEL_SENTIMENT_HISTORY_PATH), {})
+    return raw if isinstance(raw, dict) else {}
+
+
+def append_model_sentiment_history(model_sentiments: List[Dict], target_date: Optional[str] = None) -> Dict[str, Any]:
+    """Persist daily model sentiment aggregates for trends and mention charts."""
+    d = target_date or date.today().isoformat()
+    history = load_model_sentiment_history()
+    row: Dict[str, Dict] = {}
+    for item in model_sentiments:
+        cfg = item.get("model_config") or {}
+        mid = item.get("model_id") or cfg.get("id")
+        if not mid:
+            continue
+        breakdown = item.get("mentions_breakdown") or {}
+        row[mid] = {
+            "sentiment_score": float(item.get("sentiment_score") or 0),
+            "buzz_volume": int(item.get("buzz_volume") or 0),
+            "positive": int(breakdown.get("positive") or 0),
+            "negative": int(breakdown.get("negative") or 0),
+            "neutral": int(breakdown.get("neutral") or 0),
+            "comment_count": int(item.get("comment_count") or 0),
+            "story_count": int(item.get("story_count") or 0),
+        }
+    history[d] = row
+    # Keep one year; cheap and enough for prior/current comparisons.
+    history = dict(sorted(history.items())[-370:])
+    _write_json(Path(config.MODEL_SENTIMENT_HISTORY_PATH), history)
+    print(f"Model sentiment history saved: {config.MODEL_SENTIMENT_HISTORY_PATH}")
+    return history
+
+
+def append_github_stars_history() -> Dict[str, Any]:
+    """Fetch daily GitHub star deltas for Page 2 GitHub mode."""
+    from src.sources import github_trending
+
+    d = date.today().isoformat()
+    history = load_github_stars_history()
+    prior_totals: Dict[str, int] = {}
+    for old_date in sorted(history.get("daily_totals", {}).keys(), reverse=True):
+        if old_date < d:
+            prior_totals = history["daily_totals"].get(old_date) or {}
+            break
+
+    model_repos = {m["id"]: m.get("github_repos", []) for m in config.TRACKED_MODELS}
+    result = github_trending.fetch_model_stars_today(model_repos, prior_day_stars=prior_totals)
+    history.setdefault("daily_totals", {})[d] = result.get("totals", {})
+    history.setdefault("daily_deltas", {})[d] = result.get("deltas", {})
+    history["daily_totals"] = dict(sorted(history["daily_totals"].items())[-370:])
+    history["daily_deltas"] = dict(sorted(history["daily_deltas"].items())[-370:])
+    _write_json(Path(config.GITHUB_STARS_HISTORY_PATH), history)
+    print(f"GitHub stars history saved: {config.GITHUB_STARS_HISTORY_PATH}")
+    return history
+
+
+def backfill_missing_history_files() -> None:
+    """Create history files from existing daily JSONs if they do not exist yet."""
+    sentiment_path = Path(config.MODEL_SENTIMENT_HISTORY_PATH)
+    if not sentiment_path.exists():
+        history: Dict[str, Any] = {}
+        for path in sorted(Path(config.DAILY_DATA_DIR).glob("*.json")):
+            payload = _read_json(path, {})
+            row: Dict[str, Any] = {}
+            for item in payload.get("model_sentiments") or []:
+                cfg = item.get("model_config") or {}
+                mid = item.get("model_id") or cfg.get("id")
+                if not mid:
+                    continue
+                br = item.get("mentions_breakdown") or {}
+                row[mid] = {
+                    "sentiment_score": float(item.get("sentiment_score") or 0),
+                    "buzz_volume": int(item.get("buzz_volume") or 0),
+                    "positive": int(br.get("positive") or 0),
+                    "negative": int(br.get("negative") or 0),
+                    "neutral": int(br.get("neutral") or 0),
+                    "comment_count": int(item.get("comment_count") or 0),
+                    "story_count": int(item.get("story_count") or 0),
+                }
+            if row:
+                history[payload.get("_date") or path.stem] = row
+        _write_json(sentiment_path, history)
+        print(f"Backfilled model sentiment history: {sentiment_path}")
+
+    gh_path = Path(config.GITHUB_STARS_HISTORY_PATH)
+    if not gh_path.exists():
+        _write_json(gh_path, {"daily_totals": {}, "daily_deltas": {}})
+        print(f"Created empty GitHub stars history: {gh_path}")
 
 
 def build_volume_history(current_payload: Optional[Dict] = None, days: int = 30) -> List[Dict]:
-    """Build Page 1's 30-day source-stacked story history from saved JSON files.
-
-    This is render-side only: it reads committed daily JSON snapshots and does
-    not call Anthropic, HN, GitHub, arXiv, yfinance, or web search.
-    """
+    """Build Page 1 source history from saved daily JSON files."""
     rows: List[Dict] = []
     seen_dates = set()
     data_dir = Path(config.DAILY_DATA_DIR)
+    live_sources = ["Hacker News", "GitHub Trending", "arXiv"]
+
     if data_dir.exists():
         for path in sorted(data_dir.glob("*.json"))[-days:]:
-            try:
-                payload = json.loads(path.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                continue
+            payload = _read_json(path, {})
             stories = payload.get("stories") or []
-            sources: Dict[str, int] = {}
+            sources: Dict[str, int] = {src: 0 for src in live_sources}
             for story in stories:
                 source = _source_label(story)
-                sources[source] = sources.get(source, 0) + 1
+                if source in sources:
+                    sources[source] += 1
             row_date = payload.get("_date") or path.stem
-            rows.append({"date": row_date, "count": len(stories), "sources": sources})
+            rows.append({"date": row_date, "count": sum(sources.values()), "sources": sources})
             seen_dates.add(row_date)
 
     if current_payload:
         current_date = current_payload.get("_date") or date.today().isoformat()
         if current_date not in seen_dates:
             stories = current_payload.get("stories") or []
-            sources: Dict[str, int] = {}
+            sources = {src: 0 for src in live_sources}
             for story in stories:
                 source = _source_label(story)
-                sources[source] = sources.get(source, 0) + 1
-            rows.append({"date": current_date, "count": len(stories), "sources": sources})
+                if source in sources:
+                    sources[source] += 1
+            rows.append({"date": current_date, "count": sum(sources.values()), "sources": sources})
 
-    rows = sorted(rows, key=lambda r: r.get("date", ""))[-days:]
-    return rows
-
-
-def _load_github_stars_history() -> Dict[str, Dict[str, int]]:
-    """Load optional GitHub star history if Phase 3/workflow has created it."""
-    path = Path(config.GITHUB_STARS_HISTORY_PATH)
-    if not path.exists():
-        return {}
-    try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
-    if isinstance(raw, dict):
-        return raw
-    return {}
+    return sorted(rows, key=lambda r: r.get("date", ""))[-days:]
 
 
 def build_sentiment_history(current_payload: Optional[Dict] = None, days: int = 30) -> Dict:
-    """Build Page 2's trend chart data from saved daily JSON files.
-
-    HN sentiment comes from each day's `model_sentiments`. GitHub star values
-    are read only if `output/github-stars-history.json` exists; otherwise they
-    safely default to 0 so the GitHub toggle renders without API calls.
-    """
+    """Build Page 2 trend data from persistent histories + daily JSON fallback."""
     model_meta = {m["id"]: m for m in config.TRACKED_MODELS}
-    by_date: Dict[str, Dict[str, float]] = {}
-    data_dir = Path(config.DAILY_DATA_DIR)
+    sentiment_hist = load_model_sentiment_history()
 
-    if data_dir.exists():
-        for path in sorted(data_dir.glob("*.json"))[-days:]:
-            try:
-                payload = json.loads(path.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                continue
-            row_date = payload.get("_date") or path.stem
-            by_date.setdefault(row_date, {})
-            for item in payload.get("model_sentiments") or []:
-                mid = item.get("model_id") or (item.get("model_config") or {}).get("id")
-                if mid:
-                    by_date[row_date][mid] = float(item.get("sentiment_score") or 0)
+    # Backward fill from daily JSONs if the persistent file is still empty.
+    if not sentiment_hist:
+        data_dir = Path(config.DAILY_DATA_DIR)
+        if data_dir.exists():
+            for path in sorted(data_dir.glob("*.json"))[-days:]:
+                payload = _read_json(path, {})
+                row_date = payload.get("_date") or path.stem
+                sentiment_hist[row_date] = {}
+                for item in payload.get("model_sentiments") or []:
+                    mid = item.get("model_id") or (item.get("model_config") or {}).get("id")
+                    if mid:
+                        sentiment_hist[row_date][mid] = {"sentiment_score": float(item.get("sentiment_score") or 0)}
 
     if current_payload:
         current_date = current_payload.get("_date") or date.today().isoformat()
-        by_date.setdefault(current_date, {})
+        sentiment_hist.setdefault(current_date, {})
         for item in current_payload.get("model_sentiments") or []:
             mid = item.get("model_id") or (item.get("model_config") or {}).get("id")
             if mid:
-                by_date[current_date][mid] = float(item.get("sentiment_score") or 0)
+                sentiment_hist[current_date][mid] = {"sentiment_score": float(item.get("sentiment_score") or 0)}
 
-    labels_full = sorted(by_date.keys())[-days:]
-    github_history = _load_github_stars_history()
+    labels_full = sorted(sentiment_hist.keys())[-days:]
+    github_history = load_github_stars_history()
+    gh_deltas = github_history.get("daily_deltas", {}) if isinstance(github_history, dict) else {}
+
     models = []
     for mid, meta in model_meta.items():
         carried = None
         scores = []
         github_stars = []
         for d in labels_full:
-            val = by_date.get(d, {}).get(mid)
-            if val is not None and val > 0:
-                carried = val
+            val_raw = sentiment_hist.get(d, {}).get(mid)
+            val = None
+            if isinstance(val_raw, dict):
+                val = val_raw.get("sentiment_score")
+            elif val_raw is not None:
+                val = val_raw
+            if val is not None and float(val) > 0:
+                carried = float(val)
             scores.append(carried if carried is not None else None)
-            gh_val = 0
-            if isinstance(github_history.get(d), dict):
-                gh_val = int(github_history[d].get(mid) or 0)
-            github_stars.append(gh_val)
+            github_stars.append(int((gh_deltas.get(d) or {}).get(mid) or 0))
         models.append({
             "id": mid,
             "name": meta.get("name", mid),
@@ -240,11 +357,24 @@ def build_sentiment_history(current_payload: Optional[Dict] = None, days: int = 
 
 
 def enrich_payload_for_render(payload: Dict) -> Dict:
-    """Attach Phase 2B render-only derived structures to a daily payload."""
+    """Attach render-only derived structures and cached Phase 3 data."""
+    from src import model_tracker, health
+
     enriched = dict(payload)
+    backfill_missing_history_files()
+    events_history = model_tracker.load_model_events_history()
+    deep_cache = model_tracker.load_model_deep_cache()
+    strengths_cache = model_tracker.load_model_strengths_cache()
+    enriched["model_sentiments"] = model_tracker.attach_model_intelligence(
+        enriched.get("model_sentiments") or [],
+        deep_cache=deep_cache,
+        strengths_cache=strengths_cache,
+        events_history=events_history,
+    )
     enriched.setdefault("source_hot_topics", build_source_hot_topics(enriched.get("stories") or []))
     enriched["volume_history"] = build_volume_history(enriched)
     enriched["sentiment_history"] = build_sentiment_history(enriched)
+    enriched["health"] = enriched.get("health") or health.load_health()
     return enriched
 
 
@@ -273,11 +403,14 @@ def render_only() -> None:
     html_path = storage.save_dashboard(html)
     print(f"Render-only dashboard saved: {html_path}")
 
+
+# ============================================================
+# Full pipeline
+# ============================================================
+
 def run_pipeline() -> None:
     """Run the full daily pipeline."""
-    # Heavy/API-touching modules are imported lazily so --render-only remains
-    # dependency-light and cannot accidentally trigger source/API setup.
-    from src import scraper, analyzer, stocks
+    from src import scraper, analyzer, stocks, model_tracker, health
     from src.arxiv_analyzer import analyze_arxiv_papers
     from src.finance_analyzer import analyze_finance
 
@@ -286,59 +419,89 @@ def run_pipeline() -> None:
     print(f"Date: {date.today().isoformat()}")
     print("=" * 60)
 
-    # ---------- 1. arXiv (independent, runs first) ----------
-    print("\n[1/8] arXiv pipeline")
+    # ---------- 1. arXiv ----------
+    print("\n[1/10] arXiv pipeline")
     try:
         arxiv_payload = analyze_arxiv_papers(days_back=7)
     except Exception as exc:
         print(f"  arXiv pipeline failed: {exc}")
         arxiv_payload = {}
-
     arxiv_top_papers = arxiv_payload.get("top_papers") or []
 
     # ---------- 2. Multi-source aggregation ----------
-    print("\n[2/8] Multi-source aggregation (HN + GitHub + arXiv + Reddit)")
+    print("\n[2/10] Multi-source aggregation (HN + GitHub + arXiv + Reddit)")
     posts = scraper.scrape_all_sources(arxiv_top_papers=arxiv_top_papers)
 
-    # ---------- 3. Score every story (Haiku) ----------
-    print("\n[3/8] Story scoring (Haiku, source-agnostic)")
+    # ---------- 3. Score stories ----------
+    print("\n[3/10] Story scoring (Haiku, source-agnostic)")
     curated = analyzer.score_all_stories(posts)
 
-    # ---------- 4. Daily synthesis (Sonnet/Opus) ----------
-    print("\n[4/8] Daily synthesis (Sonnet/Opus)")
-    if curated:
-        synthesis = analyzer.synthesize_daily(curated)
-    else:
-        synthesis = _empty_synthesis()
+    # ---------- 4. Daily synthesis ----------
+    print("\n[4/10] Daily synthesis (Sonnet/Opus)")
+    synthesis = analyzer.synthesize_daily(curated) if curated else _empty_synthesis()
 
-    # ---------- 5. Per-model sentiment (HN comments) ----------
-    print("\n[5/8] Per-model sentiment (HN comments → Haiku)")
+    # ---------- 5. Per-model sentiment ----------
+    print("\n[5/10] Per-model sentiment (HN comments → Haiku)")
     model_sentiments = analyzer.analyze_all_model_sentiments()
+    sentiment_history = append_model_sentiment_history(model_sentiments)
 
-    # ---------- 6. yfinance market data ----------
-    print("\n[6/8] yfinance — ETFs + market caps")
+    # ---------- 6. GitHub stars history ----------
+    print("\n[6/10] GitHub model ecosystem stars")
+    try:
+        append_github_stars_history()
+    except Exception as exc:
+        print(f"  GitHub stars history update failed: {exc}")
+
+    # ---------- 7. yfinance market data ----------
+    print("\n[7/10] yfinance — ETFs + market caps")
     etfs = stocks.fetch_all_etfs()
     public_ai = stocks.fetch_public_ai_market_caps()
 
-    # ---------- 7. Compute summary metrics ----------
-    metrics = compute_metrics(curated, len(posts))
-    category_breakdown = compute_category_breakdown(curated)
-
-    # ---------- 8. Weekly finance refresh (Mondays only) ----------
-    print("\n[7/8] Finance pipeline (weekly cache)")
-    finance_cache_path = config.FINANCE_CACHE_PATH
+    # ---------- 8. Weekly/monthly Phase 3 model intelligence ----------
+    print("\n[8/10] Model intelligence caches")
+    events_history = model_tracker.append_daily_model_events(curated)
     is_monday = date.today().weekday() == 0
+    is_monthly = date.today().day == 1
+
+    if is_monday:
+        print("  Cooling off 60s before model deep-dive pull (rate-limit safety)...")
+        time.sleep(60)
+        deep_cache = model_tracker.refresh_model_deep_cache(events_history)
+    else:
+        deep_cache = model_tracker.load_model_deep_cache()
+        print("  Model deep-dive cache loaded")
+
+    if is_monthly:
+        print("  Cooling off 60s before monthly strengths synthesis...")
+        time.sleep(60)
+        strengths_cache = model_tracker.refresh_model_strengths_cache(sentiment_history)
+    else:
+        strengths_cache = model_tracker.load_model_strengths_cache()
+        print("  Model strengths cache loaded")
+
+    model_sentiments = model_tracker.attach_model_intelligence(
+        model_sentiments,
+        deep_cache=deep_cache,
+        strengths_cache=strengths_cache,
+        events_history=events_history,
+    )
+
+    # ---------- 9. Weekly finance refresh ----------
+    print("\n[9/10] Finance pipeline (weekly cache)")
+    finance_cache_path = Path(config.FINANCE_CACHE_PATH)
     finance_payload: Dict = {}
 
     if is_monday:
-        print("  Cooling off 60s before finance pull (rate-limit safety)...")
-        time.sleep(60)
+        print("  Cooling off 90s before finance pull (rate-limit safety after model intelligence)...")
+        time.sleep(90)
         print("  Monday — refreshing finance data via web search...")
         try:
             finance_payload = analyze_finance()
-            os.makedirs(config.OUTPUT_DIR, exist_ok=True)
-            with open(finance_cache_path, "w", encoding="utf-8") as f:
-                json.dump(finance_payload, f, indent=2, ensure_ascii=False, default=str)
+            Path(config.OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
+            finance_cache_path.write_text(
+                json.dumps(finance_payload, indent=2, ensure_ascii=False, default=str),
+                encoding="utf-8",
+            )
             print(f"  finance cache updated: {finance_cache_path}")
         except Exception as exc:
             print(f"  finance refresh failed: {exc}")
@@ -346,14 +509,16 @@ def run_pipeline() -> None:
 
     if not finance_payload and finance_cache_path.exists():
         try:
-            with open(finance_cache_path, "r", encoding="utf-8") as f:
-                finance_payload = json.load(f)
+            finance_payload = json.loads(finance_cache_path.read_text(encoding="utf-8"))
             print(f"  finance cache loaded from {finance_payload.get('_finance_updated', 'unknown')}")
         except Exception as exc:
             print(f"  finance cache read failed: {exc}")
             finance_payload = {}
 
     # ---------- Assemble payload ----------
+    metrics = compute_metrics(curated, len(posts))
+    category_breakdown = compute_category_breakdown(curated)
+
     payload: Dict = {
         "stories": curated,
         "metrics": metrics,
@@ -365,33 +530,34 @@ def run_pipeline() -> None:
     }
 
     payload.update({
-        "research_summary":   arxiv_payload.get("research_summary", {}),
-        "paper_of_week":      arxiv_payload.get("paper_of_week"),
-        "top_papers":         arxiv_payload.get("top_papers", []),
+        "research_summary": arxiv_payload.get("research_summary", {}),
+        "paper_of_week": arxiv_payload.get("paper_of_week"),
+        "top_papers": arxiv_payload.get("top_papers", []),
         "research_categories": arxiv_payload.get("research_categories", {}),
-        "research_volume":    arxiv_payload.get("research_volume", {}),
-        "hot_institutions":   arxiv_payload.get("hot_institutions", []),
-        "author_spotlight":   arxiv_payload.get("author_spotlight", []),
+        "research_volume": arxiv_payload.get("research_volume", {}),
+        "hot_institutions": arxiv_payload.get("hot_institutions", []),
+        "author_spotlight": arxiv_payload.get("author_spotlight", []),
         "breakthrough_radar": arxiv_payload.get("breakthrough_radar", []),
-        "research_signals":   arxiv_payload.get("research_signals", []),
-        "fintech_research":   arxiv_payload.get("fintech_research", []),
+        "research_signals": arxiv_payload.get("research_signals", []),
+        "fintech_research": arxiv_payload.get("fintech_research", []),
     })
 
     payload.update({
-        "_finance_updated":   finance_payload.get("_finance_updated", ""),
-        "funding_summary":    finance_payload.get("funding_summary", {}),
-        "funding_rounds":     finance_payload.get("funding_rounds", []),
-        "private_ai":         finance_payload.get("private_ai", []),
-        "arms_race":          finance_payload.get("arms_race", {}),
-        "vc_league":          finance_payload.get("vc_league", []),
-        "money_flow":         finance_payload.get("money_flow", []),
-        "ma_tracker":         finance_payload.get("ma_tracker", []),
-        "fintech_spotlight":  finance_payload.get("fintech_spotlight", []),
+        "_finance_updated": finance_payload.get("_finance_updated", ""),
+        "funding_summary": finance_payload.get("funding_summary", {}),
+        "funding_rounds": finance_payload.get("funding_rounds", []),
+        "private_ai": finance_payload.get("private_ai", []),
+        "arms_race": finance_payload.get("arms_race", {}),
+        "vc_league": finance_payload.get("vc_league", []),
+        "money_flow": finance_payload.get("money_flow", []),
+        "ma_tracker": finance_payload.get("ma_tracker", []),
+        "fintech_spotlight": finance_payload.get("fintech_spotlight", []),
     })
 
     payload = enrich_payload_for_render(payload)
+    payload["health"] = health.save_health(payload)
 
-    print("\n[8/8] Save + render")
+    print("\n[10/10] Save + render")
     json_path = storage.save_daily_data(payload)
     html = render.render_dashboard(payload)
     html_path = storage.save_dashboard(html)

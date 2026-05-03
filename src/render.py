@@ -202,7 +202,7 @@ SHELL_HEAD = r"""
   @media (prefers-color-scheme: dark) {
     .score-pill{background:#3c3489;color:#cecbf6;}
   }
-  .linkrow{display:block;text-decoration:none;color:inherit;padding:10px 0;border-bottom:0.5px solid var(--border);transition:background 0.15s;}
+  .linkrow{display:block;text-decoration:none;color:inherit;padding:10px 8px;border-bottom:0.5px solid var(--border);transition:background 0.15s;border-radius:var(--radius-md);}
   .linkrow:hover{background:var(--bg-secondary);}
   .linkrow:last-child{border-bottom:none;}
   .story-title{font-size:13px;font-weight:500;line-height:1.4;}
@@ -279,6 +279,10 @@ SHELL_HEAD = r"""
   .toggle-btn{font-family:inherit;font-size:11px;border:none;border-radius:calc(var(--radius-md) - 2px);padding:6px 10px;background:transparent;color:var(--text-secondary);cursor:pointer;}
   .toggle-btn.active{background:var(--bg-primary);color:var(--text-primary);box-shadow:0 1px 2px rgba(0,0,0,0.15);}
   .model-card{background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:13px 14px;}
+  .model-snapshot-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;}
+  @media (max-width:1050px){.model-snapshot-grid{grid-template-columns:repeat(4,minmax(0,1fr));}.model-snapshot-grid .model-card:nth-last-child(-n+3){grid-column:auto;}}
+  @media (max-width:760px){.model-snapshot-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  @media (max-width:520px){.model-snapshot-grid{grid-template-columns:1fr;}}
   .driver-row{display:block;text-decoration:none;color:inherit;font-size:12px;line-height:1.45;padding:6px 0;border-bottom:0.5px solid var(--border);}
   .driver-row:last-child{border-bottom:none;}
   .timeline-row{display:flex;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:12px;}
@@ -290,9 +294,18 @@ SHELL_HEAD = r"""
      ============================================================ */
   .disclaimer{font-size:10px;color:var(--text-tertiary);margin-top:10px;padding-top:8px;border-top:0.5px dashed var(--border);font-style:italic;line-height:1.45;}
   .empty-state{padding:18px 0;font-size:12px;color:var(--text-tertiary);text-align:center;font-style:italic;}
-  .linkable{cursor:default;border-bottom:1px solid transparent;transition:border-color 150ms ease, color 150ms ease;color:inherit;text-decoration:none;}
-  .linkable:hover{cursor:pointer;border-bottom:1px dashed var(--text-tertiary);color:var(--text-primary);}
-  .linkable:hover::after{content:" \2197";font-size:0.85em;color:var(--text-tertiary);margin-left:2px;}
+  .linkable{cursor:pointer;border-bottom:1px solid transparent;transition:border-color 150ms ease, color 150ms ease;color:inherit;text-decoration:none;}
+  .linkable:hover{border-bottom:1px dashed var(--text-tertiary);color:var(--text-primary);}
+  .linkable:hover::after{content:" \2197";font-size:0.85em;color:var(--text-tertiary);margin-left:2px;display:inline;}
+  .linked-title{display:inline;border-bottom:1px solid transparent;transition:border-color 150ms ease, color 150ms ease;}
+  .linkrow:hover .linked-title,.link-card:hover .linked-title{border-bottom:1px dashed var(--text-tertiary);color:var(--text-primary);}
+  .linkrow:hover .linked-title::after,.link-card:hover .linked-title::after{content:" \2197";font-size:0.85em;color:var(--text-tertiary);margin-left:2px;}
+  .link-card{display:block;text-decoration:none;color:inherit;border-radius:var(--radius-md);transition:background 150ms ease;}
+  .link-card:hover{background:var(--bg-secondary);}
+  .signal-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;margin-right:6px;font-size:10px;font-weight:600;}
+  .signal-icon.up{color:#1D9E75;}
+  .signal-icon.down{color:#E24B4A;}
+  .signal-icon.neutral{color:#888780;}
   .pro-foot{margin-top:20px;padding:18px 4px 8px;border-top:0.5px solid var(--border);text-align:center;font-size:11px;color:var(--text-secondary);line-height:1.7;}
   .pro-foot .pf-line1{font-weight:500;color:var(--text-primary);}
   .pro-foot .pf-line2{color:var(--text-secondary);}
@@ -307,7 +320,7 @@ SHELL_HEAD = r"""
 <div class="head">
   <div>
     <div class="h-title">AI intelligence dashboard</div>
-    <div class="h-sub">Daily digest from 24 subreddits and the open web — {{ today }}</div>
+    <div class="h-sub">Daily digest from Hacker News, arXiv, GitHub Trending, Yahoo Finance, and web search — {{ today }}</div>
   </div>
 </div>
 
@@ -340,8 +353,8 @@ PAGE_1_BODY = r"""
     <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Top story today</span>
     <span class="score-pill" style="font-size:11px;padding:3px 10px;">{{ "%.1f"|format(top_story.combined_score | default(top_story.relevance_score | default(0))) }}</span>
   </div>
-  <a class="linkable" href="{{ top_story.external_url or top_story.url }}" target="_blank" style="text-decoration:none;color:inherit;">
-    <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">{{ top_story.title }}</div>
+  <a class="link-card" href="{{ top_story.external_url or top_story.url }}" target="_blank" style="padding:8px 10px;margin:-8px -10px 6px;">
+    <div style="font-size:16px;font-weight:500;line-height:1.4;"><span class="linked-title">{{ top_story.title }}</span></div>
   </a>
   <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ top_story.source or top_story.subreddit }} · {{ top_story.score }} pts · {{ top_story.num_comments | default(0) }} comments</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
@@ -384,13 +397,12 @@ PAGE_1_BODY = r"""
   var history = {{ volume_history | tojson }};
   if(!history || history.length === 0 || typeof Chart === 'undefined') return;
   var labels = history.map(function(d){ return String(d.date || '').slice(5); });
-  var sources = [];
-  history.forEach(function(d){ Object.keys(d.sources || {}).forEach(function(s){ if(sources.indexOf(s) < 0) sources.push(s); }); });
-  var palette = ['#7F77DD','#378ADD','#1D9E75','#EF9F27','#E24B4A','#888780'];
-  var datasets = sources.map(function(src, idx){ return {label: src, data: history.map(function(d){return (d.sources || {})[src] || 0;}), backgroundColor: palette[idx % palette.length], borderRadius: 3, stack: 'stories'}; });
+  var sources = ['Hacker News','GitHub Trending','arXiv'];
+  var palette = ['#378ADD','#1D9E75','#7F77DD'];
+  var datasets = sources.map(function(src, idx){ return {label: src, data: history.map(function(d){return (d.sources || {})[src] || 0;}), backgroundColor: palette[idx], borderRadius: 3}; });
   var ctx = document.getElementById('volumeChart');
   if(!ctx) return;
-  new Chart(ctx, {type:'bar', data:{labels:labels, datasets:datasets}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', align:'start', labels:{font:{size:11}, color:'#888', boxWidth:10, padding:12}}}, scales:{x:{stacked:true, grid:{display:false}, ticks:{font:{size:10}, color:'#888', maxTicksLimit:10}}, y:{stacked:true, beginAtZero:true, grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}, color:'#888', precision:0}}}}});
+  new Chart(ctx, {type:'bar', data:{labels:labels, datasets:datasets}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', align:'start', labels:{font:{size:11}, color:'#888', boxWidth:10, padding:12}}}, scales:{x:{stacked:false, grid:{display:false}, ticks:{font:{size:10}, color:'#888', maxTicksLimit:10}}, y:{stacked:false, beginAtZero:true, grid:{color:'rgba(128,128,128,0.1)'}, ticks:{font:{size:10}, color:'#888', precision:0}}}}});
 })();
 </script>
 
@@ -400,7 +412,7 @@ PAGE_1_BODY = r"""
   {% if top_stories %}
     {% for s in top_stories[:15] %}
     <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank">
-      <div class="story-title linkable">{{ s.title }}</div>
+      <div class="story-title"><span class="linked-title">{{ s.title }}</span></div>
       {% if s.summary %}<div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">{{ s.summary }}</div>{% endif %}
       <div class="story-meta">
         <span>{{ s.source or s.subreddit }}</span>
@@ -452,13 +464,13 @@ PAGE_1_BODY = r"""
   var labels = Object.keys(breakdown || {});
   var values = labels.map(function(k){return breakdown[k];});
   var canvas = document.getElementById('catDonut');
-  if(!canvas || labels.length === 0) return;
-  var colors = ['#378ADD','#7F77DD','#1D9E75','#EF9F27','#E24B4A','#D4537E','#888780'];
-  var ctx = canvas.getContext('2d');
-  var total = values.reduce(function(a,b){return a+b;},0);
-  var start = -Math.PI/2, cx=80, cy=80, outerR=75, innerR=45;
-  values.forEach(function(v,i){ var slice=(v/total)*2*Math.PI; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,outerR,start,start+slice); ctx.closePath(); ctx.fillStyle=colors[i%colors.length]; ctx.fill(); start+=slice; });
-  ctx.beginPath(); ctx.arc(cx,cy,innerR,0,2*Math.PI); ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--bg-primary')||'#fff'; ctx.fill();
+  if(!canvas || labels.length === 0 || typeof Chart === 'undefined') return;
+  var colors = ['#378ADD','#7F77DD','#1D9E75','#EF9F27','#E24B4A','#D4537E','#BA7517','#4267B2','#888780','#3DC48A'];
+  new Chart(canvas, {
+    type: 'doughnut',
+    data: {labels: labels, datasets: [{data: values, backgroundColor: colors.slice(0, labels.length), borderWidth: 2, borderColor: getComputedStyle(document.body).getPropertyValue('--bg-primary') || '#fff'}]},
+    options: {responsive:false, cutout:'58%', plugins:{legend:{display:false}, tooltip:{callbacks:{label:function(ctx){return ctx.label + ': ' + ctx.parsed + ' articles';}}}}}
+  });
   var legend=document.getElementById('catLegend');
   labels.forEach(function(k,i){ var row=document.createElement('div'); row.style.cssText='display:flex;align-items:center;gap:5px'; var dot=document.createElement('span'); dot.style.cssText='width:8px;height:8px;border-radius:50%;background:'+colors[i%colors.length]; var txt=document.createElement('span'); txt.style.color='var(--text-secondary)'; txt.textContent=k+' ('+values[i]+')'; row.appendChild(dot); row.appendChild(txt); legend.appendChild(row); });
 })();
@@ -477,7 +489,7 @@ PAGE_1_BODY = r"""
     <div class="source-group" data-source="{{ source }}"{% if not loop.first %} style="display:none"{% endif %}>
       {% for s in items[:7] %}
       <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank">
-        <div class="story-title linkable">{{ s.title }}</div>
+        <div class="story-title"><span class="linked-title">{{ s.title }}</span></div>
         <div class="story-meta"><span>{{ s.source or s.subreddit }}</span><span class="score-pill">{{ "%.1f"|format(s.combined_score | default(s.relevance_score | default(0))) }}</span>{% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}</div>
       </a>
       {% endfor %}
@@ -497,7 +509,7 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
   {% if fintech_stories %}
     {% for s in fintech_stories[:5] %}
     <a class="linkrow" href="{{ s.external_url or s.url }}" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
-      <div class="story-title linkable">{{ s.title }}</div>
+      <div class="story-title"><span class="linked-title">{{ s.title }}</span></div>
       {% if s.summary %}<div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">{{ s.summary }}</div>{% endif %}
       <div class="story-meta"><span>{{ s.source or s.subreddit }}</span>{% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}</div>
     </a>
@@ -513,7 +525,7 @@ PAGE_2_BODY = r"""
 <div class="card">
   <div class="sec-title">All models — snapshot</div>
   <div class="sec-sub">Live sentiment + buzz from Hacker News discussion threads (last 3 days)</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;">
+  <div class="model-snapshot-grid">
     {% for m in model_sentiments %}
     <div class="model-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
@@ -581,7 +593,8 @@ function setTrendMode(mode){
     <div style="font-size:13px;font-weight:500;color:{{ m.model_config.color }};margin-bottom:6px;">{{ m.model_config.name }} <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">{{ "%.1f"|format(m.sentiment_score | default(0)) }}/10{% if m.wow_delta_pct %} · {{ m.wow_delta_pct }} WoW{% endif %}</span></div>
     {% if m.trend_drivers %}
       {% for d in m.trend_drivers[:3] %}
-      <a class="driver-row linkable" href="{{ d.url | default('#') }}"{% if d.url %} target="_blank"{% endif %}>{% if d.direction in ['up','positive'] %}↑{% elif d.direction in ['down','negative'] %}↓{% else %}→{% endif %} {{ d.text }}</a>
+      {% set dir = d.direction | default('neutral') %}
+      <a class="driver-row link-card" href="{{ d.url | default('#') }}"{% if d.url %} target="_blank"{% endif %}>{% if dir in ['up','positive'] %}<span class="signal-icon up">▲</span>{% elif dir in ['down','negative'] %}<span class="signal-icon down">▼</span>{% else %}<span class="signal-icon neutral">●</span>{% endif %}<span class="linked-title">{{ d.text }}</span></a>
       {% endfor %}
     {% else %}<div class="empty-state">Not enough discussion this week to identify drivers.</div>{% endif %}
   </div>
@@ -628,13 +641,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      {% if deep.recent_changes %}{% for c in deep.recent_changes[:7] %}<a class="timeline-row linkable" href="{{ c.url | default('#') }}"{% if c.url %} target="_blank"{% endif %}><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div><div>{{ c.text }}</div></a>{% endfor %}{% else %}<div class="empty-state">No major releases or announcements in the last 90 days.</div>{% endif %}
+      {% if deep.recent_changes %}{% for c in deep.recent_changes[:7] %}<a class="timeline-row link-card" href="{{ c.url | default('#') }}"{% if c.url %} target="_blank"{% endif %}><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">{{ c.date }}</div><div><span class="linked-title">{{ c.text }}</span></div></a>{% endfor %}{% else %}<div class="empty-state">No major releases or announcements in the last 90 days.</div>{% endif %}
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      {% if deep.key_people %}{% for p in deep.key_people %}<a class="person-chip linkable" href="{{ p.source_url | default('#') }}"{% if p.source_url %} target="_blank"{% endif %} style="text-decoration:none;color:inherit;"><div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials | default(p.name[:2]) }}</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">{{ p.name }} <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">{{ p.role | default('') }}</span></div><div class="quote-text">{{ p.quote }}</div><div class="quote-meta">{{ p.date }} · {{ p.platform | default('X') }}</div></div></a>{% endfor %}{% else %}<div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>{% endif %}
+      {% if deep.key_people %}{% for p in deep.key_people %}<a class="person-chip link-card" href="{{ p.source_url | default('#') }}"{% if p.source_url %} target="_blank"{% endif %} style="text-decoration:none;color:inherit;">{% if p.photo_url %}<img class="avatar" src="{{ p.photo_url }}" alt="{{ p.name }}" style="object-fit:cover;">{% else %}<div class="avatar" style="background:{{ m.model_config.color }}33;color:{{ m.model_config.color }};">{{ p.initials | default(p.name[:2]) }}</div>{% endif %}<div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">{{ p.name }} <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">{{ p.role | default('') }}</span></div><div class="quote-text">{{ p.quote }}</div><div class="quote-meta">{{ p.date }} · {{ p.platform | default('X') }}</div></div></a>{% endfor %}{% else %}<div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>{% endif %}
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -757,7 +770,7 @@ PAGE_3_BODY = r"""
 <!-- COMP 4: Private + Public AI valuation leaderboards -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
   <div class="card" style="margin-bottom:0;">
-    <div class="sec-title">Private AI — top 10 by valuation</div>
+    <div class="sec-title">Private AI companies by valuation</div>
     <div class="sec-sub">Estimated valuations · last known round</div>
     {% set max_priv = (private_ai[0].valuation_billions | default(1)) if private_ai else 1 %}
     {% for p in private_ai %}
@@ -766,7 +779,7 @@ PAGE_3_BODY = r"""
         <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }}</div>
         <div style="font-size:12px;font-weight:500;color:#7F77DD;">${{ p.valuation_billions }}B</div>
       </div>
-      <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px;">${{ p.last_round | default('—') }} · {{ p.last_round_date | default('—') }}</div>
+      <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px;">Last round: ${{ p.last_round | default('—') }} · {{ p.last_round_date | default('—') }}</div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#7F77DD;width:{{ ((p.valuation_billions / max_priv) * 100) | round | int }}%;"></div></div>
     </div>
     {% endfor %}
@@ -778,7 +791,7 @@ PAGE_3_BODY = r"""
     {% if public_ai %}
     {% set max_cap = public_ai[0].market_cap_billions %}
     {% for p in public_ai %}
-    <a class="linkable" href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:7px 0;border-bottom:0.5px solid var(--border);">
+    <a class="linkrow" href="https://finance.yahoo.com/quote/{{ p.ticker }}" target="_blank" style="padding:7px 8px;">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:{% if loop.index <= 3 %}500{% else %}400{% endif %};">{{ loop.index }}. {{ p.name }} <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">{{ p.ticker }}</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
@@ -808,7 +821,7 @@ PAGE_3_BODY = r"""
 <!-- COMP 6: VC league table -->
 <div class="card">
   <div class="sec-title">VC league table — top AI investors this quarter</div>
-  <div class="sec-sub">Ranked by deals closed · this quarter</div>
+  <div class="sec-sub">Ranked by deals closed · current quarter or latest available prior quarter</div>
   {% if vc_league %}
   <div style="display:flex;gap:0;padding:0 0 6px;border-bottom:0.5px solid var(--border-strong);margin-bottom:2px;margin-top:8px;">
     <div class="col-hdr" style="width:24px;">#</div>
@@ -839,7 +852,7 @@ PAGE_3_BODY = r"""
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
     {% if money_flow %}
 {% for f in money_flow %}
-    <div class="signal-row signal-{{ f.direction }}">{{ f.text }}</div>
+    <div class="signal-row signal-{% if f.direction in ['up','positive'] %}up{% elif f.direction in ['down','negative'] %}down{% elif f.direction in ['warning'] %}warning{% else %}neu{% endif %}">{{ f.text }}</div>
     {% endfor %}
 {% else %}
 <div class="empty-state">No directional signals identified this week.</div>
@@ -1029,7 +1042,7 @@ PAGE_4_BODY = r"""
     <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Paper of the week</span>
     <span class="score-pill" style="font-size:11px;padding:3px 10px;">{{ "%.1f"|format(paper_of_week.score) }} / 10</span>
   </div>
-  <div style="font-size:16px;font-weight:500;line-height:1.4;margin-bottom:6px;">{{ paper_of_week.title }}</div>
+  <a class="link-card" href="{{ paper_of_week.url }}" target="_blank" style="padding:8px 10px;margin:-8px -10px 6px;"><div style="font-size:16px;font-weight:500;line-height:1.4;"><span class="linked-title">{{ paper_of_week.title }}</span></div></a>
   <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">{{ paper_of_week.institution }} · {{ paper_of_week.team }} · arXiv:{{ paper_of_week.arxiv_id }} · {{ paper_of_week.date }}</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
     {% for tag in paper_of_week.tags %}<span class="cat-tag">{{ tag }}</span>{% endfor %}
@@ -1039,7 +1052,6 @@ PAGE_4_BODY = r"""
     <div style="font-size:13px;line-height:1.5;color:var(--text-primary);font-weight:500;">{{ paper_of_week.plain_summary }}</div>
   </div>
   <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;"><strong style="font-weight:500;">Why it matters:</strong> {{ paper_of_week.why_matters }}</div>
-  <a class="linkable" href="{{ paper_of_week.url }}" target="_blank" style="font-size:13px;color:var(--text-info);text-decoration:none;">View on arXiv →</a>
   <div class="disclaimer">Sources: arXiv &middot; Selected and summarized by Claude Sonnet &middot; Updated daily</div>
 </div>
 {% endif %}
@@ -1051,9 +1063,9 @@ PAGE_4_BODY = r"""
   <div style="margin-top:10px;">
     {% if top_papers %}
 {% for p in top_papers %}
-    <a class="linkable" href="{{ p.url }}" target="_blank" style="display:block;text-decoration:none;color:inherit;padding:14px 0;border-bottom:0.5px solid var(--border);">
+    <a class="linkrow" href="{{ p.url }}" target="_blank" style="padding:14px 8px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
-        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;">{{ p.title }}</div>
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">{{ p.title }}</span></div>
         <span class="score-pill" style="flex-shrink:0;">{{ "%.1f"|format(p.score) }}</span>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">{{ p.authors }} · {{ p.institution }}</div>
@@ -1095,6 +1107,7 @@ PAGE_4_BODY = r"""
 <div class="card">
   <div class="sec-title">Hot institutions this week</div>
   <div class="sec-sub">Ranked by paper output × citation velocity · rising = above 4-week average</div>
+  {% if hot_institutions %}
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin-top:12px;">
     {% for i in hot_institutions %}
     <div style="padding:8px 0;border-bottom:0.5px solid var(--border);">
@@ -1109,6 +1122,7 @@ PAGE_4_BODY = r"""
     </div>
     {% endfor %}
   </div>
+  {% else %}<div class="empty-state">No hot institution concentration detected this week.</div>{% endif %}
   <div class="disclaimer">Sources: arXiv author affiliations &middot; Ranked by paper output and citation velocity &middot; Updated daily</div>
 </div>
 
@@ -1117,8 +1131,9 @@ PAGE_4_BODY = r"""
   <div class="sec-title">Author spotlight</div>
   <div class="sec-sub">Researchers who published notable work this week</div>
   <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
+    {% if author_spotlight %}
     {% for a in author_spotlight %}
-    <div style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
+    <a class="link-card" href="{{ a.url | default(a.author_url | default('#')) }}"{% if a.url or a.author_url %} target="_blank"{% endif %} style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
       <div class="avatar" style="background:{{ a.color | default('#7F77DD') }}33;color:{{ a.color | default('#7F77DD') }};width:36px;height:36px;font-size:12px;flex-shrink:0;">{{ a.initials }}</div>
       <div style="flex:1;min-width:0;">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
@@ -1129,8 +1144,9 @@ PAGE_4_BODY = r"""
         <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;">{{ a.paper_title }}</div>
         <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">{{ a.note }}</div>
       </div>
-    </div>
+    </a>
     {% endfor %}
+    {% else %}<div class="empty-state">No author spotlight generated this week.</div>{% endif %}
   </div>
   <div class="disclaimer">Sources: arXiv author tracking &middot; Synthesized by Claude Sonnet &middot; Updated daily</div>
 </div>
@@ -1170,7 +1186,7 @@ PAGE_4_BODY = r"""
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
     {% if research_signals %}
 {% for s in research_signals %}
-    <div class="signal-row signal-{{ s.direction }}">{{ s.text }}</div>
+    <div class="signal-row signal-{% if s.direction in ['up','positive'] %}up{% elif s.direction in ['down','negative'] %}down{% elif s.direction in ['warning'] %}warning{% else %}neu{% endif %}">{{ s.text }}</div>
     {% endfor %}
 {% else %}
 <div class="empty-state">No directional research signals this week.</div>
@@ -1189,7 +1205,7 @@ PAGE_4_BODY = r"""
 {% for f in fintech_research %}
     <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:14px 16px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;">
-        <div style="font-size:14px;font-weight:500;line-height:1.4;flex:1;">{{ f.title }}</div>
+        {% if f.url %}<a class="linkable" href="{{ f.url }}" target="_blank" style="font-size:14px;font-weight:500;line-height:1.4;flex:1;color:var(--text-primary);text-decoration:none;">{{ f.title }}</a>{% else %}<div style="font-size:14px;font-weight:500;line-height:1.4;flex:1;">{{ f.title }}</div>{% endif %}
         <span class="score-pill" style="flex-shrink:0;">{{ "%.1f"|format(f.score) }}</span>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);margin-bottom:8px;">{{ f.authors }} · arXiv:{{ f.arxiv_id }}</div>
@@ -1313,6 +1329,7 @@ SHELL_TAIL = r"""
   <div class="pf-line1">AI Intelligence Dashboard &middot; Updated daily &middot; Last refresh: {{ today }}</div>
   <div class="pf-line2">Sources: Hacker News &middot; arXiv &middot; GitHub Trending &middot; Yahoo Finance &middot; Web search</div>
   <div class="pf-line3">Curated and synthesized by Claude (Anthropic)</div>
+  <div class="health-indicator">{% if health.status == "healthy" %}<span class="health-dot" style="background:#3b6d11;"></span>All systems healthy{% elif health.status == "degraded" %}<span class="health-dot" style="background:#e3a01a;"></span>{{ health.warnings | length }} checks degraded{% else %}<span class="health-dot" style="background:#a32d2d;"></span>Pipeline issues — see logs{% endif %}</div>
 </div>
 
 </div>
@@ -1488,6 +1505,7 @@ def render_dashboard(daily_data: Dict) -> str:
         breakthrough_radar=daily_data.get("breakthrough_radar", []),
         research_signals=daily_data.get("research_signals", []),
         fintech_research=daily_data.get("fintech_research", []),
+        health=daily_data.get("health", {"status": "degraded", "warnings": ["health missing"]}),
     )
 
 

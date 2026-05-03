@@ -3,11 +3,11 @@ Rate-limit-safe wrapper around Anthropic Messages API.
 
 Free tier: 30,000 input tokens/min for Sonnet. Web search calls ingest
 ~15-20K tokens of search result content, so two consecutive calls without
-a pause will trigger a 429.
+a longer pause can trigger a 429.
 
 This module provides:
   - sonnet_call(): standard Sonnet synthesis (20s pre-call sleep)
-  - sonnet_web_search(): Sonnet with web_search tool (40s pre-call sleep)
+  - sonnet_web_search(): Sonnet with web_search tool (60s pre-call sleep)
   - haiku_call(): Haiku scoring/classification (no sleep — separate rate-limit pool)
 
 Sleep happens BEFORE the call so the very first call in a fresh session
@@ -29,7 +29,7 @@ from src.utils.json_extract import extract_text_from_response
 
 
 # Sleep durations in seconds — tuned for free-tier 30K tokens/min limit
-WEB_SEARCH_SLEEP = 40
+WEB_SEARCH_SLEEP = 60
 SONNET_SLEEP = 20
 
 # Web search tool spec (Anthropic native, March 2025 version still works)
@@ -96,7 +96,7 @@ def sonnet_web_search(
     """Sonnet call with web_search tool enabled.
 
     Each call typically ingests 15-20K tokens of search results, so the
-    pre-call sleep is longer (40s) than for plain synthesis.
+    pre-call sleep is longer (60s) than for plain synthesis.
     """
     if not skip_sleep:
         _sleep_with_message(WEB_SEARCH_SLEEP, "web search")
