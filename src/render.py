@@ -123,6 +123,35 @@ SHELL_HEAD = r"""
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark only">
 <title>AI Intelligence Dashboard — {{ today }}</title>
+
+<!-- SEO -->
+<meta name="description" content="Daily AI intelligence dashboard — curated stories, model tracking, finance, and research, with a fintech and payments lens.">
+<meta name="author" content="Irakli Cheishvili">
+<link rel="canonical" href="https://siiixseveen.com/">
+
+<!-- Open Graph (LinkedIn, Facebook, Slack, WhatsApp) -->
+<meta property="og:title" content="AI Intelligence Dashboard">
+<meta property="og:description" content="Daily AI intelligence — curated by Claude. Stories, model tracker, finance, research.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://siiixseveen.com/">
+<meta property="og:site_name" content="AI Intelligence Dashboard">
+<meta property="og:image" content="https://siiixseveen.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Intelligence Dashboard preview showing daily curated AI news, model tracker, finance, and research.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Intelligence Dashboard">
+<meta name="twitter:description" content="Daily AI intelligence — curated by Claude. Stories, model tracker, finance, research.">
+<meta name="twitter:image" content="https://siiixseveen.com/og.png">
+<meta name="twitter:image:alt" content="AI Intelligence Dashboard preview showing daily curated AI news, model tracker, finance, and research.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
 <style>
   :root {
     --bg-primary: #1f1f1d;
@@ -1346,6 +1375,9 @@ document.querySelectorAll(".tab").forEach(t => {
     document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
     document.getElementById(t.dataset.page).classList.add("active");
     t.classList.add("active");
+    // Smooth scroll to top on every tab click — even if user clicks the
+    // already-active tab, they jump back to the top.
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
 </script>
@@ -1592,23 +1624,34 @@ def render_dashboard(daily_data: Dict) -> str:
     )
 
 
-def render_index_redirect() -> str:
-    """Generate index.html — a tiny meta-refresh redirect to latest.html.
+def render_latest_redirect() -> str:
+    """Generate latest.html — a redirect to the canonical root URL `/`.
 
-    PLAN sec.3, sec.11.13: bare GitHub Pages URL should land on the dashboard.
+    Phase 7 polish: pre-launch we made the bare URL the dashboard entry
+    (output/dashboard/index.html IS the dashboard). To preserve any
+    existing inbound links to .../latest.html (LinkedIn pre-shares,
+    iMessage/WhatsApp/Signal threads), we keep latest.html as a tiny
+    redirect that bounces visitors to the canonical root URL.
     """
     return (
         '<!DOCTYPE html>\n'
         '<html lang="en">\n'
         '<head>\n'
         '<meta charset="utf-8">\n'
-        '<meta http-equiv="refresh" content="0; url=latest.html">\n'
+        '<meta http-equiv="refresh" content="0; url=/">\n'
         '<title>AI Intelligence Dashboard</title>\n'
-        '<link rel="canonical" href="latest.html">\n'
+        '<link rel="canonical" href="https://siiixseveen.com/">\n'
         '</head>\n'
         '<body>\n'
-        '<p>Redirecting to <a href="latest.html">latest dashboard</a>&hellip;</p>\n'
-        '<script>window.location.replace("latest.html");</script>\n'
+        '<p>Redirecting to <a href="/">latest dashboard</a>&hellip;</p>\n'
+        '<script>window.location.replace("/");</script>\n'
         '</body>\n'
         '</html>\n'
     )
+
+
+# Backwards-compat alias — older code may still call render_index_redirect.
+# Keep the old name pointing at the new function so storage.py works
+# regardless of which import path it uses.
+def render_index_redirect() -> str:
+    return render_latest_redirect()

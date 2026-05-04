@@ -46,28 +46,32 @@ def list_recent_dates(n: int = 30) -> list:
     return [f.stem for f in files[:n]]
 
 
-def save_dashboard(html: str, filename: str = "latest.html") -> str:
+def save_dashboard(html: str, filename: str = "index.html") -> str:
     """Write the rendered HTML dashboard.
 
-    Phase 2 (PLAN sec.3, sec.11.13): also writes index.html as a meta-refresh
-    redirect to latest.html, so the bare GitHub Pages URL works.
+    Post-launch (Phase 7): index.html IS the dashboard so visitors land
+    directly on the canonical root URL `siiixseveen.com/` without any
+    redirect flash. We also write latest.html as a tiny meta-refresh
+    redirect to `/` to preserve any existing inbound links from earlier
+    shares (LinkedIn, iMessage, WhatsApp threads from before launch).
     """
     ensure_dirs()
     path = Path(config.DASHBOARD_DIR) / filename
     path.write_text(html, encoding="utf-8")
     print(f"Dashboard saved: {path}")
 
-    # Also write index.html — small redirect that points at latest.html.
-    # We import lazily to avoid a circular import (render imports config too).
-    if filename == "latest.html":
+    # When we save the dashboard to index.html (the new default), also
+    # write latest.html as a redirect to the canonical root. We import
+    # lazily to avoid a circular import (render imports config too).
+    if filename == "index.html":
         try:
-            from src.render import render_index_redirect
-            index_path = Path(config.DASHBOARD_DIR) / "index.html"
-            index_path.write_text(render_index_redirect(), encoding="utf-8")
-            print(f"Index redirect saved: {index_path}")
+            from src.render import render_latest_redirect
+            redirect_path = Path(config.DASHBOARD_DIR) / "latest.html"
+            redirect_path.write_text(render_latest_redirect(), encoding="utf-8")
+            print(f"Latest redirect saved: {redirect_path}")
         except Exception as exc:
             # Don't fail the pipeline if redirect generation hiccups; the
             # dashboard itself has been saved successfully.
-            print(f"  (index.html redirect skipped: {exc})")
+            print(f"  (latest.html redirect skipped: {exc})")
 
     return str(path)

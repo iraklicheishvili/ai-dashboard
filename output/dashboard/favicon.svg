@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Yellow round badge background -->
+  <circle cx="32" cy="32" r="30" fill="#FFD93D"/>
+  <!-- Numbers 6 and 7 in dark text — readable, recognizable, ties to brand -->
+  <text x="20" y="44" font-family="-apple-system, system-ui, sans-serif" font-weight="900"
+        font-size="34" fill="#1f1f1d" text-anchor="middle">6</text>
+  <text x="44" y="44" font-family="-apple-system, system-ui, sans-serif" font-weight="900"
+        font-size="34" fill="#1f1f1d" text-anchor="middle">7</text>
+</svg>
