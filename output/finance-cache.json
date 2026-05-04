@@ -1,13 +1,13 @@
 {
   "_finance_updated": "2026-05-04",
   "funding_summary": {
-    "total_raised": "11.8B",
+    "total_raised": "1.9B",
     "total_raised_change": "",
     "deals_closed": 12,
     "deals_change": "",
-    "largest_round": "10B",
-    "largest_round_company": "Project Prometheus",
-    "median_premoney": "5.1B",
+    "largest_round": "1.1B",
+    "largest_round_company": "Ineffable Intelligence",
+    "median_premoney": "2.0B",
     "median_trend": "flat"
   },
   "funding_rounds": [
@@ -22,64 +22,64 @@
       "url": "https://techcrunch.com/2026/04/27/deepminds-david-silver-just-raised-1-1b-to-build-an-ai-that-learns-without-human-data/"
     },
     {
-      "company": "Project Prometheus",
-      "category": "Foundation Model",
-      "amount": "10B",
-      "valuation": "38B",
-      "stage": "Growth",
+      "company": "Manifest OS",
+      "category": "Vertical SaaS",
+      "amount": "60M",
+      "valuation": "750M",
+      "stage": "Series A",
       "lead_investor": "N/A",
-      "date": "Apr 23",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-23/bezos-s-physical-ai-lab-has-closed-round-at-38-billion-value"
+      "date": "Apr 28",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-28/ai-legal-startup-manifest-raises-funds-at-750-million-valuation"
     },
     {
       "company": "Legora",
       "category": "Vertical SaaS",
       "amount": "50M",
-      "valuation": "5.6B",
+      "valuation": "5.5B",
       "stage": "Series D",
-      "lead_investor": "NVentures (Nvidia)",
+      "lead_investor": "NVentures (Nvidia), Accel",
       "date": "Apr 30",
-      "url": "https://techcrunch.com/2026/04/30/legal-ai-startup-legora-hits-5-6-valuation-and-its-battle-with-harvey-just-got-hotter/"
+      "url": "https://techstartups.com/2026/04/30/top-startup-and-tech-funding-news-april-30-2025/"
     },
     {
-      "company": "Sereact",
-      "category": "Robotics",
+      "company": "Netomi",
+      "category": "Agents",
       "amount": "110M",
       "valuation": "N/A",
-      "stage": "Series B",
+      "stage": "Series C",
       "lead_investor": "N/A",
-      "date": "Apr 27",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-27/ai-startup-sereact-raises-110-million-for-robots-that-predict-consequences"
+      "date": "Apr 30",
+      "url": "https://techstartups.com/2026/04/30/top-startup-and-tech-funding-news-april-30-2025/"
     },
     {
-      "company": "Sooth Labs",
-      "category": "Foundation Model",
-      "amount": "50M",
-      "valuation": "335M",
-      "stage": "Seed",
-      "lead_investor": "Felicis Ventures",
-      "date": "Apr 22",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-22/ai-pioneers-back-startup-building-models-to-predict-events"
+      "company": "Parallel Web Systems",
+      "category": "AI Infra",
+      "amount": "100M",
+      "valuation": "2B",
+      "stage": "Growth",
+      "lead_investor": "Sequoia Capital",
+      "date": "May 01",
+      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
     },
     {
-      "company": "Factory",
-      "category": "Agents",
-      "amount": "150M",
-      "valuation": "1.5B",
-      "stage": "Series B",
-      "lead_investor": "Khosla Ventures",
-      "date": "Apr 21",
-      "url": "https://techcrunch.com/2026/04/16/factory-hits-1-5b-valuation-to-build-ai-coding-for-enterprises/"
-    },
-    {
-      "company": "Loop",
+      "company": "Omni",
       "category": "Vertical SaaS",
-      "amount": "95M",
+      "amount": "120M",
+      "valuation": "1.5B",
+      "stage": "Series C",
+      "lead_investor": "Iconiq Growth",
+      "date": "Apr 22",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-autonomy-biotech-anthropic/"
+    },
+    {
+      "company": "AcuityMD",
+      "category": "AI Health",
+      "amount": "80M",
       "valuation": "N/A",
       "stage": "Series C",
-      "lead_investor": "Valor",
+      "lead_investor": "N/A",
       "date": "Apr 22",
-      "url": "https://techcrunch.com/2026/04/17/loop-raises-95m-to-build-supply-chain-ai-that-predicts-disruptions/"
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-autonomy-biotech-anthropic/"
     },
     {
       "company": "Chapter",
@@ -88,48 +88,48 @@
       "valuation": "N/A",
       "stage": "Series E",
       "lead_investor": "Generation Investment Management",
-      "date": "Apr 28",
+      "date": "Apr 21",
       "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
     },
     {
-      "company": "Parallel Web Systems",
-      "category": "Foundation Model",
-      "amount": "100M",
-      "valuation": "2B",
-      "stage": "Series A",
-      "lead_investor": "Sequoia Capital",
-      "date": "May 01",
-      "url": "https://blog.mean.ceo/startup-funding-news-may-2026/"
+      "company": "Loop",
+      "category": "Vertical SaaS",
+      "amount": "95M",
+      "valuation": "N/A",
+      "stage": "Series C",
+      "lead_investor": "Valor Equity Partners",
+      "date": "Apr 25",
+      "url": "https://techcrunch.com/2026/04/17/loop-raises-95m-to-build-supply-chain-ai-that-predicts-disruptions/"
     },
     {
-      "company": "Era",
-      "category": "AI Infra",
-      "amount": "9M",
+      "company": "Mintlify",
+      "category": "Dev Tools",
+      "amount": "45M",
+      "valuation": "N/A",
+      "stage": "Series B",
+      "lead_investor": "N/A",
+      "date": "Apr 21",
+      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
+    },
+    {
+      "company": "All3",
+      "category": "Robotics",
+      "amount": "25M",
       "valuation": "N/A",
       "stage": "Seed",
-      "lead_investor": "Abstract Ventures, BoxGroup",
-      "date": "Apr 23",
-      "url": "https://techcrunch.com/2026/04/23/era-computer-raises-11m-to-build-a-software-platform-for-ai-gadgets/"
+      "lead_investor": "RTP Global",
+      "date": "Apr 28",
+      "url": "https://techstartups.com/2026/04/30/top-startup-and-tech-funding-news-april-30-2025/"
     },
     {
-      "company": "Flourish",
-      "category": "AI Infra",
-      "amount": "N/A",
-      "valuation": "2.5B",
+      "company": "Performativ",
+      "category": "Fintech AI",
+      "amount": "14M",
+      "valuation": "N/A",
       "stage": "Series A",
-      "lead_investor": "N/A",
-      "date": "Apr 30",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-30/startup-bringing-brains-to-ai-aims-for-2-5-billion-valuation"
-    },
-    {
-      "company": "Cognition AI",
-      "category": "Dev Tools",
-      "amount": "N/A",
-      "valuation": "25B",
-      "stage": "Growth",
-      "lead_investor": "N/A",
-      "date": "Apr 23",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-23/ai-coding-firm-cognition-in-funding-talks-at-25-billion-value"
+      "lead_investor": "Deutsche Börse Group",
+      "date": "May 02",
+      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
     }
   ],
   "private_ai": [
@@ -137,7 +137,7 @@
       "name": "OpenAI",
       "valuation_billions": 852.0,
       "last_round": "122B",
-      "last_round_date": "Feb 2026"
+      "last_round_date": "Mar 2026"
     },
     {
       "name": "Anthropic",
@@ -146,16 +146,16 @@
       "last_round_date": "Feb 2026"
     },
     {
-      "name": "xAI",
-      "valuation_billions": 250.0,
-      "last_round": "20B",
-      "last_round_date": "Jan 2026"
-    },
-    {
       "name": "Databricks",
       "valuation_billions": 62.0,
       "last_round": "15.3B",
-      "last_round_date": "Dec 2024"
+      "last_round_date": "Sep 2024"
+    },
+    {
+      "name": "xAI",
+      "valuation_billions": 50.0,
+      "last_round": "20B",
+      "last_round_date": "Jan 2026"
     },
     {
       "name": "Anysphere (Cursor)",
@@ -164,28 +164,16 @@
       "last_round_date": "Apr 2026"
     },
     {
-      "name": "Scale AI",
-      "valuation_billions": 29.0,
-      "last_round": "1B",
-      "last_round_date": "May 2024"
-    },
-    {
       "name": "Perplexity",
       "valuation_billions": 21.21,
       "last_round": "500M",
       "last_round_date": "Jan 2026"
     },
     {
-      "name": "Mistral",
-      "valuation_billions": 13.0,
-      "last_round": "1.1B",
-      "last_round_date": "Jun 2024"
-    },
-    {
-      "name": "Glean",
-      "valuation_billions": 7.2,
-      "last_round": "260M",
-      "last_round_date": "Feb 2024"
+      "name": "Scale AI",
+      "valuation_billions": 13.8,
+      "last_round": "1B",
+      "last_round_date": "May 2024"
     },
     {
       "name": "Cohere",
@@ -194,16 +182,28 @@
       "last_round_date": "Aug 2024"
     },
     {
-      "name": "Runway",
-      "valuation_billions": 4.0,
-      "last_round": "308M",
-      "last_round_date": "Oct 2023"
+      "name": "Mistral",
+      "valuation_billions": 6.2,
+      "last_round": "640M",
+      "last_round_date": "Jun 2024"
+    },
+    {
+      "name": "Glean",
+      "valuation_billions": 4.6,
+      "last_round": "260M",
+      "last_round_date": "Feb 2024"
     },
     {
       "name": "ElevenLabs",
       "valuation_billions": 3.3,
       "last_round": "180M",
-      "last_round_date": "Jan 2024"
+      "last_round_date": "Jan 2025"
+    },
+    {
+      "name": "Runway",
+      "valuation_billions": 3.0,
+      "last_round": "308M",
+      "last_round_date": "Jun 2024"
     }
   ],
   "arms_race": {
@@ -232,7 +232,7 @@
         "name": "Anthropic",
         "color": "#EF9F27",
         "data": [
-          4,
+          0,
           3.5,
           0,
           13,
@@ -281,100 +281,100 @@
   "vc_league": [],
   "money_flow": [
     {
-      "direction": "up",
-      "text": "Foundation model funding is experiencing a supercycle moment: Ineffable Intelligence closed a $1.1B seed at a $5.1B valuation and Parallel Web Systems raised $100M Series A at $2B — both this week — signaling that investors are pre-empting model-layer winners before differentiation is even proven, compressing the window for late entrants."
+      "direction": "alert",
+      "text": "A $1.1B seed round at a $5.1B valuation for Ineffable Intelligence — backed by Sequoia and Lightspeed — signals that foundation model bets are moving upstream to pre-product, pre-data stages; if self-supervised 'learn without human data' architectures gain traction, it directly threatens the moat of incumbents like Anthropic (just valued at $350B on Google's $40B check) who are data-labeling-dependent."
     },
     {
       "direction": "up",
-      "text": "Physical and predictive AI is absorbing serious capital: Project Prometheus closed $10B at $38B and Sereact raised $110M Series B for consequence-predicting robots, while Sooth Labs seeded at $335M for event forecasting — the 'AI that acts in the real world' thesis is now a consensus trade among top-tier allocators."
+      "text": "Vertical SaaS AI is the most active funding category this week, with Manifest OS ($60M), Legora ($50M at $5.5B), Omni ($120M), and Loop ($95M) all closing — Nvidia's NVentures co-leading Legora's Series D signals the GPU giant is now buying distribution into legal and professional workflows, not just infrastructure."
     },
     {
       "direction": "up",
-      "text": "Agentic payments infrastructure is crystallizing into a standards race: Visa's Trusted Agent Protocol (with Adyen, Stripe, Shopify, Fiserv, Worldpay as launch partners) and Mastercard Agent Pay via Stripe's Shared Payment Tokens signal that the major networks are racing to own the identity and credentialing layer for AI agents — this is the tokenization moment for the agentic economy, and operators who aren't in the protocol stack now will be paying for access later."
+      "text": "Agentic payments infrastructure is becoming a genuine competitive battleground: Mastercard's Agent Pay and Merchant Cloud, Visa's Trusted Agent Protocol, and Stripe's Shared Payment Tokens all launched within the same window, meaning the tokenized-credential layer for AI agents is consolidating fast — operators who aren't in this stack by end of 2026 risk being routed around entirely."
     },
     {
       "direction": "up",
-      "text": "AI fraud and AML infrastructure is entering a product arms race: Experian's 'Transaction Forensics' (200% APP fraud uplift, 80% fewer false positives) and Q2's dual real-time fraud tools launched within the same week, suggesting banks are under acute pressure to deploy and payment infrastructure vendors are competitively bundling AI risk layers — fraud tooling is becoming table stakes, not differentiation."
+      "text": "AI security M&A is accelerating around the agent attack surface — Palo Alto acquiring Portkey (AI Gateway) and Cyera acquiring Ryft (secure agentic data lakes) within days of each other signals that enterprise security incumbents are racing to own the trust and access-control layer before agentic deployments scale past governance controls."
     },
     {
       "direction": "alert",
-      "text": "Inference optimization is now M&A currency: Nebius paid ~$643M to acquire Eigen AI specifically for model optimization and inference efficiency — at a time when Cerebras is IPO-filing at $22-25B on the back of a $20B OpenAI inference deal — suggesting the cost-of-inference problem is acute enough that hyperscalers and infrastructure players are acquiring rather than building, which could spike valuations for any startup sitting on novel efficiency IP."
+      "text": "Tesla's undisclosed $2B AI hardware acquisition — with ~$1.8B contingent on deployment milestones — is an anomaly worth watching: the secrecy and milestone-gating structure suggests this is a strategic capability lock-in (likely inference or edge silicon) that could reduce Tesla/xAI's dependence on Nvidia at exactly the moment Cerebras is filing for IPO at a $22–25B valuation with a $20B OpenAI inference deal."
     },
     {
-      "direction": "flat",
-      "text": "Vertical SaaS AI is bifurcating sharply on capital efficiency: Legora raised only $50M but hit a $5.6B valuation (led by Nvidia's NVentures), while Loop raised $95M with no disclosed valuation — NVIDIA backing is acting as a re-rating event independent of round size, suggesting vertical AI winners will be sorted less by ARR and more by who controls the model relationship and GPU access."
+      "direction": "up",
+      "text": "Stablecoin rails are crossing into mainstream production: DoorDash paying Dashers via Stripe/Paradigm's Tempo blockchain joins Shopify, Visa, Mastercard, and Klarna on the same network, and Performativ's Series A led by Deutsche Börse confirms institutional financial infrastructure is now funding AI-native fintech — operators should expect stablecoin settlement to be a real procurement conversation by Q4 2026."
     }
   ],
   "ma_tracker": [
     {
       "type": "Acquisition",
-      "title": "Nebius acquires Eigen AI",
-      "detail": "Nebius (NASDAQ: NBIS) agreed to acquire inference and model optimization company Eigen AI for approximately $643 million in cash and stock, aiming to strengthen its Nebius Token Factory managed inference platform with Eigen's optimization stack and elite research talent.",
-      "date": "May 01",
-      "url": "https://nebius.com/newsroom/nebius-agrees-to-acquire-eigen-ai-strengthening-nebius-token-factory-as-a-frontier-inference-platform"
-    },
-    {
-      "type": "Acquisition",
       "title": "Palo Alto Networks acquires Portkey",
-      "detail": "Palo Alto Networks announced its intent to acquire Portkey, a pioneer in AI Gateways, to bolster its Prisma AIRS platform and offer enterprise customers a comprehensive AI security solution for the rise of AI agents; deal value was not disclosed.",
+      "detail": "Palo Alto Networks announced its intent to acquire Portkey, a pioneer in AI Gateways, to integrate it with its Prisma AIRS platform and build out a comprehensive AI security offering for the rise of AI agents; deal expected to close in Q4 FY2026.",
       "date": "Apr 30",
       "url": "https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-to-acquire-portkey-to-secure-the-rise-of-ai-agents"
     },
     {
       "type": "Acquisition",
-      "title": "Tesla acquires unnamed AI hardware company",
-      "detail": "Tesla quietly disclosed in its Q1 2026 10-Q filing an agreement to acquire an unnamed AI hardware company for up to $2 billion in Tesla stock and equity awards, with roughly $1.8 billion subject to performance milestones tied to successful technology deployment.",
+      "title": "Tesla acquires undisclosed AI hardware company",
+      "detail": "Tesla quietly disclosed in its Q1 2026 10-Q filing an agreement to acquire an unnamed AI hardware company for up to $2 billion in stock and equity awards, with ~$1.8B contingent on successful technology deployment milestones; the target company was not named.",
       "date": "Apr 23",
       "url": "https://electrek.co/2026/04/23/tesla-tsla-quietly-discloses-2-billion-ai-hardware-acquisition-10q/"
     },
     {
+      "type": "Acquisition",
+      "title": "Cyera acquires Ryft",
+      "detail": "Cyera, a data security firm valued at $9 billion, acquired Israeli AI startup Ryft — which built a secure automated data lake platform for AI agents — in a deal estimated between $100–$130 million, bolstering its agentic AI security portfolio.",
+      "date": "Apr 28",
+      "url": "https://www.securityweek.com/cybersecurity-ma-roundup-33-deals-announced-in-april-2026/"
+    },
+    {
       "type": "Acqui-hire",
-      "title": "OpenAI acquires Hiro Finance",
-      "detail": "OpenAI acquired personal finance AI startup Hiro Finance in an acqui-hire, bringing on its ~10-person team (including serial entrepreneur Ethan Bloch) as its seventh known acquisition of 2026; financial terms were not disclosed and Hiro will shut down operations on April 20.",
-      "date": "Apr 20",
+      "title": "OpenAI acqui-hires Hiro Finance",
+      "detail": "OpenAI's acqui-hire of Hiro Finance on April 13 was its seventh known acquisition of 2026, continuing an aggressive pace of deal-making as the company assembles vertical operator teams across fintech and other specialized domains.",
+      "date": "Apr 13",
       "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
     },
     {
       "type": "IPO filing",
       "title": "Cerebras Systems files for IPO",
-      "detail": "AI chipmaker Cerebras Systems publicly filed its S-1 with the SEC on April 17, targeting a mid-May Nasdaq listing under ticker CBRS at a $22–$25 billion valuation, backed by $510M in 2025 revenue and a landmark $20 billion inference capacity deal with OpenAI.",
+      "detail": "AI chipmaker Cerebras Systems filed its public S-1 with the SEC on April 17, targeting a mid-May 2026 Nasdaq listing under ticker CBRS at a $22–$25 billion valuation; the company reported $510M in 2025 revenue and holds a $20B inference capacity deal with OpenAI.",
       "date": "Apr 17",
       "url": "https://theaiinsider.tech/2026/04/21/cerebras-systems-files-for-ipo-after-23b-valuation-and-openai-deal/"
     },
     {
       "type": "IPO filing",
       "title": "SpaceX files confidential S-1 for IPO",
-      "detail": "SpaceX filed a confidential S-1 registration statement with the SEC on April 1, targeting a June 2026 Nasdaq listing at a $1.75 trillion valuation with an expected $75 billion raise — which would make it the largest IPO in history — following its February merger with xAI.",
+      "detail": "SpaceX filed a confidential S-1 with the SEC on April 1, targeting a June 2026 Nasdaq listing at a $1.75 trillion valuation with a ~$75 billion raise; following its February 2026 merger with xAI, the combined entity is now positioned as a vertically integrated space, communications, and AI infrastructure platform.",
       "date": "Apr 01",
       "url": "https://www.techi.com/spacex-ipo/"
     },
     {
+      "type": "IPO filing",
+      "title": "Quantinuum reveals confidential S-1 filing",
+      "detail": "Quantum computing company Quantinuum announced in April 2026 that it had submitted a confidential S-1 to the SEC in February, signaling a potential IPO before end of Q2 2026 at a previously cited $10 billion valuation.",
+      "date": "Apr 10",
+      "url": "https://accessipos.com/upcoming-ipos/"
+    },
+    {
       "type": "Investment",
-      "title": "Amazon invests $5B in Anthropic",
-      "detail": "Amazon announced a new $5 billion investment in AI safety company Anthropic, with commitments of up to an additional $20 billion in the future, deepening their partnership for training and deploying Claude models on AWS infrastructure.",
+      "title": "Google invests $40 billion in Anthropic",
+      "detail": "Google confirmed on April 24 a $40 billion investment in Anthropic — $10 billion immediately at a $350 billion valuation, with another $30 billion contingent on performance milestones — deepening a strategic partnership that includes expanded use of Google Cloud and TPU capacity starting in 2027.",
       "date": "Apr 24",
+      "url": "https://www.pymnts.com/news/investment-tracker/2026/google-doubles-down-on-anthropic-with-new-40-billion-investment/"
+    },
+    {
+      "type": "Investment",
+      "title": "Amazon invests $5 billion in Anthropic",
+      "detail": "Amazon invested $5 billion in Anthropic on April 20, with up to an additional $20 billion possible in the future, also expanding a partnership for training and deploying Claude; Amazon had previously invested $8 billion in the San Francisco-based AI lab.",
+      "date": "Apr 20",
       "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-autonomy-biotech-anthropic/"
     },
     {
       "type": "Investment",
-      "title": "Tencent and Alibaba in talks to invest in DeepSeek",
-      "detail": "Tencent and Alibaba are negotiating to participate in DeepSeek's first-ever funding round, with Tencent reportedly proposing up to a 20% stake in the Chinese AI startup, which is benchmarking its valuation against publicly traded rivals valued at around $40 billion.",
-      "date": "Apr 24",
-      "url": "https://www.indexbox.io/blog/tencent-and-alibaba-in-talks-to-invest-in-ai-startup-deepseek/"
-    },
-    {
-      "type": "Investment",
-      "title": "Andreessen Horowitz leads $2B investment in Cursor",
-      "detail": "AI coding startup Cursor is in talks to raise a $2 billion funding round at a valuation exceeding $50 billion, co-led by Andreessen Horowitz with participation from Nvidia and Thrive Capital, reflecting surging investor appetite for AI coding agent platforms.",
-      "date": "Apr 19",
-      "url": "https://www.cnbc.com/2026/04/19/cursor-ai-2-billion-funding-round.html"
-    },
-    {
-      "type": "Investment",
-      "title": "Google and Nvidia invest in Legora at $5.6B valuation",
-      "detail": "Legal AI startup Legora raised a major round reaching a $5.6 billion valuation, with Nvidia's NVentures making its first legal AI investment and Google also participating, as the Swedish-born startup intensifies its competition with U.S. rival Harvey.",
-      "date": "Apr 30",
-      "url": "https://techcrunch.com/2026/04/30/legal-ai-startup-legora-hits-5-6-valuation-and-its-battle-with-harvey-just-got-hotter/"
+      "title": "Pentagon invests via strategic agreements with 7 AI firms",
+      "detail": "The Pentagon announced strategic agreements on May 1 with SpaceX, OpenAI, Google, NVIDIA, Reflection, Microsoft, and AWS to deploy AI products on its classified Impact Level 6 and 7 networks via GenAI.mil, targeting warfighter decision-making and data synthesis.",
+      "date": "May 01",
+      "url": "https://www.nextgov.com/artificial-intelligence/2026/05/pentagon-makes-agreements-7-companies-add-ai-classified-networks/413264/"
     }
   ],
   "fintech_spotlight": [
@@ -384,11 +384,11 @@
       "tags": [
         "Agentic Payments",
         "Payments AI",
-        "Tokenization"
+        "BNPL"
       ],
-      "description": "Stripe announced in March 2026 the expansion of Shared Payment Tokens (SPTs) to support network-led agentic payment capabilities, naming Visa Intelligent Commerce, Mastercard Agent Pay, Affirm, and Klarna as partners — enabling AI agents to transact using tokenized credentials without accessing raw card data.",
-      "url": "https://www.digitalcommerce360.com/2026/04/02/visa-mastercard-in-agentic-commerce/",
-      "strategic": ""
+      "description": "Stripe announced in March 2026 expanded support for network-led agentic payment capabilities via Shared Payment Tokens (SPTs), naming Visa Intelligent Commerce, Mastercard Agent Pay, Affirm, and Klarna as launch partners — enabling AI agents to transact on behalf of consumers using tokenized credentials without exposing raw card data.",
+      "strategic": "The SPT framework is a decisive move by Visa and Mastercard to ensure that agentic commerce flows through network rails rather than around them — a preemptive strike against the scenario where AI orchestration layers (think OpenAI, Anthropic, or Google agents) negotiate payments directly via bank APIs or stablecoins, bypassing interchange entirely. By anchoring SPTs to existing card credentials and embedding BNPL players like Affirm and Klarna at launch, the networks are simultaneously defending interchange revenue and co-opting the BNPL threat: rather than BNPL routing around card rails at checkout, it now rides them. For issuers, the critical watch item is who controls the 'default payment method' logic inside an AI agent — if that preference layer is set at onboarding by a non-bank tech platform, issuers risk being commoditized to dumb funding sources, making top-of-wallet battles in the agentic era far more consequential than anything seen in mobile wallets.",
+      "url": "https://www.digitalcommerce360.com/2026/04/02/visa-mastercard-in-agentic-commerce/"
     },
     {
       "company": "Visa",
@@ -396,11 +396,23 @@
       "tags": [
         "Agentic AI",
         "Payments Infrastructure",
-        "Identity"
+        "Fraud Detection"
       ],
-      "description": "Visa launched its Trusted Agent Protocol in early April 2026, a no-code framework enabling merchants to securely identify and authenticate AI agents with purchase intent; partners include Adyen, Stripe, Shopify, Microsoft, Coinbase, Fiserv, and Worldpay.",
-      "url": "https://www.americanbanker.com/payments/news/mastercard-visa-embrace-agentic-ai-technology",
-      "strategic": ""
+      "description": "Visa launched its Trusted Agent Protocol in partnership with Adyen, Stripe, Shopify, Coinbase, Fiserv, Microsoft, and others, creating a framework for AI agents to be cryptographically identified and authorized to make purchases — directly addressing bot-detection gaps that would otherwise block legitimate agentic commerce at scale.",
+      "strategic": "Visa's Trusted Agent Protocol is effectively an attempt to own the identity and authorization layer for non-human transactors — a problem that acquirers and their fraud stacks are entirely unprepared for today, since virtually every bot-detection and 3DS model is trained on human behavioral signals. By cryptographically credentialing AI agents and distributing that trust framework through Adyen, Stripe, and Fiserv simultaneously, Visa is making itself the de facto certificate authority for agentic commerce, a role with significant long-term leverage: merchants and acquirers that accept Visa's agent attestations effectively outsource agent risk adjudication to Visa, deepening network dependency in a way that goes well beyond traditional card acceptance. For Fiserv and other processor partners, integrating the protocol also creates a natural upsell surface into their merchant base, but it means their fraud models must now be rebuilt or layered to distinguish between human, trusted-agent, and malicious-bot transaction profiles — a non-trivial infrastructure lift that will accelerate consolidation among processors who can and cannot afford to retool.",
+      "url": "https://www.agentpmt.com/articles/visa-mastercard-launch-financial-automation-for-ai-agents"
+    },
+    {
+      "company": "Mastercard",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Agentic AI",
+        "Payments Infrastructure",
+        "Banking Infrastructure"
+      ],
+      "description": "Mastercard launched its Merchant Cloud in early 2026, integrating authentication, checkout, agentic payments via Agent Pay, fraud monitoring, and multi-channel merchant services into a single platform — supported by 240+ acquirer partners and underpinned by its Verifiable Intent trust layer for AI-agent authorization.",
+      "strategic": "Mastercard's Merchant Cloud is the most direct challenge yet to the Stripe/Adyen model of owning the full merchant payments stack — by bundling authentication, checkout, fraud, and now agentic payments into a single network-native platform distributed through 240+ acquirers, Mastercard is effectively turning its acquirer partners into distribution agents for a product that competes with third-party payment facilitators and PSPs. The Verifiable Intent layer is particularly consequential: it positions Mastercard as the authoritative source of agent legitimacy at the authorization message level, meaning issuers approving agentic transactions will increasingly rely on network-level signals rather than their own models — subtly shifting risk decisioning authority from issuers toward the network. Acquirers in the 240+ partner ecosystem should assess carefully whether integrating Merchant Cloud accelerates their merchant value proposition or ultimately trains merchants to view Mastercard — not the acquirer — as their primary payments relationship.",
+      "url": "https://www.americanbanker.com/payments/news/mastercard-visa-embrace-agentic-ai-technology"
     },
     {
       "company": "Adyen x Talon.One",
@@ -410,45 +422,33 @@
         "Loyalty & Incentives",
         "Merchant Tech"
       ],
-      "description": "Adyen announced on or around late April 2026 a definitive agreement to acquire loyalty and incentives platform Talon.One — which serves 300+ global merchants — for €750 million, combining Adyen's payments data with Talon.One's real-time decisioning to unify customer identity across channels.",
-      "url": "https://glenbrook.com/payments-news/all-payments-news/",
-      "strategic": ""
+      "description": "Adyen announced on approximately Apr 2026 a definitive agreement to acquire Talon.One GmbH — a loyalty and promotions platform serving 300+ global merchants — for €750 million, combining Adyen's global payments infrastructure and transaction data with Talon.One's real-time decisioning to give merchants a consistent cross-channel customer identity.",
+      "strategic": "This acquisition directly threatens card-linked offer programs and network-level loyalty economics: by fusing Adyen's transaction data with Talon.One's real-time promotion engine at the acquirer layer, Adyen can offer merchants a closed-loop loyalty and incentive platform that never needs to surface card BIN data to a network or issue offer eligibility queries through Visa Offers or Mastercard's rewards APIs — effectively disintermediating the network from the merchant marketing stack. For issuers, this is acutely relevant because Adyen-processed merchants (which include many of the world's largest enterprise retailers) could shift co-brand and loyalty investment away from issuer-network partnerships toward Adyen-native programs that run on transaction data Adyen already owns. Mastercard and Visa should view this as a signal to accelerate the commercial value of their own data and offers layers — the window to remain the preferred loyalty infrastructure partner for large merchants is closing as acquirers accumulate the enriched transaction history needed to go it alone.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/"
     },
     {
-      "company": "Experian x Resistant AI",
-      "deal_type": "Product Launch",
-      "tags": [
-        "Fraud Detection",
-        "AML",
-        "Banking Infrastructure"
-      ],
-      "description": "Experian launched 'Transaction Forensics' on Apr 22, 2026 — an AI-powered fraud and AML solution built with Resistant AI using 80+ AI models; pilot testing showed a 200% uplift in APP fraud detection, 80% fewer false positives, and 50% lower alert volumes for UK banks.",
-      "url": "https://fintech.global/2026/04/23/experian-launches-ai-fraud-detection-tool-for-uk-banks/",
-      "strategic": ""
-    },
-    {
-      "company": "Q2 Holdings",
-      "deal_type": "Product Launch",
-      "tags": [
-        "Fraud Detection",
-        "Banking Infrastructure",
-        "AI"
-      ],
-      "description": "Q2 Holdings announced on Apr 28, 2026 two new AI-powered fraud tools — User Activity Monitoring (UAM) and Restricted Entitlements Mode (REM) — providing continuous, real-time account takeover protection across the digital banking journey for banks and credit unions.",
-      "url": "https://fintech.global/2026/04/28/q2-adds-real-time-fraud-detection-capabilities/",
-      "strategic": ""
-    },
-    {
-      "company": "Customers Bank x OpenAI",
+      "company": "Stripe x DoorDash (Tempo Blockchain)",
       "deal_type": "Partnership",
       "tags": [
-        "Banking Infrastructure",
-        "AI",
-        "Commercial Banking"
+        "Stablecoins",
+        "Payments Infrastructure",
+        "Embedded Finance"
       ],
-      "description": "Customers Bank announced on Apr 28, 2026 a multiyear strategic collaboration with OpenAI to deploy artificial intelligence across its commercial banking operations.",
-      "url": "https://fintech.global/2026/04/28/q2-adds-real-time-fraud-detection-capabilities/",
-      "strategic": ""
+      "description": "DoorDash announced in late Apr 2026 it will pay Dashers via the Tempo blockchain — a stablecoin payment rail incubated by Stripe and crypto investor Paradigm — joining an early network that also includes Shopify, OpenAI, Visa, Mastercard, Klarna, and UBS, signaling stablecoin payments moving from crypto circles to mainstream production rails.",
+      "strategic": "The Tempo network's roster — which conspicuously includes both Visa and Mastercard alongside stablecoin-native players — reveals the networks' calculated hedge: participate in stablecoin infrastructure early enough to shape its interchange and settlement conventions, rather than watch a parallel rail mature outside their influence. For card networks, the existential risk in gig-economy disbursement flows like DoorDash is straightforward: push payments via Visa Direct or Mastercard Send carry per-transaction fees; a stablecoin rail settled on-chain does not, and at DoorDash's Dasher volume, the economics are material. For acquirers and processors, Tempo is a direct challenge to the push payment products they've built on network rails — if Stripe can offer merchants and platforms a stablecoin disbursement API at lower cost with near-instant finality, the case for Visa Direct or RTP-based earned wage access products weakens significantly, particularly for platforms already deeply embedded in the Stripe ecosystem.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/"
+    },
+    {
+      "company": "ACI Worldwide x Kinexys by J.P. Morgan",
+      "deal_type": "Partnership",
+      "tags": [
+        "Fraud Detection",
+        "Real-Time Payments",
+        "Banking Infrastructure"
+      ],
+      "description": "ACI Worldwide and Kinexys by J.P. Morgan announced in early May 2026 the integration of Kinexys Liink's Confirm application into ACI Worldwide's Fraud and Financial Crime solution, targeting real-time payment fraud prevention as instant settlement adoption accelerates and traditional fraud detection models become inadequate for sub-second transaction windows.",
+      "strategic": "This integration highlights a structural vulnerability in the real-time payments fraud model that card networks have largely solved but bank-to-bank rails have not: in card transactions, the issuer has a pre-authorization moment to decline; in instant payment systems, fraud is often irrecoverable post-settlement, making pre-flight account validation — exactly what Kinexys Liink's Confirm provides — a critical compensating control. For Mastercard and Visa, this dynamic is actually a competitive argument in their favor: their authorization infrastructure, fraud scores (e.g., Mastercard Safety Net, Visa Advanced Authorization), and chargeback frameworks represent decades of investment in making reversibility and risk management work at scale — capabilities that real-time bank-to-bank rails are still retrofitting. ACI's move also signals that mid-tier banks and processors running RTP or FedNow volumes are now actively shopping for fraud infrastructure partnerships, creating an opening for network-affiliated fraud products to cross-sell into the account-to-account space before it matures into a self-sufficient ecosystem.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/"
     }
   ]
 }
