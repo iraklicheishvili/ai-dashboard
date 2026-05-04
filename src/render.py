@@ -122,6 +122,30 @@ SHELL_HEAD = r"""
 <meta charset="utf-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Intelligence Dashboard — {{ today }}</title>
+
+<!-- SEO -->
+<meta name="description" content="Daily AI intelligence dashboard — curated stories, model tracking, finance, and research, with a fintech and payments lens.">
+<meta name="author" content="Irakli Cheishvili">
+<link rel="canonical" href="https://siiixseveen.com/">
+
+<!-- Open Graph (LinkedIn, Facebook, Slack, WhatsApp) -->
+<meta property="og:title" content="AI Intelligence Dashboard">
+<meta property="og:description" content="Daily AI intelligence — curated by Claude. Stories, model tracker, finance, research.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://siiixseveen.com/">
+<meta property="og:site_name" content="AI Intelligence Dashboard">
+<meta property="og:image" content="https://siiixseveen.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Intelligence Dashboard preview showing daily curated AI news, model tracker, finance, and research.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Intelligence Dashboard">
+<meta name="twitter:description" content="Daily AI intelligence — curated by Claude. Stories, model tracker, finance, research.">
+<meta name="twitter:image" content="https://siiixseveen.com/og.png">
+<meta name="twitter:image:alt" content="AI Intelligence Dashboard preview showing daily curated AI news, model tracker, finance, and research.">
+
 <style>
   :root {
     --bg-primary: #ffffff;
