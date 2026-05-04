@@ -1,0 +1,108 @@
+{
+  "_updated": "2026-05-04",
+  "models": {
+    "chatgpt": {
+      "strengths": [
+        "Consistently high buzz volume (96-100) signals strong ongoing public mindshare",
+        "GPT-4o and o3 releases keep product line competitive across reasoning tiers",
+        "Broad ecosystem integrations sustain developer and enterprise adoption",
+        "Story count of 4-6/day reflects steady media coverage and product momentum"
+      ],
+      "weaknesses": [
+        "Sentiment dropped sharply to 4.2 on May 4, one of the lowest scores tracked",
+        "Negative comments (10) outpaced positives (5) on May 4, signaling user friction",
+        "Sentiment trend is declining: 6.8 → 4.8 → 4.2 over the past four days",
+        "High buzz with low sentiment suggests controversy, not enthusiasm, driving volume",
+        "Neutral-heavy comment mix (9 neutral) suggests lukewarm user satisfaction"
+      ]
+    },
+    "claude": {
+      "strengths": [
+        "Highest buzz volume on May 4 (100), tied with DeepSeek and Copilot",
+        "Story count of 10/day is the highest of any tracked model, showing press interest",
+        "Large neutral comment share (16/25) suggests measured, substantive discussion",
+        "Sonnet/Haiku tier structure appeals to cost-sensitive enterprise deployments"
+      ],
+      "weaknesses": [
+        "Sentiment score of 4.2 on May 4 is among the lowest, matching ChatGPT's decline",
+        "Negative comments (7-8) consistently outpace positives (2) across May 3-4",
+        "Sentiment fell from 7.6 to 4.2 in 48 hours, a steep and rapid deterioration",
+        "High story count with low sentiment may reflect criticism or controversy coverage",
+        "No positive momentum in comment ratio despite sustained high volume"
+      ]
+    },
+    "gemini": {
+      "strengths": [
+        "Sentiment improved from 5.2 to 6.2 between May 3-4, only major model trending up",
+        "Positive comments (8) strongly outpace negatives (2) on May 4",
+        "Steady buzz volume of 80 with improving sentiment signals growing user approval",
+        "Google DeepMind's integration with Search and Workspace provides distribution moat"
+      ],
+      "weaknesses": [
+        "Story count of just 1/day is the lowest among all tracked models",
+        "Low media coverage limits organic discovery and developer community engagement",
+        "Buzz volume (80) lags ChatGPT and Claude despite Google's scale advantages",
+        "Earlier sentiment (8.4 in May 1-2) lacked comment data, reducing signal reliability"
+      ]
+    },
+    "deepseek": {
+      "strengths": [
+        "Tied for highest sentiment score (7.2) among all models on May 3-4",
+        "Positive comments (12) are highest absolute count of any model on May 4",
+        "Buzz volume held at 100 for two consecutive days, showing sustained interest",
+        "Open-weight release strategy drives community adoption and derivative models",
+        "Story count grew from 2 to 3, suggesting expanding press coverage"
+      ],
+      "weaknesses": [
+        "Negative comments (4) present consistently, often tied to data privacy concerns",
+        "Chinese origin raises geopolitical access risk for enterprise customers",
+        "Sentiment unchanged at 7.2 for two days, suggesting plateau rather than growth",
+        "Lower story count vs. Claude/ChatGPT limits Western mainstream visibility"
+      ]
+    },
+    "grok": {
+      "strengths": [
+        "Sentiment held near 7.1-7.2, among the stronger scores in the current tracker period",
+        "Positive comments (11) far exceed negatives (5) on both May 3-4",
+        "Buzz volume jumped from 42 to 84 between May 1-4, showing accelerating interest",
+        "xAI's real-time X/Twitter data access is a structural differentiation vs. rivals"
+      ],
+      "weaknesses": [
+        "Story count of 1-2/day is near the bottom, limiting broader narrative reach",
+        "Buzz volume (84) still trails ChatGPT, Claude, and DeepSeek in absolute terms",
+        "Association with Elon Musk's brand creates polarized public perception",
+        "Smaller developer ecosystem limits third-party integrations and tooling"
+      ]
+    },
+    "copilot": {
+      "strengths": [
+        "Buzz volume hit 100 on May 3-4, indicating high enterprise and developer attention",
+        "Deep Microsoft 365 integration provides a captive installed base of ~300M users",
+        "GitHub Copilot remains a leading code-completion tool with broad IDE support",
+        "Copilot Studio enables low-code enterprise agent building, expanding use cases"
+      ],
+      "weaknesses": [
+        "Sentiment score of 2.8 is the lowest of all tracked models on both May 3-4",
+        "Negative comments (14-15) vastly dominate positives (2-3), worst ratio tracked",
+        "High volume + lowest sentiment = significant user dissatisfaction signal",
+        "Sentiment has not recovered after dropping sharply, suggesting persistent issues",
+        "Story count dropped from 3 to 2, while negativity remained constant"
+      ]
+    },
+    "llama": {
+      "strengths": [
+        "Open-source model weights allow unrestricted fine-tuning and private deployment",
+        "Story count of 3/day despite low buzz suggests niche but engaged community",
+        "Llama 3 family enables on-premise enterprise use, addressing data residency needs",
+        "Meta's distribution via WhatsApp and Instagram provides massive consumer reach"
+      ],
+      "weaknesses": [
+        "Buzz volume of 24 is by far the lowest of all tracked models",
+        "Sentiment at 4.2 on May 4 with negatives (3) outpacing positives (1)",
+        "Comment count of only 6/day indicates limited mainstream public engagement",
+        "No strong upward sentiment trend observed across the tracked period",
+        "Lacks a hosted consumer product to compete directly with ChatGPT or Gemini"
+      ]
+    }
+  }
+}

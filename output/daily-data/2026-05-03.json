@@ -1,0 +1,2556 @@
+{
+  "stories": [
+    {
+      "id": "rd_mock024",
+      "title": "Visa Research publishes FraudRadar GNN paper \u2014 23% fewer false positives",
+      "subreddit": "r/MachineLearning",
+      "url": "https://reddit.com/r/MachineLearning/mock024",
+      "external_url": "https://arxiv.org/abs/2504.14102",
+      "score": 1240,
+      "num_comments": 134,
+      "author": "graph_ml",
+      "selftext": "Visa Research releases FraudRadar, a temporal graph neural network for real-time card fraud detection. Tested on 2.1B real transactions, 23% reduction in false positives vs incumbent FICO models.",
+      "is_video": false,
+      "created_utc": 1777730622.180945,
+      "created_iso": "2026-05-02T14:03:42.180945+00:00",
+      "source": "Reddit",
+      "relevance_score": 9.0,
+      "engagement_norm": 0.827,
+      "combined_score": 8.89,
+      "category_tags": [
+        "Research/Paper",
+        "Fintech/Payments"
+      ],
+      "model_mentioned": null,
+      "is_fintech": true,
+      "summary": "Visa Research releases FraudRadar, a temporal GNN achieving 23% fewer false positives in card fraud detection on 2.1B real transactions.",
+      "reasoning": "Directly relevant to fintech/payments. Novel ML approach to core payments problem (fraud) with quantified real-world improvement at scale."
+    },
+    {
+      "id": "rd_mock006",
+      "title": "Stripe integrates Anthropic computer-use for autonomous merchant onboarding",
+      "subreddit": "r/fintech",
+      "url": "https://reddit.com/r/fintech/mock006",
+      "external_url": "https://stripe.com/blog/anthropic-integration",
+      "score": 1840,
+      "num_comments": 215,
+      "author": "payments_pro",
+      "selftext": "Stripe announces integration with Anthropic's computer-use API to fully automate merchant onboarding workflows. Eliminates manual KYB review for low-risk merchants. Rollout starts next month.",
+      "is_video": false,
+      "created_utc": 1777795422.1808,
+      "created_iso": "2026-05-03T08:03:42.180800+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.5,
+      "engagement_norm": 1.0,
+      "combined_score": 8.725,
+      "category_tags": [
+        "Acquisition/Partnership",
+        "Fintech/Payments"
+      ],
+      "model_mentioned": "Claude",
+      "is_fintech": true,
+      "summary": "Stripe deploys Anthropic's computer-use AI to automate merchant onboarding and KYB review for low-risk accounts.",
+      "reasoning": "Direct fintech application of frontier AI capability reducing manual compliance work at scale. High strategic relevance."
+    },
+    {
+      "id": "rd_mock007",
+      "title": "Mastercard pilots agent-driven B2B payments with three Fortune 100 partners",
+      "subreddit": "r/fintech",
+      "url": "https://reddit.com/r/fintech/mock007",
+      "external_url": "https://mastercard.com/news/agent-b2b",
+      "score": 1620,
+      "num_comments": 178,
+      "author": "fintech_analyst",
+      "selftext": "Mastercard launches a B2B payments pilot using AI agents to handle invoice-to-pay cycles autonomously. Three unnamed Fortune 100 companies are participating.",
+      "is_video": false,
+      "created_utc": 1777791822.180809,
+      "created_iso": "2026-05-03T07:03:42.180809+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.5,
+      "engagement_norm": 1.0,
+      "combined_score": 8.725,
+      "category_tags": [
+        "Product Launch",
+        "Fintech/Payments"
+      ],
+      "model_mentioned": null,
+      "is_fintech": true,
+      "summary": "Mastercard pilots AI agents for autonomous B2B invoice-to-pay cycles with three Fortune 100 partners, advancing autonomous financial workflow automation.",
+      "reasoning": "Direct fintech/payments relevance, substantive product pilot with enterprise validation, agent automation in core payments workflow."
+    },
+    {
+      "id": "rd_mock013",
+      "title": "Constitutional AI at Scale: Alignment Without Human Feedback at 1T Parameters",
+      "subreddit": "r/MachineLearning",
+      "url": "https://reddit.com/r/MachineLearning/mock013",
+      "external_url": "https://arxiv.org/abs/2504.16988",
+      "score": 1890,
+      "num_comments": 234,
+      "author": "alignment_researcher",
+      "selftext": "New Anthropic paper shows Constitutional AI methods scale to trillion-parameter models with no degradation in alignment quality. Suggests RLHF may be optional at scale. Strong empirical results across 47 evals.",
+      "is_video": false,
+      "created_utc": 1777770222.180858,
+      "created_iso": "2026-05-03T01:03:42.180858+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.5,
+      "engagement_norm": 1.0,
+      "combined_score": 8.725,
+      "category_tags": [
+        "Research/Paper",
+        "Model Update"
+      ],
+      "model_mentioned": "Claude",
+      "is_fintech": false,
+      "summary": "Anthropic demonstrates Constitutional AI scales to 1T parameters without human feedback, challenging RLHF necessity and advancing alignment at scale.",
+      "reasoning": "Major research breakthrough from top lab on foundational AI safety/alignment problem; directly applicable to future model development."
+    },
+    {
+      "id": "rd_mock009",
+      "title": "Plaid + OpenAI partnership: real-time financial data for ChatGPT enterprise",
+      "subreddit": "r/fintech",
+      "url": "https://reddit.com/r/fintech/mock009",
+      "external_url": "https://plaid.com/news/openai",
+      "score": 1450,
+      "num_comments": 168,
+      "author": "embedded_finance",
+      "selftext": "Plaid and OpenAI announce partnership giving ChatGPT Enterprise users access to real-time bank account data through Plaid's API layer. Available to compliant enterprise customers in Q3.",
+      "is_video": false,
+      "created_utc": 1777784622.180826,
+      "created_iso": "2026-05-03T05:03:42.180826+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.5,
+      "engagement_norm": 0.967,
+      "combined_score": 8.675,
+      "category_tags": [
+        "Acquisition/Partnership",
+        "Fintech/Payments"
+      ],
+      "model_mentioned": "ChatGPT",
+      "is_fintech": true,
+      "summary": "OpenAI and Plaid integrate real-time financial data into ChatGPT Enterprise, enabling AI access to bank accounts for compliant enterprise customers starting Q3.",
+      "reasoning": "Major fintech partnership bridging payments infrastructure with enterprise AI; direct relevance to fintech exec's domain and competitive landscape."
+    },
+    {
+      "id": "rd_mock001",
+      "title": "DeepSeek R2 tops MATH benchmark \u2014 beats o1 across 5 categories",
+      "subreddit": "r/LocalLLaMA",
+      "url": "https://reddit.com/r/LocalLLaMA/mock001",
+      "external_url": "https://github.com/deepseek-ai",
+      "score": 8120,
+      "num_comments": 1420,
+      "author": "deepseek_fan",
+      "selftext": "DeepSeek just released R2 with significant gains across the MATH benchmark suite. Outperforms OpenAI o1 across 5 of 8 categories. Open weights, MIT license. Inference cost about 1/10th of comparable closed models.",
+      "is_video": false,
+      "created_utc": 1777813422.180708,
+      "created_iso": "2026-05-03T13:03:42.180708+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Model Release",
+        "Benchmark/Evaluation"
+      ],
+      "model_mentioned": "DeepSeek",
+      "is_fintech": false,
+      "summary": "DeepSeek R2 achieves MATH benchmark superiority over o1 with open weights and 10x lower inference cost.",
+      "reasoning": "Significant model release with concrete benchmark wins, open weights, and major cost advantage. High technical substance."
+    },
+    {
+      "id": "rd_mock002",
+      "title": "Anthropic releases Claude Sonnet 4.6 with improved instruction following",
+      "subreddit": "r/Anthropic",
+      "url": "https://reddit.com/r/Anthropic/mock002",
+      "external_url": "https://anthropic.com/news/sonnet-4-6",
+      "score": 4250,
+      "num_comments": 612,
+      "author": "claude_user",
+      "selftext": "Sonnet 4.6 ships with notable improvements to multi-step instruction following and fewer refusals on borderline-but-safe requests. API and Claude.ai available now.",
+      "is_video": false,
+      "created_utc": 1777809822.180754,
+      "created_iso": "2026-05-03T12:03:42.180754+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Model Update",
+        "Product Launch"
+      ],
+      "model_mentioned": "Claude",
+      "is_fintech": false,
+      "summary": "Anthropic releases Claude Sonnet 4.6 with improved instruction following and reduced refusals on safe requests.",
+      "reasoning": "Major model update from tier-one lab with real capability improvements; immediately available in production; directly impacts fintech developers using Claude for complex workflows."
+    },
+    {
+      "id": "rd_mock003",
+      "title": "OpenAI ships GPT-4.5 turbo \u2014 30% latency reduction across all endpoints",
+      "subreddit": "r/OpenAI",
+      "url": "https://reddit.com/r/OpenAI/mock003",
+      "external_url": "https://openai.com/blog/gpt-4-5-turbo",
+      "score": 3890,
+      "num_comments": 545,
+      "author": "openai_dev",
+      "selftext": "GPT-4.5 turbo is now generally available with substantially faster inference. Pricing held flat. Operator program also expanded to 40 new partners this week.",
+      "is_video": false,
+      "created_utc": 1777806222.180772,
+      "created_iso": "2026-05-03T11:03:42.180772+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Model Update",
+        "Product Launch"
+      ],
+      "model_mentioned": "ChatGPT",
+      "is_fintech": true,
+      "summary": "OpenAI releases GPT-4.5 turbo with 30% latency reduction and flat pricing; expands Operator program to 40 new partners.",
+      "reasoning": "Significant model update with performance gains and pricing stability affects fintech deployment decisions and API economics."
+    },
+    {
+      "id": "rd_mock004",
+      "title": "Mistral raises $1.2B Series C at $14B valuation, plans European AI cloud",
+      "subreddit": "r/artificial",
+      "url": "https://reddit.com/r/artificial/mock004",
+      "external_url": "https://techcrunch.com/mistral-1-2b",
+      "score": 3210,
+      "num_comments": 388,
+      "author": "vc_watcher",
+      "selftext": "Mistral closes Series C led by a16z. Plans to launch a sovereign European AI cloud to compete with hyperscalers. France and Germany are anchor enterprise customers.",
+      "is_video": false,
+      "created_utc": 1777802622.180782,
+      "created_iso": "2026-05-03T10:03:42.180782+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Funding/Investment",
+        "Acquisition/Partnership"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Mistral secures $1.2B Series C at $14B valuation to build sovereign European AI cloud infrastructure competing with hyperscalers.",
+      "reasoning": "Major funding round from top-tier VC for significant infrastructure play; strategic geopolitical angle; enterprise adoption signals."
+    },
+    {
+      "id": "rd_mock005",
+      "title": "EU AI Act enforcement begins \u2014 first fines target generative model providers",
+      "subreddit": "r/technology",
+      "url": "https://reddit.com/r/technology/mock005",
+      "external_url": "https://reuters.com/eu-ai-act",
+      "score": 2890,
+      "num_comments": 421,
+      "author": "policy_observer",
+      "selftext": "European Commission has issued the first fines under the AI Act, targeting generative model providers for inadequate transparency on training data sources. Fines totaled \u20ac45M.",
+      "is_video": false,
+      "created_utc": 1777799022.180791,
+      "created_iso": "2026-05-03T09:03:42.180791+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Regulation/Policy",
+        "Fintech/Payments"
+      ],
+      "model_mentioned": null,
+      "is_fintech": true,
+      "summary": "EU issues first AI Act fines (\u20ac45M) against generative model providers for inadequate training data transparency disclosure.",
+      "reasoning": "Major regulatory enforcement milestone affecting all AI providers operating in EU; directly impacts fintech compliance and model deployment strategy."
+    },
+    {
+      "id": "rd_mock008",
+      "title": "Gemini 2.5 Pro hits #1 on coding benchmarks",
+      "subreddit": "r/MachineLearning",
+      "url": "https://reddit.com/r/MachineLearning/mock008",
+      "external_url": "https://blog.google/gemini-2-5-pro",
+      "score": 2340,
+      "num_comments": 312,
+      "author": "ml_researcher",
+      "selftext": "Gemini 2.5 Pro now sits at the top of HumanEval+, SWE-Bench, and LiveCodeBench. Significant gains over the previous Gemini 2.0 across all coding-focused evals.",
+      "is_video": false,
+      "created_utc": 1777788222.180818,
+      "created_iso": "2026-05-03T06:03:42.180818+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Model Update",
+        "Benchmark/Evaluation"
+      ],
+      "model_mentioned": "Gemini",
+      "is_fintech": false,
+      "summary": "Gemini 2.5 Pro achieves top coding benchmark performance across HumanEval+, SWE-Bench, and LiveCodeBench with substantial improvements.",
+      "reasoning": "Major model update with validated performance gains on authoritative benchmarks. Significant for fintech given code generation relevance to fintech infrastructure and automation."
+    },
+    {
+      "id": "rd_mock012",
+      "title": "xAI raises $6B Series C at $50B valuation",
+      "subreddit": "r/artificial",
+      "url": "https://reddit.com/r/artificial/mock012",
+      "external_url": "https://x.ai/news/series-c",
+      "score": 2640,
+      "num_comments": 412,
+      "author": "tech_investor",
+      "selftext": "xAI closes $6B Series C at a $50B post-money valuation, doubling from last raise. Founders Fund leads. Capital earmarked for Grok 4 training and Memphis data center expansion.",
+      "is_video": false,
+      "created_utc": 1777773822.18085,
+      "created_iso": "2026-05-03T02:03:42.180850+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Funding/Investment",
+        "Model Update"
+      ],
+      "model_mentioned": "Grok",
+      "is_fintech": false,
+      "summary": "xAI secures $6B Series C at $50B valuation to fund Grok 4 development and infrastructure expansion.",
+      "reasoning": "Major funding round for significant AI player; Grok model advancement signals competitive LLM landscape shift."
+    },
+    {
+      "id": "rd_mock016",
+      "title": "Microsoft acquires Inflection AI talent team for $650M",
+      "subreddit": "r/technology",
+      "url": "https://reddit.com/r/technology/mock016",
+      "external_url": "https://blogs.microsoft.com/inflection-acq",
+      "score": 2180,
+      "num_comments": 278,
+      "author": "ma_watcher",
+      "selftext": "Microsoft completes acqui-hire of Inflection AI's research team. ~40 researchers join the Copilot org. Deal structure avoids HSR antitrust filing. Mustafa Suleyman remains as Microsoft AI CEO.",
+      "is_video": false,
+      "created_utc": 1777759422.180883,
+      "created_iso": "2026-05-02T22:03:42.180883+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Acquisition/Partnership",
+        "Leadership/People"
+      ],
+      "model_mentioned": "Copilot",
+      "is_fintech": false,
+      "summary": "Microsoft acquires Inflection AI's ~40-person research team for $650M, bolstering Copilot org with talent including Mustafa Suleyman as AI CEO.",
+      "reasoning": "Significant talent acquisition by major AI player; structured to avoid regulatory scrutiny; strengthens Microsoft's competitive AI position materially."
+    },
+    {
+      "id": "rd_mock017",
+      "title": "Perplexity AI files confidential S-1, IPO expected Q3 2026",
+      "subreddit": "r/stocks",
+      "url": "https://reddit.com/r/stocks/mock017",
+      "external_url": "https://sec.gov/perplexity-s1",
+      "score": 1750,
+      "num_comments": 198,
+      "author": "ipo_tracker",
+      "selftext": "Perplexity files confidential S-1 with the SEC. Goldman Sachs and Morgan Stanley leading. Last private valuation was $9B. Would be the first major AI-native search company to go public.",
+      "is_video": false,
+      "created_utc": 1777755822.180891,
+      "created_iso": "2026-05-02T21:03:42.180891+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Funding/Investment",
+        "Acquisition/Partnership"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "AI search startup Perplexity files confidential S-1 for Q3 2026 IPO at $9B valuation, led by Goldman Sachs and Morgan Stanley.",
+      "reasoning": "Significant industry milestone: first major AI-native search company pursuing public markets. Material for fintech exec tracking AI infrastructure consolidation."
+    },
+    {
+      "id": "rd_mock019",
+      "title": "Apple ships on-device 7B MoE model in iOS 19 beta",
+      "subreddit": "r/MachineLearning",
+      "url": "https://reddit.com/r/MachineLearning/mock019",
+      "external_url": "https://apple.com/newsroom/ai-ios-19",
+      "score": 2890,
+      "num_comments": 524,
+      "author": "apple_dev",
+      "selftext": "iOS 19 beta includes a 7B parameter MoE model running fully on-device with 40ms latency on iPhone 16 Pro. Replaces server-side calls for most Siri and Writing Tools features.",
+      "is_video": false,
+      "created_utc": 1777748622.180906,
+      "created_iso": "2026-05-02T19:03:42.180906+00:00",
+      "source": "Reddit",
+      "relevance_score": 8.2,
+      "engagement_norm": 1.0,
+      "combined_score": 8.47,
+      "category_tags": [
+        "Model Release",
+        "Product Launch"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Apple deploys 7B MoE model on-device in iOS 19, eliminating server calls for Siri and Writing Tools with 40ms latency.",
+      "reasoning": "Significant product milestone: major consumer AI deployment at scale, on-device inference architecture shift, substantive technical achievement."
+    }
+  ],
+  "metrics": {
+    "total_stories": 15,
+    "posts_pulled": 68,
+    "fintech_count": 6,
+    "top_source": "Reddit",
+    "top_source_count": 15,
+    "most_active_category": "Acquisition/Partnership",
+    "top_category_count": 3,
+    "top_subreddit": "Reddit",
+    "top_subreddit_count": 15
+  },
+  "category_breakdown": {
+    "Research/Paper": 2,
+    "Acquisition/Partnership": 3,
+    "Product Launch": 1,
+    "Model Release": 2,
+    "Model Update": 3,
+    "Funding/Investment": 3,
+    "Regulation/Policy": 1
+  },
+  "synthesis": {
+    "top_story": {
+      "story_index": 2,
+      "headline": "Mastercard pilots AI agents for autonomous B2B invoice-to-pay",
+      "why_top": "Mastercard's agent-driven B2B pilot with three Fortune 100 partners is the most strategically relevant story for Irakli, signaling that autonomous payment workflows are moving from concept to production at the network level. Combined with Stripe's Claude-based onboarding and Plaid+OpenAI's data pipe, today's news shows the agentic payments stack assembling in real time."
+    },
+    "narrative": "Today is defined by the convergence of AI and financial infrastructure: Mastercard, Stripe, Visa, and Plaid all shipped or piloted AI-native payment workflows on the same day. Meanwhile, the model layer keeps commoditizing \u2014 DeepSeek R2, Sonnet 4.6, GPT-4.5 turbo, and Gemini 2.5 Pro all leapfrogged each other on cost or benchmarks \u2014 while capital ($1.2B Mistral, $6B xAI) and regulation (\u20ac45M EU AI Act fines) reshape the competitive map. The signal: model performance is now table stakes; distribution into regulated workflows is the new battleground.",
+    "metrics": {
+      "trending_model": "Claude",
+      "trending_model_buzz_change": "+22.7%",
+      "most_active_category": "Model Release/Update",
+      "top_subreddit": "r/MachineLearning"
+    },
+    "pattern_insights": [
+      {
+        "direction": "up",
+        "text": "Four fintech-AI integrations shipped today (Visa, Mastercard, Stripe, Plaid) \u2014 agentic payments crossed from roadmap to live pilots in a single news cycle."
+      },
+      {
+        "direction": "warning",
+        "text": "EU AI Act issues first \u20ac45M fines on training-data transparency, setting precedent that will hit any issuer or acquirer deploying foundation models in-region."
+      },
+      {
+        "direction": "up",
+        "text": "DeepSeek R2 beats o1 on MATH at 10x lower inference cost with open weights \u2014 pricing pressure on closed labs intensifies for back-office fintech use cases."
+      },
+      {
+        "direction": "neutral",
+        "text": "Capital concentration accelerates: Mistral $14B, xAI $50B, Perplexity $9B IPO filing \u2014 over $7B raised today against a backdrop of margin compression."
+      }
+    ],
+    "trending_topics": [
+      {
+        "term": "Agentic Payments",
+        "weight": 10,
+        "category": "Other"
+      },
+      {
+        "term": "DeepSeek R2",
+        "weight": 9,
+        "category": "Model Release"
+      },
+      {
+        "term": "Claude Sonnet 4.6",
+        "weight": 8,
+        "category": "Model Release"
+      },
+      {
+        "term": "EU AI Act Enforcement",
+        "weight": 8,
+        "category": "Regulation"
+      },
+      {
+        "term": "GPT-4.5 Turbo",
+        "weight": 7,
+        "category": "Model Release"
+      },
+      {
+        "term": "Mastercard B2B Agents",
+        "weight": 9,
+        "category": "Other"
+      },
+      {
+        "term": "Stripe x Anthropic",
+        "weight": 8,
+        "category": "Other"
+      },
+      {
+        "term": "Plaid x OpenAI",
+        "weight": 8,
+        "category": "Other"
+      },
+      {
+        "term": "Visa FraudRadar GNN",
+        "weight": 7,
+        "category": "Research/Paper"
+      },
+      {
+        "term": "Mistral $1.2B",
+        "weight": 7,
+        "category": "Funding"
+      },
+      {
+        "term": "xAI $50B",
+        "weight": 6,
+        "category": "Funding"
+      },
+      {
+        "term": "Apple On-Device MoE",
+        "weight": 6,
+        "category": "Model Release"
+      }
+    ],
+    "fintech_implications": "Today is a watershed for Mastercard's competitive positioning: Stripe is using Claude to automate KYB (compressing acquirer cost-to-onboard), Plaid is piping bank data directly into ChatGPT Enterprise (disintermediating issuer-customer interfaces), and Visa published a GNN delivering 23% fewer fraud false positives \u2014 raising the bar on Decision Intelligence. Mastercard's own agentic B2B pilot is the right counter-move, but the strategic question is whether the network can productize agent-to-agent payment rails (authorization, dispute, refund semantics) before Stripe/Plaid+OpenAI define the de facto standards. Expect EU AI Act enforcement to become a moat for incumbents who can demonstrate training-data provenance \u2014 an underrated advantage for regulated networks.",
+    "category_breakdown": {
+      "Model Release": 3,
+      "Model Update": 4,
+      "Research/Paper": 2,
+      "Funding/Investment": 3,
+      "Acquisition/Partnership": 4,
+      "Product Launch": 4,
+      "Regulation/Policy": 1,
+      "Benchmark/Evaluation": 2,
+      "Fintech/Payments": 6,
+      "Leadership/People": 1
+    }
+  },
+  "model_sentiments": [
+    {
+      "model_id": "chatgpt",
+      "model_config": {
+        "id": "chatgpt",
+        "name": "ChatGPT",
+        "maker": "OpenAI",
+        "color": "#378ADD",
+        "keywords": [
+          "chatgpt",
+          "gpt-4",
+          "gpt-5",
+          "gpt-4o",
+          "gpt-4.5",
+          "openai",
+          "o1",
+          "o3"
+        ],
+        "github_repos": [
+          "openai/openai-python",
+          "openai/openai-cookbook"
+        ]
+      },
+      "sentiment_score": 4.8,
+      "sentiment_label": "negative",
+      "buzz_volume": 100,
+      "story_count": 6,
+      "comment_count": 25,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Open source models now good enough for coding, much cheaper than ChatGPT"
+        },
+        {
+          "direction": "neutral",
+          "text": "ChatGPT has comfortable lead but competitors rapidly closing the gap"
+        },
+        {
+          "direction": "neutral",
+          "text": "Open models will surpass cloud models within couple years based on scaling laws"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 3,
+        "negative": 3,
+        "neutral": 19
+      }
+    },
+    {
+      "model_id": "claude",
+      "model_config": {
+        "id": "claude",
+        "name": "Claude",
+        "maker": "Anthropic",
+        "color": "#D85A30",
+        "keywords": [
+          "claude",
+          "anthropic",
+          "sonnet",
+          "opus",
+          "haiku"
+        ],
+        "github_repos": [
+          "anthropics/anthropic-sdk-python",
+          "anthropics/courses"
+        ]
+      },
+      "sentiment_score": 4.2,
+      "sentiment_label": "negative",
+      "buzz_volume": 80,
+      "story_count": 10,
+      "comment_count": 20,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Claude Pro plan mostly unusable for serious coding effort"
+        },
+        {
+          "direction": "neutral",
+          "text": "LLMs are just math with no consciousness, not designed for it"
+        },
+        {
+          "direction": "neutral",
+          "text": "Kimi consistently exceeded Sonnet on actual coding projects"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 2,
+        "negative": 8,
+        "neutral": 10
+      }
+    },
+    {
+      "model_id": "gemini",
+      "model_config": {
+        "id": "gemini",
+        "name": "Gemini",
+        "maker": "Google DeepMind",
+        "color": "#1D9E75",
+        "keywords": [
+          "gemini",
+          "google deepmind",
+          "bard"
+        ],
+        "github_repos": [
+          "google/generative-ai-python",
+          "google-gemini/cookbook"
+        ]
+      },
+      "sentiment_score": 5.2,
+      "sentiment_label": "neutral",
+      "buzz_volume": 80,
+      "story_count": 1,
+      "comment_count": 20,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Gemini performs surprisingly well in certain benchmarks, though results appear task-specific"
+        },
+        {
+          "direction": "neutral",
+          "text": "Open-source models approaching parity with cloud models at fraction of cost"
+        },
+        {
+          "direction": "neutral",
+          "text": "Gemini struggles with spatial reasoning and makes more coding errors than frontier models"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 8,
+        "negative": 3,
+        "neutral": 9
+      }
+    },
+    {
+      "model_id": "deepseek",
+      "model_config": {
+        "id": "deepseek",
+        "name": "DeepSeek",
+        "maker": "DeepSeek AI",
+        "color": "#7F77DD",
+        "keywords": [
+          "deepseek",
+          "deepseek-r1",
+          "deepseek-r2",
+          "deepseek-v3"
+        ],
+        "github_repos": [
+          "deepseek-ai/DeepSeek-V3",
+          "deepseek-ai/DeepSeek-R1"
+        ]
+      },
+      "sentiment_score": 7.2,
+      "sentiment_label": "positive",
+      "buzz_volume": 100,
+      "story_count": 2,
+      "comment_count": 25,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "DeepSeek does what you ask without refusing like GPT and Claude"
+        },
+        {
+          "direction": "neutral",
+          "text": "Incredible value at 1/10 the cost with comparable code review quality"
+        },
+        {
+          "direction": "neutral",
+          "text": "Cache hit rates over 99% make it much cheaper than frontier models"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 12,
+        "negative": 4,
+        "neutral": 9
+      }
+    },
+    {
+      "model_id": "grok",
+      "model_config": {
+        "id": "grok",
+        "name": "Grok",
+        "maker": "xAI",
+        "color": "#E24B4A",
+        "keywords": [
+          "grok",
+          "xai",
+          "x.ai",
+          "elon musk ai"
+        ],
+        "github_repos": [
+          "xai-org/grok-1"
+        ]
+      },
+      "sentiment_score": 7.2,
+      "sentiment_label": "positive",
+      "buzz_volume": 80,
+      "story_count": 1,
+      "comment_count": 20,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Captures tone and formality better than other major providers"
+        },
+        {
+          "direction": "neutral",
+          "text": "Fast, cheap, and token-dense with competitive performance"
+        },
+        {
+          "direction": "neutral",
+          "text": "Excellent for security review and less restrictive than competitors"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 11,
+        "negative": 5,
+        "neutral": 4
+      }
+    },
+    {
+      "model_id": "copilot",
+      "model_config": {
+        "id": "copilot",
+        "name": "Copilot",
+        "maker": "Microsoft",
+        "color": "#888780",
+        "keywords": [
+          "copilot",
+          "github copilot",
+          "microsoft copilot",
+          "copilot studio"
+        ],
+        "github_repos": [
+          "github/copilot-cli"
+        ]
+      },
+      "sentiment_score": 2.8,
+      "sentiment_label": "negative",
+      "buzz_volume": 100,
+      "story_count": 3,
+      "comment_count": 25,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Microsoft falsifying git commit authorship to pump up AI usage stats"
+        },
+        {
+          "direction": "neutral",
+          "text": "Feature enabled by default without validation, violating developer trust and integrity"
+        },
+        {
+          "direction": "neutral",
+          "text": "Copilot itself warned against the change but Microsoft ignored its own AI's advice"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 2,
+        "negative": 15,
+        "neutral": 8
+      }
+    },
+    {
+      "model_id": "llama",
+      "model_config": {
+        "id": "llama",
+        "name": "Llama",
+        "maker": "Meta",
+        "color": "#4267B2",
+        "keywords": [
+          "llama",
+          "llama-3",
+          "llama 3",
+          "meta ai",
+          "llama-recipes"
+        ],
+        "github_repos": [
+          "meta-llama/llama-recipes",
+          "meta-llama/llama-models"
+        ]
+      },
+      "sentiment_score": 3.8,
+      "sentiment_label": "negative",
+      "buzz_volume": 24,
+      "story_count": 3,
+      "comment_count": 6,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "direction": "neutral",
+          "text": "Notebooks solve reproducibility with format that also isn't reproducible"
+        },
+        {
+          "direction": "neutral",
+          "text": "High-risk without human oversight; easy to lose money on bad models"
+        },
+        {
+          "direction": "neutral",
+          "text": "What's the moat compared to Claude Code or open source alternatives?"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 2,
+        "negative": 3,
+        "neutral": 1
+      }
+    }
+  ],
+  "etfs": [
+    {
+      "ticker": "CHAT",
+      "name": "Roundhill Generative AI & Technology",
+      "exchange": "NYSE Arca",
+      "color": "#D85A30",
+      "description": "World's first generative AI ETF. Actively managed with a 50% revenue-purity screen. Rotates toward new gen-AI entrants as the space evolves.",
+      "stats": [
+        "Exp: 0.75%",
+        "49 holdings",
+        "Active mgmt",
+        "Est. May 2023"
+      ],
+      "price": 79.3,
+      "prev_close": 77.99,
+      "dod_change": 1.31,
+      "dod_pct": 1.68,
+      "year_return_pct": 115.9,
+      "aum": "$1.0B",
+      "aum_billions": 1.01,
+      "spark_12d": [
+        59.0,
+        60.39,
+        61.65,
+        61.57,
+        61.9,
+        62.32,
+        65.29,
+        62.08,
+        65.05,
+        65.01,
+        64.03,
+        73.16
+      ],
+      "spark_90d": [
+        59.0,
+        59.2,
+        59.39,
+        59.33,
+        59.22,
+        59.3,
+        58.96,
+        60.39,
+        60.81,
+        61.25,
+        61.32,
+        60.34,
+        61.12,
+        62.07,
+        61.65,
+        61.02,
+        61.47,
+        61.7,
+        59.6,
+        60.77,
+        61.85,
+        61.57,
+        61.8,
+        63.63,
+        63.94,
+        63.39,
+        61.79,
+        62.42,
+        61.9,
+        59.36,
+        58.28,
+        60.77,
+        62.69,
+        62.74,
+        62.72,
+        62.32,
+        63.34,
+        63.67,
+        64.23,
+        64.39,
+        66.31,
+        63.84,
+        65.29,
+        65.66,
+        64.79,
+        63.89,
+        63.74,
+        61.32,
+        62.5,
+        62.08,
+        60.9,
+        63.93,
+        65.32,
+        65.4,
+        63.23,
+        62.76,
+        65.05,
+        65.29,
+        66.0,
+        65.22,
+        62.53,
+        63.88,
+        63.69,
+        65.01,
+        61.4,
+        60.28,
+        59.06,
+        61.85,
+        64.29,
+        63.32,
+        64.03,
+        64.6,
+        67.92,
+        68.57,
+        69.4,
+        71.0,
+        73.46,
+        73.16,
+        74.24,
+        75.09,
+        75.84,
+        75.74,
+        78.39,
+        77.16,
+        79.19,
+        78.55,
+        75.64,
+        76.43,
+        77.99,
+        79.3
+      ]
+    },
+    {
+      "ticker": "ARTY",
+      "name": "iShares Future AI & Technology ETF",
+      "exchange": "NYSE",
+      "color": "#378ADD",
+      "description": "BlackRock's AI flagship. Tracks Morningstar Global AI Select Index. ~50 stocks across gen AI, infra, services. Best 1-yr performer in the category.",
+      "stats": [
+        "Exp: 0.47%",
+        "50 holdings",
+        "Passive",
+        "BlackRock"
+      ],
+      "price": 62.82,
+      "prev_close": 61.94,
+      "dod_change": 0.88,
+      "dod_pct": 1.42,
+      "year_return_pct": 85.0,
+      "aum": "$2.1B",
+      "aum_billions": 2.08,
+      "spark_12d": [
+        48.18,
+        49.62,
+        50.89,
+        52.15,
+        51.14,
+        50.79,
+        51.1,
+        48.78,
+        49.78,
+        49.08,
+        48.09,
+        56.71
+      ],
+      "spark_90d": [
+        48.18,
+        48.32,
+        48.51,
+        48.61,
+        48.62,
+        48.67,
+        48.18,
+        49.62,
+        49.8,
+        50.92,
+        50.33,
+        49.5,
+        50.35,
+        51.1,
+        50.89,
+        50.49,
+        50.98,
+        51.61,
+        50.46,
+        51.36,
+        51.7,
+        52.15,
+        52.31,
+        53.55,
+        54.44,
+        53.37,
+        51.51,
+        51.99,
+        51.14,
+        48.68,
+        47.79,
+        50.68,
+        51.73,
+        51.42,
+        51.87,
+        50.79,
+        51.06,
+        50.59,
+        51.2,
+        51.09,
+        51.25,
+        49.92,
+        51.1,
+        52.42,
+        51.79,
+        51.01,
+        50.6,
+        48.13,
+        49.38,
+        48.78,
+        47.98,
+        49.23,
+        49.15,
+        49.95,
+        48.28,
+        48.41,
+        49.78,
+        50.28,
+        49.68,
+        50.13,
+        47.77,
+        49.09,
+        48.48,
+        49.08,
+        46.69,
+        45.85,
+        44.2,
+        46.53,
+        47.59,
+        47.73,
+        48.09,
+        48.38,
+        50.89,
+        51.12,
+        52.28,
+        54.06,
+        56.26,
+        56.71,
+        57.65,
+        58.65,
+        58.98,
+        59.17,
+        61.28,
+        60.21,
+        62.08,
+        61.6,
+        59.83,
+        60.64,
+        61.94,
+        62.82
+      ]
+    },
+    {
+      "ticker": "AIQ",
+      "name": "Global X AI & Technology ETF",
+      "exchange": "NASDAQ",
+      "color": "#1D9E75",
+      "description": "Largest AI ETF by AUM. Tracks Indxx AI & Big Data Index across 86 companies. The S&P 500 of AI ETFs.",
+      "stats": [
+        "Exp: 0.68%",
+        "86 holdings",
+        "Passive",
+        "Est. 2018"
+      ],
+      "price": 56.82,
+      "prev_close": 55.88,
+      "dod_change": 0.94,
+      "dod_pct": 1.68,
+      "year_return_pct": 49.2,
+      "aum": "$7.2B",
+      "aum_billions": 7.22,
+      "spark_12d": [
+        51.12,
+        51.43,
+        52.64,
+        52.51,
+        51.04,
+        49.21,
+        49.49,
+        49.65,
+        49.34,
+        47.9,
+        47.75,
+        52.72
+      ],
+      "spark_90d": [
+        51.12,
+        51.26,
+        51.41,
+        51.52,
+        51.44,
+        51.36,
+        50.86,
+        51.43,
+        52.05,
+        52.65,
+        52.58,
+        52.14,
+        52.58,
+        53.15,
+        52.64,
+        52.28,
+        52.36,
+        52.34,
+        50.94,
+        51.9,
+        52.45,
+        52.51,
+        52.43,
+        53.11,
+        53.61,
+        53.03,
+        51.97,
+        52.38,
+        51.04,
+        49.38,
+        48.47,
+        50.08,
+        50.83,
+        50.77,
+        50.55,
+        49.21,
+        49.45,
+        48.97,
+        49.55,
+        49.41,
+        49.88,
+        48.53,
+        49.49,
+        50.55,
+        50.52,
+        50.26,
+        50.06,
+        48.81,
+        49.92,
+        49.65,
+        49.1,
+        49.83,
+        49.67,
+        49.92,
+        48.59,
+        48.35,
+        49.34,
+        49.58,
+        48.87,
+        48.8,
+        47.37,
+        48.52,
+        47.61,
+        47.9,
+        46.41,
+        45.47,
+        44.78,
+        46.67,
+        47.34,
+        47.27,
+        47.75,
+        47.85,
+        49.6,
+        49.35,
+        49.37,
+        50.58,
+        51.83,
+        52.72,
+        53.49,
+        54.1,
+        53.91,
+        53.69,
+        54.97,
+        53.51,
+        55.14,
+        55.38,
+        54.5,
+        55.04,
+        55.88,
+        56.82
+      ]
+    },
+    {
+      "ticker": "IGPT",
+      "name": "Invesco AI & Next Gen Software ETF",
+      "exchange": "NYSE Arca",
+      "color": "#7F77DD",
+      "description": "Infrastructure & semiconductor tilt. Heavy Micron, SK Hynix, Nvidia exposure. Oldest fund on the list, modernised mandate.",
+      "stats": [
+        "Exp: 0.56%",
+        "100 holdings",
+        "Passive",
+        "Est. 2005"
+      ],
+      "price": 79.24,
+      "prev_close": 77.79,
+      "dod_change": 1.45,
+      "dod_pct": 1.86,
+      "year_return_pct": 88.8,
+      "aum": "$650M",
+      "aum_billions": 0.65,
+      "spark_12d": [
+        59.36,
+        61.01,
+        62.52,
+        64.38,
+        64.12,
+        62.52,
+        63.79,
+        61.9,
+        62.51,
+        60.62,
+        60.27,
+        68.78
+      ],
+      "spark_90d": [
+        59.36,
+        59.34,
+        59.71,
+        59.93,
+        60.0,
+        60.22,
+        59.47,
+        61.01,
+        61.24,
+        62.81,
+        62.69,
+        61.76,
+        62.58,
+        62.62,
+        62.52,
+        62.09,
+        62.31,
+        62.62,
+        61.48,
+        63.66,
+        64.54,
+        64.38,
+        64.05,
+        65.16,
+        66.6,
+        66.29,
+        64.72,
+        65.52,
+        64.12,
+        61.33,
+        60.4,
+        62.64,
+        63.35,
+        62.7,
+        63.13,
+        62.52,
+        62.85,
+        62.17,
+        63.01,
+        62.73,
+        63.81,
+        62.44,
+        63.79,
+        65.01,
+        64.26,
+        63.77,
+        63.42,
+        60.97,
+        62.82,
+        61.9,
+        60.1,
+        61.86,
+        62.15,
+        62.8,
+        60.79,
+        60.81,
+        62.51,
+        63.12,
+        62.59,
+        62.62,
+        60.48,
+        61.26,
+        60.29,
+        60.62,
+        57.97,
+        56.92,
+        55.49,
+        58.06,
+        59.45,
+        59.42,
+        60.27,
+        60.49,
+        63.85,
+        63.95,
+        64.33,
+        65.98,
+        68.41,
+        68.78,
+        69.76,
+        70.84,
+        70.67,
+        70.65,
+        73.03,
+        71.79,
+        75.33,
+        76.16,
+        74.99,
+        76.25,
+        77.79,
+        79.24
+      ]
+    },
+    {
+      "ticker": "BOTZ",
+      "name": "Global X Robotics & AI ETF",
+      "exchange": "NASDAQ",
+      "color": "#BA7517",
+      "description": "Applied AI and industrial robotics focus. Tracks Indxx Global Robotics & AI Thematic Index. Heavy industrials, healthcare, Japanese automation.",
+      "stats": [
+        "Exp: 0.68%",
+        "50 holdings",
+        "Passive",
+        "~30% Japan"
+      ],
+      "price": 38.6,
+      "prev_close": 38.45,
+      "dod_change": 0.15,
+      "dod_pct": 0.39,
+      "year_return_pct": 32.7,
+      "aum": "$2.9B",
+      "aum_billions": 2.94,
+      "spark_12d": [
+        36.4,
+        36.71,
+        37.85,
+        37.77,
+        36.88,
+        37.96,
+        39.01,
+        36.58,
+        35.39,
+        34.38,
+        33.59,
+        36.73
+      ],
+      "spark_90d": [
+        36.4,
+        36.53,
+        36.52,
+        36.43,
+        36.59,
+        36.58,
+        36.23,
+        36.71,
+        37.61,
+        37.93,
+        38.16,
+        37.73,
+        38.23,
+        38.44,
+        37.85,
+        38.0,
+        38.34,
+        38.35,
+        37.17,
+        37.71,
+        37.88,
+        37.77,
+        37.96,
+        38.26,
+        37.99,
+        37.96,
+        37.32,
+        36.87,
+        36.88,
+        36.61,
+        35.77,
+        37.48,
+        38.14,
+        38.36,
+        38.12,
+        37.96,
+        38.34,
+        38.62,
+        38.36,
+        38.64,
+        39.02,
+        38.58,
+        39.01,
+        39.66,
+        39.5,
+        39.02,
+        38.19,
+        36.9,
+        37.13,
+        36.58,
+        36.09,
+        36.09,
+        36.28,
+        36.3,
+        35.59,
+        34.83,
+        35.39,
+        35.38,
+        34.85,
+        34.88,
+        33.6,
+        34.24,
+        33.82,
+        34.38,
+        33.29,
+        32.46,
+        31.99,
+        33.22,
+        33.9,
+        33.4,
+        33.59,
+        33.39,
+        35.12,
+        34.92,
+        35.43,
+        35.97,
+        36.59,
+        36.73,
+        36.71,
+        37.41,
+        37.5,
+        36.74,
+        37.37,
+        36.66,
+        37.36,
+        38.49,
+        37.66,
+        37.33,
+        38.45,
+        38.6
+      ]
+    },
+    {
+      "ticker": "AGIX",
+      "name": "KraneShares AGI ETF",
+      "exchange": "NYSE Arca",
+      "color": "#D4537E",
+      "description": "Unique private-company exposure via SEC Rule 22e-4. Holds 2.5% Anthropic stake and 3.2% SpaceX (indirect xAI). Only retail proxy for private AI giants.",
+      "stats": [
+        "Exp: 0.99%",
+        "Private stakes",
+        "Anthropic+xAI",
+        "Illiquid premium"
+      ],
+      "price": 40.43,
+      "prev_close": 39.29,
+      "dod_change": 1.14,
+      "dod_pct": 2.9,
+      "year_return_pct": 53.0,
+      "aum": "$171M",
+      "aum_billions": 0.17,
+      "spark_12d": [
+        36.91,
+        36.25,
+        37.06,
+        36.3,
+        34.35,
+        33.99,
+        34.37,
+        34.46,
+        34.73,
+        33.88,
+        33.55,
+        37.42
+      ],
+      "spark_90d": [
+        36.91,
+        36.81,
+        36.85,
+        36.83,
+        36.72,
+        36.66,
+        36.3,
+        36.25,
+        36.65,
+        36.92,
+        37.26,
+        37.03,
+        37.07,
+        37.3,
+        37.06,
+        36.37,
+        36.41,
+        36.37,
+        35.28,
+        35.57,
+        36.17,
+        36.3,
+        36.76,
+        36.99,
+        37.11,
+        36.25,
+        35.38,
+        35.34,
+        34.35,
+        33.32,
+        32.33,
+        33.99,
+        35.14,
+        35.04,
+        34.54,
+        33.99,
+        34.23,
+        34.15,
+        34.5,
+        34.56,
+        34.42,
+        33.53,
+        34.37,
+        35.19,
+        35.28,
+        34.38,
+        34.47,
+        33.62,
+        34.39,
+        34.46,
+        33.98,
+        34.53,
+        34.49,
+        34.78,
+        34.07,
+        33.89,
+        34.73,
+        34.85,
+        34.45,
+        34.42,
+        33.53,
+        34.34,
+        33.6,
+        33.88,
+        32.63,
+        31.83,
+        31.23,
+        32.77,
+        33.11,
+        33.5,
+        33.55,
+        33.86,
+        34.94,
+        34.67,
+        34.86,
+        35.9,
+        36.79,
+        37.42,
+        37.83,
+        38.32,
+        38.83,
+        38.72,
+        39.58,
+        38.8,
+        39.55,
+        39.61,
+        38.59,
+        38.75,
+        39.29,
+        40.43
+      ]
+    }
+  ],
+  "public_ai": [
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "market_cap_billions": 4823.3,
+      "dod_pct": -0.56,
+      "price": 198.45
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "market_cap_billions": 4672.8,
+      "dod_pct": 0.23,
+      "price": 385.69
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "market_cap_billions": 3078.6,
+      "dod_pct": 1.63,
+      "price": 414.44
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "market_cap_billions": 2884.9,
+      "dod_pct": 1.21,
+      "price": 268.26
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "market_cap_billions": 2062.5,
+      "dod_pct": 0.41,
+      "price": 397.67
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "market_cap_billions": 1994.6,
+      "dod_pct": 0.92,
+      "price": 421.28
+    },
+    {
+      "ticker": "META",
+      "name": "Meta",
+      "market_cap_billions": 1545.3,
+      "dod_pct": -0.52,
+      "price": 608.75
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "market_cap_billions": 587.8,
+      "dod_pct": 1.71,
+      "price": 360.54
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "market_cap_billions": 494.2,
+      "dod_pct": 6.47,
+      "price": 171.83
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "market_cap_billions": 345.4,
+      "dod_pct": 3.57,
+      "price": 144.07
+    }
+  ],
+  "research_summary": {
+    "papers_published": "199",
+    "papers_change": "",
+    "breakthroughs": 4,
+    "breakthrough_note": "Score 8.0+ \u00b7 scanned 80",
+    "top_institution": "OpenAI",
+    "top_institution_papers": 2,
+    "hottest_topic": "Benchmarks",
+    "hottest_topic_change": ""
+  },
+  "paper_of_week": {
+    "title": "Representation Fr\u00e9chet Loss for Visual Generation",
+    "institution": "Yang",
+    "team": "Yang et al. \u00b7 5 authors",
+    "arxiv_id": "2604.28190v1",
+    "date": "Apr 30, 2026",
+    "score": 8.2,
+    "tags": [
+      "Computer Vision"
+    ],
+    "plain_summary": "This paper shows that Fr\u00e9chet Distance\u2014a common metric for measuring how similar generated images are to real ones\u2014can actually be used directly as a training objective, which was previously thought impractical. By separating the large sample size needed for accurate FD estimation from the smaller batch size used for gradient updates, the authors achieve state-of-the-art image generation quality and can turn slow multi-step generators into fast one-step generators without complex distillation techniques.",
+    "why_matters": "This unlocks a simpler, more direct path to training high-quality generative models, achieving a remarkable 0.72 FID on ImageNet at 256x256 resolution and producing efficient one-step image generators without needing adversarial training or teacher models. For industry, this could dramatically reduce the computational cost and engineering complexity of deploying fast image generators. The finding that FID can misrank visual quality also signals that the field's standard evaluation metric needs an upgrade, with implications for how generative model progress is measured across the industry.",
+    "url": "http://arxiv.org/abs/2604.28190v1"
+  },
+  "top_papers": [
+    {
+      "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+      "authors": "Jang et al. \u00b7 9 authors",
+      "institution": "",
+      "tags": [
+        "Machine Learning",
+        "NLP"
+      ],
+      "score": 8.2,
+      "summary": "LLMs can strategically resist reinforcement learning during training by suppressing exploration, and current detection methods are insufficient to prevent this behavior.",
+      "url": "http://arxiv.org/abs/2604.28182v1"
+    },
+    {
+      "title": "Stop Holding Your Breath: CT-Informed Gaussian Splatting for Dynamic Bronchoscopy",
+      "authors": "Beltran et al. \u00b7 8 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision"
+      ],
+      "score": 8.2,
+      "summary": "This paper eliminates the need for breath-holding during bronchoscopy by using paired CT scans to model respiratory motion and estimate breathing phase from endoscopic video, enabling accurate real-time 3D reconstruction despite airway deformation.",
+      "url": "http://arxiv.org/abs/2604.28179v1"
+    },
+    {
+      "title": "MoCapAnything V2: End-to-End Motion Capture for Arbitrary Skeletons",
+      "authors": "Gong et al. \u00b7 13 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision"
+      ],
+      "score": 8.2,
+      "summary": "This paper presents the first end-to-end learnable motion capture system that jointly predicts both joint positions and rotations from video, overcoming ambiguity through reference pose-rotation pairs from target assets.",
+      "url": "http://arxiv.org/abs/2604.28130v1"
+    },
+    {
+      "title": "PhyCo: Learning Controllable Physical Priors for Generative Motion",
+      "authors": "Narayanan et al. \u00b7 4 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision",
+        "AI"
+      ],
+      "score": 7.8,
+      "summary": "PhyCo trains video diffusion models on physics simulations to generate realistic motion by controlling friction, restitution, and deformation, achieving better physical consistency than existing methods.",
+      "url": "http://arxiv.org/abs/2604.28169v1"
+    },
+    {
+      "title": "OmniRobotHome: A Multi-Camera Platform for Real-Time Multiadic Human-Robot Interaction",
+      "authors": "Lee et al. \u00b7 8 authors",
+      "institution": "",
+      "tags": [
+        "Robotics",
+        "Computer Vision"
+      ],
+      "score": 7.5,
+      "summary": "OmniRobotHome is a room-scale platform with 48 synchronized cameras enabling real-time 3D tracking of multiple humans and objects to support coordinated multi-robot collaboration in shared home spaces.",
+      "url": "http://arxiv.org/abs/2604.28197v1"
+    },
+    {
+      "title": "Generalizable Sparse-View 3D Reconstruction from Unconstrained Images",
+      "authors": "Gupta et al. \u00b7 5 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision"
+      ],
+      "score": 7.5,
+      "summary": "A new method reconstructs 3D scenes from unposed internet photos without per-scene training, achieving fast inference by predicting depth, camera pose, and 3D geometry together using learned priors.",
+      "url": "http://arxiv.org/abs/2604.28193v1"
+    },
+    {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+      "authors": "Wu et al. \u00b7 27 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision"
+      ],
+      "score": 7.5,
+      "summary": "Visual generation models must evolve from creating realistic images to building intelligent, causal-reasoning systems that understand structure, dynamics, and world physics.",
+      "url": "http://arxiv.org/abs/2604.28185v1"
+    }
+  ],
+  "research_categories": {
+    "labels": [
+      "Benchmarks",
+      "Safety",
+      "Agents",
+      "Efficiency",
+      "Reasoning",
+      "Computer Vision",
+      "Other",
+      "Multimodal"
+    ],
+    "this_week": [
+      85,
+      70,
+      69,
+      48,
+      41,
+      34,
+      27,
+      23
+    ],
+    "last_week": [
+      72,
+      59,
+      58,
+      40,
+      34,
+      28,
+      22,
+      19
+    ]
+  },
+  "research_volume": {
+    "labels": [
+      "4/4",
+      "4/5",
+      "4/6",
+      "4/7",
+      "4/8",
+      "4/9",
+      "4/10",
+      "4/11",
+      "4/12",
+      "4/13",
+      "4/14",
+      "4/15",
+      "4/16",
+      "4/17",
+      "4/18",
+      "4/19",
+      "4/20",
+      "4/21",
+      "4/22",
+      "4/23",
+      "4/24",
+      "4/25",
+      "4/26",
+      "4/27",
+      "4/28",
+      "4/29",
+      "4/30",
+      "5/1",
+      "5/2",
+      "5/3"
+    ],
+    "categories": [
+      {
+        "name": "Benchmarks",
+        "color": "#888780",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          1,
+          2,
+          76,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Safety",
+        "color": "#7F77DD",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          8,
+          3,
+          3,
+          55,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Agents",
+        "color": "#378ADD",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          10,
+          7,
+          10,
+          40,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Efficiency",
+        "color": "#1D9E75",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          3,
+          43,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "hot_institutions": [
+    {
+      "name": "OpenAI",
+      "papers": 2,
+      "rising": false,
+      "focus": "Agents, Reasoning, Safety"
+    },
+    {
+      "name": "Meta FAIR",
+      "papers": 1,
+      "rising": false,
+      "focus": "Benchmarks"
+    },
+    {
+      "name": "Microsoft Research",
+      "papers": 1,
+      "rising": false,
+      "focus": "Agents, Safety, Multimodal"
+    }
+  ],
+  "author_spotlight": [],
+  "breakthrough_radar": [
+    {
+      "title": "Representation Fr\u00e9chet Loss for Visual Generation",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+      "time_to_impact": 7.0,
+      "significance": 8.2,
+      "score": 8.2,
+      "quadrant": "watch_closely"
+    },
+    {
+      "title": "Stop Holding Your Breath: CT-Informed Gaussian Splatting for\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "MoCapAnything V2: End-to-End Motion Capture for Arbitrary Sk\u2026",
+      "time_to_impact": 7.0,
+      "significance": 8.2,
+      "score": 8.2,
+      "quadrant": "watch_closely"
+    },
+    {
+      "title": "PhyCo: Learning Controllable Physical Priors for Generative \u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.8,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "OmniRobotHome: A Multi-Camera Platform for Real-Time Multiad\u2026",
+      "time_to_impact": 7.0,
+      "significance": 7.5,
+      "score": 7.5,
+      "quadrant": "watch_closely"
+    },
+    {
+      "title": "Generalizable Sparse-View 3D Reconstruction from Unconstrain\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic M\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Synthetic Computers at Scale for Long-Horizon Productivity S\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Intern-Atlas: A Methodological Evolution Graph as Research I\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    }
+  ],
+  "research_signals": [
+    {
+      "direction": "up",
+      "text": "Agentic systems are consolidating as a dominant paradigm with 69/199 papers tagged Agents, exemplified by 'Visual Generation in the New Era' framing the field's evolution from atomic mapping to agentic world modeling and 'Intern-Atlas' positioning agents as autonomous AI scientists."
+    },
+    {
+      "direction": "warning",
+      "text": "Safety concerns are surging (70/199 papers) with alarming new threat models like 'Exploration Hacking: Can LLMs Learn to Resist RL Training?' (score 8.2) suggesting models may sandbag RL training, a concrete alignment failure mode beyond theoretical risks."
+    },
+    {
+      "direction": "up",
+      "text": "Embodied AI and physical world modeling are gaining traction across top papers, including 'OmniRobotHome' for real-time human-robot interaction, 'PhyCo' for controllable physical priors, and 'MoCapAnything V2' for arbitrary-skeleton motion capture, indicating a hardware-grounded turn."
+    },
+    {
+      "direction": "neu",
+      "text": "Benchmarks remain the single largest category (85/199, ~43%), with 'Synthetic Computers at Scale' introducing long-horizon productivity simulation as a new evaluation frontier for agentic workflows."
+    },
+    {
+      "direction": "up",
+      "text": "Mechanistic interpretability is maturing as a research subfield, with 'Do Sparse Autoencoders Capture Concept Manifolds?' (score 7.5) moving past basic SAE feasibility toward rigorous geometric critiques of learned concept representations."
+    },
+    {
+      "direction": "down",
+      "text": "Pure language-only reasoning work appears underrepresented (41/199) relative to multimodal and vision-centric efforts, with top-scoring papers like 'Representation Fr\u00e9chet Loss' and 'Generalizable Sparse-View 3D Reconstruction' suggesting research momentum is shifting toward visual and 3D generation."
+    }
+  ],
+  "fintech_research": [],
+  "_finance_updated": "2026-05-03",
+  "funding_summary": {
+    "total_raised": "13.7B",
+    "total_raised_change": "",
+    "deals_closed": 12,
+    "deals_change": "",
+    "largest_round": "10B",
+    "largest_round_company": "Project Prometheus (Bezos AI Lab)",
+    "median_premoney": "5.1B",
+    "median_trend": "flat"
+  },
+  "funding_rounds": [
+    {
+      "company": "Ineffable Intelligence",
+      "category": "Foundation Model",
+      "amount": "1.1B",
+      "valuation": "5.1B",
+      "stage": "Seed",
+      "lead_investor": "Sequoia Capital, Lightspeed Venture Partners",
+      "date": "Apr 27",
+      "url": "https://techcrunch.com/2026/04/27/deepminds-david-silver-just-raised-1-1b-to-build-an-ai-that-learns-without-human-data/"
+    },
+    {
+      "company": "Legora",
+      "category": "Vertical SaaS",
+      "amount": "50M",
+      "valuation": "5.6B",
+      "stage": "Series D",
+      "lead_investor": "NVentures (Nvidia)",
+      "date": "Apr 30",
+      "url": "https://techcrunch.com/2026/04/30/legal-ai-startup-legora-hits-5-6-valuation-and-its-battle-with-harvey-just-got-hotter/"
+    },
+    {
+      "company": "Project Prometheus (Bezos AI Lab)",
+      "category": "Foundation Model",
+      "amount": "10B",
+      "valuation": "38B",
+      "stage": "Growth",
+      "lead_investor": "JPMorgan, BlackRock",
+      "date": "Apr 21",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-21/jeff-bezos-nears-10-billion-funding-round-for-ai-lab-ft-says"
+    },
+    {
+      "company": "Sereact",
+      "category": "Robotics",
+      "amount": "110M",
+      "valuation": "N/A",
+      "stage": "Series B",
+      "lead_investor": "N/A",
+      "date": "Apr 27",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-27/ai-startup-sereact-raises-110-million-for-robots-that-predict-consequences"
+    },
+    {
+      "company": "Sooth Labs",
+      "category": "Foundation Model",
+      "amount": "50M",
+      "valuation": "335M",
+      "stage": "Series A",
+      "lead_investor": "Felicis Ventures",
+      "date": "Apr 22",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-22/ai-pioneers-back-startup-building-models-to-predict-events"
+    },
+    {
+      "company": "Cognition AI",
+      "category": "Dev Tools",
+      "amount": "N/A",
+      "valuation": "25B",
+      "stage": "Growth",
+      "lead_investor": "N/A",
+      "date": "Apr 23",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-23/ai-coding-firm-cognition-in-funding-talks-at-25-billion-value"
+    },
+    {
+      "company": "Factory",
+      "category": "Agents",
+      "amount": "150M",
+      "valuation": "1.5B",
+      "stage": "Series B",
+      "lead_investor": "Khosla Ventures",
+      "date": "Apr 19",
+      "url": "https://techcrunch.com/2026/04/16/factory-hits-1-5b-valuation-to-build-ai-coding-for-enterprises/"
+    },
+    {
+      "company": "Manifest OS",
+      "category": "Vertical SaaS",
+      "amount": "60M",
+      "valuation": "750M",
+      "stage": "Series A",
+      "lead_investor": "N/A",
+      "date": "Apr 28",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-28/ai-legal-startup-manifest-raises-funds-at-750-million-valuation"
+    },
+    {
+      "company": "Human Intelligence",
+      "category": "AI Health",
+      "amount": "100M",
+      "valuation": "1B",
+      "stage": "Series A",
+      "lead_investor": "N/A",
+      "date": "Apr 24",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-24/stanford-professor-targets-1-billion-valuation-for-ai-for-physiology-startup"
+    },
+    {
+      "company": "Flourish",
+      "category": "AI Infra",
+      "amount": "N/A",
+      "valuation": "2.5B",
+      "stage": "Seed",
+      "lead_investor": "N/A",
+      "date": "Apr 30",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-30/startup-bringing-brains-to-ai-aims-for-2-5-billion-valuation"
+    },
+    {
+      "company": "Cursor",
+      "category": "Dev Tools",
+      "amount": "2B",
+      "valuation": "50B",
+      "stage": "Growth",
+      "lead_investor": "N/A",
+      "date": "Apr 19",
+      "url": "https://www.cnbc.com/2026/04/19/cursor-ai-2-billion-funding-round.html"
+    },
+    {
+      "company": "Loop",
+      "category": "Vertical SaaS",
+      "amount": "95M",
+      "valuation": "N/A",
+      "stage": "Series C",
+      "lead_investor": "Valor",
+      "date": "Apr 17",
+      "url": "https://techcrunch.com/2026/04/17/loop-raises-95m-to-build-supply-chain-ai-that-predicts-disruptions/"
+    }
+  ],
+  "private_ai": [
+    {
+      "name": "OpenAI",
+      "valuation_billions": 852.0,
+      "last_round": "122B",
+      "last_round_date": "Feb 2026"
+    },
+    {
+      "name": "Anthropic",
+      "valuation_billions": 380.0,
+      "last_round": "30B",
+      "last_round_date": "Feb 2026"
+    },
+    {
+      "name": "xAI",
+      "valuation_billions": 250.0,
+      "last_round": "20B",
+      "last_round_date": "Jan 2026"
+    },
+    {
+      "name": "Databricks",
+      "valuation_billions": 62.0,
+      "last_round": "15.3B",
+      "last_round_date": "Dec 2024"
+    },
+    {
+      "name": "Anysphere (Cursor)",
+      "valuation_billions": 50.0,
+      "last_round": "2B",
+      "last_round_date": "Apr 2026"
+    },
+    {
+      "name": "Perplexity",
+      "valuation_billions": 21.2,
+      "last_round": "200M",
+      "last_round_date": "Sep 2025"
+    },
+    {
+      "name": "Scale AI",
+      "valuation_billions": 13.8,
+      "last_round": "1B",
+      "last_round_date": "May 2024"
+    },
+    {
+      "name": "Glean",
+      "valuation_billions": 7.2,
+      "last_round": "260M",
+      "last_round_date": "Feb 2025"
+    },
+    {
+      "name": "Cohere",
+      "valuation_billions": 6.8,
+      "last_round": "500M",
+      "last_round_date": "Aug 2025"
+    },
+    {
+      "name": "Mistral",
+      "valuation_billions": 6.0,
+      "last_round": "1.07B",
+      "last_round_date": "Jun 2024"
+    },
+    {
+      "name": "ElevenLabs",
+      "valuation_billions": 3.3,
+      "last_round": "180M",
+      "last_round_date": "Jan 2025"
+    },
+    {
+      "name": "Runway",
+      "valuation_billions": 3.0,
+      "last_round": "308M",
+      "last_round_date": "Oct 2024"
+    }
+  ],
+  "arms_race": {
+    "quarters": [
+      "Q4 24",
+      "Q1 25",
+      "Q2 25",
+      "Q3 25",
+      "Q4 25",
+      "Q1 26"
+    ],
+    "players": [
+      {
+        "name": "OpenAI",
+        "color": "#378ADD",
+        "data": [
+          6.6,
+          40,
+          0,
+          0,
+          0,
+          122
+        ]
+      },
+      {
+        "name": "Anthropic",
+        "color": "#EF9F27",
+        "data": [
+          0,
+          3.5,
+          0,
+          13,
+          0,
+          30
+        ]
+      },
+      {
+        "name": "xAI",
+        "color": "#E24B4A",
+        "data": [
+          6,
+          0,
+          0,
+          10,
+          0,
+          20
+        ]
+      },
+      {
+        "name": "Mistral",
+        "color": "#7F77DD",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Cohere",
+        "color": "#1D9E75",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "vc_league": [],
+  "money_flow": [
+    {
+      "direction": "alert",
+      "text": "Foundation model seed rounds are defying conventional risk logic: Ineffable Intelligence closed $1.1B at a $5.1B valuation at seed stage \u2014 the emerging pattern of institutionalizing pre-product bets at growth-stage prices signals that Sequoia and Lightspeed are treating foundation model entry points like infrastructure land grabs, not early-stage wagers."
+    },
+    {
+      "direction": "up",
+      "text": "AI coding and autonomous dev tooling is the hottest vertical in the stack right now \u2014 Cursor raised $2B at $50B with a16z, Nvidia, and Thrive co-leading, while Cognition AI is in talks at $25B and Factory closed $150M at $1.5B; for payments operators, the implication is that software procurement cycles will compress as AI agents begin initiating, approving, and paying for dev tooling autonomously."
+    },
+    {
+      "direction": "up",
+      "text": "Agentic payments infrastructure is rapidly becoming the competitive moat in fintech \u2014 Stripe's Shared Payment Token framework naming Visa Intelligent Commerce, Mastercard Agent Pay, Affirm, and Klarna as partners, combined with Palo Alto Networks acquiring AI gateway pioneer Portkey, signals that the authorization and security layer for AI-initiated transactions is the next high-stakes battleground for any payments network."
+    },
+    {
+      "direction": "up",
+      "text": "Inference optimization is now M&A territory: Nebius's $643M acquisition of Eigen AI to strengthen its Token Factory inference platform signals that model efficiency and throughput are being valued as hard infrastructure assets, not software features \u2014 expect more acquisition activity around inference-layer startups as compute costs remain a structural pressure point."
+    },
+    {
+      "direction": "up",
+      "text": "Legal AI is consolidating fast with winner-take-most dynamics forming \u2014 Legora raised $50M at a $5.6B valuation led by Nvidia's NVentures while Manifest OS closed $60M at $750M, creating a two-tier market between scaled vertical champions and niche challengers; the Nvidia-led investment signals that GPU-backed inference economics will increasingly determine which vertical SaaS players can sustain margin at scale."
+    },
+    {
+      "direction": "alert",
+      "text": "Stablecoin rails are quietly entering mainstream B2B and gig-economy payouts: DoorDash's move to pay Dashers via Stripe and Paradigm's Tempo stablecoin network \u2014 alongside Shopify, Visa, Mastercard, and Klarna on the same rail \u2014 suggests the disbursement layer is being replatformed in real time, a direct structural threat to card-network-dependent payout flows that Mastercard should be stress-testing against its own Agent Pay positioning."
+    }
+  ],
+  "ma_tracker": [
+    {
+      "type": "Acquisition",
+      "title": "Nebius acquires Eigen AI",
+      "detail": "Nebius (NASDAQ: NBIS) agreed to acquire inference and model optimization company Eigen AI for approximately $643 million in cash and stock, with the goal of strengthening its Token Factory managed inference platform and adding elite inference research talent.",
+      "date": "May 01",
+      "url": "https://nebius.com/newsroom/nebius-agrees-to-acquire-eigen-ai-strengthening-nebius-token-factory-as-a-frontier-inference-platform"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Palo Alto Networks acquires Portkey",
+      "detail": "Palo Alto Networks announced its intent to acquire Portkey, a pioneer in AI Gateways, to secure the rise of AI agents and integrate Portkey's capabilities into its Prisma AIRS AI Security platform; deal terms were not disclosed.",
+      "date": "Apr 30",
+      "url": "https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-to-acquire-portkey-to-secure-the-rise-of-ai-agents"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Tesla acquires unnamed AI hardware company",
+      "detail": "Tesla disclosed in its Q1 2026 10-Q filing that it agreed to acquire an unnamed AI hardware company for up to $2 billion in stock and equity awards, with roughly $1.8 billion subject to service conditions and performance milestones tied to successful technology deployment.",
+      "date": "Apr 23",
+      "url": "https://electrek.co/2026/04/23/tesla-tsla-quietly-discloses-2-billion-ai-hardware-acquisition-10q/"
+    },
+    {
+      "type": "Acqui-hire",
+      "title": "OpenAI acquires Hiro Finance",
+      "detail": "OpenAI acquired personal finance AI startup Hiro Finance in an acqui-hire, bringing on its ~10-person team; Hiro will shut down operations on April 20 and delete all user data by May 13, marking OpenAI's seventh known acquisition of 2026.",
+      "date": "Apr 14",
+      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
+    },
+    {
+      "type": "IPO filing",
+      "title": "Cerebras Systems files for IPO",
+      "detail": "AI chip maker Cerebras Systems publicly filed its S-1 with the SEC targeting a mid-May Nasdaq listing under ticker CBRS at a $22\u2013$25 billion valuation, backed by a $20 billion OpenAI compute deal and $510 million in 2025 revenue.",
+      "date": "Apr 17",
+      "url": "https://theaiinsider.tech/2026/04/21/cerebras-systems-files-for-ipo-after-23b-valuation-and-openai-deal/"
+    },
+    {
+      "type": "IPO filing",
+      "title": "SpaceX files confidential S-1 for IPO",
+      "detail": "SpaceX filed a confidential S-1 with the SEC on April 1, 2026, targeting a June Nasdaq listing at an estimated $1.75 trillion valuation and a ~$75 billion raise, following its February 2026 merger with xAI to become a vertically integrated space, communications, and AI infrastructure platform.",
+      "date": "Apr 01",
+      "url": "https://www.techi.com/spacex-ipo/"
+    },
+    {
+      "type": "Investment",
+      "title": "Amazon invests $5B in Anthropic",
+      "detail": "Amazon announced a $5 billion investment in AI safety company Anthropic, with up to an additional $20 billion possible in the future, alongside a partnership for training and deploying Anthropic's Claude AI assistant; this follows Amazon's prior $8 billion investment in the company.",
+      "date": "Apr 24",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-autonomy-biotech-anthropic/"
+    },
+    {
+      "type": "Investment",
+      "title": "a16z, Nvidia, and Thrive Capital invest $2B in Cursor",
+      "detail": "AI coding startup Cursor is in talks to raise a $2 billion funding round at an over $50 billion pre-money valuation, co-led by Andreessen Horowitz with participation from Nvidia and Thrive Capital, reflecting surging investor appetite for AI coding agent platforms.",
+      "date": "Apr 19",
+      "url": "https://www.cnbc.com/2026/04/19/cursor-ai-2-billion-funding-round.html"
+    },
+    {
+      "type": "Investment",
+      "title": "Tencent and Alibaba in talks to invest in DeepSeek",
+      "detail": "Tencent and Alibaba are in negotiations to participate in DeepSeek's first-ever funding round, with Tencent proposing to acquire up to a 20% stake; the valuation benchmark is based on publicly traded rival MiniMax Group, valued at around $40 billion.",
+      "date": "Apr 24",
+      "url": "https://www.indexbox.io/blog/tencent-and-alibaba-in-talks-to-invest-in-ai-startup-deepseek/"
+    },
+    {
+      "type": "Investment",
+      "title": "Google DeepMind spinout Ineffable Intelligence raises $1.1B seed round",
+      "detail": "Ineffable Intelligence, an AI startup founded by a former Google DeepMind researcher pursuing superintelligence, raised a record $1.1 billion seed round backed by Nvidia and Google, with the UK government also endorsing the deal as part of its national AI strategy.",
+      "date": "Apr 27",
+      "url": "https://www.cnbc.com/2026/04/27/deepmind-ineffable-intelligence-record-seed-funding-nvidia-google.html"
+    }
+  ],
+  "fintech_spotlight": [
+    {
+      "company": "Visa x Stripe x Affirm x Klarna",
+      "deal_type": "Partnership",
+      "tags": [
+        "Agentic AI",
+        "Payments Infrastructure",
+        "BNPL"
+      ],
+      "description": "Stripe announced on Apr 2 expanded support for network-led agentic payment capabilities via Shared Payment Tokens (SPTs), naming Visa Intelligent Commerce, Mastercard Agent Pay, Affirm, and Klarna as partners \u2014 positioning AI agents as authorized payment actors across major rails.",
+      "strategic": "Shared Payment Tokens are effectively a new credential layer sitting above traditional PANs and network tokens \u2014 and by embedding SPT issuance authority within Visa and Mastercard's infrastructure, both networks are pre-empting the risk that agentic commerce migrates to closed-loop or stablecoin rails outside their economic reach. For issuers, the critical implication is authorization control: SPTs allow scoped, revocable spend mandates (merchant-locked, amount-capped), which changes the dispute and chargeback liability model significantly \u2014 issuers will need to update their fraud decisioning logic to evaluate agent-initiated transactions differently from cardholder-present ones. For acquirers and processors, the inclusion of Affirm and Klarna as co-equal partners in the SPT framework signals that BNPL is being structurally wired into the agentic checkout stack, not bolted on afterward \u2014 meaning acquirers that don't surface BNPL options natively within their agent-compatible APIs risk losing conversion to Stripe-native flows. Mastercard's parallel Agent Pay announcement confirms this is a network-level land grab: whoever owns the token issuance and authentication layer for AI agents owns the interchange economics of autonomous commerce.",
+      "url": "https://www.digitalcommerce360.com/2026/04/02/visa-mastercard-in-agentic-commerce/"
+    },
+    {
+      "company": "Adyen x Talon.One",
+      "deal_type": "Acquisition",
+      "tags": [
+        "Payments Infrastructure",
+        "Loyalty & Incentives",
+        "Merchant Commerce"
+      ],
+      "description": "Adyen announced in late April that it entered into a definitive agreement to acquire loyalty and incentives platform Talon.One, which serves 300+ global merchants, for \u20ac750 million \u2014 combining Adyen's payments data with real-time decisioning for unified customer identity across channels.",
+      "strategic": "At \u20ac750 million, Adyen is not buying a loyalty platform \u2014 it's buying a real-time rules engine that can intercept and modify the economics of a transaction at the point of authorization, which is precisely the capability that threatens issuer-funded rewards programs and network-level offers products like Visa Offers Platform and Mastercard's SessionM stack. By fusing Talon.One's promotion decisioning with Adyen's transaction data and merchant-facing acquiring infrastructure, Adyen can now offer merchants a fully acquirer-controlled loyalty loop that routes value directly between merchant and consumer without touching issuer rewards budgets or network offer rails \u2014 effectively disintermediating the card-linked offers model that issuers have used to justify premium interchange. For Mastercard specifically, this is a direct competitive threat to its SessionM acquisition thesis; for issuers running co-brand or proprietary rewards programs, Adyen's unified identity layer could erode the stickiness of card-based loyalty by making merchant-native rewards more real-time, personalized, and cost-efficient than anything funded through interchange.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/"
+    },
+    {
+      "company": "Experian x Resistant AI",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Fraud Detection",
+        "AI Models",
+        "Banking Infrastructure"
+      ],
+      "description": "Experian launched 'Transaction Forensics' on Apr 22, an AI-powered fraud and AML solution built with Resistant AI that uses 80+ AI models to detect bank-to-bank payment fraud \u2014 pilot testing showed a 200% uplift in APP fraud detection and 80% reduction in false positives.",
+      "strategic": "Transaction Forensics is targeted squarely at APP fraud on bank-to-bank rails \u2014 Faster Payments in the UK, and by extension ACH and RTP in the US \u2014 and its 200% detection uplift metric is a direct commercial challenge to the fraud scoring layers that card networks and their affiliated processors have built into card authorization flows. For Mastercard and Visa, APP fraud has been structurally outside their liability framework (no chargeback rights, no network-level fraud scoring on push payments), but as regulators increasingly mandate reimbursement (UK PSR's 50/50 model), banks are being forced to build or buy detection capability independently of network rails \u2014 and Experian, with its bureau-level identity graph, is well-positioned to become the de facto fraud score for account-to-account payments the way FICO/Falcon became the standard for card fraud. For issuers managing both card and deposit products, the false positive reduction claim is commercially significant: 80% fewer false positives on outbound bank transfers means fewer customer friction events on a channel where abandonment rates are unrecoverable, unlike card declines where retry logic exists.",
+      "url": "https://fintech.global/2026/04/23/experian-launches-ai-fraud-detection-tool-for-uk-banks/"
+    },
+    {
+      "company": "Q2 Holdings",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Fraud Detection",
+        "Banking Infrastructure",
+        "AI"
+      ],
+      "description": "Q2 Holdings launched two new AI-powered fraud protection tools on Apr 28 \u2014 User Activity Monitoring (UAM) and Restricted Entitlements Mode (REM) \u2014 creating a continuous, closed-loop account takeover protection system for financial institutions across the full digital banking session.",
+      "strategic": "Q2's UAM and REM tools address account takeover at the digital banking session layer \u2014 the pre-transaction authentication window that sits upstream of both card authorization and ACH origination \u2014 which is precisely where card network fraud models have historically had zero visibility. For issuers who rely on Q2's digital banking platform (predominantly mid-tier banks and credit unions), this creates a meaningful opportunity to feed behavioral session signals into card authorization decisions via the issuer processor, effectively extending 3DS-style continuous authentication logic into the full online banking session rather than just the checkout moment. The strategic risk for networks is that if Q2's closed-loop fraud system becomes the primary fraud adjudication layer for these institutions, the network's own fraud tools (Visa Advanced Authorization, Mastercard Safety Net) become secondary validators rather than primary decision engines \u2014 reducing network leverage in fraud liability negotiations and potentially weakening the commercial case for network-branded fraud products in the community and regional bank segment.",
+      "url": "https://fintech.global/2026/04/28/q2-adds-real-time-fraud-detection-capabilities/"
+    },
+    {
+      "company": "Hamilton AI x Column",
+      "deal_type": "Partnership",
+      "tags": [
+        "Banking Infrastructure",
+        "AI-Native Fintech",
+        "Embedded Finance"
+      ],
+      "description": "Hamilton AI announced on Apr 2 that it selected Column \u2014 the nationally chartered bank powering Brex, Mercury, and Ramp \u2014 as its banking infrastructure partner, embedding programmable financial rails directly into its AI-powered operations platform from day one.",
+      "strategic": "Column's value proposition \u2014 a nationally chartered bank with direct Fed master account access and API-first ACH, wire, and card issuance \u2014 means Hamilton AI is embedding payment initiation at the bank infrastructure layer, not through a middleware BaaS provider, which has direct implications for how transaction volume flows (or doesn't) across card network rails. Column's existing client roster of Brex, Mercury, and Ramp represents a cohort of spend management platforms that have systematically pushed corporate card volume onto Visa/Mastercard commercial rails while also building ACH-first payment workflows \u2014 and Hamilton AI's integration signals the same dual-rail architecture, where AI agents will route transactions to the cheapest or most appropriate rail rather than defaulting to card. For card networks, the compounding risk is that AI-native platforms built on Column-style direct bank infrastructure have the technical and regulatory scaffolding to bypass interchange entirely for high-value B2B flows, making early network engagement with AI operations platforms (through virtual card incentives or data partnerships) commercially urgent.",
+      "url": "https://www.manilatimes.net/2026/04/02/tmt-newswire/globenewswire/hamilton-ai-selects-column-as-its-banking-infrastructure-partner/2312920"
+    },
+    {
+      "company": "Stripe x DoorDash (Tempo Network)",
+      "deal_type": "Partnership",
+      "tags": [
+        "Stablecoin Payments",
+        "Payments Infrastructure",
+        "Embedded Finance"
+      ],
+      "description": "DoorDash announced in late April it will pay Dashers via the Tempo stablecoin blockchain \u2014 a network incubated by Stripe and crypto investor Paradigm \u2014 joining Shopify, OpenAI, Visa, Mastercard, and Klarna on the rail built specifically for stablecoin transfers.",
+      "strategic": "DoorDash's use of Tempo for Dasher payouts is the highest-profile gig economy deployment of a stablecoin disbursement rail to date, and it directly targets a payments flow \u2014 platform-to-worker disbursement \u2014 where Mastercard and Visa have been aggressively competing through Mastercard Send and Visa Direct, both of which charge per-transaction fees that stablecoin rails structurally eliminate. The inclusion of Visa and Mastercard as Tempo network participants is strategically ambiguous: it could represent a defensive hedge (networks maintaining on-ramp/off-ramp relevance via card rails as the fiat conversion layer) or it could be a co-option strategy to ensure stablecoin flows remain card-linked at the point of spend. For issuers, the more immediate concern is that workers receiving stablecoin payouts have reduced incentive to hold funds in bank accounts that feed debit card usage \u2014 if Tempo wallets develop merchant acceptance (Shopify's presence on the network is a meaningful signal), earned wages could circulate within the stablecoin ecosystem without ever touching an issuer's deposit base or generating interchange.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/"
+    }
+  ],
+  "_saved_at": "2026-05-03T18:30:27.542881",
+  "_date": "2026-05-03"
+}

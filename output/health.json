@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-05-04T16:24:15.805622Z",
+  "status": "healthy",
+  "checks": {
+    "curated_stories": {
+      "value": 15,
+      "expected_min": 5,
+      "ok": true
+    },
+    "top_papers": {
+      "value": 6,
+      "expected_min": 3,
+      "ok": true
+    },
+    "model_sentiments": {
+      "value": 7,
+      "expected_min": 7,
+      "ok": true
+    },
+    "finance_cache_age_days": {
+      "value": 0,
+      "expected_max": 9,
+      "ok": true
+    },
+    "github_stars_history": {
+      "value": 1,
+      "expected_min": 1,
+      "ok": true
+    },
+    "model_deep_cache": {
+      "value": 1,
+      "expected_min": 1,
+      "ok": true
+    }
+  },
+  "warnings": []
+}

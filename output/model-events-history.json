@@ -1,0 +1,58 @@
+{
+  "deepseek": [
+    {
+      "date": "2026-05-04",
+      "text": "ollama/ollama",
+      "url": "https://github.com/ollama/ollama",
+      "source": "GitHub Trending"
+    },
+    {
+      "date": "2026-05-01",
+      "text": "DeepSeek V4 – almost on the frontier",
+      "url": "https://simonwillison.net/2026/Apr/24/deepseek-v4/",
+      "source": "Hacker News"
+    }
+  ],
+  "claude": [
+    {
+      "date": "2026-05-03",
+      "text": "How Kepler built verifiable AI for financial services with Claude",
+      "url": "https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-03",
+      "text": "DeepClaude – Claude Code agent loop with DeepSeek V4 Pro",
+      "url": "https://github.com/aattaran/deepclaude",
+      "source": "Hacker News"
+    }
+  ],
+  "chatgpt": [
+    {
+      "date": "2026-05-04",
+      "text": "f/prompts.chat",
+      "url": "https://github.com/f/prompts.chat",
+      "source": "GitHub Trending"
+    },
+    {
+      "date": "2026-05-03",
+      "text": "OpenAI's o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors",
+      "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-03",
+      "text": "OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors",
+      "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses",
+      "source": "Hacker News"
+    }
+  ],
+  "copilot": [
+    {
+      "date": "2026-05-02",
+      "text": "VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage",
+      "url": "https://github.com/microsoft/vscode/pull/310226",
+      "source": "Hacker News"
+    }
+  ]
+}

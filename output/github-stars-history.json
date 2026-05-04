@@ -1,0 +1,24 @@
+{
+  "daily_totals": {
+    "2026-05-04": {
+      "chatgpt": 103907,
+      "claude": 24375,
+      "gemini": 19433,
+      "deepseek": 195392,
+      "grok": 51539,
+      "copilot": 10364,
+      "llama": 25897
+    }
+  },
+  "daily_deltas": {
+    "2026-05-04": {
+      "chatgpt": 0,
+      "claude": 0,
+      "gemini": 0,
+      "deepseek": 0,
+      "grok": 0,
+      "copilot": 0,
+      "llama": 0
+    }
+  }
+}
