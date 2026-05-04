@@ -1,10 +1,10 @@
 {
   "daily_totals": {
     "2026-05-04": {
-      "chatgpt": 103907,
+      "chatgpt": 103911,
       "claude": 24375,
-      "gemini": 19433,
-      "deepseek": 195392,
+      "gemini": 19434,
+      "deepseek": 195395,
       "grok": 51539,
       "copilot": 10364,
       "llama": 25897

@@ -178,29 +178,29 @@
   },
   "2026-05-04": {
     "chatgpt": {
-      "sentiment_score": 4.8,
-      "buzz_volume": 96,
+      "sentiment_score": 4.2,
+      "buzz_volume": 100,
       "positive": 6,
       "negative": 9,
-      "neutral": 9,
-      "comment_count": 24,
-      "story_count": 4
+      "neutral": 10,
+      "comment_count": 25,
+      "story_count": 6
     },
     "claude": {
       "sentiment_score": 4.2,
       "buzz_volume": 100,
       "positive": 3,
-      "negative": 5,
-      "neutral": 17,
+      "negative": 7,
+      "neutral": 15,
       "comment_count": 25,
-      "story_count": 6
+      "story_count": 8
     },
     "gemini": {
-      "sentiment_score": 4.5,
+      "sentiment_score": 4.2,
       "buzz_volume": 80,
-      "positive": 0,
-      "negative": 1,
-      "neutral": 19,
+      "positive": 2,
+      "negative": 3,
+      "neutral": 15,
       "comment_count": 20,
       "story_count": 1
     },
@@ -208,10 +208,10 @@
       "sentiment_score": 5.2,
       "buzz_volume": 100,
       "positive": 6,
-      "negative": 7,
-      "neutral": 12,
+      "negative": 6,
+      "neutral": 13,
       "comment_count": 25,
-      "story_count": 3
+      "story_count": 2
     },
     "grok": {
       "sentiment_score": 3.5,
@@ -226,19 +226,19 @@
       "sentiment_score": 2.8,
       "buzz_volume": 100,
       "positive": 2,
-      "negative": 17,
-      "neutral": 6,
+      "negative": 15,
+      "neutral": 8,
       "comment_count": 25,
       "story_count": 2
     },
     "llama": {
-      "sentiment_score": 4.2,
-      "buzz_volume": 28,
+      "sentiment_score": 3.5,
+      "buzz_volume": 24,
       "positive": 1,
-      "negative": 3,
-      "neutral": 3,
-      "comment_count": 7,
-      "story_count": 3
+      "negative": 4,
+      "neutral": 1,
+      "comment_count": 6,
+      "story_count": 1
     }
   }
 }
