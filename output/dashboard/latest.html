@@ -287,7 +287,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function(){
-  var history = [{"count": 0, "date": "2026-05-01", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-02", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-03", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 15, "date": "2026-05-04", "sources": {"GitHub Trending": 6, "Hacker News": 7, "arXiv": 2}}];
+  var history = [{"count": 0, "date": "2026-05-01", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-02", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-03", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 15, "date": "2026-05-04", "sources": {"GitHub Trending": 4, "Hacker News": 6, "arXiv": 5}}];
   if(!history || history.length === 0 || typeof Chart === 'undefined') return;
   var labels = history.map(function(d){ return String(d.date || '').slice(5); });
   var sources = ['Hacker News','GitHub Trending','arXiv'];
