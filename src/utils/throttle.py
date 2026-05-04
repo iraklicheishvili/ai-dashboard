@@ -52,6 +52,7 @@ def sonnet_call(
     *,
     model: str = "claude-sonnet-4-6",
     max_tokens: int = 1500,
+    system: Optional[str] = None,
     skip_sleep: bool = False,
 ) -> str:
     """Plain Sonnet synthesis call with rate-limit safety.
@@ -61,23 +62,23 @@ def sonnet_call(
     if not skip_sleep:
         _sleep_with_message(SONNET_SLEEP, "sonnet")
 
+    create_kwargs: Dict[str, Any] = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if system:
+        create_kwargs["system"] = system
+
     try:
-        resp = client.messages.create(
-            model=model,
-            max_tokens=max_tokens,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        resp = client.messages.create(**create_kwargs)
         return extract_text_from_response(resp)
     except RateLimitError:
         # Single retry after extended cool-off
         print("    rate limit hit — retrying after 90s")
         time.sleep(90)
         try:
-            resp = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            resp = client.messages.create(**create_kwargs)
             return extract_text_from_response(resp)
         except Exception as exc:
             print(f"    sonnet_call retry failed: {exc}")
@@ -133,27 +134,28 @@ def haiku_call(
     *,
     model: str = "claude-haiku-4-5",
     max_tokens: int = 800,
+    system: Optional[str] = None,
 ) -> str:
     """Haiku call for scoring/classification.
 
     No sleep — Haiku has a separate rate-limit pool that's much higher,
     and Haiku calls are short. Single retry on rate limit just in case.
     """
+    create_kwargs: Dict[str, Any] = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if system:
+        create_kwargs["system"] = system
+
     try:
-        resp = client.messages.create(
-            model=model,
-            max_tokens=max_tokens,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        resp = client.messages.create(**create_kwargs)
         return extract_text_from_response(resp)
     except RateLimitError:
         time.sleep(15)
         try:
-            resp = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            resp = client.messages.create(**create_kwargs)
             return extract_text_from_response(resp)
         except Exception as exc:
             print(f"    haiku_call retry failed: {exc}")

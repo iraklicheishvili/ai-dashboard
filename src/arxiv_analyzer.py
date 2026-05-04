@@ -60,14 +60,37 @@ TOPIC_KEYWORDS = {
 
 
 def _claude(client, model, system, user, max_tokens=1500):
-    """Helper to call Claude with a single user message + system prompt."""
-    resp = client.messages.create(
+    """Helper to call Claude with a single user message + system prompt.
+
+    Routes through src.utils.throttle so arxiv_analyzer benefits from the
+    same rate-limit protection as analyzer.py and model_tracker.py:
+      - Sonnet/Opus calls get the 20s pre-call sleep + single 90s retry on 429
+      - Haiku calls go through Haiku's separate rate-limit pool (no sleep,
+        short 15s retry on rare 429)
+
+    Backward compatible — accepts the same (client, model, system, user,
+    max_tokens) signature so all existing call sites work unchanged.
+    """
+    from src.utils.throttle import sonnet_call, haiku_call
+
+    # Decide which throttle wrapper to use based on model family.
+    # Anything that isn't Haiku is treated as Sonnet/Opus tier.
+    is_haiku = isinstance(model, str) and "haiku" in model.lower()
+    if is_haiku:
+        return haiku_call(
+            client,
+            user,
+            model=model,
+            max_tokens=max_tokens,
+            system=system,
+        )
+    return sonnet_call(
+        client,
+        user,
         model=model,
         max_tokens=max_tokens,
         system=system,
-        messages=[{"role": "user", "content": user}],
     )
-    return resp.content[0].text
 
 
 def score_paper(client, paper):
