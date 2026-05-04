@@ -253,12 +253,12 @@
   <a class="link-card" href="https://simonwillison.net/2026/Apr/24/deepseek-v4/" target="_blank" style="padding:8px 10px;margin:-8px -10px 6px;">
     <div style="font-size:16px;font-weight:500;line-height:1.4;"><span class="linked-title">DeepSeek V4 – almost on the frontier</span></div>
   </a>
-  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Hacker News · 650 pts · 383 comments</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Hacker News · 648 pts · 382 comments</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
     <span class="cat-tag">Model Release</span><span class="cat-tag">Benchmark/Evaluation</span>
   </div>
   
-  <div style="font-size:12px;line-height:1.5;color:var(--text-primary);">DeepSeek's V4 reaching near-frontier performance continues the Chinese open-weight assault on OpenAI/Anthropic pricing power, with direct cost implications for any enterprise AI deployment. The 650 HN score signals strong developer mindshare, and Ollama already adding V4 support shows the distribution flywheel is intact.</div>
+  <div style="font-size:12px;line-height:1.5;color:var(--text-primary);">DeepSeek V4 reaching near-frontier performance as an open-weight model continues the compression of the gap between Chinese open models and US frontier labs, with direct pricing and sovereignty implications. For payments and regulated industries, near-frontier open weights mean self-hostable models become viable for fraud, compliance, and underwriting workloads where data residency rules out OpenAI/Anthropic APIs.</div>
   
   <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Top story selected by combined content and engagement score · Updated daily</div>
 </div>
@@ -271,7 +271,7 @@
     <div class="mcard"><div class="mlabel">Total stories</div><div class="mvalue">15</div><div style="font-size:11px;color:var(--text-secondary);">Curated today</div></div>
     <div class="mcard"><div class="mlabel">Fintech stories</div><div class="mvalue">1</div><div style="font-size:11px;color:var(--text-secondary);">Payments, fraud, banking, lending</div></div>
     <div class="mcard"><div class="mlabel">Top source</div><div class="mvalue" style="font-size:15px;">Hacker News</div><div class="neu" style="font-size:11px;">6 stories</div></div>
-    <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">Open Source</div><div class="neu" style="font-size:11px;">6 stories</div></div>
+    <div class="mcard"><div class="mlabel">Most active category</div><div class="mvalue" style="font-size:15px;">Open Source</div><div class="neu" style="font-size:11px;">5 stories</div></div>
   </div>
   <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Metrics computed from curated stories · Updated daily</div>
 </div>
@@ -287,7 +287,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function(){
-  var history = [{"count": 15, "date": "2026-05-04", "sources": {"GitHub Trending": 5, "Hacker News": 6, "arXiv": 4}}];
+  var history = [{"count": 0, "date": "2026-05-01", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-02", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 0, "date": "2026-05-03", "sources": {"GitHub Trending": 0, "Hacker News": 0, "arXiv": 0}}, {"count": 15, "date": "2026-05-04", "sources": {"GitHub Trending": 4, "Hacker News": 6, "arXiv": 5}}];
   if(!history || history.length === 0 || typeof Chart === 'undefined') return;
   var labels = history.map(function(d){ return String(d.date || '').slice(5); });
   var sources = ['Hacker News','GitHub Trending','arXiv'];
@@ -306,10 +306,10 @@
     
     <a class="linkrow" href="https://simonwillison.net/2026/Apr/24/deepseek-v4/" target="_blank">
       <div class="story-title"><span class="linked-title">DeepSeek V4 – almost on the frontier</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">DeepSeek releases V4 model approaching frontier performance; significant capability milestone with implications for AI infrastructure costs.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">DeepSeek V4 reaches near-frontier performance, significant capability milestone in open-weight LLM competition.</div>
       <div class="story-meta">
         <span>Hacker News</span>
-        <span>650 pts · 383 comments</span>
+        <span>648 pts · 382 comments</span>
         <span class="cat-tag">Model Release</span><span class="cat-tag">Benchmark/Evaluation</span>
         <span class="score-pill">7.9</span>
       </div>
@@ -317,7 +317,7 @@
     
     <a class="linkrow" href="https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude" target="_blank">
       <div class="story-title"><span class="linked-title">How Kepler built verifiable AI for financial services with Claude</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Kepler deployed Claude for verifiable AI in financial services, addressing compliance and auditability requirements in regulated fintech.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Kepler deployed Claude for verifiable AI in financial services, demonstrating production use of LLMs in regulated fintech with auditability.</div>
       <div class="story-meta">
         <span>Hacker News</span>
         <span>43 pts · 23 comments</span>
@@ -328,21 +328,32 @@
     
     <a class="linkrow" href="https://github.com/langgenius/dify" target="_blank">
       <div class="story-title"><span class="linked-title">langgenius/dify</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Dify is a mature open-source platform for building and deploying agentic AI workflows in production environments.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Dify is a production-ready platform for building agentic workflows; well-established repo with 140k stars, but no new release or update announced here.</div>
       <div class="story-meta">
         <span>GitHub Trending</span>
-        <span>140059 stars</span>
+        <span>140057 stars</span>
         <span class="cat-tag">Open Source</span><span class="cat-tag">Agents/Automation</span>
-        <span class="score-pill">6.8</span>
+        <span class="score-pill">7.0</span>
+      </div>
+    </a>
+    
+    <a class="linkrow" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank">
+      <div class="story-title"><span class="linked-title">OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">OpenAI's o1 achieved 67% diagnostic accuracy in ER triage versus 50-55% for human doctors in Harvard trial.</div>
+      <div class="story-meta">
+        <span>Hacker News</span>
+        <span>460 pts · 408 comments</span>
+        <span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span>
+        <span class="score-pill">6.2</span>
       </div>
     </a>
     
     <a class="linkrow" href="https://github.com/ollama/ollama" target="_blank">
       <div class="story-title"><span class="linked-title">ollama/ollama</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Ollama is a popular local LLM runtime supporting multiple models; update adds support for newer models like DeepSeek and GLM-5.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Ollama is a popular Go-based tool for running open-source LLMs locally; the story lists supported models but announces no new capability.</div>
       <div class="story-meta">
         <span>GitHub Trending</span>
-        <span>170673 stars</span>
+        <span>170671 stars</span>
         <span class="cat-tag">Open Source</span><span class="cat-tag">Infrastructure/Hardware</span>
         <span class="score-pill">6.2</span>
       </div>
@@ -350,51 +361,29 @@
     
     <a class="linkrow" href="https://github.com/langflow-ai/langflow" target="_blank">
       <div class="story-title"><span class="linked-title">langflow-ai/langflow</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Langflow is a popular Python framework for building and deploying AI agents and workflows via visual interface.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Langflow is a popular open-source framework for building AI agent workflows, but lacks novelty or recent major updates.</div>
       <div class="story-meta">
         <span>GitHub Trending</span>
-        <span>147674 stars</span>
+        <span>147675 stars</span>
         <span class="cat-tag">Open Source</span><span class="cat-tag">Agents/Automation</span>
         <span class="score-pill">6.2</span>
       </div>
     </a>
     
-    <a class="linkrow" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank">
-      <div class="story-title"><span class="linked-title">OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">OpenAI's o1 model outperforms emergency triage doctors in diagnostic accuracy (67% vs 50-55%), suggesting clinical deployment potential.</div>
-      <div class="story-meta">
-        <span>Hacker News</span>
-        <span>468 pts · 418 comments</span>
-        <span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span>
-        <span class="score-pill">6.0</span>
-      </div>
-    </a>
-    
     <a class="linkrow" href="https://www.mendral.com/blog/agent-harness-belongs-outside-sandbox" target="_blank">
       <div class="story-title"><span class="linked-title">The agent harness belongs outside the sandbox</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Opinion piece on AI agent architecture design philosophy regarding sandbox isolation versus production deployment patterns.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Opinion piece on agent architecture design; argues harness should operate outside sandboxed environments for production AI systems.</div>
       <div class="story-meta">
         <span>Hacker News</span>
-        <span>174 pts · 115 comments</span>
+        <span>173 pts · 115 comments</span>
         <span class="cat-tag">Agents/Automation</span><span class="cat-tag">Discussion/Opinion</span>
         <span class="score-pill">5.8</span>
       </div>
     </a>
     
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00825v1" target="_blank">
-      <div class="story-title"><span class="linked-title">Posterior Augmented Flow Matching</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Novel training technique for generative models using multiple target completions to improve robustness and reduce variance in flow matching.</div>
-      <div class="story-meta">
-        <span>arXiv</span>
-        <span>paper</span>
-        <span class="cat-tag">Research/Paper</span>
-        <span class="score-pill">5.7</span>
-      </div>
-    </a>
-    
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00768v1" target="_blank">
-      <div class="story-title"><span class="linked-title">Characterizing the Expressivity of Local Attention in Transformers</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Theoretical analysis showing local attention in transformers expresses more formal languages than global attention, explaining performance improvements.</div>
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00809v1" target="_blank">
+      <div class="story-title"><span class="linked-title">Let ViT Speak: Generative Language-Image Pre-training</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">arXiv paper on vision-language pretraining via direct token prediction; interesting but incremental technical contribution without clear commercial impact.</div>
       <div class="story-meta">
         <span>arXiv</span>
         <span>paper</span>
@@ -403,20 +392,53 @@
       </div>
     </a>
     
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00610v1" target="_blank">
-      <div class="story-title"><span class="linked-title">Decouple before Integration: Test-time Synthesis of SFT and RLVR Task Vectors</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Research on combining SFT and RLHF-trained models via task vector arithmetic to avoid training conflicts.</div>
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00768v1" target="_blank">
+      <div class="story-title"><span class="linked-title">Characterizing the Expressivity of Local Attention in Transformers</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Theoretical analysis showing local attention mechanisms increase transformer expressivity compared to global attention alone.</div>
       <div class="story-meta">
         <span>arXiv</span>
         <span>paper</span>
-        <span class="cat-tag">Research/Paper</span>
+        <span class="cat-tag">Research/Paper</span><span class="cat-tag">Benchmark/Evaluation</span>
+        <span class="score-pill">5.7</span>
+      </div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00754v1" target="_blank">
+      <div class="story-title"><span class="linked-title">Themis: Training Robust Multilingual Code Reward Models for Flexible Multi-Criteria Scoring</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Researchers develop multilingual reward models for multi-criteria code evaluation, demonstrating scale benefits for code quality assessment.</div>
+      <div class="story-meta">
+        <span>arXiv</span>
+        <span>paper</span>
+        <span class="cat-tag">Research/Paper</span><span class="cat-tag">Benchmark/Evaluation</span>
+        <span class="score-pill">5.7</span>
+      </div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00742v1" target="_blank">
+      <div class="story-title"><span class="linked-title">Position: agentic AI orchestration should be Bayes-consistent</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Proposes Bayesian decision theory framework for agentic AI orchestration layer rather than requiring LLMs themselves to be Bayesian-consistent.</div>
+      <div class="story-meta">
+        <span>arXiv</span>
+        <span>paper</span>
+        <span class="cat-tag">Research/Paper</span><span class="cat-tag">Agents/Automation</span>
+        <span class="score-pill">5.7</span>
+      </div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00674v1" target="_blank">
+      <div class="story-title"><span class="linked-title">Beyond Benchmarks: MathArena as an Evaluation Platform for Mathematics with LLMs</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">New evaluation platform for math problem-solving with LLMs; addresses benchmark staleness but lacks immediate fintech application.</div>
+      <div class="story-meta">
+        <span>arXiv</span>
+        <span>paper</span>
+        <span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span>
         <span class="score-pill">5.7</span>
       </div>
     </a>
     
     <a class="linkrow" href="https://github.com/bruin-data/dac" target="_blank">
       <div class="story-title"><span class="linked-title">Show HN: DAC – open-source dashboard as code tool for agents and humans</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Open-source dashboard-as-code tool designed for AI agents to programmatically build and manage dashboards without UI interaction.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Open-source dashboard-as-code tool designed for AI agents to build and modify dashboards via YAML instead of UI/browser interaction.</div>
       <div class="story-meta">
         <span>Hacker News</span>
         <span>112 pts · 35 comments</span>
@@ -425,31 +447,9 @@
       </div>
     </a>
     
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00642v1" target="_blank">
-      <div class="story-title"><span class="linked-title">Learn where to Click from Yourself: On-Policy Self-Distillation for GUI Grounding</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Self-distillation approach improves GUI grounding model training efficiency without requiring expensive reinforcement learning.</div>
-      <div class="story-meta">
-        <span>arXiv</span>
-        <span>paper</span>
-        <span class="cat-tag">Research/Paper</span><span class="cat-tag">Agents/Automation</span>
-        <span class="score-pill">5.5</span>
-      </div>
-    </a>
-    
-    <a class="linkrow" href="https://github.com/huggingface/transformers" target="_blank">
-      <div class="story-title"><span class="linked-title">huggingface/transformers</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Hugging Face Transformers library remains popular general ML framework; no new release or update announced here.</div>
-      <div class="story-meta">
-        <span>GitHub Trending</span>
-        <span>160230 stars</span>
-        <span class="cat-tag">Open Source</span><span class="cat-tag">Infrastructure/Hardware</span>
-        <span class="score-pill">5.3</span>
-      </div>
-    </a>
-    
     <a class="linkrow" href="https://mathnet.mit.edu/" target="_blank">
       <div class="story-title"><span class="linked-title">MathNet:30k competition math problems for AI mathematical reasoning benchmarking</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">MIT releases 30k competition math problems dataset for evaluating AI mathematical reasoning capabilities.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">New 30k problem math benchmark dataset for evaluating AI reasoning capabilities across competition-level mathematics.</div>
       <div class="story-meta">
         <span>Hacker News</span>
         <span>5 pts · 2 comments</span>
@@ -458,13 +458,13 @@
       </div>
     </a>
     
-    <a class="linkrow" href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank">
-      <div class="story-title"><span class="linked-title">Significant-Gravitas/AutoGPT</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">AutoGPT is a popular open-source AI automation framework enabling accessible agent building, but the story itself lacks substantive technical updates or news.</div>
+    <a class="linkrow" href="https://github.com/tensorflow/tensorflow" target="_blank">
+      <div class="story-title"><span class="linked-title">tensorflow/tensorflow</span></div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">TensorFlow trending on GitHub, but no new release or update details provided in listing.</div>
       <div class="story-meta">
         <span>GitHub Trending</span>
-        <span>183977 stars</span>
-        <span class="cat-tag">Open Source</span>
+        <span>194986 stars</span>
+        <span class="cat-tag">Open Source</span><span class="cat-tag">Infrastructure/Hardware</span>
         <span class="score-pill">4.5</span>
       </div>
     </a>
@@ -502,7 +502,7 @@
         
         
         <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Agent Frameworks</span><span class="source-chip">Open Source</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Agentic Orchestration</span><span class="source-chip">Research/Paper</span></div>
           <div class="bar-track" title="9 discussions / weighted mentions"><div class="bar-fill" style="width:90%;"></div></div>
         </div>
         
@@ -520,38 +520,38 @@
         
         
         <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Dify</span><span class="source-chip">Open Source</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>OpenAI o1</span><span class="source-chip">Research/Paper</span></div>
           <div class="bar-track" title="7 discussions / weighted mentions"><div class="bar-fill" style="width:70%;"></div></div>
         </div>
         
         
         <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Ollama</span><span class="source-chip">Open Source</span></div>
-          <div class="bar-track" title="7 discussions / weighted mentions"><div class="bar-fill" style="width:70%;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Dify</span><span class="source-chip">Open Source</span></div>
+          <div class="bar-track" title="6 discussions / weighted mentions"><div class="bar-fill" style="width:60%;"></div></div>
         </div>
         
         
         <div style="margin:9px 0;">
           <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Langflow</span><span class="source-chip">Open Source</span></div>
-          <div class="bar-track" title="6 discussions / weighted mentions"><div class="bar-fill" style="width:60%;"></div></div>
-        </div>
-        
-        
-        <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>o1 Clinical Diagnosis</span><span class="source-chip">Research/Paper</span></div>
-          <div class="bar-track" title="6 discussions / weighted mentions"><div class="bar-fill" style="width:60%;"></div></div>
-        </div>
-        
-        
-        <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>GUI Grounding</span><span class="source-chip">Research/Paper</span></div>
           <div class="bar-track" title="5 discussions / weighted mentions"><div class="bar-fill" style="width:50%;"></div></div>
         </div>
         
         
         <div style="margin:9px 0;">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Agent Sandbox Architecture</span><span class="source-chip">Other</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Ollama</span><span class="source-chip">Open Source</span></div>
           <div class="bar-track" title="5 discussions / weighted mentions"><div class="bar-fill" style="width:50%;"></div></div>
+        </div>
+        
+        
+        <div style="margin:9px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Bayes-Consistent Agents</span><span class="source-chip">Research/Paper</span></div>
+          <div class="bar-track" title="5 discussions / weighted mentions"><div class="bar-fill" style="width:50%;"></div></div>
+        </div>
+        
+        
+        <div style="margin:9px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>Math Reasoning Benchmarks</span><span class="source-chip">Research/Paper</span></div>
+          <div class="bar-track" title="4 discussions / weighted mentions"><div class="bar-fill" style="width:40%;"></div></div>
         </div>
         
       
@@ -561,7 +561,7 @@
 </div>
 <script>
 (function(){
-  var breakdown = {"Acquisition/Partnership": 1, "Agents/Automation": 1, "Benchmark/Evaluation": 2, "Model Release": 1, "Open Source": 6, "Research/Paper": 4};
+  var breakdown = {"Acquisition/Partnership": 1, "Agents/Automation": 1, "Benchmark/Evaluation": 3, "Model Release": 1, "Open Source": 5, "Research/Paper": 4};
   var labels = Object.keys(breakdown || {});
   var values = labels.map(function(k){return breakdown[k];});
   var canvas = document.getElementById('catDonut');
@@ -581,7 +581,7 @@
   <div class="sec-row">
     <div><div class="sec-title">Source hot topics</div><div class="sec-sub">Top items from each source today — switch via dropdown</div></div>
     <select id="sourceSelect" onchange="filterSource(this.value)">
-      <option value="Hacker News">Hacker News · 6</option><option value="GitHub Trending">GitHub Trending · 5</option><option value="arXiv">arXiv · 4</option>
+      <option value="Hacker News">Hacker News · 6</option><option value="GitHub Trending">GitHub Trending · 4</option><option value="arXiv">arXiv · 5</option>
     </select>
   </div>
   
@@ -601,7 +601,7 @@
       
       <a class="linkrow" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank">
         <div class="story-title"><span class="linked-title">OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div>
-        <div class="story-meta"><span>Hacker News</span><span class="score-pill">6.0</span><span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span></div>
+        <div class="story-meta"><span>Hacker News</span><span class="score-pill">6.2</span><span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span></div>
       </a>
       
       <a class="linkrow" href="https://www.mendral.com/blog/agent-harness-belongs-outside-sandbox" target="_blank">
@@ -625,7 +625,7 @@
       
       <a class="linkrow" href="https://github.com/langgenius/dify" target="_blank">
         <div class="story-title"><span class="linked-title">langgenius/dify</span></div>
-        <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">6.8</span><span class="cat-tag">Open Source</span><span class="cat-tag">Agents/Automation</span></div>
+        <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">7.0</span><span class="cat-tag">Open Source</span><span class="cat-tag">Agents/Automation</span></div>
       </a>
       
       <a class="linkrow" href="https://github.com/ollama/ollama" target="_blank">
@@ -638,23 +638,18 @@
         <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">6.2</span><span class="cat-tag">Open Source</span><span class="cat-tag">Agents/Automation</span></div>
       </a>
       
-      <a class="linkrow" href="https://github.com/huggingface/transformers" target="_blank">
-        <div class="story-title"><span class="linked-title">huggingface/transformers</span></div>
-        <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">5.3</span><span class="cat-tag">Open Source</span><span class="cat-tag">Infrastructure/Hardware</span></div>
-      </a>
-      
-      <a class="linkrow" href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank">
-        <div class="story-title"><span class="linked-title">Significant-Gravitas/AutoGPT</span></div>
-        <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">4.5</span><span class="cat-tag">Open Source</span></div>
+      <a class="linkrow" href="https://github.com/tensorflow/tensorflow" target="_blank">
+        <div class="story-title"><span class="linked-title">tensorflow/tensorflow</span></div>
+        <div class="story-meta"><span>GitHub Trending</span><span class="score-pill">4.5</span><span class="cat-tag">Open Source</span><span class="cat-tag">Infrastructure/Hardware</span></div>
       </a>
       
     </div>
     
     <div class="source-group" data-source="arXiv" style="display:none">
       
-      <a class="linkrow" href="http://arxiv.org/abs/2605.00825v1" target="_blank">
-        <div class="story-title"><span class="linked-title">Posterior Augmented Flow Matching</span></div>
-        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span></div>
+      <a class="linkrow" href="http://arxiv.org/abs/2605.00809v1" target="_blank">
+        <div class="story-title"><span class="linked-title">Let ViT Speak: Generative Language-Image Pre-training</span></div>
+        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span><span class="cat-tag">Benchmark/Evaluation</span></div>
       </a>
       
       <a class="linkrow" href="http://arxiv.org/abs/2605.00768v1" target="_blank">
@@ -662,14 +657,19 @@
         <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span><span class="cat-tag">Benchmark/Evaluation</span></div>
       </a>
       
-      <a class="linkrow" href="http://arxiv.org/abs/2605.00610v1" target="_blank">
-        <div class="story-title"><span class="linked-title">Decouple before Integration: Test-time Synthesis of SFT and RLVR Task Vectors</span></div>
-        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span></div>
+      <a class="linkrow" href="http://arxiv.org/abs/2605.00754v1" target="_blank">
+        <div class="story-title"><span class="linked-title">Themis: Training Robust Multilingual Code Reward Models for Flexible Multi-Criteria Scoring</span></div>
+        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span><span class="cat-tag">Benchmark/Evaluation</span></div>
       </a>
       
-      <a class="linkrow" href="http://arxiv.org/abs/2605.00642v1" target="_blank">
-        <div class="story-title"><span class="linked-title">Learn where to Click from Yourself: On-Policy Self-Distillation for GUI Grounding</span></div>
-        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.5</span><span class="cat-tag">Research/Paper</span><span class="cat-tag">Agents/Automation</span></div>
+      <a class="linkrow" href="http://arxiv.org/abs/2605.00742v1" target="_blank">
+        <div class="story-title"><span class="linked-title">Position: agentic AI orchestration should be Bayes-consistent</span></div>
+        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Research/Paper</span><span class="cat-tag">Agents/Automation</span></div>
+      </a>
+      
+      <a class="linkrow" href="http://arxiv.org/abs/2605.00674v1" target="_blank">
+        <div class="story-title"><span class="linked-title">Beyond Benchmarks: MathArena as an Evaluation Platform for Mathematics with LLMs</span></div>
+        <div class="story-meta"><span>arXiv</span><span class="score-pill">5.7</span><span class="cat-tag">Benchmark/Evaluation</span><span class="cat-tag">Research/Paper</span></div>
       </a>
       
     </div>
@@ -689,11 +689,11 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
     
     <a class="linkrow" href="https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude" target="_blank" style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:11px 13px;margin-bottom:8px;border-bottom:none;">
       <div class="story-title"><span class="linked-title">How Kepler built verifiable AI for financial services with Claude</span></div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Kepler deployed Claude for verifiable AI in financial services, addressing compliance and auditability requirements in regulated fintech.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.45;margin-top:4px;">Kepler deployed Claude for verifiable AI in financial services, demonstrating production use of LLMs in regulated fintech with auditability.</div>
       <div class="story-meta"><span>Hacker News</span><span class="cat-tag">Acquisition/Partnership</span><span class="cat-tag">Fintech/Payments</span></div>
     </a>
     
-    <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;"><strong style="font-weight:500;">Strategic read:</strong> The Kepler/Claude verifiable-AI case is the story international payment schemes should track closely: it confirms that regulated financial services adoption hinges on auditability and traceable reasoning, not benchmark scores — a defensible moat against cheaper Chinese frontier models like DeepSeek V4. For card networks, this points to opportunity in offering 'verifiable AI' primitives (provenance, decision logs, model attestation) as platform services to issuers and acquirers building agentic commerce. The parallel o1 medical-diagnostic result reinforces that capability is no longer the bottleneck for high-stakes verticals — governance and explainability infrastructure is.</div>
+    <div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;"><strong style="font-weight:500;">Strategic read:</strong> The Kepler/Claude verifiable-AI deployment is the most actionable signal: financial services adoption is gated on auditability and traceable reasoning, not model IQ — a direct cue for how international payment schemes should frame internal Decision Intelligence and Brighterion AI tooling for issuer customers. Concurrently, DeepSeek V4's near-frontier open weights mean issuers and acquirers in jurisdictions with strict data residency (EU, India, China) can now run competitive models on-prem, weakening the leverage of API-only AI vendors and creating an opening for international payment schemes to offer governed, certified open-model deployments as a value-add. The o1 ER-triage result is a leading indicator for chargeback adjudication and KYC review automation — domains where 12-15 point accuracy lifts directly compress operating costs.</div>
   
   <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Strategic implications synthesized by Claude Sonnet · Updated daily</div>
 </div>
@@ -741,7 +741,7 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
     <div class="model-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
         <div><div style="font-size:14px;font-weight:500;">Gemini</div><div style="font-size:11px;color:var(--text-secondary);">Google DeepMind</div></div>
-        <span class="pill sent-neu">5.2</span>
+        <span class="pill sent-neu">4.5</span>
       </div>
       <div class="bar-track" style="height:4px;margin:8px 0 6px;"><div style="height:4px;border-radius:99px;background:#1D9E75;width:80%;"></div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-secondary);">
@@ -769,7 +769,7 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
     <div class="model-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
         <div><div style="font-size:14px;font-weight:500;">Grok</div><div style="font-size:11px;color:var(--text-secondary);">xAI</div></div>
-        <span class="pill sent-neu">3.8</span>
+        <span class="pill sent-neu">3.5</span>
       </div>
       <div class="bar-track" style="height:4px;margin:8px 0 6px;"><div style="height:4px;border-radius:99px;background:#E24B4A;width:28%;"></div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-secondary);">
@@ -799,10 +799,10 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
         <div><div style="font-size:14px;font-weight:500;">Llama</div><div style="font-size:11px;color:var(--text-secondary);">Meta</div></div>
         <span class="pill sent-neu">4.2</span>
       </div>
-      <div class="bar-track" style="height:4px;margin:8px 0 6px;"><div style="height:4px;border-radius:99px;background:#4267B2;width:32%;"></div></div>
+      <div class="bar-track" style="height:4px;margin:8px 0 6px;"><div style="height:4px;border-radius:99px;background:#4267B2;width:28%;"></div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-secondary);">
-        <span>Buzz <strong style="color:var(--text-primary);font-weight:500;">32%</strong></span>
-        <span>Mentions <strong style="color:var(--text-primary);font-weight:500;">8</strong></span>
+        <span>Buzz <strong style="color:var(--text-primary);font-weight:500;">28%</strong></span>
+        <span>Mentions <strong style="color:var(--text-primary);font-weight:500;">7</strong></span>
         <span class="neu">No prior WoW</span>
       </div>
       
@@ -825,7 +825,7 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
 </div>
 <script>
 var trendChart = null;
-var trendHistory = {"labels": ["05-04"], "models": [{"color": "#378ADD", "github_stars": [0], "id": "chatgpt", "name": "ChatGPT", "scores": [4.8]}, {"color": "#D85A30", "github_stars": [0], "id": "claude", "name": "Claude", "scores": [4.2]}, {"color": "#1D9E75", "github_stars": [0], "id": "gemini", "name": "Gemini", "scores": [5.2]}, {"color": "#7F77DD", "github_stars": [0], "id": "deepseek", "name": "DeepSeek", "scores": [5.2]}, {"color": "#E24B4A", "github_stars": [0], "id": "grok", "name": "Grok", "scores": [3.8]}, {"color": "#888780", "github_stars": [0], "id": "copilot", "name": "Copilot", "scores": [2.8]}, {"color": "#4267B2", "github_stars": [0], "id": "llama", "name": "Llama", "scores": [4.2]}]};
+var trendHistory = {"labels": ["05-01", "05-02", "05-03", "05-04"], "models": [{"color": "#378ADD", "github_stars": [0, 0, 0, 0], "id": "chatgpt", "name": "ChatGPT", "scores": [6.8, 6.8, 4.8, 4.8]}, {"color": "#D85A30", "github_stars": [0, 0, 0, 0], "id": "claude", "name": "Claude", "scores": [7.6, 7.6, 4.2, 4.2]}, {"color": "#1D9E75", "github_stars": [0, 0, 0, 0], "id": "gemini", "name": "Gemini", "scores": [8.4, 8.4, 5.2, 4.5]}, {"color": "#7F77DD", "github_stars": [0, 0, 0, 0], "id": "deepseek", "name": "DeepSeek", "scores": [8.4, 8.4, 7.2, 5.2]}, {"color": "#E24B4A", "github_stars": [0, 0, 0, 0], "id": "grok", "name": "Grok", "scores": [7.4, 7.8, 7.2, 3.5]}, {"color": "#888780", "github_stars": [0, 0, 0, 0], "id": "copilot", "name": "Copilot", "scores": [7.4, 7.4, 2.8, 2.8]}, {"color": "#4267B2", "github_stars": [0, 0, 0, 0], "id": "llama", "name": "Llama", "scores": [null, null, 3.8, 4.2]}]};
 function buildTrendDatasets(mode){
   if(!trendHistory || !trendHistory.models) return [];
   return trendHistory.models.map(function(m){return {label:m.name, data:(mode==='github' ? (m.github_stars || []) : (m.scores || [])), borderColor:m.color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0.3};});
@@ -858,13 +858,13 @@ function setTrendMode(mode){
     
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">ChatGPT useful for self-diagnostics when doctor access is difficult</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">Doctors use ChatGPT routinely; AI will consistently outperform human doctors</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">AI caught leukemia diagnosis that doctors later confirmed officially</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">AI caught leukemia diagnosis that doctors confirmed hours later; great augmentation tool</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Studies heavily weighted in LLMs favor, don't represent clinical practice</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Very easy to mess up benchmarks; AI beat radiologists without access to x-rays</span></a>
       
     
   </div>
@@ -880,23 +880,23 @@ function setTrendMode(mode){
       <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Claude Code is arguably the worst harness to run models with</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Sonnet messes up too much, not worth cost optimizing down to using it</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Claude messes up too much, not worth cost optimizing down to using it</span></a>
       
     
   </div>
   
   <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
-    <div style="font-size:13px;font-weight:500;color:#1D9E75;margin-bottom:6px;">Gemini <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">5.2/10</span></div>
+    <div style="font-size:13px;font-weight:500;color:#1D9E75;margin-bottom:6px;">Gemini <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">4.5/10</span></div>
     
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">except for how well Gemini does</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon neutral">●</span><span class="linked-title">Gemini does well, but performance seems task-specific, not broadly superior</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">Open models are definitely good enough for coding tasks, much cheaper</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Gemini's ranking doesn't make much sense in broader testing context</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon neutral">●</span><span class="linked-title">No objective way to compare models; best one depends on your use case</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon neutral">●</span><span class="linked-title">Open models like Kimi now competitive with closed models on cost and capability</span></a>
       
     
   </div>
@@ -906,29 +906,29 @@ function setTrendMode(mode){
     
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">DeepSeek seems good enough for real development work and viable Claude replacement</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">DeepSeek V4 can do long complex reasoning and gets things often right</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">Can do long complex reasoning with cheaper pricing than Gemini or Claude alternatives</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">DeepSeek seems good enough for real replacement to Claude models</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Current $0.87/M pricing is heavily subsidized, reverting to $3.48 end of May 2026</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Temporary 75% discount masks true pricing, increases 4x in May 2026</span></a>
       
     
   </div>
   
   <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
-    <div style="font-size:13px;font-weight:500;color:#E24B4A;margin-bottom:6px;">Grok <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">3.8/10</span></div>
+    <div style="font-size:13px;font-weight:500;color:#E24B4A;margin-bottom:6px;">Grok <span style="font-size:11px;font-weight:400;color:var(--text-secondary);">3.5/10</span></div>
     
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">More competition is great for us users. I hope they recover.</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">More competition is great for us users. Hope they recover.</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Grok is pretty bad. No wonder usage is low.</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Grok is pretty bad. Messed up removing human annotation team.</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">They messed up removing human annotation team, went full automation.</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon neutral">●</span><span class="linked-title">Low MFU numbers unsurprising if they're doing extensive RL training.</span></a>
       
     
   </div>
@@ -938,13 +938,13 @@ function setTrendMode(mode){
     
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Set fire to Microsoft's reputation in offering to robot gods</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">Copilot commented on PR noting inconsistency and suggesting revert</span></a>
       
       
       <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Falsifying code authorship to pump up AI usage stats breaches trust</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Courts ruling AI-written code cannot be copyrighted has legal consequences</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Microsoft prioritizes branding over developer log integrity</span></a>
       
     
   </div>
@@ -957,10 +957,10 @@ function setTrendMode(mode){
       <a class="driver-row link-card" href="#"><span class="signal-icon up">▲</span><span class="linked-title">Claude write notebooks, run top to bottom, debug & fix errors</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Notebooks aren't reproducible: out of order execution, hidden state</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Notebooks solving chat reproducibility with famously bad format</span></a>
       
       
-      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">Solving chat reproducibility with format that also isn't reproducible</span></a>
+      <a class="driver-row link-card" href="#"><span class="signal-icon down">▼</span><span class="linked-title">LLM generation has no memory of kernel state when writing</span></a>
       
     
   </div>
@@ -980,14 +980,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="ChatGPT">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#378ADD;">4.8</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">~1 billion MAU (estimated, Jan 2026); 900M weekly active users confirmed by OpenAI on Feb 27, 2026; 50M paying subscribers</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">~60.4% of global generative AI chatbot market; 45.3% of US mobile daily AI users (Jan 2026, down from 69.1% in Jan 2025)</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">96%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Consistently high buzz volume (96-100) signals strong ongoing public mindshare</div></div><div class="cap-item"><div>GPT-4o and o3 releases keep product line competitive across reasoning tiers</div></div><div class="cap-item"><div>Broad ecosystem integrations sustain developer and enterprise adoption</div></div><div class="cap-item"><div>Story count of 4-6/day reflects steady media coverage and product momentum</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Sentiment dropped sharply to 4.2 on May 4, one of the lowest scores tracked</div></div><div class="cap-item"><div>Negative comments (10) outpaced positives (5) on May 4, signaling user friction</div></div><div class="cap-item"><div>Sentiment trend is declining: 6.8 → 4.8 → 4.2 over the past four days</div></div><div class="cap-item"><div>High buzz with low sentiment suggests controversy, not enthusiasm, driving volume</div></div><div class="cap-item"><div>Neutral-heavy comment mix (9 neutral) suggests lukewarm user satisfaction</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1007,13 +1007,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <a class="timeline-row link-card" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div></a>
+      <a class="timeline-row link-card" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">OpenAI's o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div></a><a class="timeline-row link-card" href="https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">OpenAI’s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors</span></div></a><a class="timeline-row link-card" href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-27</div><div><span class="linked-title">OpenAI announces 900M weekly active users alongside $110B funding round at $730B valuation</span></div></a><a class="timeline-row link-card" href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-27</div><div><span class="linked-title">OpenAI discloses 50M paying subscribers; Jan & Feb 2026 on track to be largest-ever months for new subscriber signups</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Sam_Altman_TechCrunch_SF_2019_Day_2_Oct_3_%28cropped_3%29.jpg/330px-Sam_Altman_TechCrunch_SF_2019_Day_2_Oct_3_%28cropped_3%29.jpg" alt="Sam Altman" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Sam Altman <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">CEO, OpenAI</span></div><div class="quote-text">ChatGPT returned to over 10% monthly growth in early 2026</div><div class="quote-meta">2026-02-27 · blog</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1023,14 +1023,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="Claude" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#D85A30;">4.2</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">~18.9M MAU on web (third-party estimate, early 2026); 12.48M MAU on mobile app (Feb 2026, up 49% MoM per AICPB); Anthropic has not officially disclosed a consolidated consumer MAU figure</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">~3.5–4.5% global generative AI chatbot market (consumer); ~29% enterprise AI assistant market share; 70% of Fortune 100 use Claude; 300K+ business customers</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">100%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Highest buzz volume on May 4 (100), tied with DeepSeek and Copilot</div></div><div class="cap-item"><div>Story count of 10/day is the highest of any tracked model, showing press interest</div></div><div class="cap-item"><div>Large neutral comment share (16/25) suggests measured, substantive discussion</div></div><div class="cap-item"><div>Sonnet/Haiku tier structure appeals to cost-sensitive enterprise deployments</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Sentiment score of 4.2 on May 4 is among the lowest, matching ChatGPT's decline</div></div><div class="cap-item"><div>Negative comments (7-8) consistently outpace positives (2) across May 3-4</div></div><div class="cap-item"><div>Sentiment fell from 7.6 to 4.2 in 48 hours, a steep and rapid deterioration</div></div><div class="cap-item"><div>High story count with low sentiment may reflect criticism or controversy coverage</div></div><div class="cap-item"><div>No positive momentum in comment ratio despite sustained high volume</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1041,8 +1041,8 @@ function setTrendMode(mode){
       
       <div style="display:grid;gap:8px;margin-top:8px;">
         <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>3</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:12.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>7</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:28.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>15</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:60.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>5</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:20.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>17</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:68.0%;"></div></div></div>
       </div>
       
     </div>
@@ -1050,13 +1050,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <a class="timeline-row link-card" href="https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">How Kepler built verifiable AI for financial services with Claude</span></div></a>
+      <a class="timeline-row link-card" href="https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">How Kepler built verifiable AI for financial services with Claude</span></div></a><a class="timeline-row link-card" href="https://github.com/aattaran/deepclaude" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-03</div><div><span class="linked-title">DeepClaude – Claude Code agent loop with DeepSeek V4 Pro</span></div></a><a class="timeline-row link-card" href="https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-03-28</div><div><span class="linked-title">TechCrunch reports Claude paid subscriptions more than doubled in 2026, driven by Super Bowl ads, Claude Code, and DOD controversy</span></div></a><a class="timeline-row link-card" href="https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-01</div><div><span class="linked-title">Anthropic closes $30B Series G at $380B valuation; Claude hits $14B annualized run-rate revenue</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg/330px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg" alt="Dario Amodei" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Dario Amodei <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">CEO, Anthropic</span></div><div class="quote-text">Issued firm public statement Feb 26 rejecting DOD lethal autonomous operations use</div><div class="quote-meta">2026-02-26 · blog</div></div></a><a class="person-chip link-card" href="https://www.humanizeai.io/blog/article/claude-ai-statistics-users-traffic-growth" target="_blank" style="text-decoration:none;color:inherit;"><div class="avatar" style="background:#D85A3033;color:#D85A30;">DA</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Daniela Amodei <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">President, Anthropic</span></div><div class="quote-text">Co-founder focused on scaling Anthropic's enterprise and safety-focused AI mission</div><div class="quote-meta">2026-01-01 · blog</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1065,15 +1065,15 @@ function setTrendMode(mode){
   
   <div class="model-deep" data-model="Gemini" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
-      <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#1D9E75;">5.2</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#1D9E75;">4.5</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">750M MAU (Gemini app, Q4 2025, officially disclosed in Alphabet Q4 2025 earnings, Feb 4 2026); AI Overviews (Gemini-powered) reach 2B monthly users in Google Search. Note: Alphabet's Q1 2026 earnings (Apr 29, 2026) did not re-disclose app MAU.</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">~13.5% global AI chatbot market; website traffic share rose to 25% from 6% YoY (as of May 2026 estimates); leads India's AI chatbot downloads (52%); 8M+ Gemini Enterprise paid seats across 2,800+ companies</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">80%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Sentiment improved from 5.2 to 6.2 between May 3-4, only major model trending up</div></div><div class="cap-item"><div>Positive comments (8) strongly outpace negatives (2) on May 4</div></div><div class="cap-item"><div>Steady buzz volume of 80 with improving sentiment signals growing user approval</div></div><div class="cap-item"><div>Google DeepMind's integration with Search and Workspace provides distribution moat</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Story count of just 1/day is the lowest among all tracked models</div></div><div class="cap-item"><div>Low media coverage limits organic discovery and developer community engagement</div></div><div class="cap-item"><div>Buzz volume (80) lags ChatGPT and Claude despite Google's scale advantages</div></div><div class="cap-item"><div>Earlier sentiment (8.4 in May 1-2) lacked comment data, reducing signal reliability</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1083,9 +1083,9 @@ function setTrendMode(mode){
       
       
       <div style="display:grid;gap:8px;margin-top:8px;">
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>3</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:15.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>2</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:10.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>15</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:75.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>0</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:0.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>1</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:5.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>19</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:95.0%;"></div></div></div>
       </div>
       
     </div>
@@ -1093,13 +1093,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <div class="empty-state">No major releases or announcements in the last 90 days.</div>
+      <a class="timeline-row link-card" href="https://polymarket.com/event/google-reports-gemini-monthly-active-users-above-in-q1" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-04-29</div><div><span class="linked-title">Alphabet Q1 2026 earnings: Gemini Enterprise paid MAU up 40% QoQ; first-party models process 16B tokens/min via API (up 60%); app MAU not re-disclosed</span></div></a><a class="timeline-row link-card" href="https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-04</div><div><span class="linked-title">Google announces Gemini app surpasses 750M MAU at Q4 2025 earnings; Sundar Pichai cites Gemini 3 as major milestone</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sundar_Pichai_-_2023_%28cropped%29.jpg/330px-Sundar_Pichai_-_2023_%28cropped%29.jpg" alt="Sundar Pichai" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Sundar Pichai <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">CEO, Alphabet/Google</span></div><div class="quote-text">The Gemini App has grown to over 750 million monthly active users</div><div class="quote-meta">2026-02-04 · earnings call</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1109,14 +1109,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="DeepSeek" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#7F77DD;">5.2</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">~130–131.5M MAU globally (Jan 2026 estimates; Business of Apps: 130M end-2025; deepseak.org: 131.5M Jan 2026); 143M MAU in China alone (Aug 2025, Wired); DeepSeek does not officially disclose global MAU</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">Not disclosed officially; ranked #2 in China's AI chatbot market behind Doubao (155M WAU); ~4.5% of global AI chatbot market (various estimates); 89% domestic China chatbot share per some reports; 173M total app downloads since Jan 2025 launch</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">100%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Tied for highest sentiment score (7.2) among all models on May 3-4</div></div><div class="cap-item"><div>Positive comments (12) are highest absolute count of any model on May 4</div></div><div class="cap-item"><div>Buzz volume held at 100 for two consecutive days, showing sustained interest</div></div><div class="cap-item"><div>Open-weight release strategy drives community adoption and derivative models</div></div><div class="cap-item"><div>Story count grew from 2 to 3, suggesting expanding press coverage</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Negative comments (4) present consistently, often tied to data privacy concerns</div></div><div class="cap-item"><div>Chinese origin raises geopolitical access risk for enterprise customers</div></div><div class="cap-item"><div>Sentiment unchanged at 7.2 for two days, suggesting plateau rather than growth</div></div><div class="cap-item"><div>Lower story count vs. Claude/ChatGPT limits Western mainstream visibility</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1127,8 +1127,8 @@ function setTrendMode(mode){
       
       <div style="display:grid;gap:8px;margin-top:8px;">
         <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>6</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:24.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>8</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:32.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>11</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:44.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>7</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:28.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>12</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:48.0%;"></div></div></div>
       </div>
       
     </div>
@@ -1136,13 +1136,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <a class="timeline-row link-card" href="https://simonwillison.net/2026/Apr/24/deepseek-v4/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-01</div><div><span class="linked-title">DeepSeek V4 – almost on the frontier</span></div></a>
+      <a class="timeline-row link-card" href="https://github.com/ollama/ollama" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-04</div><div><span class="linked-title">ollama/ollama</span></div></a><a class="timeline-row link-card" href="https://simonwillison.net/2026/Apr/24/deepseek-v4/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-01</div><div><span class="linked-title">DeepSeek V4 – almost on the frontier</span></div></a><a class="timeline-row link-card" href="https://www.getpanto.ai/blog/deepseek-ai-statistics" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-01</div><div><span class="linked-title">Reuters reports DeepSeek has 81.6M weekly active users in China as of Feb 2026; ranks #2 behind Doubao</span></div></a><a class="timeline-row link-card" href="https://deepseak.org/deepseek-app/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-01-01</div><div><span class="linked-title">DeepSeek App MAU surges 90% MoM to 131.5M in January 2026; tops App Store charts in 157 countries</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://www.businessofapps.com/data/deepseek-statistics/" target="_blank" style="text-decoration:none;color:inherit;"><div class="avatar" style="background:#7F77DD33;color:#7F77DD;">LW</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Liang Wenfeng <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">Founder & CEO, DeepSeek / High-Flyer</span></div><div class="quote-text">Each iteration of DeepSeek has been released open-source and free to use</div><div class="quote-meta">2026-01-01 · blog</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1151,15 +1151,15 @@ function setTrendMode(mode){
   
   <div class="model-deep" data-model="Grok" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
-      <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#E24B4A;">3.8</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#E24B4A;">3.5</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">~50–64M MAU (xAI internally shared 64M with staff in Sep 2025; third-party estimates range 50–64M as of early 2026); xAI does not regularly publish official user counts</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">17.8% US chatbot market share (Jan 2026, Apptopia via Reuters), up from 1.9% Jan 2025; 3rd-place US chatbot behind ChatGPT and Gemini; estimated 2–5% global AI chatbot market; 15.2% of US mobile AI daily users (Jan 2026)</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">28%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Sentiment held near 7.1-7.2, among the stronger scores in the current tracker period</div></div><div class="cap-item"><div>Positive comments (11) far exceed negatives (5) on both May 3-4</div></div><div class="cap-item"><div>Buzz volume jumped from 42 to 84 between May 1-4, showing accelerating interest</div></div><div class="cap-item"><div>xAI's real-time X/Twitter data access is a structural differentiation vs. rivals</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Story count of 1-2/day is near the bottom, limiting broader narrative reach</div></div><div class="cap-item"><div>Buzz volume (84) still trails ChatGPT, Claude, and DeepSeek in absolute terms</div></div><div class="cap-item"><div>Association with Elon Musk's brand creates polarized public perception</div></div><div class="cap-item"><div>Smaller developer ecosystem limits third-party integrations and tooling</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1179,13 +1179,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <div class="empty-state">No major releases or announcements in the last 90 days.</div>
+      <a class="timeline-row link-card" href="https://fatjoe.com/blog/grok-ai-stats/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-02</div><div><span class="linked-title">Elon Musk merges xAI with SpaceX in all-stock deal valuing xAI at $250B; combined entity valued at $1.25T</span></div></a><a class="timeline-row link-card" href="https://www.getpanto.ai/blog/grok-ai-statistics" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-01-01</div><div><span class="linked-title">xAI raises $20B Series E at ~$230B valuation; signs $750M Microsoft Azure GPU infrastructure deal</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://fatjoe.com/blog/grok-ai-stats/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Elon_Musk_-_54820081119_%28cropped%29.jpg/330px-Elon_Musk_-_54820081119_%28cropped%29.jpg" alt="Elon Musk" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Elon Musk <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">Founder & CEO, xAI</span></div><div class="quote-text">Cited 'orbital data centres' as rationale for xAI-SpaceX merger</div><div class="quote-meta">2026-02-02 · X</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1195,14 +1195,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="Copilot" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#888780;">2.8</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">MAU</div><div class="mvalue">Not disclosed (Microsoft does not break out standalone Copilot MAU publicly); Copilot leads AI apps in avg. session time at 27.2 min/DAU (Jan 2026, Apptopia); embedded across Windows, Office 365, GitHub, and Azure</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Market share</div><div class="mvalue">~14.3% global AI chatbot market (combined ChatGPT+Copilot OpenAI-based share ~73.3%); 27.2 min avg. time/DAU ranks 2nd among AI apps behind Claude</div><div class="metric-note">as of 2026-05-04</div></div>
       <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">100%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Buzz volume hit 100 on May 3-4, indicating high enterprise and developer attention</div></div><div class="cap-item"><div>Deep Microsoft 365 integration provides a captive installed base of ~300M users</div></div><div class="cap-item"><div>GitHub Copilot remains a leading code-completion tool with broad IDE support</div></div><div class="cap-item"><div>Copilot Studio enables low-code enterprise agent building, expanding use cases</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Sentiment score of 2.8 is the lowest of all tracked models on both May 3-4</div></div><div class="cap-item"><div>Negative comments (14-15) vastly dominate positives (2-3), worst ratio tracked</div></div><div class="cap-item"><div>High volume + lowest sentiment = significant user dissatisfaction signal</div></div><div class="cap-item"><div>Sentiment has not recovered after dropping sharply, suggesting persistent issues</div></div><div class="cap-item"><div>Story count dropped from 3 to 2, while negativity remained constant</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1213,8 +1213,8 @@ function setTrendMode(mode){
       
       <div style="display:grid;gap:8px;margin-top:8px;">
         <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>2</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:8.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>15</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:60.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>8</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:32.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>17</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:68.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>6</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:24.0%;"></div></div></div>
       </div>
       
     </div>
@@ -1222,13 +1222,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <div class="empty-state">No major releases or announcements in the last 90 days.</div>
+      <a class="timeline-row link-card" href="https://github.com/microsoft/vscode/pull/310226" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-05-02</div><div><span class="linked-title">VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage</span></div></a><a class="timeline-row link-card" href="https://www.demandsage.com/claude-ai-statistics/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-01-01</div><div><span class="linked-title">Microsoft confirmed $500M+ annual spend to integrate Anthropic Claude into Copilot alongside OpenAI models</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://fatjoe.com/blog/chatgpt-stats/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg/330px-MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg" alt="Satya Nadella" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Satya Nadella <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">CEO, Microsoft</span></div><div class="quote-text">Not disclosed</div><div class="quote-meta">2026-01-01 · blog</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1238,14 +1238,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="Llama" style="display:none">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:#4267B2;">4.2</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Downloads</div><div class="mvalue">Not disclosed</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Derivatives</div><div class="mvalue">—</div><div class="metric-note">weekly cache</div></div>
-      <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">32%</div><div class="metric-note">HN discussion</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Downloads</div><div class="mvalue">Downloads: Meta AI (powered by Llama) reported 1B+ MAU across Meta apps (WhatsApp, Instagram, Facebook, Messenger) as of early 2026; Llama model weights have been downloaded hundreds of millions of times from Hugging Face and Meta's own hub — exact figure not disclosed</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Derivatives</div><div class="mvalue">Derivatives: Thousands of fine-tuned and quantized Llama derivatives on Hugging Face; Llama is the dominant open-source base model for derivative builds; used by 100K+ organizations in enterprise deployments; powers a significant share of on-device and self-hosted AI deployments globally</div><div class="metric-note">as of 2026-05-04</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">28%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
-      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="empty-state">Not enough discussion this month to synthesize.</div></div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div><div class="cap-item"><div>Open-source model weights allow unrestricted fine-tuning and private deployment</div></div><div class="cap-item"><div>Story count of 3/day despite low buzz suggests niche but engaged community</div></div><div class="cap-item"><div>Llama 3 family enables on-premise enterprise use, addressing data residency needs</div></div><div class="cap-item"><div>Meta's distribution via WhatsApp and Instagram provides massive consumer reach</div></div></div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div><div class="cap-item"><div>Buzz volume of 24 is by far the lowest of all tracked models</div></div><div class="cap-item"><div>Sentiment at 4.2 on May 4 with negatives (3) outpacing positives (1)</div></div><div class="cap-item"><div>Comment count of only 6/day indicates limited mainstream public engagement</div></div><div class="cap-item"><div>No strong upward sentiment trend observed across the tracked period</div></div><div class="cap-item"><div>Lacks a hosted consumer product to compete directly with ChatGPT or Gemini</div></div></div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1255,9 +1255,9 @@ function setTrendMode(mode){
       
       
       <div style="display:grid;gap:8px;margin-top:8px;">
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>1</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:12.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>2</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:25.0%;"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>5</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:62.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Positive</span><span>1</span></div><div class="bar-track"><div style="height:100%;background:#3b6d11;border-radius:99px;width:14.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Negative</span><span>3</span></div><div class="bar-track"><div style="height:100%;background:#a32d2d;border-radius:99px;width:43.0%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;"><span>Neutral</span><span>3</span></div><div class="bar-track"><div style="height:100%;background:#888780;border-radius:99px;width:43.0%;"></div></div></div>
       </div>
       
     </div>
@@ -1265,13 +1265,13 @@ function setTrendMode(mode){
     <div style="margin-bottom:14px;">
       <div class="sec-title">Recent changes</div>
       <div class="sec-sub">Releases, announcements, and major news from the last 90 days</div>
-      <div class="empty-state">No major releases or announcements in the last 90 days.</div>
+      <a class="timeline-row link-card" href="https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/" target="_blank"><div style="width:58px;color:var(--text-secondary);flex-shrink:0;">2026-02-04</div><div><span class="linked-title">Meta AI reported 1B monthly users across its integrated apps (WhatsApp, Instagram, Facebook), per Alphabet earnings context</span></div></a>
     </div>
 
     <div>
       <div class="sec-title">Key people quotes</div>
       <div class="sec-sub">Recent posts from leadership and key researchers</div>
-      <div class="empty-state">No recent public posts from this model's leadership in the last 60 days.</div>
+      <a class="person-chip link-card" href="https://www.businessofapps.com/data/deepseek-statistics/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg/330px-Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg" alt="Mark Zuckerberg" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Mark Zuckerberg <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">CEO, Meta</span></div><div class="quote-text">Not disclosed</div><div class="quote-meta">2026-01-01 · blog</div></div></a><a class="person-chip link-card" href="https://www.demandsage.com/claude-ai-statistics/" target="_blank" style="text-decoration:none;color:inherit;"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg/330px-Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg" alt="Yann LeCun" style="object-fit:cover;"><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Yann LeCun <span style="color:var(--text-secondary);font-weight:400;font-size:11px;">Chief AI Scientist, Meta</span></div><div class="quote-text">Not disclosed</div><div class="quote-meta">2026-01-01 · X</div></div></a>
     </div>
     <div class="disclaimer">Sources: Web search of analyst reports, press releases, public posts, and curated HN/arXiv/GitHub stories · Phase 3 weekly/monthly caches will populate unavailable fields</div>
   </div>
@@ -1340,12 +1340,12 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     <div style="width:80px;height:18px;">
       
       <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
-        <polyline points="0.0,17.2 0.9,17.1 1.8,17.1 2.7,17.2 3.6,17.2 4.5,17.4 5.4,16.3 6.3,15.9 7.2,15.6 8.1,15.5 9.0,16.3 9.9,15.7 10.8,14.9 11.7,15.2 12.6,15.8 13.5,15.4 14.4,15.2 15.3,16.9 16.2,16.0 17.1,15.1 18.0,15.3 18.9,15.1 19.8,13.6 20.7,13.4 21.6,13.8 22.5,15.1 23.4,14.6 24.3,15.0 25.2,17.1 26.1,18.0 27.0,16.0 27.9,14.4 28.8,14.3 29.7,14.4 30.6,14.7 31.5,13.9 32.4,13.6 33.3,13.1 34.2,13.0 35.1,11.4 36.0,13.4 36.9,12.3 37.8,12.0 38.7,12.7 39.6,13.4 40.4,13.5 41.3,15.5 42.2,14.5 43.1,14.9 44.0,15.9 44.9,13.4 45.8,12.2 46.7,12.2 47.6,13.9 48.5,14.3 49.4,12.5 50.3,12.3 51.2,11.7 52.1,12.3 53.0,14.5 53.9,13.4 54.8,13.6 55.7,12.5 56.6,15.4 57.5,16.4 58.4,17.4 59.3,15.1 60.2,13.1 61.1,13.9 62.0,13.3 62.9,12.8 63.8,10.1 64.7,9.6 65.6,8.9 66.5,7.6 67.4,5.6 68.3,5.8 69.2,4.9 70.1,4.2 71.0,3.6 71.9,3.7 72.8,1.5 73.7,2.5 74.6,0.9 75.5,1.4 76.4,3.8 77.3,3.1 78.2,1.9 79.1,0.8 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
+        <polyline points="0.0,17.2 0.9,17.1 1.8,17.1 2.7,17.2 3.6,17.2 4.5,17.4 5.4,16.3 6.3,15.9 7.2,15.6 8.1,15.5 9.0,16.3 9.9,15.7 10.8,14.9 11.7,15.2 12.6,15.8 13.5,15.4 14.4,15.2 15.3,16.9 16.2,16.0 17.1,15.1 18.0,15.3 18.9,15.1 19.8,13.6 20.7,13.4 21.6,13.8 22.5,15.1 23.4,14.6 24.3,15.0 25.2,17.1 26.1,18.0 27.0,16.0 27.9,14.4 28.8,14.3 29.7,14.4 30.6,14.7 31.5,13.8 32.4,13.6 33.3,13.1 34.2,13.0 35.1,11.4 36.0,13.4 36.9,12.2 37.8,11.9 38.7,12.7 39.6,13.4 40.4,13.5 41.3,15.5 42.2,14.5 43.1,14.9 44.0,15.9 44.9,13.4 45.8,12.2 46.7,12.2 47.6,13.9 48.5,14.3 49.4,12.4 50.3,12.2 51.2,11.7 52.1,12.3 53.0,14.5 53.9,13.4 54.8,13.6 55.7,12.5 56.6,15.4 57.5,16.4 58.4,17.4 59.3,15.1 60.2,13.1 61.1,13.9 62.0,13.3 62.9,12.8 63.8,10.1 64.7,9.6 65.6,8.9 66.5,7.6 67.4,5.5 68.3,5.8 69.2,4.9 70.1,4.2 71.0,3.6 71.9,3.7 72.8,1.5 73.7,2.5 74.6,0.8 75.5,1.4 76.4,3.8 77.3,3.1 78.2,1.8 79.1,0.8 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
       </svg>
       
     </div>
-    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$80.26</div>
-    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.21%</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$80.22</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.16%</div>
     <div style="font-size:12px;width:50px;text-align:right;color:#3b6d11;">+119%</div>
     <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">$1.0B</div>
   </div>
@@ -1372,12 +1372,12 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     <div style="width:80px;height:18px;">
       
       <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
-        <polyline points="0.0,8.4 0.9,8.2 1.8,8.1 2.7,8.2 3.6,8.3 4.5,9.0 5.4,8.2 6.3,7.3 7.2,6.4 8.1,6.5 9.0,7.1 9.9,6.5 10.8,5.7 11.7,6.4 12.6,6.9 13.5,6.8 14.4,6.9 15.3,8.9 16.2,7.5 17.1,6.7 18.0,6.6 18.9,6.7 19.8,5.7 20.7,5.0 21.6,5.8 22.5,7.4 23.4,6.8 24.3,8.8 25.2,11.2 26.1,12.6 27.0,10.2 27.9,9.1 28.8,9.2 29.7,9.5 30.6,11.5 31.5,11.1 32.4,11.8 33.3,11.0 34.2,11.2 35.1,10.5 36.0,12.5 36.9,11.1 37.8,9.5 38.7,9.5 39.6,9.9 40.4,10.2 41.3,12.1 42.2,10.4 43.1,10.8 44.0,11.6 44.9,10.6 45.8,10.8 46.7,10.4 47.6,12.4 48.5,12.7 49.4,11.3 50.3,10.9 51.2,12.0 52.1,12.1 53.0,14.2 53.9,12.5 54.8,13.8 55.7,13.4 56.6,15.6 57.5,17.0 58.4,18.0 59.3,15.2 60.2,14.2 61.1,14.3 62.0,13.6 62.9,13.5 63.8,10.9 64.7,11.3 65.6,11.2 66.5,9.4 67.4,7.6 68.3,6.3 69.2,5.2 70.1,4.3 71.0,4.5 71.9,4.9 72.8,3.0 73.7,5.1 74.6,2.7 75.5,2.4 76.4,3.7 77.3,2.9 78.2,1.6 79.1,0.3 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
+        <polyline points="0.0,8.5 0.9,8.3 1.8,8.1 2.7,8.3 3.6,8.4 4.5,9.1 5.4,8.3 6.3,7.4 7.2,6.5 8.1,6.6 9.0,7.2 9.9,6.6 10.8,5.8 11.7,6.5 12.6,7.0 13.5,6.9 14.4,6.9 15.3,9.0 16.2,7.6 17.1,6.8 18.0,6.7 18.9,6.8 19.8,5.8 20.7,5.1 21.6,5.9 22.5,7.5 23.4,6.9 24.3,8.8 25.2,11.3 26.1,12.6 27.0,10.2 27.9,9.1 28.8,9.2 29.7,9.6 30.6,11.5 31.5,11.2 32.4,11.9 33.3,11.0 34.2,11.2 35.1,10.5 36.0,12.5 36.9,11.1 37.8,9.6 38.7,9.6 39.6,10.0 40.4,10.3 41.3,12.1 42.2,10.5 43.1,10.9 44.0,11.7 44.9,10.6 45.8,10.8 46.7,10.5 47.6,12.4 48.5,12.8 49.4,11.3 50.3,11.0 51.2,12.0 52.1,12.1 53.0,14.2 53.9,12.5 54.8,13.9 55.7,13.4 56.6,15.6 57.5,17.0 58.4,18.0 59.3,15.2 60.2,14.3 61.1,14.4 62.0,13.7 62.9,13.5 63.8,10.9 64.7,11.3 65.6,11.3 66.5,9.5 67.4,7.7 68.3,6.4 69.2,5.3 70.1,4.4 71.0,4.6 71.9,5.0 72.8,3.1 73.7,5.2 74.6,2.8 75.5,2.5 76.4,3.8 77.3,3.0 78.2,1.8 79.1,0.4 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
       </svg>
       
     </div>
-    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$56.99</div>
-    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+0.30%</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$57.08</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+0.47%</div>
     <div style="font-size:12px;width:50px;text-align:right;color:#3b6d11;">+50%</div>
     <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">$7.2B</div>
   </div>
@@ -1388,12 +1388,12 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     <div style="width:80px;height:18px;">
       
       <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
-        <polyline points="0.0,15.1 0.9,14.9 1.8,14.7 2.7,14.6 3.6,14.5 4.5,15.0 5.4,13.9 6.3,13.7 7.2,12.6 8.1,12.6 9.0,13.3 9.9,12.7 10.8,12.7 11.7,12.8 12.6,13.1 13.5,12.9 14.4,12.7 15.3,13.5 16.2,11.9 17.1,11.3 18.0,11.4 18.9,11.6 19.8,10.8 20.7,9.7 21.6,10.0 22.5,11.1 23.4,10.5 24.3,11.6 25.2,13.7 26.1,14.3 27.0,12.7 27.9,12.2 28.8,12.6 29.7,12.3 30.6,12.8 31.5,12.5 32.4,13.0 33.3,12.4 34.2,12.6 35.1,11.8 36.0,12.8 36.9,11.8 37.8,10.9 38.7,11.5 39.6,11.8 40.4,12.1 41.3,13.9 42.2,12.5 43.1,13.2 44.0,14.6 44.9,13.3 45.8,13.0 46.7,12.6 47.6,14.1 48.5,14.0 49.4,12.8 50.3,12.3 51.2,12.7 52.1,12.7 53.0,14.3 53.9,13.7 54.8,14.4 55.7,14.2 56.6,16.2 57.5,16.9 58.4,18.0 59.3,16.1 60.2,15.1 61.1,15.1 62.0,14.4 62.9,14.3 63.8,11.8 64.7,11.7 65.6,11.4 66.5,10.2 67.4,8.4 68.3,8.1 69.2,7.4 70.1,6.6 71.0,6.7 71.9,6.7 72.8,5.0 73.7,5.9 74.6,3.2 75.5,2.6 76.4,3.5 77.3,2.6 78.2,1.4 79.1,0.3 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
+        <polyline points="0.0,15.1 0.9,14.9 1.8,14.7 2.7,14.6 3.6,14.5 4.5,15.0 5.4,13.9 6.3,13.7 7.2,12.6 8.1,12.6 9.0,13.3 9.9,12.7 10.8,12.7 11.7,12.8 12.6,13.1 13.5,12.9 14.4,12.7 15.3,13.5 16.2,11.9 17.1,11.3 18.0,11.4 18.9,11.6 19.8,10.8 20.7,9.7 21.6,10.0 22.5,11.1 23.4,10.5 24.3,11.6 25.2,13.7 26.1,14.4 27.0,12.7 27.9,12.2 28.8,12.6 29.7,12.3 30.6,12.8 31.5,12.5 32.4,13.0 33.3,12.4 34.2,12.6 35.1,11.8 36.0,12.8 36.9,11.8 37.8,10.9 38.7,11.5 39.6,11.8 40.4,12.1 41.3,13.9 42.2,12.6 43.1,13.2 44.0,14.6 44.9,13.3 45.8,13.1 46.7,12.6 47.6,14.1 48.5,14.0 49.4,12.8 50.3,12.3 51.2,12.7 52.1,12.7 53.0,14.3 53.9,13.7 54.8,14.4 55.7,14.2 56.6,16.2 57.5,16.9 58.4,18.0 59.3,16.1 60.2,15.1 61.1,15.1 62.0,14.4 62.9,14.3 63.8,11.8 64.7,11.7 65.6,11.4 66.5,10.2 67.4,8.4 68.3,8.1 69.2,7.4 70.1,6.6 71.0,6.7 71.9,6.7 72.8,5.0 73.7,5.9 74.6,3.3 75.5,2.6 76.4,3.5 77.3,2.6 78.2,1.4 79.1,0.3 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
       </svg>
       
     </div>
-    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$79.69</div>
-    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+0.56%</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$79.71</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+0.59%</div>
     <div style="font-size:12px;width:50px;text-align:right;color:#3b6d11;">+89%</div>
     <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">$650M</div>
   </div>
@@ -1404,12 +1404,12 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     <div style="width:80px;height:18px;">
       
       <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
-        <polyline points="0.0,7.3 0.9,7.4 1.8,7.6 2.7,7.2 3.6,7.2 4.5,8.0 5.4,6.9 6.3,4.8 7.2,4.1 8.1,3.5 9.0,4.5 9.9,3.4 10.8,2.9 11.7,4.2 12.6,3.9 13.5,3.1 14.4,3.1 15.3,5.8 16.2,4.6 17.1,4.2 18.0,4.4 18.9,4.0 19.8,3.3 20.7,3.9 21.6,4.0 22.5,5.5 23.4,6.5 24.3,6.5 25.2,7.2 26.1,9.1 27.0,5.1 27.9,3.6 28.8,3.1 29.7,3.6 30.6,4.0 31.5,3.1 32.4,2.4 33.3,3.1 34.2,2.4 35.1,1.5 36.0,2.5 36.9,1.5 37.8,0.0 38.7,0.4 39.6,1.5 40.4,3.4 41.3,6.5 42.2,5.9 43.1,7.2 44.0,8.4 44.9,8.4 45.8,7.9 46.7,7.9 47.6,9.6 48.5,11.3 49.4,10.0 50.3,10.0 51.2,11.3 52.1,11.2 53.0,14.2 53.9,12.7 54.8,13.7 55.7,12.4 56.6,14.9 57.5,16.9 58.4,18.0 59.3,15.1 60.2,13.5 61.1,14.7 62.0,14.2 62.9,14.7 63.8,10.7 64.7,11.1 65.6,9.9 66.5,8.7 67.4,7.2 68.3,6.9 69.2,6.9 70.1,5.3 71.0,5.1 71.9,6.9 72.8,5.4 73.7,7.0 74.6,5.4 75.5,2.7 76.4,4.7 77.3,5.5 78.2,2.8 79.1,2.5 80.0,3.4" fill="none" stroke="#a32d2d" stroke-width="1.2"/>
+        <polyline points="0.0,7.3 0.9,7.4 1.8,7.6 2.7,7.2 3.6,7.2 4.5,8.0 5.4,6.9 6.3,4.8 7.2,4.1 8.1,3.5 9.0,4.5 9.9,3.4 10.8,2.9 11.7,4.2 12.6,3.9 13.5,3.1 14.4,3.1 15.3,5.8 16.2,4.6 17.1,4.2 18.0,4.4 18.9,4.0 19.8,3.3 20.7,3.9 21.6,4.0 22.5,5.5 23.4,6.5 24.3,6.5 25.2,7.2 26.1,9.1 27.0,5.1 27.9,3.6 28.8,3.1 29.7,3.6 30.6,4.0 31.5,3.1 32.4,2.4 33.3,3.1 34.2,2.4 35.1,1.5 36.0,2.5 36.9,1.5 37.8,0.0 38.7,0.4 39.6,1.5 40.4,3.4 41.3,6.5 42.2,5.9 43.1,7.2 44.0,8.4 44.9,8.4 45.8,7.9 46.7,7.9 47.6,9.6 48.5,11.3 49.4,10.0 50.3,10.0 51.2,11.3 52.1,11.2 53.0,14.2 53.9,12.7 54.8,13.7 55.7,12.4 56.6,14.9 57.5,16.9 58.4,18.0 59.3,15.1 60.2,13.5 61.1,14.7 62.0,14.2 62.9,14.7 63.8,10.7 64.7,11.1 65.6,9.9 66.5,8.7 67.4,7.2 68.3,6.9 69.2,6.9 70.1,5.3 71.0,5.1 71.9,6.9 72.8,5.4 73.7,7.0 74.6,5.4 75.5,2.7 76.4,4.7 77.3,5.5 78.2,2.8 79.1,2.5 80.0,3.1" fill="none" stroke="#a32d2d" stroke-width="1.2"/>
       </svg>
       
     </div>
-    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$38.22</div>
-    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#a32d2d;">-0.97%</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$38.32</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#a32d2d;">-0.73%</div>
     <div style="font-size:12px;width:50px;text-align:right;color:#3b6d11;">+32%</div>
     <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">$2.9B</div>
   </div>
@@ -1420,12 +1420,12 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     <div style="width:80px;height:18px;">
       
       <svg width="80" height="18" viewBox="0 0 80 18" preserveAspectRatio="none">
-        <polyline points="0.0,7.6 0.9,7.5 1.8,7.6 2.7,7.8 3.6,7.9 4.5,8.5 5.4,8.6 6.3,7.9 7.2,7.4 8.1,6.8 9.0,7.2 9.9,7.1 10.8,6.7 11.7,7.1 12.6,8.4 13.5,8.3 14.4,8.4 15.3,10.4 16.2,9.9 17.1,8.8 18.0,8.5 18.9,7.7 19.8,7.3 20.7,7.0 21.6,8.6 22.5,10.3 23.4,10.3 24.3,12.2 25.2,14.1 26.1,15.9 27.0,12.9 27.9,10.7 28.8,10.9 29.7,11.8 30.6,12.9 31.5,12.4 32.4,12.6 33.3,11.9 34.2,11.8 35.1,12.0 36.0,13.7 36.9,12.1 37.8,10.6 38.7,10.4 39.6,12.1 40.4,12.0 41.3,13.5 42.2,12.1 43.1,12.0 44.0,12.9 44.9,11.8 45.8,11.9 46.7,11.4 47.6,12.7 48.5,13.0 49.4,11.5 50.3,11.2 51.2,12.0 52.1,12.0 53.0,13.7 53.9,12.2 54.8,13.6 55.7,13.1 56.6,15.4 57.5,16.9 58.4,18.0 59.3,15.1 60.2,14.5 61.1,13.8 62.0,13.7 62.9,13.1 63.8,11.1 64.7,11.6 65.6,11.2 66.5,9.3 67.4,7.6 68.3,6.5 69.2,5.7 70.1,4.8 71.0,3.8 71.9,4.0 72.8,2.4 73.7,3.9 74.6,2.5 75.5,2.4 76.4,4.3 77.3,4.0 78.2,3.0 79.1,0.8 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
+        <polyline points="0.0,7.5 0.9,7.5 1.8,7.5 2.7,7.7 3.6,7.8 4.5,8.5 5.4,8.6 6.3,7.8 7.2,7.3 8.1,6.7 9.0,7.1 9.9,7.1 10.8,6.6 11.7,7.1 12.6,8.4 13.5,8.3 14.4,8.4 15.3,10.4 16.2,9.9 17.1,8.7 18.0,8.5 18.9,7.6 19.8,7.2 20.7,7.0 21.6,8.6 22.5,10.2 23.4,10.3 24.3,12.2 25.2,14.1 26.1,15.9 27.0,12.8 27.9,10.7 28.8,10.9 29.7,11.8 30.6,12.8 31.5,12.4 32.4,12.5 33.3,11.9 34.2,11.8 35.1,12.0 36.0,13.7 36.9,12.1 37.8,10.6 38.7,10.4 39.6,12.1 40.4,11.9 41.3,13.5 42.2,12.1 43.1,12.0 44.0,12.8 44.9,11.8 45.8,11.9 46.7,11.4 47.6,12.7 48.5,13.0 49.4,11.4 50.3,11.2 51.2,12.0 52.1,12.0 53.0,13.7 53.9,12.2 54.8,13.6 55.7,13.0 56.6,15.4 57.5,16.9 58.4,18.0 59.3,15.1 60.2,14.5 61.1,13.7 62.0,13.7 62.9,13.1 63.8,11.1 64.7,11.6 65.6,11.2 66.5,9.3 67.4,7.6 68.3,6.4 69.2,5.6 70.1,4.7 71.0,3.8 71.9,4.0 72.8,2.4 73.7,3.8 74.6,2.4 75.5,2.3 76.4,4.2 77.3,3.9 78.2,2.9 79.1,0.8 80.0,0.0" fill="none" stroke="#3b6d11" stroke-width="1.2"/>
       </svg>
       
     </div>
-    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$40.88</div>
-    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.11%</div>
+    <div style="font-size:13px;font-weight:500;width:60px;text-align:right;">$40.84</div>
+    <div style="font-size:12px;font-weight:500;width:60px;text-align:right;color:#3b6d11;">+1.01%</div>
     <div style="font-size:12px;width:50px;text-align:right;color:#3b6d11;">+55%</div>
     <div style="font-size:11px;color:var(--text-secondary);width:60px;text-align:right;">$171M</div>
   </div>
@@ -1742,8 +1742,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:500;">1. Nvidia <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">NVDA</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#a32d2d;">-0.88%</span>
-          <span style="font-size:12px;font-weight:500;">$4781.0B</span>
+          <span style="font-size:11px;color:#a32d2d;">-1.09%</span>
+          <span style="font-size:12px;font-weight:500;">$4771.3B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:100%;"></div></div>
@@ -1753,8 +1753,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:500;">2. Alphabet <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">GOOGL</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#a32d2d;">-0.76%</span>
-          <span style="font-size:12px;font-weight:500;">$4637.2B</span>
+          <span style="font-size:11px;color:#a32d2d;">-0.83%</span>
+          <span style="font-size:12px;font-weight:500;">$4634.0B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:97%;"></div></div>
@@ -1764,8 +1764,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:500;">3. Microsoft <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">MSFT</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+0.22%</span>
-          <span style="font-size:12px;font-weight:500;">$3085.5B</span>
+          <span style="font-size:11px;color:#3b6d11;">+0.41%</span>
+          <span style="font-size:12px;font-weight:500;">$3091.2B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:65%;"></div></div>
@@ -1775,8 +1775,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">4. Amazon <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AMZN</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+0.70%</span>
-          <span style="font-size:12px;font-weight:500;">$2905.3B</span>
+          <span style="font-size:11px;color:#3b6d11;">+0.87%</span>
+          <span style="font-size:12px;font-weight:500;">$2910.0B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:61%;"></div></div>
@@ -1786,8 +1786,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">5. TSMC <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">TSM</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+0.20%</span>
-          <span style="font-size:12px;font-weight:500;">$2066.5B</span>
+          <span style="font-size:11px;color:#3b6d11;">+0.07%</span>
+          <span style="font-size:12px;font-weight:500;">$2063.9B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:43%;"></div></div>
@@ -1797,8 +1797,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">6. Broadcom <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AVGO</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#a32d2d;">-2.30%</span>
-          <span style="font-size:12px;font-weight:500;">$1948.8B</span>
+          <span style="font-size:11px;color:#a32d2d;">-2.15%</span>
+          <span style="font-size:12px;font-weight:500;">$1951.7B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:41%;"></div></div>
@@ -1808,19 +1808,19 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">7. Meta <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">META</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+0.29%</span>
-          <span style="font-size:12px;font-weight:500;">$1549.7B</span>
+          <span style="font-size:11px;color:#3b6d11;">+0.41%</span>
+          <span style="font-size:12px;font-weight:500;">$1551.6B</span>
         </div>
       </div>
-      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:32%;"></div></div>
+      <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:33%;"></div></div>
     </a>
     
     <a class="linkrow" href="https://finance.yahoo.com/quote/AMD" target="_blank" style="padding:7px 8px;">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">8. AMD <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">AMD</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#a32d2d;">-5.18%</span>
-          <span style="font-size:12px;font-weight:500;">$557.4B</span>
+          <span style="font-size:11px;color:#a32d2d;">-5.58%</span>
+          <span style="font-size:12px;font-weight:500;">$555.1B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:12%;"></div></div>
@@ -1830,8 +1830,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">9. Oracle <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">ORCL</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+5.81%</span>
-          <span style="font-size:12px;font-weight:500;">$522.9B</span>
+          <span style="font-size:11px;color:#3b6d11;">+5.83%</span>
+          <span style="font-size:12px;font-weight:500;">$523.0B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:11%;"></div></div>
@@ -1841,8 +1841,8 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
         <div style="font-size:12px;font-weight:400;">10. Palantir <span style="font-weight:400;color:var(--text-secondary);font-size:10px;">PLTR</span></div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="font-size:11px;color:#3b6d11;">+1.89%</span>
-          <span style="font-size:12px;font-weight:500;">$351.9B</span>
+          <span style="font-size:11px;color:#3b6d11;">+1.69%</span>
+          <span style="font-size:12px;font-weight:500;">$351.2B</span>
         </div>
       </div>
       <div style="height:3px;background:var(--bg-secondary);border-radius:2px;"><div style="height:3px;border-radius:2px;background:#1d9e75;width:7%;"></div></div>
@@ -2127,7 +2127,7 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
 <script>
 (function(){
   // Bubble chart for ETFs
-  var etfData = [{"aum": "$1.0B", "aum_billions": 1.01, "color": "#D85A30", "description": "World\u0027s first generative AI ETF. Actively managed with a 50% revenue-purity screen. Rotates toward new gen-AI entrants as the space evolves.", "dod_change": 0.96, "dod_pct": 1.21, "exchange": "NYSE Arca", "name": "Roundhill Generative AI \u0026 Technology", "prev_close": 79.3, "price": 80.26, "spark_12d": [59.2, 60.81, 61.02, 61.8, 59.36, 63.34, 65.66, 60.9, 65.29, 61.4, 64.6, 74.24], "spark_90d": [59.2, 59.39, 59.33, 59.22, 59.3, 58.96, 60.39, 60.81, 61.25, 61.32, 60.34, 61.12, 62.07, 61.65, 61.02, 61.47, 61.7, 59.6, 60.77, 61.85, 61.57, 61.8, 63.63, 63.94, 63.39, 61.79, 62.42, 61.9, 59.36, 58.28, 60.77, 62.69, 62.74, 62.72, 62.32, 63.34, 63.67, 64.23, 64.39, 66.31, 63.84, 65.29, 65.66, 64.79, 63.89, 63.74, 61.32, 62.5, 62.08, 60.9, 63.93, 65.32, 65.4, 63.23, 62.76, 65.05, 65.29, 66.0, 65.22, 62.53, 63.88, 63.69, 65.01, 61.4, 60.28, 59.06, 61.85, 64.29, 63.32, 64.03, 64.6, 67.92, 68.57, 69.4, 71.0, 73.46, 73.16, 74.24, 75.09, 75.84, 75.74, 78.39, 77.16, 79.19, 78.55, 75.64, 76.43, 77.99, 79.3, 80.26], "sparkline": true, "sparkline_points": "0.0,17.2 0.9,17.1 1.8,17.1 2.7,17.2 3.6,17.2 4.5,17.4 5.4,16.3 6.3,15.9 7.2,15.6 8.1,15.5 9.0,16.3 9.9,15.7 10.8,14.9 11.7,15.2 12.6,15.8 13.5,15.4 14.4,15.2 15.3,16.9 16.2,16.0 17.1,15.1 18.0,15.3 18.9,15.1 19.8,13.6 20.7,13.4 21.6,13.8 22.5,15.1 23.4,14.6 24.3,15.0 25.2,17.1 26.1,18.0 27.0,16.0 27.9,14.4 28.8,14.3 29.7,14.4 30.6,14.7 31.5,13.9 32.4,13.6 33.3,13.1 34.2,13.0 35.1,11.4 36.0,13.4 36.9,12.3 37.8,12.0 38.7,12.7 39.6,13.4 40.4,13.5 41.3,15.5 42.2,14.5 43.1,14.9 44.0,15.9 44.9,13.4 45.8,12.2 46.7,12.2 47.6,13.9 48.5,14.3 49.4,12.5 50.3,12.3 51.2,11.7 52.1,12.3 53.0,14.5 53.9,13.4 54.8,13.6 55.7,12.5 56.6,15.4 57.5,16.4 58.4,17.4 59.3,15.1 60.2,13.1 61.1,13.9 62.0,13.3 62.9,12.8 63.8,10.1 64.7,9.6 65.6,8.9 66.5,7.6 67.4,5.6 68.3,5.8 69.2,4.9 70.1,4.2 71.0,3.6 71.9,3.7 72.8,1.5 73.7,2.5 74.6,0.9 75.5,1.4 76.4,3.8 77.3,3.1 78.2,1.9 79.1,0.8 80.0,0.0", "stats": ["Exp: 0.75%", "49 holdings", "Active mgmt", "Est. May 2023"], "ticker": "CHAT", "year_return_pct": 119.0}, {"aum": "$2.1B", "aum_billions": 2.08, "color": "#378ADD", "description": "BlackRock\u0027s AI flagship. Tracks Morningstar Global AI Select Index. ~50 stocks across gen AI, infra, services. Best 1-yr performer in the category.", "dod_change": 0.61, "dod_pct": 0.97, "exchange": "NYSE", "name": "iShares Future AI \u0026 Technology ETF", "prev_close": 62.82, "price": 63.43, "spark_12d": [48.32, 49.8, 50.49, 52.31, 48.68, 51.06, 52.42, 47.98, 50.28, 46.69, 48.38, 57.65], "spark_90d": [48.32, 48.51, 48.61, 48.62, 48.67, 48.18, 49.62, 49.8, 50.92, 50.33, 49.5, 50.35, 51.1, 50.89, 50.49, 50.98, 51.61, 50.46, 51.36, 51.7, 52.15, 52.31, 53.55, 54.44, 53.37, 51.51, 51.99, 51.14, 48.68, 47.79, 50.68, 51.73, 51.42, 51.87, 50.79, 51.06, 50.59, 51.2, 51.09, 51.25, 49.92, 51.1, 52.42, 51.79, 51.01, 50.6, 48.13, 49.38, 48.78, 47.98, 49.23, 49.15, 49.95, 48.28, 48.41, 49.78, 50.28, 49.68, 50.13, 47.77, 49.09, 48.48, 49.08, 46.69, 45.85, 44.2, 46.53, 47.59, 47.73, 48.09, 48.38, 50.89, 51.12, 52.28, 54.06, 56.26, 56.71, 57.65, 58.65, 58.98, 59.17, 61.28, 60.21, 62.08, 61.6, 59.83, 60.64, 61.94, 62.82, 63.43], "sparkline": true, "sparkline_points": "0.0,14.1 0.9,14.0 1.8,13.9 2.7,13.9 3.6,13.8 4.5,14.3 5.4,12.9 6.3,12.8 7.2,11.7 8.1,12.3 9.0,13.0 9.9,12.2 10.8,11.5 11.7,11.7 12.6,12.1 13.5,11.7 14.4,11.1 15.3,12.1 16.2,11.3 17.1,11.0 18.0,10.6 18.9,10.4 19.8,9.2 20.7,8.4 21.6,9.4 22.5,11.2 23.4,10.7 24.3,11.5 25.2,13.8 26.1,14.6 27.0,11.9 27.9,11.0 28.8,11.2 29.7,10.8 30.6,11.8 31.5,11.6 32.4,12.0 33.3,11.4 34.2,11.6 35.1,11.4 36.0,12.6 36.9,11.5 37.8,10.3 38.7,10.9 39.6,11.6 40.4,12.0 41.3,14.3 42.2,13.2 43.1,13.7 44.0,14.5 44.9,13.3 45.8,13.4 46.7,12.6 47.6,14.2 48.5,14.1 49.4,12.8 50.3,12.3 51.2,12.9 52.1,12.4 53.0,14.7 53.9,13.4 54.8,14.0 55.7,13.4 56.6,15.7 57.5,16.5 58.4,18.0 59.3,15.8 60.2,14.8 61.1,14.7 62.0,14.4 62.9,14.1 63.8,11.7 64.7,11.5 65.6,10.4 66.5,8.8 67.4,6.7 68.3,6.3 69.2,5.4 70.1,4.5 71.0,4.2 71.9,4.0 72.8,2.0 73.7,3.0 74.6,1.3 75.5,1.7 76.4,3.4 77.3,2.6 78.2,1.4 79.1,0.6 80.0,0.0", "stats": ["Exp: 0.47%", "50 holdings", "Passive", "BlackRock"], "ticker": "ARTY", "year_return_pct": 87.2}, {"aum": "$7.2B", "aum_billions": 7.22, "color": "#1D9E75", "description": "Largest AI ETF by AUM. Tracks Indxx AI \u0026 Big Data Index across 86 companies. The S\u0026P 500 of AI ETFs.", "dod_change": 0.17, "dod_pct": 0.3, "exchange": "NASDAQ", "name": "Global X AI \u0026 Technology ETF", "prev_close": 56.82, "price": 56.99, "spark_12d": [51.26, 52.05, 52.28, 52.43, 49.38, 49.45, 50.55, 49.1, 49.58, 46.41, 47.85, 53.49], "spark_90d": [51.26, 51.41, 51.52, 51.44, 51.36, 50.86, 51.43, 52.05, 52.65, 52.58, 52.14, 52.58, 53.15, 52.64, 52.28, 52.36, 52.34, 50.94, 51.9, 52.45, 52.51, 52.43, 53.11, 53.61, 53.03, 51.97, 52.38, 51.04, 49.38, 48.47, 50.08, 50.83, 50.77, 50.55, 49.21, 49.45, 48.97, 49.55, 49.41, 49.88, 48.53, 49.49, 50.55, 50.52, 50.26, 50.06, 48.81, 49.92, 49.65, 49.1, 49.83, 49.67, 49.92, 48.59, 48.35, 49.34, 49.58, 48.87, 48.8, 47.37, 48.52, 47.61, 47.9, 46.41, 45.47, 44.78, 46.67, 47.34, 47.27, 47.75, 47.85, 49.6, 49.35, 49.37, 50.58, 51.83, 52.72, 53.49, 54.1, 53.91, 53.69, 54.97, 53.51, 55.14, 55.38, 54.5, 55.04, 55.88, 56.82, 56.99], "sparkline": true, "sparkline_points": "0.0,8.4 0.9,8.2 1.8,8.1 2.7,8.2 3.6,8.3 4.5,9.0 5.4,8.2 6.3,7.3 7.2,6.4 8.1,6.5 9.0,7.1 9.9,6.5 10.8,5.7 11.7,6.4 12.6,6.9 13.5,6.8 14.4,6.9 15.3,8.9 16.2,7.5 17.1,6.7 18.0,6.6 18.9,6.7 19.8,5.7 20.7,5.0 21.6,5.8 22.5,7.4 23.4,6.8 24.3,8.8 25.2,11.2 26.1,12.6 27.0,10.2 27.9,9.1 28.8,9.2 29.7,9.5 30.6,11.5 31.5,11.1 32.4,11.8 33.3,11.0 34.2,11.2 35.1,10.5 36.0,12.5 36.9,11.1 37.8,9.5 38.7,9.5 39.6,9.9 40.4,10.2 41.3,12.1 42.2,10.4 43.1,10.8 44.0,11.6 44.9,10.6 45.8,10.8 46.7,10.4 47.6,12.4 48.5,12.7 49.4,11.3 50.3,10.9 51.2,12.0 52.1,12.1 53.0,14.2 53.9,12.5 54.8,13.8 55.7,13.4 56.6,15.6 57.5,17.0 58.4,18.0 59.3,15.2 60.2,14.2 61.1,14.3 62.0,13.6 62.9,13.5 63.8,10.9 64.7,11.3 65.6,11.2 66.5,9.4 67.4,7.6 68.3,6.3 69.2,5.2 70.1,4.3 71.0,4.5 71.9,4.9 72.8,3.0 73.7,5.1 74.6,2.7 75.5,2.4 76.4,3.7 77.3,2.9 78.2,1.6 79.1,0.3 80.0,0.0", "stats": ["Exp: 0.68%", "86 holdings", "Passive", "Est. 2018"], "ticker": "AIQ", "year_return_pct": 49.9}, {"aum": "$650M", "aum_billions": 0.65, "color": "#7F77DD", "description": "Infrastructure \u0026 semiconductor tilt. Heavy Micron, SK Hynix, Nvidia exposure. Oldest fund on the list, modernised mandate.", "dod_change": 0.45, "dod_pct": 0.56, "exchange": "NYSE Arca", "name": "Invesco AI \u0026 Next Gen Software ETF", "prev_close": 79.24, "price": 79.69, "spark_12d": [59.34, 61.24, 62.09, 64.05, 61.33, 62.85, 65.01, 60.1, 63.12, 57.97, 60.49, 69.76], "spark_90d": [59.34, 59.71, 59.93, 60.0, 60.22, 59.47, 61.01, 61.24, 62.81, 62.69, 61.76, 62.58, 62.62, 62.52, 62.09, 62.31, 62.62, 61.48, 63.66, 64.54, 64.38, 64.05, 65.16, 66.6, 66.29, 64.72, 65.52, 64.12, 61.33, 60.4, 62.64, 63.35, 62.7, 63.13, 62.52, 62.85, 62.17, 63.01, 62.73, 63.81, 62.44, 63.79, 65.01, 64.26, 63.77, 63.42, 60.97, 62.82, 61.9, 60.1, 61.86, 62.15, 62.8, 60.79, 60.81, 62.51, 63.12, 62.59, 62.62, 60.48, 61.26, 60.29, 60.62, 57.97, 56.92, 55.49, 58.06, 59.45, 59.42, 60.27, 60.49, 63.85, 63.95, 64.33, 65.98, 68.41, 68.78, 69.76, 70.84, 70.67, 70.65, 73.03, 71.79, 75.33, 76.16, 74.99, 76.25, 77.79, 79.24, 79.69], "sparkline": true, "sparkline_points": "0.0,15.1 0.9,14.9 1.8,14.7 2.7,14.6 3.6,14.5 4.5,15.0 5.4,13.9 6.3,13.7 7.2,12.6 8.1,12.6 9.0,13.3 9.9,12.7 10.8,12.7 11.7,12.8 12.6,13.1 13.5,12.9 14.4,12.7 15.3,13.5 16.2,11.9 17.1,11.3 18.0,11.4 18.9,11.6 19.8,10.8 20.7,9.7 21.6,10.0 22.5,11.1 23.4,10.5 24.3,11.6 25.2,13.7 26.1,14.3 27.0,12.7 27.9,12.2 28.8,12.6 29.7,12.3 30.6,12.8 31.5,12.5 32.4,13.0 33.3,12.4 34.2,12.6 35.1,11.8 36.0,12.8 36.9,11.8 37.8,10.9 38.7,11.5 39.6,11.8 40.4,12.1 41.3,13.9 42.2,12.5 43.1,13.2 44.0,14.6 44.9,13.3 45.8,13.0 46.7,12.6 47.6,14.1 48.5,14.0 49.4,12.8 50.3,12.3 51.2,12.7 52.1,12.7 53.0,14.3 53.9,13.7 54.8,14.4 55.7,14.2 56.6,16.2 57.5,16.9 58.4,18.0 59.3,16.1 60.2,15.1 61.1,15.1 62.0,14.4 62.9,14.3 63.8,11.8 64.7,11.7 65.6,11.4 66.5,10.2 67.4,8.4 68.3,8.1 69.2,7.4 70.1,6.6 71.0,6.7 71.9,6.7 72.8,5.0 73.7,5.9 74.6,3.2 75.5,2.6 76.4,3.5 77.3,2.6 78.2,1.4 79.1,0.3 80.0,0.0", "stats": ["Exp: 0.56%", "100 holdings", "Passive", "Est. 2005"], "ticker": "IGPT", "year_return_pct": 89.3}, {"aum": "$2.9B", "aum_billions": 2.94, "color": "#BA7517", "description": "Applied AI and industrial robotics focus. Tracks Indxx Global Robotics \u0026 AI Thematic Index. Heavy industrials, healthcare, Japanese automation.", "dod_change": -0.38, "dod_pct": -0.97, "exchange": "NASDAQ", "name": "Global X Robotics \u0026 AI ETF", "prev_close": 38.6, "price": 38.22, "spark_12d": [36.53, 37.61, 38.0, 37.96, 36.61, 38.34, 39.66, 36.09, 35.38, 33.29, 33.39, 36.71], "spark_90d": [36.53, 36.52, 36.43, 36.59, 36.58, 36.23, 36.71, 37.61, 37.93, 38.16, 37.73, 38.23, 38.44, 37.85, 38.0, 38.34, 38.35, 37.17, 37.71, 37.88, 37.77, 37.96, 38.26, 37.99, 37.96, 37.32, 36.87, 36.88, 36.61, 35.77, 37.48, 38.14, 38.36, 38.12, 37.96, 38.34, 38.62, 38.36, 38.64, 39.02, 38.58, 39.01, 39.66, 39.5, 39.02, 38.19, 36.9, 37.13, 36.58, 36.09, 36.09, 36.28, 36.3, 35.59, 34.83, 35.39, 35.38, 34.85, 34.88, 33.6, 34.24, 33.82, 34.38, 33.29, 32.46, 31.99, 33.22, 33.9, 33.4, 33.59, 33.39, 35.12, 34.92, 35.43, 35.97, 36.59, 36.73, 36.71, 37.41, 37.5, 36.74, 37.37, 36.66, 37.36, 38.49, 37.66, 37.33, 38.45, 38.6, 38.22], "sparkline": true, "sparkline_points": "0.0,7.3 0.9,7.4 1.8,7.6 2.7,7.2 3.6,7.2 4.5,8.0 5.4,6.9 6.3,4.8 7.2,4.1 8.1,3.5 9.0,4.5 9.9,3.4 10.8,2.9 11.7,4.2 12.6,3.9 13.5,3.1 14.4,3.1 15.3,5.8 16.2,4.6 17.1,4.2 18.0,4.4 18.9,4.0 19.8,3.3 20.7,3.9 21.6,4.0 22.5,5.5 23.4,6.5 24.3,6.5 25.2,7.2 26.1,9.1 27.0,5.1 27.9,3.6 28.8,3.1 29.7,3.6 30.6,4.0 31.5,3.1 32.4,2.4 33.3,3.1 34.2,2.4 35.1,1.5 36.0,2.5 36.9,1.5 37.8,0.0 38.7,0.4 39.6,1.5 40.4,3.4 41.3,6.5 42.2,5.9 43.1,7.2 44.0,8.4 44.9,8.4 45.8,7.9 46.7,7.9 47.6,9.6 48.5,11.3 49.4,10.0 50.3,10.0 51.2,11.3 52.1,11.2 53.0,14.2 53.9,12.7 54.8,13.7 55.7,12.4 56.6,14.9 57.5,16.9 58.4,18.0 59.3,15.1 60.2,13.5 61.1,14.7 62.0,14.2 62.9,14.7 63.8,10.7 64.7,11.1 65.6,9.9 66.5,8.7 67.4,7.2 68.3,6.9 69.2,6.9 70.1,5.3 71.0,5.1 71.9,6.9 72.8,5.4 73.7,7.0 74.6,5.4 75.5,2.7 76.4,4.7 77.3,5.5 78.2,2.8 79.1,2.5 80.0,3.4", "stats": ["Exp: 0.68%", "50 holdings", "Passive", "~30% Japan"], "ticker": "BOTZ", "year_return_pct": 31.5}, {"aum": "$171M", "aum_billions": 0.17, "color": "#D4537E", "description": "Unique private-company exposure via SEC Rule 22e-4. Holds 2.5% Anthropic stake and 3.2% SpaceX (indirect xAI). Only retail proxy for private AI giants.", "dod_change": 0.45, "dod_pct": 1.11, "exchange": "NYSE Arca", "name": "KraneShares AGI ETF", "prev_close": 40.43, "price": 40.88, "spark_12d": [36.81, 36.65, 36.37, 36.76, 33.32, 34.23, 35.19, 33.98, 34.85, 32.63, 33.86, 37.83], "spark_90d": [36.81, 36.85, 36.83, 36.72, 36.66, 36.3, 36.25, 36.65, 36.92, 37.26, 37.03, 37.07, 37.3, 37.06, 36.37, 36.41, 36.37, 35.28, 35.57, 36.17, 36.3, 36.76, 36.99, 37.11, 36.25, 35.38, 35.34, 34.35, 33.32, 32.33, 33.99, 35.14, 35.04, 34.54, 33.99, 34.23, 34.15, 34.5, 34.56, 34.42, 33.53, 34.37, 35.19, 35.28, 34.38, 34.47, 33.62, 34.39, 34.46, 33.98, 34.53, 34.49, 34.78, 34.07, 33.89, 34.73, 34.85, 34.45, 34.42, 33.53, 34.34, 33.6, 33.88, 32.63, 31.83, 31.23, 32.77, 33.11, 33.5, 33.55, 33.86, 34.94, 34.67, 34.86, 35.9, 36.79, 37.42, 37.83, 38.32, 38.83, 38.72, 39.58, 38.8, 39.55, 39.61, 38.59, 38.75, 39.29, 40.43, 40.88], "sparkline": true, "sparkline_points": "0.0,7.6 0.9,7.5 1.8,7.6 2.7,7.8 3.6,7.9 4.5,8.5 5.4,8.6 6.3,7.9 7.2,7.4 8.1,6.8 9.0,7.2 9.9,7.1 10.8,6.7 11.7,7.1 12.6,8.4 13.5,8.3 14.4,8.4 15.3,10.4 16.2,9.9 17.1,8.8 18.0,8.5 18.9,7.7 19.8,7.3 20.7,7.0 21.6,8.6 22.5,10.3 23.4,10.3 24.3,12.2 25.2,14.1 26.1,15.9 27.0,12.9 27.9,10.7 28.8,10.9 29.7,11.8 30.6,12.9 31.5,12.4 32.4,12.6 33.3,11.9 34.2,11.8 35.1,12.0 36.0,13.7 36.9,12.1 37.8,10.6 38.7,10.4 39.6,12.1 40.4,12.0 41.3,13.5 42.2,12.1 43.1,12.0 44.0,12.9 44.9,11.8 45.8,11.9 46.7,11.4 47.6,12.7 48.5,13.0 49.4,11.5 50.3,11.2 51.2,12.0 52.1,12.0 53.0,13.7 53.9,12.2 54.8,13.6 55.7,13.1 56.6,15.4 57.5,16.9 58.4,18.0 59.3,15.1 60.2,14.5 61.1,13.8 62.0,13.7 62.9,13.1 63.8,11.1 64.7,11.6 65.6,11.2 66.5,9.3 67.4,7.6 68.3,6.5 69.2,5.7 70.1,4.8 71.0,3.8 71.9,4.0 72.8,2.4 73.7,3.9 74.6,2.5 75.5,2.4 76.4,4.3 77.3,4.0 78.2,3.0 79.1,0.8 80.0,0.0", "stats": ["Exp: 0.99%", "Private stakes", "Anthropic+xAI", "Illiquid premium"], "ticker": "AGIX", "year_return_pct": 54.8}];
+  var etfData = [{"aum": "$1.0B", "aum_billions": 1.01, "color": "#D85A30", "description": "World\u0027s first generative AI ETF. Actively managed with a 50% revenue-purity screen. Rotates toward new gen-AI entrants as the space evolves.", "dod_change": 0.92, "dod_pct": 1.16, "exchange": "NYSE Arca", "name": "Roundhill Generative AI \u0026 Technology", "prev_close": 79.3, "price": 80.22, "spark_12d": [59.2, 60.81, 61.02, 61.8, 59.36, 63.34, 65.66, 60.9, 65.29, 61.4, 64.6, 74.24], "spark_90d": [59.2, 59.39, 59.33, 59.22, 59.3, 58.96, 60.39, 60.81, 61.25, 61.32, 60.34, 61.12, 62.07, 61.65, 61.02, 61.47, 61.7, 59.6, 60.77, 61.85, 61.57, 61.8, 63.63, 63.94, 63.39, 61.79, 62.42, 61.9, 59.36, 58.28, 60.77, 62.69, 62.74, 62.72, 62.32, 63.34, 63.67, 64.23, 64.39, 66.31, 63.84, 65.29, 65.66, 64.79, 63.89, 63.74, 61.32, 62.5, 62.08, 60.9, 63.93, 65.32, 65.4, 63.23, 62.76, 65.05, 65.29, 66.0, 65.22, 62.53, 63.88, 63.69, 65.01, 61.4, 60.28, 59.06, 61.85, 64.29, 63.32, 64.03, 64.6, 67.92, 68.57, 69.4, 71.0, 73.46, 73.16, 74.24, 75.09, 75.84, 75.74, 78.39, 77.16, 79.19, 78.55, 75.64, 76.43, 77.99, 79.3, 80.22], "sparkline": true, "sparkline_points": "0.0,17.2 0.9,17.1 1.8,17.1 2.7,17.2 3.6,17.2 4.5,17.4 5.4,16.3 6.3,15.9 7.2,15.6 8.1,15.5 9.0,16.3 9.9,15.7 10.8,14.9 11.7,15.2 12.6,15.8 13.5,15.4 14.4,15.2 15.3,16.9 16.2,16.0 17.1,15.1 18.0,15.3 18.9,15.1 19.8,13.6 20.7,13.4 21.6,13.8 22.5,15.1 23.4,14.6 24.3,15.0 25.2,17.1 26.1,18.0 27.0,16.0 27.9,14.4 28.8,14.3 29.7,14.4 30.6,14.7 31.5,13.8 32.4,13.6 33.3,13.1 34.2,13.0 35.1,11.4 36.0,13.4 36.9,12.2 37.8,11.9 38.7,12.7 39.6,13.4 40.4,13.5 41.3,15.5 42.2,14.5 43.1,14.9 44.0,15.9 44.9,13.4 45.8,12.2 46.7,12.2 47.6,13.9 48.5,14.3 49.4,12.4 50.3,12.2 51.2,11.7 52.1,12.3 53.0,14.5 53.9,13.4 54.8,13.6 55.7,12.5 56.6,15.4 57.5,16.4 58.4,17.4 59.3,15.1 60.2,13.1 61.1,13.9 62.0,13.3 62.9,12.8 63.8,10.1 64.7,9.6 65.6,8.9 66.5,7.6 67.4,5.5 68.3,5.8 69.2,4.9 70.1,4.2 71.0,3.6 71.9,3.7 72.8,1.5 73.7,2.5 74.6,0.8 75.5,1.4 76.4,3.8 77.3,3.1 78.2,1.8 79.1,0.8 80.0,0.0", "stats": ["Exp: 0.75%", "49 holdings", "Active mgmt", "Est. May 2023"], "ticker": "CHAT", "year_return_pct": 118.9}, {"aum": "$2.1B", "aum_billions": 2.08, "color": "#378ADD", "description": "BlackRock\u0027s AI flagship. Tracks Morningstar Global AI Select Index. ~50 stocks across gen AI, infra, services. Best 1-yr performer in the category.", "dod_change": 0.61, "dod_pct": 0.97, "exchange": "NYSE", "name": "iShares Future AI \u0026 Technology ETF", "prev_close": 62.82, "price": 63.43, "spark_12d": [48.32, 49.8, 50.49, 52.31, 48.68, 51.06, 52.42, 47.98, 50.28, 46.69, 48.38, 57.65], "spark_90d": [48.32, 48.51, 48.61, 48.62, 48.67, 48.18, 49.62, 49.8, 50.92, 50.33, 49.5, 50.35, 51.1, 50.89, 50.49, 50.98, 51.61, 50.46, 51.36, 51.7, 52.15, 52.31, 53.55, 54.44, 53.37, 51.51, 51.99, 51.14, 48.68, 47.79, 50.68, 51.73, 51.42, 51.87, 50.79, 51.06, 50.59, 51.2, 51.09, 51.25, 49.92, 51.1, 52.42, 51.79, 51.01, 50.6, 48.13, 49.38, 48.78, 47.98, 49.23, 49.15, 49.95, 48.28, 48.41, 49.78, 50.28, 49.68, 50.13, 47.77, 49.09, 48.48, 49.08, 46.69, 45.85, 44.2, 46.53, 47.59, 47.73, 48.09, 48.38, 50.89, 51.12, 52.28, 54.06, 56.26, 56.71, 57.65, 58.65, 58.98, 59.17, 61.28, 60.21, 62.08, 61.6, 59.83, 60.64, 61.94, 62.82, 63.43], "sparkline": true, "sparkline_points": "0.0,14.1 0.9,14.0 1.8,13.9 2.7,13.9 3.6,13.8 4.5,14.3 5.4,12.9 6.3,12.8 7.2,11.7 8.1,12.3 9.0,13.0 9.9,12.2 10.8,11.5 11.7,11.7 12.6,12.1 13.5,11.7 14.4,11.1 15.3,12.1 16.2,11.3 17.1,11.0 18.0,10.6 18.9,10.4 19.8,9.2 20.7,8.4 21.6,9.4 22.5,11.2 23.4,10.7 24.3,11.5 25.2,13.8 26.1,14.6 27.0,11.9 27.9,11.0 28.8,11.2 29.7,10.8 30.6,11.8 31.5,11.6 32.4,12.0 33.3,11.4 34.2,11.6 35.1,11.4 36.0,12.6 36.9,11.5 37.8,10.3 38.7,10.9 39.6,11.6 40.4,12.0 41.3,14.3 42.2,13.2 43.1,13.7 44.0,14.5 44.9,13.3 45.8,13.4 46.7,12.6 47.6,14.2 48.5,14.1 49.4,12.8 50.3,12.3 51.2,12.9 52.1,12.4 53.0,14.7 53.9,13.4 54.8,14.0 55.7,13.4 56.6,15.7 57.5,16.5 58.4,18.0 59.3,15.8 60.2,14.8 61.1,14.7 62.0,14.4 62.9,14.1 63.8,11.7 64.7,11.5 65.6,10.4 66.5,8.8 67.4,6.7 68.3,6.3 69.2,5.4 70.1,4.5 71.0,4.2 71.9,4.0 72.8,2.0 73.7,3.0 74.6,1.3 75.5,1.7 76.4,3.4 77.3,2.6 78.2,1.4 79.1,0.6 80.0,0.0", "stats": ["Exp: 0.47%", "50 holdings", "Passive", "BlackRock"], "ticker": "ARTY", "year_return_pct": 87.2}, {"aum": "$7.2B", "aum_billions": 7.22, "color": "#1D9E75", "description": "Largest AI ETF by AUM. Tracks Indxx AI \u0026 Big Data Index across 86 companies. The S\u0026P 500 of AI ETFs.", "dod_change": 0.26, "dod_pct": 0.47, "exchange": "NASDAQ", "name": "Global X AI \u0026 Technology ETF", "prev_close": 56.82, "price": 57.08, "spark_12d": [51.26, 52.05, 52.28, 52.43, 49.38, 49.45, 50.55, 49.1, 49.58, 46.41, 47.85, 53.49], "spark_90d": [51.26, 51.41, 51.52, 51.44, 51.36, 50.86, 51.43, 52.05, 52.65, 52.58, 52.14, 52.58, 53.15, 52.64, 52.28, 52.36, 52.34, 50.94, 51.9, 52.45, 52.51, 52.43, 53.11, 53.61, 53.03, 51.97, 52.38, 51.04, 49.38, 48.47, 50.08, 50.83, 50.77, 50.55, 49.21, 49.45, 48.97, 49.55, 49.41, 49.88, 48.53, 49.49, 50.55, 50.52, 50.26, 50.06, 48.81, 49.92, 49.65, 49.1, 49.83, 49.67, 49.92, 48.59, 48.35, 49.34, 49.58, 48.87, 48.8, 47.37, 48.52, 47.61, 47.9, 46.41, 45.47, 44.78, 46.67, 47.34, 47.27, 47.75, 47.85, 49.6, 49.35, 49.37, 50.58, 51.83, 52.72, 53.49, 54.1, 53.91, 53.69, 54.97, 53.51, 55.14, 55.38, 54.5, 55.04, 55.88, 56.82, 57.08], "sparkline": true, "sparkline_points": "0.0,8.5 0.9,8.3 1.8,8.1 2.7,8.3 3.6,8.4 4.5,9.1 5.4,8.3 6.3,7.4 7.2,6.5 8.1,6.6 9.0,7.2 9.9,6.6 10.8,5.8 11.7,6.5 12.6,7.0 13.5,6.9 14.4,6.9 15.3,9.0 16.2,7.6 17.1,6.8 18.0,6.7 18.9,6.8 19.8,5.8 20.7,5.1 21.6,5.9 22.5,7.5 23.4,6.9 24.3,8.8 25.2,11.3 26.1,12.6 27.0,10.2 27.9,9.1 28.8,9.2 29.7,9.6 30.6,11.5 31.5,11.2 32.4,11.9 33.3,11.0 34.2,11.2 35.1,10.5 36.0,12.5 36.9,11.1 37.8,9.6 38.7,9.6 39.6,10.0 40.4,10.3 41.3,12.1 42.2,10.5 43.1,10.9 44.0,11.7 44.9,10.6 45.8,10.8 46.7,10.5 47.6,12.4 48.5,12.8 49.4,11.3 50.3,11.0 51.2,12.0 52.1,12.1 53.0,14.2 53.9,12.5 54.8,13.9 55.7,13.4 56.6,15.6 57.5,17.0 58.4,18.0 59.3,15.2 60.2,14.3 61.1,14.4 62.0,13.7 62.9,13.5 63.8,10.9 64.7,11.3 65.6,11.3 66.5,9.5 67.4,7.7 68.3,6.4 69.2,5.3 70.1,4.4 71.0,4.6 71.9,5.0 72.8,3.1 73.7,5.2 74.6,2.8 75.5,2.5 76.4,3.8 77.3,3.0 78.2,1.8 79.1,0.4 80.0,0.0", "stats": ["Exp: 0.68%", "86 holdings", "Passive", "Est. 2018"], "ticker": "AIQ", "year_return_pct": 50.1}, {"aum": "$650M", "aum_billions": 0.65, "color": "#7F77DD", "description": "Infrastructure \u0026 semiconductor tilt. Heavy Micron, SK Hynix, Nvidia exposure. Oldest fund on the list, modernised mandate.", "dod_change": 0.47, "dod_pct": 0.59, "exchange": "NYSE Arca", "name": "Invesco AI \u0026 Next Gen Software ETF", "prev_close": 79.24, "price": 79.71, "spark_12d": [59.34, 61.24, 62.09, 64.05, 61.33, 62.85, 65.01, 60.1, 63.12, 57.97, 60.49, 69.76], "spark_90d": [59.34, 59.71, 59.93, 60.0, 60.22, 59.47, 61.01, 61.24, 62.81, 62.69, 61.76, 62.58, 62.62, 62.52, 62.09, 62.31, 62.62, 61.48, 63.66, 64.54, 64.38, 64.05, 65.16, 66.6, 66.29, 64.72, 65.52, 64.12, 61.33, 60.4, 62.64, 63.35, 62.7, 63.13, 62.52, 62.85, 62.17, 63.01, 62.73, 63.81, 62.44, 63.79, 65.01, 64.26, 63.77, 63.42, 60.97, 62.82, 61.9, 60.1, 61.86, 62.15, 62.8, 60.79, 60.81, 62.51, 63.12, 62.59, 62.62, 60.48, 61.26, 60.29, 60.62, 57.97, 56.92, 55.49, 58.06, 59.45, 59.42, 60.27, 60.49, 63.85, 63.95, 64.33, 65.98, 68.41, 68.78, 69.76, 70.84, 70.67, 70.65, 73.03, 71.79, 75.33, 76.16, 74.99, 76.25, 77.79, 79.24, 79.71], "sparkline": true, "sparkline_points": "0.0,15.1 0.9,14.9 1.8,14.7 2.7,14.6 3.6,14.5 4.5,15.0 5.4,13.9 6.3,13.7 7.2,12.6 8.1,12.6 9.0,13.3 9.9,12.7 10.8,12.7 11.7,12.8 12.6,13.1 13.5,12.9 14.4,12.7 15.3,13.5 16.2,11.9 17.1,11.3 18.0,11.4 18.9,11.6 19.8,10.8 20.7,9.7 21.6,10.0 22.5,11.1 23.4,10.5 24.3,11.6 25.2,13.7 26.1,14.4 27.0,12.7 27.9,12.2 28.8,12.6 29.7,12.3 30.6,12.8 31.5,12.5 32.4,13.0 33.3,12.4 34.2,12.6 35.1,11.8 36.0,12.8 36.9,11.8 37.8,10.9 38.7,11.5 39.6,11.8 40.4,12.1 41.3,13.9 42.2,12.6 43.1,13.2 44.0,14.6 44.9,13.3 45.8,13.1 46.7,12.6 47.6,14.1 48.5,14.0 49.4,12.8 50.3,12.3 51.2,12.7 52.1,12.7 53.0,14.3 53.9,13.7 54.8,14.4 55.7,14.2 56.6,16.2 57.5,16.9 58.4,18.0 59.3,16.1 60.2,15.1 61.1,15.1 62.0,14.4 62.9,14.3 63.8,11.8 64.7,11.7 65.6,11.4 66.5,10.2 67.4,8.4 68.3,8.1 69.2,7.4 70.1,6.6 71.0,6.7 71.9,6.7 72.8,5.0 73.7,5.9 74.6,3.3 75.5,2.6 76.4,3.5 77.3,2.6 78.2,1.4 79.1,0.3 80.0,0.0", "stats": ["Exp: 0.56%", "100 holdings", "Passive", "Est. 2005"], "ticker": "IGPT", "year_return_pct": 89.4}, {"aum": "$2.9B", "aum_billions": 2.94, "color": "#BA7517", "description": "Applied AI and industrial robotics focus. Tracks Indxx Global Robotics \u0026 AI Thematic Index. Heavy industrials, healthcare, Japanese automation.", "dod_change": -0.28, "dod_pct": -0.73, "exchange": "NASDAQ", "name": "Global X Robotics \u0026 AI ETF", "prev_close": 38.6, "price": 38.32, "spark_12d": [36.53, 37.61, 38.0, 37.96, 36.61, 38.34, 39.66, 36.09, 35.38, 33.29, 33.39, 36.71], "spark_90d": [36.53, 36.52, 36.43, 36.59, 36.58, 36.23, 36.71, 37.61, 37.93, 38.16, 37.73, 38.23, 38.44, 37.85, 38.0, 38.34, 38.35, 37.17, 37.71, 37.88, 37.77, 37.96, 38.26, 37.99, 37.96, 37.32, 36.87, 36.88, 36.61, 35.77, 37.48, 38.14, 38.36, 38.12, 37.96, 38.34, 38.62, 38.36, 38.64, 39.02, 38.58, 39.01, 39.66, 39.5, 39.02, 38.19, 36.9, 37.13, 36.58, 36.09, 36.09, 36.28, 36.3, 35.59, 34.83, 35.39, 35.38, 34.85, 34.88, 33.6, 34.24, 33.82, 34.38, 33.29, 32.46, 31.99, 33.22, 33.9, 33.4, 33.59, 33.39, 35.12, 34.92, 35.43, 35.97, 36.59, 36.73, 36.71, 37.41, 37.5, 36.74, 37.37, 36.66, 37.36, 38.49, 37.66, 37.33, 38.45, 38.6, 38.32], "sparkline": true, "sparkline_points": "0.0,7.3 0.9,7.4 1.8,7.6 2.7,7.2 3.6,7.2 4.5,8.0 5.4,6.9 6.3,4.8 7.2,4.1 8.1,3.5 9.0,4.5 9.9,3.4 10.8,2.9 11.7,4.2 12.6,3.9 13.5,3.1 14.4,3.1 15.3,5.8 16.2,4.6 17.1,4.2 18.0,4.4 18.9,4.0 19.8,3.3 20.7,3.9 21.6,4.0 22.5,5.5 23.4,6.5 24.3,6.5 25.2,7.2 26.1,9.1 27.0,5.1 27.9,3.6 28.8,3.1 29.7,3.6 30.6,4.0 31.5,3.1 32.4,2.4 33.3,3.1 34.2,2.4 35.1,1.5 36.0,2.5 36.9,1.5 37.8,0.0 38.7,0.4 39.6,1.5 40.4,3.4 41.3,6.5 42.2,5.9 43.1,7.2 44.0,8.4 44.9,8.4 45.8,7.9 46.7,7.9 47.6,9.6 48.5,11.3 49.4,10.0 50.3,10.0 51.2,11.3 52.1,11.2 53.0,14.2 53.9,12.7 54.8,13.7 55.7,12.4 56.6,14.9 57.5,16.9 58.4,18.0 59.3,15.1 60.2,13.5 61.1,14.7 62.0,14.2 62.9,14.7 63.8,10.7 64.7,11.1 65.6,9.9 66.5,8.7 67.4,7.2 68.3,6.9 69.2,6.9 70.1,5.3 71.0,5.1 71.9,6.9 72.8,5.4 73.7,7.0 74.6,5.4 75.5,2.7 76.4,4.7 77.3,5.5 78.2,2.8 79.1,2.5 80.0,3.1", "stats": ["Exp: 0.68%", "50 holdings", "Passive", "~30% Japan"], "ticker": "BOTZ", "year_return_pct": 31.8}, {"aum": "$171M", "aum_billions": 0.17, "color": "#D4537E", "description": "Unique private-company exposure via SEC Rule 22e-4. Holds 2.5% Anthropic stake and 3.2% SpaceX (indirect xAI). Only retail proxy for private AI giants.", "dod_change": 0.41, "dod_pct": 1.01, "exchange": "NYSE Arca", "name": "KraneShares AGI ETF", "prev_close": 40.43, "price": 40.84, "spark_12d": [36.81, 36.65, 36.37, 36.76, 33.32, 34.23, 35.19, 33.98, 34.85, 32.63, 33.86, 37.83], "spark_90d": [36.81, 36.85, 36.83, 36.72, 36.66, 36.3, 36.25, 36.65, 36.92, 37.26, 37.03, 37.07, 37.3, 37.06, 36.37, 36.41, 36.37, 35.28, 35.57, 36.17, 36.3, 36.76, 36.99, 37.11, 36.25, 35.38, 35.34, 34.35, 33.32, 32.33, 33.99, 35.14, 35.04, 34.54, 33.99, 34.23, 34.15, 34.5, 34.56, 34.42, 33.53, 34.37, 35.19, 35.28, 34.38, 34.47, 33.62, 34.39, 34.46, 33.98, 34.53, 34.49, 34.78, 34.07, 33.89, 34.73, 34.85, 34.45, 34.42, 33.53, 34.34, 33.6, 33.88, 32.63, 31.83, 31.23, 32.77, 33.11, 33.5, 33.55, 33.86, 34.94, 34.67, 34.86, 35.9, 36.79, 37.42, 37.83, 38.32, 38.83, 38.72, 39.58, 38.8, 39.55, 39.61, 38.59, 38.75, 39.29, 40.43, 40.84], "sparkline": true, "sparkline_points": "0.0,7.5 0.9,7.5 1.8,7.5 2.7,7.7 3.6,7.8 4.5,8.5 5.4,8.6 6.3,7.8 7.2,7.3 8.1,6.7 9.0,7.1 9.9,7.1 10.8,6.6 11.7,7.1 12.6,8.4 13.5,8.3 14.4,8.4 15.3,10.4 16.2,9.9 17.1,8.7 18.0,8.5 18.9,7.6 19.8,7.2 20.7,7.0 21.6,8.6 22.5,10.2 23.4,10.3 24.3,12.2 25.2,14.1 26.1,15.9 27.0,12.8 27.9,10.7 28.8,10.9 29.7,11.8 30.6,12.8 31.5,12.4 32.4,12.5 33.3,11.9 34.2,11.8 35.1,12.0 36.0,13.7 36.9,12.1 37.8,10.6 38.7,10.4 39.6,12.1 40.4,11.9 41.3,13.5 42.2,12.1 43.1,12.0 44.0,12.8 44.9,11.8 45.8,11.9 46.7,11.4 47.6,12.7 48.5,13.0 49.4,11.4 50.3,11.2 51.2,12.0 52.1,12.0 53.0,13.7 53.9,12.2 54.8,13.6 55.7,13.0 56.6,15.4 57.5,16.9 58.4,18.0 59.3,15.1 60.2,14.5 61.1,13.7 62.0,13.7 62.9,13.1 63.8,11.1 64.7,11.6 65.6,11.2 66.5,9.3 67.4,7.6 68.3,6.4 69.2,5.6 70.1,4.7 71.0,3.8 71.9,4.0 72.8,2.4 73.7,3.8 74.6,2.4 75.5,2.3 76.4,4.2 77.3,3.9 78.2,2.9 79.1,0.8 80.0,0.0", "stats": ["Exp: 0.99%", "Private stakes", "Anthropic+xAI", "Illiquid premium"], "ticker": "AGIX", "year_return_pct": 54.7}];
   if(!etfData || etfData.length === 0) return;
   var ctx = document.getElementById('etfBubbleChart');
   if(!ctx) return;
@@ -2226,7 +2226,7 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
     </div>
     <div class="mcard">
       <div class="mlabel">Breakthrough flagged</div>
-      <div class="mvalue">2</div>
+      <div class="mvalue">0</div>
       <div style="font-size:11px;color:var(--text-secondary);">Score 8.0+ · scanned 80</div>
     </div>
     <div class="mcard">
@@ -2248,18 +2248,18 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
 <div class="card card-info">
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
     <span style="font-size:10px;font-weight:500;color:#185fa5;text-transform:uppercase;letter-spacing:.06em;">Paper of the week</span>
-    <span class="score-pill" style="font-size:11px;padding:3px 10px;">8.2 / 10</span>
+    <span class="score-pill" style="font-size:11px;padding:3px 10px;">7.8 / 10</span>
   </div>
-  <a class="link-card" href="http://arxiv.org/abs/2605.00820v1" target="_blank" style="padding:8px 10px;margin:-8px -10px 6px;"><div style="font-size:16px;font-weight:500;line-height:1.4;"><span class="linked-title">HyCOP: Hybrid Composition Operators for Interpretable Learning of PDEs</span></div></a>
-  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Zhao · Zhao et al. · 6 authors · arXiv:2605.00820v1 · May 01, 2026</div>
+  <a class="link-card" href="http://arxiv.org/abs/2605.00825v1" target="_blank" style="padding:8px 10px;margin:-8px -10px 6px;"><div style="font-size:16px;font-weight:500;line-height:1.4;"><span class="linked-title">Posterior Augmented Flow Matching</span></div></a>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">Stoica · Stoica et al. · 9 authors · arXiv:2605.00825v1 · May 01, 2026</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-    <span class="cat-tag">Machine Learning</span>
+    <span class="cat-tag">Computer Vision</span>
   </div>
   <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:10px;">
     <div style="font-size:10px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Plain-english summary</div>
-    <div style="font-size:13px;line-height:1.5;color:var(--text-primary);font-weight:500;">HyCOP is a new AI system for solving partial differential equations (the math behind physics simulations like fluid flow or heat transfer) by assembling small, reusable building blocks—like advection, diffusion, and boundary handling—into short programs tailored to each problem. Instead of training one giant black-box neural network, it learns which module to apply and when, mixing traditional numerical solvers with learned components.</div>
+    <div style="font-size:13px;line-height:1.5;color:var(--text-primary);font-weight:500;">This paper introduces Posterior-Augmented Flow Matching (PAFM), an improved training method for image generation models that use flow matching. Instead of training each example toward a single target image, PAFM trains it toward a weighted mixture of plausible target images, which gives the model a richer learning signal and reduces noise during training. The technique improves image quality scores (FID) by up to 3.4 points across multiple model sizes and architectures with minimal extra compute cost.</div>
   </div>
-  <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;"><strong style="font-weight:500;">Why it matters:</strong> Scientific machine learning has struggled with generalizing beyond training conditions and explaining its predictions, limiting adoption in engineering and climate modeling where reliability is critical. HyCOP's modular, interpretable approach offers order-of-magnitude better out-of-distribution performance and lets practitioners swap components (like boundary conditions) without retraining, which could make AI surrogates practical for real industrial simulation workflows. Its error decomposition also provides a diagnostic tool, addressing a major trust barrier for deploying neural solvers in high-stakes physics applications.</div>
+  <div style="font-size:12px;color:var(--text-primary);line-height:1.5;margin-bottom:10px;"><strong style="font-weight:500;">Why it matters:</strong> Flow matching underlies many state-of-the-art generative models, so a drop-in training improvement that boosts quality without significantly increasing compute is directly valuable for companies building image and video generators. By addressing 'flow collapse'—where models memorize input-output pairings rather than learning generalizable dynamics—PAFM could lead to more diverse and higher-fidelity outputs in production systems. The consistent gains across architectures (SiT, MMDiT) and conditioning types (class, text) suggest broad applicability to existing generative AI pipelines.</div>
   <div class="disclaimer">Sources: arXiv &middot; Selected and summarized by Claude Sonnet &middot; Updated daily</div>
 </div>
 
@@ -2271,28 +2271,16 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
   <div style="margin-top:10px;">
     
 
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00642v1" target="_blank" style="padding:14px 8px;">
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00809v1" target="_blank" style="padding:14px 8px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
-        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Learn where to Click from Yourself: On-Policy Self-Distillation for GUI Grounding</span></div>
-        <span class="score-pill" style="flex-shrink:0;">8.2</span>
-      </div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Zhang et al. · 5 authors · </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
-        <span class="cat-tag">AI</span><span class="cat-tag">Computer Vision</span>
-      </div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">GUI-SD uses self-distillation from a single rollout with visual guidance to train GUI grounding models more efficiently than expensive reinforcement learning methods.</div>
-    </a>
-    
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00825v1" target="_blank" style="padding:14px 8px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
-        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Posterior Augmented Flow Matching</span></div>
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Let ViT Speak: Generative Language-Image Pre-training</span></div>
         <span class="score-pill" style="flex-shrink:0;">7.5</span>
       </div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Stoica et al. · 9 authors · </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Fang et al. · 10 authors · </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
         <span class="cat-tag">Computer Vision</span>
       </div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Posterior-Augmented Flow Matching trains generative models more robustly by supervising each trajectory with multiple plausible target completions instead of single targets, reducing variance and preventing flow collapse.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">GenLIP trains Vision Transformers to directly predict language tokens from images, achieving strong multimodal performance with simpler training and less data than existing methods.</div>
     </a>
     
     <a class="linkrow" href="http://arxiv.org/abs/2605.00768v1" target="_blank" style="padding:14px 8px;">
@@ -2304,21 +2292,55 @@ function filterModel(val){document.querySelectorAll('.model-deep').forEach(funct
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
         <span class="cat-tag">NLP</span>
       </div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Local attention in transformers can express strictly more formal languages than global attention alone, providing theoretical justification for why this simpler mechanism often improves model performance.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Local attention in transformers strictly increases expressivity over global attention alone by introducing a new temporal operator, while combining both creates the richest recognizable language class.</div>
     </a>
     
-    <a class="linkrow" href="http://arxiv.org/abs/2605.00610v1" target="_blank" style="padding:14px 8px;">
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00754v1" target="_blank" style="padding:14px 8px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
-        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Decouple before Integration: Test-time Synthesis of SFT and RLVR Task Vectors</span></div>
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Themis: Training Robust Multilingual Code Reward Models for Flexible Multi-Criteria Scoring</span></div>
         <span class="score-pill" style="flex-shrink:0;">7.5</span>
       </div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Yuan et al. · 5 authors · </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Paul et al. · 3 authors · </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
         <span class="cat-tag">Machine Learning</span>
       </div>
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;"># One-Sentence Summary
-
-Models trained separately with supervised fine-tuning and reinforcement learning can be combined at test-time through task vector arithmetic to gain both knowledge breadth and reasoning depth without the training conflicts of direct integration.</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Researchers created the largest collection of code preferences and trained multilingual reward models that can evaluate code quality across multiple criteria beyond just correctness, showing these models improve with size.</div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00742v1" target="_blank" style="padding:14px 8px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Position: agentic AI orchestration should be Bayes-consistent</span></div>
+        <span class="score-pill" style="flex-shrink:0;">7.5</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Papamarkou et al. · 30 authors · </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="cat-tag">AI</span><span class="cat-tag">Machine Learning</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Agentic AI systems should use Bayesian decision theory at the orchestration layer to make principled choices about which tools to use and how to allocate resources, rather than requiring LLMs themselves to be Bayesian.</div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00674v1" target="_blank" style="padding:14px 8px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Beyond Benchmarks: MathArena as an Evaluation Platform for Mathematics with LLMs</span></div>
+        <span class="score-pill" style="flex-shrink:0;">7.5</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Dekoninck et al. · 7 authors · </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="cat-tag">NLP</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">MathArena provides a continuously updated evaluation platform covering diverse mathematical tasks from olympiads to research problems, addressing limitations of static benchmarks for tracking LLM progress.</div>
+    </a>
+    
+    <a class="linkrow" href="http://arxiv.org/abs/2605.00640v1" target="_blank" style="padding:14px 8px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px;">
+        <div style="font-size:13px;font-weight:500;line-height:1.4;flex:1;"><span class="linked-title">Knowing when to trust machine-learned interatomic potentials</span></div>
+        <span class="score-pill" style="flex-shrink:0;">7.5</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:6px;">Mehdi et al. · 3 authors · </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="cat-tag">Machine Learning</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">A new method called PROBE uses a lightweight classifier to assess when machine-learned atomic models are reliable by analyzing their internal representations, outperforming existing ensemble approaches without retraining the original model.</div>
     </a>
     
 
@@ -2390,26 +2412,14 @@ Models trained separately with supervised fine-tuning and reinforcement learning
     
       
         
-        <a class="link-card" href="http://arxiv.org/abs/2605.00642v1" target="_blank" style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
-          <div class="avatar" style="background:#7F77DD33;color:#7F77DD;width:36px;height:36px;font-size:12px;flex-shrink:0;">Zh</div>
+        <a class="link-card" href="http://arxiv.org/abs/2605.00809v1" target="_blank" style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
+          <div class="avatar" style="background:#7F77DD33;color:#7F77DD;width:36px;height:36px;font-size:12px;flex-shrink:0;">Fa</div>
           <div style="flex:1;min-width:0;">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
-              <span style="font-size:13px;font-weight:500;">Zhang et al. · 5 authors</span>
+              <span style="font-size:13px;font-weight:500;">Fang et al. · 10 authors</span>
               <span style="font-size:11px;color:var(--text-secondary);"></span>
             </div>
-            <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">Learn where to Click from Yourself: On-Policy Self-Distillation for GUI Grounding</span></div>
-            <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">Notable paper selected from this week's top arXiv results.</div>
-          </div>
-        </a>
-        
-        <a class="link-card" href="http://arxiv.org/abs/2605.00825v1" target="_blank" style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
-          <div class="avatar" style="background:#7F77DD33;color:#7F77DD;width:36px;height:36px;font-size:12px;flex-shrink:0;">St</div>
-          <div style="flex:1;min-width:0;">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
-              <span style="font-size:13px;font-weight:500;">Stoica et al. · 9 authors</span>
-              <span style="font-size:11px;color:var(--text-secondary);"></span>
-            </div>
-            <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">Posterior Augmented Flow Matching</span></div>
+            <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">Let ViT Speak: Generative Language-Image Pre-training</span></div>
             <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">Notable paper selected from this week's top arXiv results.</div>
           </div>
         </a>
@@ -2422,6 +2432,18 @@ Models trained separately with supervised fine-tuning and reinforcement learning
               <span style="font-size:11px;color:var(--text-secondary);"></span>
             </div>
             <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">Characterizing the Expressivity of Local Attention in Transformers</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">Notable paper selected from this week's top arXiv results.</div>
+          </div>
+        </a>
+        
+        <a class="link-card" href="http://arxiv.org/abs/2605.00754v1" target="_blank" style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
+          <div class="avatar" style="background:#7F77DD33;color:#7F77DD;width:36px;height:36px;font-size:12px;flex-shrink:0;">Pa</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+              <span style="font-size:13px;font-weight:500;">Paul et al. · 3 authors</span>
+              <span style="font-size:11px;color:var(--text-secondary);"></span>
+            </div>
+            <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">Themis: Training Robust Multilingual Code Reward Models for Flexible Multi-Criteria Scoring</span></div>
             <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">Notable paper selected from this week's top arXiv results.</div>
           </div>
         </a>
@@ -2467,17 +2489,17 @@ Models trained separately with supervised fine-tuning and reinforcement learning
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
     
 
-    <div class="signal-row signal-warning">Safety dominates the week's output (77/197 papers, ~39%), the largest single topic, suggesting the field is shifting from capability-first to alignment-and-risk research at a pace that may signal mounting deployment concerns.</div>
+    <div class="signal-row signal-up">Safety dominates the week with 77/197 papers (39%) tackling robustness and trust, exemplified by 'Knowing when to trust machine-learned interatomic potentials' and Themis's robust reward modeling, signaling alignment work is now mainstream rather than niche.</div>
     
-    <div class="signal-row signal-up">Agentic AI continues consolidating as a core paradigm with 63/197 papers on agents, exemplified by top-scoring 'Learn where to Click from Yourself' (8.2) which uses on-policy self-distillation for GUI grounding—pointing to self-improving agents replacing static demonstration pipelines.</div>
+    <div class="signal-row signal-up">Evaluation infrastructure is maturing rapidly with 68 benchmark-focused papers including 'Beyond Benchmarks: MathArena' which reframes math evaluation as a living platform rather than a static dataset, suggesting the field is moving past saturated leaderboards.</div>
     
-    <div class="signal-row signal-up">Efficiency remains a structural priority (50/197 papers) and now intersects heavily with reasoning, as seen in 'Decouple before Integration' (7.5) which composes SFT and RLVR task vectors at test time rather than retraining—indicating modular post-training is gaining traction over monolithic fine-tunes.</div>
+    <div class="signal-row signal-up">Agentic AI continues its surge (63 papers) but is now demanding theoretical grounding, as seen in the position paper arguing 'agentic AI orchestration should be Bayes-consistent'—a sign the subfield is transitioning from empirical hacking to principled foundations.</div>
     
-    <div class="signal-row signal-neu">Benchmarks are second-most prevalent (68/197), appearing alongside three of the top five papers, signaling the field is in a measurement-heavy phase where evaluation design is increasingly co-published with method contributions.</div>
+    <div class="signal-row signal-neu">Multimodal generation is converging architecturally, with 'Let ViT Speak' pushing generative language-image pre-training directly into ViT backbones, hinting at a unification trend across the 24 multimodal and 44 CV papers this week.</div>
     
-    <div class="signal-row signal-up">Interpretability and theoretical grounding are resurging via the top tier, with 'HyCOP' (8.2) offering interpretable PDE operators and 'Characterizing the Expressivity of Local Attention' (7.5) providing formal transformer analysis—a counterweight to the prevailing empirical-scaling narrative.</div>
+    <div class="signal-row signal-warning">Reasoning papers (only 30/197) are underrepresented relative to agents (63), raising concerns that orchestration and tool-use research is outpacing the underlying reasoning capabilities those agents depend on.</div>
     
-    <div class="signal-row signal-down">Multimodal work appears comparatively underrepresented (24/197, ~12%) despite Computer Vision being strong (44), suggesting unified vision-language-audio research may be plateauing relative to vision-only and agent-focused efforts this week.</div>
+    <div class="signal-row signal-up">Theoretical analysis of transformer internals is regaining traction, with 'Characterizing the Expressivity of Local Attention' scoring 7.5—indicating renewed appetite for architectural understanding alongside the 50 efficiency-focused papers chasing practical gains.</div>
     
 
 
@@ -2562,7 +2584,7 @@ Models trained separately with supervised fine-tuning and reinforcement learning
 })();
 (function(){
   // Breakthrough radar - bubble chart with x=time-to-impact, y=significance
-  var data = [{"quadrant": "deploy_now", "score": 8.2, "significance": 5.0, "time_to_impact": 2.5, "title": "HyCOP: Hybrid Composition Operators for Interpretable Learni\u2026"}, {"quadrant": "deploy_now", "score": 8.2, "significance": 5.0, "time_to_impact": 2.5, "title": "Learn where to Click from Yourself: On-Policy Self-Distillat\u2026"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Posterior Augmented Flow Matching"}, {"quadrant": "incremental", "score": 7.5, "significance": 5.5, "time_to_impact": 5.0, "title": "Characterizing the Expressivity of Local Attention in Transf\u2026"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Decouple before Integration: Test-time Synthesis of SFT and \u2026"}];
+  var data = [{"quadrant": "deploy_now", "score": 7.8, "significance": 5.0, "time_to_impact": 2.5, "title": "Posterior Augmented Flow Matching"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Let ViT Speak: Generative Language-Image Pre-training"}, {"quadrant": "incremental", "score": 7.5, "significance": 5.5, "time_to_impact": 5.0, "title": "Characterizing the Expressivity of Local Attention in Transf\u2026"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Themis: Training Robust Multilingual Code Reward Models for \u2026"}, {"quadrant": "watch_closely", "score": 7.5, "significance": 7.5, "time_to_impact": 7.0, "title": "Position: agentic AI orchestration should be Bayes-consisten\u2026"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Beyond Benchmarks: MathArena as an Evaluation Platform for M\u2026"}, {"quadrant": "deploy_now", "score": 7.5, "significance": 5.0, "time_to_impact": 2.5, "title": "Knowing when to trust machine-learned interatomic potentials"}];
   if(!data || data.length === 0) return;
   var ctx = document.getElementById('breakthroughRadarChart');
   if(!ctx) return;
@@ -2603,7 +2625,7 @@ Models trained separately with supervised fine-tuning and reinforcement learning
   <div class="pf-line1">AI Intelligence Dashboard &middot; Updated daily &middot; Last refresh: 2026-05-04</div>
   <div class="pf-line2">Sources: Hacker News &middot; arXiv &middot; GitHub Trending &middot; Yahoo Finance &middot; Web search</div>
   <div class="pf-line3">Curated and synthesized by Claude (Anthropic)</div>
-  <div class="health-indicator"><span class="health-dot" style="background:#e3a01a;"></span>1 checks degraded</div>
+  <div class="health-indicator"><span class="health-dot" style="background:#3b6d11;"></span>All systems healthy</div>
 </div>
 
 </div>
