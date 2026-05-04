@@ -1464,6 +1464,84 @@ def _fallback_sentiment_history(model_sentiments: list, today: str) -> Dict:
         ],
     }
 
+
+# ============================================================
+# Model trend-driver normalization (render-safe fallback)
+# ============================================================
+
+def _classify_trend_driver_direction(text: str, fallback_score: float = 0.0) -> str:
+    """Classify trend-driver text into positive/negative/neutral for Page 2 icons.
+
+    Keep this intentionally conservative. If the text does not clearly contain
+    a directional signal, return neutral. Do not infer direction from the
+    model's overall sentiment score, otherwise almost every row becomes
+    non-neutral.
+    """
+    text_l = str(text or "").lower()
+
+    negative_keywords = [
+        "weakest", "poorly", "poor", "worse", "struggle", "struggles",
+        "fails", "failure", "issue", "issues", "concern", "concerns",
+        "criticism", "criticized", "delay", "drop", "decline", "risk",
+        "problem", "controversy", "regression", "hallucination",
+    ]
+    positive_keywords = [
+        "improved", "improvement", "growth", "increase", "adoption",
+        "launch", "launched", "release", "released", "upgrade",
+        "breakthrough", "outperform", "outperformed", "beat", "beats",
+        "partnership", "record", "milestone",
+    ]
+
+    neg_hit = any(k in text_l for k in negative_keywords)
+    pos_hit = any(k in text_l for k in positive_keywords)
+
+    if neg_hit and not pos_hit:
+        return "negative"
+    if pos_hit and not neg_hit:
+        return "positive"
+    return "neutral"
+
+
+def _normalize_model_trend_drivers(model_sentiments: list) -> list:
+    """Ensure every trend driver is a dict with text, direction, and optional url."""
+    out = []
+    for row in model_sentiments or []:
+        row2 = dict(row)
+        try:
+            fallback_score = float(row2.get("sentiment_score") or 0)
+        except (TypeError, ValueError):
+            fallback_score = 0.0
+
+        normalized = []
+        for d in row2.get("trend_drivers") or []:
+            if isinstance(d, str):
+                text = d.strip()
+                if text:
+                    normalized.append({
+                        "text": text,
+                        "direction": _classify_trend_driver_direction(text, fallback_score),
+                    })
+            elif isinstance(d, dict):
+                text = str(d.get("text") or d.get("title") or "").strip()
+                if not text:
+                    continue
+                existing = str(d.get("direction") or d.get("signal") or d.get("sentiment") or "").lower()
+                if existing in {"up", "positive", "bullish"}:
+                    direction = "positive"
+                elif existing in {"down", "negative", "bearish"}:
+                    direction = "negative"
+                elif existing in {"neutral", "neu", "mixed"}:
+                    direction = "neutral"
+                else:
+                    direction = _classify_trend_driver_direction(text, fallback_score)
+                item = dict(d)
+                item["text"] = text
+                item["direction"] = direction
+                normalized.append(item)
+        row2["trend_drivers"] = normalized
+        out.append(row2)
+    return out
+
 def render_dashboard(daily_data: Dict) -> str:
     """Render the dashboard HTML from a daily-data JSON payload.
 
@@ -1511,7 +1589,7 @@ def render_dashboard(daily_data: Dict) -> str:
         research_stories=research_stories,
         synthesis=daily_data.get("synthesis", {}),
         metrics=daily_data.get("metrics", {}),
-        model_sentiments=daily_data.get("model_sentiments", []),
+        model_sentiments=_normalize_model_trend_drivers(daily_data.get("model_sentiments", [])),
         etfs=daily_data.get("etfs", []),
         public_ai=daily_data.get("public_ai", []),
         category_breakdown=daily_data.get("category_breakdown", {}),

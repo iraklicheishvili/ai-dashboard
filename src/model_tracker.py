@@ -77,6 +77,93 @@ def _model_brief() -> str:
     return json.dumps(rows, indent=2)
 
 
+
+
+def classify_signal(text: str) -> str:
+    """Classify a trend-driver sentence into the direction expected by render.py.
+
+    render.py checks `d.direction` and supports:
+      - positive / up     -> ▲
+      - negative / down   -> ▼
+      - neutral           -> ●
+    """
+    text_l = str(text or "").lower()
+
+    positive_keywords = [
+        "launch", "launched", "release", "released", "rollout", "rolled out",
+        "growth", "increase", "increased", "adoption", "partnership",
+        "expansion", "expanded", "improvement", "improved", "upgrade",
+        "breakthrough", "open source", "new model", "funding", "integration",
+        "strong", "positive", "outperform", "outperformed", "win", "wins",
+    ]
+
+    negative_keywords = [
+        "delay", "delayed", "issue", "issues", "problem", "problems",
+        "concern", "concerns", "criticism", "criticized", "drop", "decline",
+        "declined", "risk", "risks", "bug", "bugs", "controversy",
+        "lawsuit", "outage", "safety", "hallucination", "hallucinations",
+        "negative", "weak", "underperform", "underperformed", "ban", "blocked",
+    ]
+
+    if any(keyword in text_l for keyword in positive_keywords):
+        return "positive"
+    if any(keyword in text_l for keyword in negative_keywords):
+        return "negative"
+    return "neutral"
+
+
+def normalize_trend_drivers(drivers: Any) -> List[Dict[str, Any]]:
+    """Normalize old/new trend-driver formats for Page 2 rendering.
+
+    Older cache rows may contain strings, while render.py expects dictionaries
+    with `text` and `direction`. This keeps the dashboard backward-compatible
+    and ensures ▲ / ▼ / ● icons can render correctly.
+    """
+    if not isinstance(drivers, list):
+        return []
+
+    normalized: List[Dict[str, Any]] = []
+    for driver in drivers:
+        if isinstance(driver, str):
+            text = driver.strip()
+            if not text:
+                continue
+            normalized.append({
+                "text": text,
+                "direction": classify_signal(text),
+            })
+            continue
+
+        if isinstance(driver, dict):
+            text = str(driver.get("text") or driver.get("title") or driver.get("summary") or "").strip()
+            if not text:
+                continue
+            direction = (
+                driver.get("direction")
+                or driver.get("signal")
+                or driver.get("sentiment")
+                or classify_signal(text)
+            )
+            direction = str(direction).lower().strip()
+            if direction in {"up", "positive", "pos"}:
+                direction = "positive"
+            elif direction in {"down", "negative", "neg"}:
+                direction = "negative"
+            else:
+                direction = "neutral"
+
+            item = {
+                "text": text,
+                "direction": direction,
+            }
+            url = driver.get("url") or driver.get("source_url") or driver.get("external_url")
+            if url:
+                item["url"] = url
+            normalized.append(item)
+
+    return normalized
+
+
 def load_model_deep_cache() -> Dict[str, Any]:
     return _read_json(Path(config.MODEL_DEEP_CACHE_PATH), {"_updated": "", "models": {}})
 
@@ -298,5 +385,6 @@ def attach_model_intelligence(
         if not deep.get("recent_changes") and events_history.get(mid):
             deep["recent_changes"] = events_history.get(mid, [])[:10]
         row2["deep"] = deep
+        row2["trend_drivers"] = normalize_trend_drivers(row2.get("trend_drivers"))
         enriched.append(row2)
     return enriched

@@ -146,6 +146,81 @@ def build_source_hot_topics(curated_stories: List[Dict]) -> Dict[str, List[Dict]
     return ordered
 
 
+
+
+# ============================================================
+# Model trend-driver normalization
+# ============================================================
+
+def classify_trend_driver_direction(text: str) -> str:
+    """Classify model trend-driver text for Page 2 arrows.
+
+    Renderer expects each trend driver as:
+      {"text": "...", "direction": "positive|negative|neutral", "url": "..."}
+
+    Older daily JSON files may still contain plain strings, so this function is
+    intentionally local and deterministic to support $0 render-only fixes.
+    """
+    text_l = str(text or "").lower()
+
+    positive_keywords = [
+        "advance", "advanced", "beat", "beats", "benchmark win", "better",
+        "breakthrough", "capable", "consistently exceeded", "effective",
+        "faster", "gain", "gains", "good enough", "growth", "improve",
+        "improved", "improvement", "increase", "launch", "launched",
+        "outperform", "outperformed", "partnership", "positive", "release",
+        "released", "replacement", "strong", "surprisingly", "upgrade",
+        "useful", "very good", "good", "offers real", "win", "wins",
+    ]
+    negative_keywords = [
+        "ability", "bad", "behind", "bug", "cannot", "concern",
+        "concerns", "controversy", "criticism", "decline", "delay",
+        "drop", "easily manipulated", "fails", "issue", "lack", "lacks",
+        "manipulated", "negative", "poor", "poorly", "problem", "risk",
+        "struggle", "struggles", "weak", "weakest", "worse",
+    ]
+
+    pos_hit = any(k in text_l for k in positive_keywords)
+    neg_hit = any(k in text_l for k in negative_keywords)
+
+    # Negative terms like "weakest" or "poorly" should not be neutralized by
+    # nearby generic positive wording such as "exceeded expectations".
+    if neg_hit:
+        return "negative"
+    if pos_hit:
+        return "positive"
+    return "neutral"
+
+
+def normalize_trend_drivers(model_sentiments: List[Dict]) -> List[Dict]:
+    """Normalize trend_drivers for old and new payloads before rendering."""
+    normalized_rows: List[Dict] = []
+    for row in model_sentiments or []:
+        row2 = dict(row)
+        normalized_drivers: List[Dict] = []
+        for d in row2.get("trend_drivers") or []:
+            if isinstance(d, str):
+                text = d.strip()
+                if text:
+                    normalized_drivers.append({
+                        "text": text,
+                        "direction": classify_trend_driver_direction(text),
+                    })
+            elif isinstance(d, dict):
+                text = str(d.get("text") or d.get("title") or "").strip()
+                if not text:
+                    continue
+                direction = d.get("direction") or d.get("signal") or d.get("sentiment")
+                normalized_drivers.append({
+                    **d,
+                    "text": text,
+                    "direction": direction or classify_trend_driver_direction(text),
+                })
+        row2["trend_drivers"] = normalized_drivers
+        normalized_rows.append(row2)
+    return normalized_rows
+
+
 # ============================================================
 # Persistent history helpers
 # ============================================================
@@ -418,16 +493,26 @@ def enrich_payload_for_render(payload: Dict) -> Dict:
     from src import model_tracker, health
 
     enriched = merge_finance_cache(dict(payload))
+
+    # Normalize old/plain-string trend drivers before rendering.
+    enriched["model_sentiments"] = normalize_trend_drivers(
+        enriched.get("model_sentiments") or []
+    )
+
     backfill_missing_history_files()
     events_history = model_tracker.load_model_events_history()
     deep_cache = model_tracker.load_model_deep_cache()
     strengths_cache = model_tracker.load_model_strengths_cache()
-    enriched["model_sentiments"] = model_tracker.attach_model_intelligence(
-        enriched.get("model_sentiments") or [],
-        deep_cache=deep_cache,
-        strengths_cache=strengths_cache,
-        events_history=events_history,
+
+    enriched["model_sentiments"] = normalize_trend_drivers(
+        model_tracker.attach_model_intelligence(
+            enriched.get("model_sentiments") or [],
+            deep_cache=deep_cache,
+            strengths_cache=strengths_cache,
+            events_history=events_history,
+        )
     )
+
     enriched.setdefault("source_hot_topics", build_source_hot_topics(enriched.get("stories") or []))
     enriched["volume_history"] = build_volume_history(enriched)
     enriched["sentiment_history"] = build_sentiment_history(enriched)

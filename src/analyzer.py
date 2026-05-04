@@ -309,8 +309,18 @@ Return ONLY a JSON object:
   "neutral": <count of neutral comments>,
   "sentiment_score": <1-10 float; 6.5 = neutral, 8+ = strongly positive>,
   "label": "positive" | "neutral" | "negative",
-  "drivers": ["short opinion 1", "short opinion 2", "short opinion 3"]
-}}"""
+  "drivers": [
+    {{"text": "short opinion 1", "direction": "positive"}},
+    {{"text": "short opinion 2", "direction": "negative"}},
+    {{"text": "short opinion 3", "direction": "neutral"}}
+  ]
+}}
+
+Driver direction rules:
+- positive = the fragment is clearly favorable toward {model_name}
+- negative = the fragment is clearly critical of {model_name}
+- neutral = factual, mixed, unclear, or comparative without a clear sentiment
+- Use ONLY: positive, negative, neutral"""
 
     try:
         text = haiku_call(get_client(), prompt, model=config.HAIKU_MODEL, max_tokens=600)
@@ -330,13 +340,28 @@ Return ONLY a JSON object:
         }
 
     # Coerce types defensively
+    raw_drivers = data.get("drivers") or []
+    drivers = []
+    for d in raw_drivers[:3]:
+        if isinstance(d, dict):
+            driver_text = str(d.get("text") or "").strip()
+            direction = str(d.get("direction") or "neutral").strip().lower()
+            if direction not in {"positive", "negative", "neutral"}:
+                direction = "neutral"
+            if driver_text:
+                drivers.append({"text": driver_text, "direction": direction})
+        elif isinstance(d, str):
+            driver_text = d.strip()
+            if driver_text:
+                drivers.append({"text": driver_text, "direction": "neutral"})
+
     return {
         "positive": int(data.get("positive") or 0),
         "negative": int(data.get("negative") or 0),
         "neutral": int(data.get("neutral") or 0),
         "sentiment_score": float(data.get("sentiment_score") or 6.5),
         "label": str(data.get("label") or "neutral"),
-        "drivers": list(data.get("drivers") or [])[:3],
+        "drivers": drivers,
     }
 
 
@@ -376,9 +401,7 @@ def analyze_model_sentiment_hn(model_cfg: Dict, hours_back: int = 72) -> Dict:
         "story_count": len(stories),
         "comment_count": total,
         "wow_delta_pct": "",  # filled later from history
-        "trend_drivers": [
-            {"direction": "neutral", "text": d} for d in classified["drivers"]
-        ],
+        "trend_drivers": classified["drivers"],
         "mentions_breakdown": {
             "positive": pos,
             "negative": neg,

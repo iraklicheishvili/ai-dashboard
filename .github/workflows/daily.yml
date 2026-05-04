@@ -22,15 +22,18 @@ on:
         type: boolean
 
   schedule:
-    # GitHub cron is UTC. These map to Georgia time (UTC+4):
+    # GitHub cron is UTC. These map to Tbilisi (UTC+4):
     # 07:00 Tbilisi daily lightweight run
     - cron: "0 3 * * *"
     # 08:00 Tbilisi Monday finance refresh
     - cron: "0 4 * * 1"
     # 09:00 Tbilisi Monday model deep-dive refresh
     - cron: "0 5 * * 1"
-    # 10:00 Tbilisi first Wednesday monthly strengths/weaknesses
-    - cron: "0 6 1-7 * 3"
+    # 10:00 Tbilisi every Wednesday — but the monthly job below
+    # gates to the first Wednesday of the month via a bash date check.
+    # (POSIX cron treats day-of-month + day-of-week as OR, so we cannot
+    # encode "first Wednesday" in cron alone; the gate runs in-job.)
+    - cron: "0 6 * * 3"
 
 permissions:
   contents: write
@@ -157,16 +160,41 @@ jobs:
 
   monthly:
     name: Monthly strengths synthesis
-    if: github.event.schedule == '0 6 1-7 * 3' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'monthly')
+    if: github.event.schedule == '0 6 * * 3' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'monthly')
     runs-on: ubuntu-latest
     steps:
+      - name: Gate to first week of month (only on scheduled cron)
+        id: gate
+        run: |
+          # On scheduled runs, only proceed if today is the first Wednesday
+          # of the month (day-of-month between 1 and 7). On workflow_dispatch
+          # we always proceed because a human asked for it.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual dispatch — proceeding regardless of date."
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          DOM=$(date -u +%d)
+          DOM_INT=$((10#$DOM))
+          if [ "$DOM_INT" -le 7 ]; then
+            echo "Today is day $DOM_INT (first week) — proceeding with monthly synthesis."
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Today is day $DOM_INT (not first week of month) — skipping. Monthly synthesis only runs on the first Wednesday."
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.proceed == 'true'
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.proceed == 'true'
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt
+      - if: steps.gate.outputs.proceed == 'true'
+        run: pip install -r requirements.txt
 
       - name: Run monthly-only refresh
+        if: steps.gate.outputs.proceed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -177,6 +205,7 @@ jobs:
           fi
 
       - name: Commit output
+        if: steps.gate.outputs.proceed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -185,6 +214,7 @@ jobs:
           git push
 
       - name: Deploy dashboard to GitHub Pages
+        if: steps.gate.outputs.proceed == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
