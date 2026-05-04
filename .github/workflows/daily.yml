@@ -1,12 +1,49 @@
-name: Daily AI Dashboard
+name: AI Dashboard Pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Which pipeline mode to run"
+        required: true
+        default: "daily"
+        type: choice
+        options:
+          - daily
+          - finance
+          - model
+          - monthly
+          - render
+          - full
+      force:
+        description: "Bypass cache freshness guards for one-off backfills"
+        required: false
+        default: false
+        type: boolean
+
+  schedule:
+    # GitHub cron is UTC. These map to Georgia time (UTC+4):
+    # 07:00 Tbilisi daily lightweight run
+    - cron: "0 3 * * *"
+    # 08:00 Tbilisi Monday finance refresh
+    - cron: "0 4 * * 1"
+    # 09:00 Tbilisi Monday model deep-dive refresh
+    - cron: "0 5 * * 1"
+    # 10:00 Tbilisi first Wednesday monthly strengths/weaknesses
+    - cron: "0 6 1-7 * 3"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-dashboard-pipeline
+  cancel-in-progress: false
 
 jobs:
-  run-pipeline:
+  daily:
+    name: Daily lightweight run
+    if: github.event.schedule == '0 3 * * *' || (github.event_name == 'workflow_dispatch' && (inputs.mode == 'daily' || inputs.mode == 'full'))
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,28 +56,158 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run pipeline
+      - name: Run daily pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REDDIT_MODE: ${{ vars.REDDIT_MODE || 'off' }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
-        run: python -m src.main
-      
-      - name: Commit finance cache if updated
         run: |
-          if [ -f output/finance-cache.json ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add output/finance-cache.json
-            if git diff --staged --quiet; then
-              echo "No cache changes to commit"
-            else
-              git commit -m "Update finance cache [skip ci]"
-              git push
-            fi
+          if [ "${{ inputs.force || false }}" = "true" ]; then
+            python -m src.main --daily --force
+          else
+            python -m src.main --daily
           fi
-            
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Daily dashboard update [skip ci]" || echo "No output changes"
+          git push
+
+      - name: Deploy dashboard to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/dashboard
+
+  finance:
+    name: Weekly finance refresh
+    if: github.event.schedule == '0 4 * * 1' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'finance')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      - name: Run finance-only refresh
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ inputs.force || false }}" = "true" ]; then
+            python -m src.main --finance-only --force
+          else
+            python -m src.main --finance-only
+          fi
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Finance refresh [skip ci]" || echo "No output changes"
+          git push
+
+      - name: Deploy dashboard to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/dashboard
+
+  model:
+    name: Weekly model intelligence refresh
+    if: github.event.schedule == '0 5 * * 1' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'model')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      - name: Run model-only refresh
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ inputs.force || false }}" = "true" ]; then
+            python -m src.main --model-only --force
+          else
+            python -m src.main --model-only
+          fi
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Model intelligence refresh [skip ci]" || echo "No output changes"
+          git push
+
+      - name: Deploy dashboard to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/dashboard
+
+  monthly:
+    name: Monthly strengths synthesis
+    if: github.event.schedule == '0 6 1-7 * 3' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'monthly')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      - name: Run monthly-only refresh
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ inputs.force || false }}" = "true" ]; then
+            python -m src.main --monthly-only --force
+          else
+            python -m src.main --monthly-only
+          fi
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Monthly model strengths refresh [skip ci]" || echo "No output changes"
+          git push
+
+      - name: Deploy dashboard to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/dashboard
+
+  render:
+    name: Render-only refresh
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'render'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python -m src.main --render-only
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Render dashboard [skip ci]" || echo "No output changes"
+          git push
       - name: Deploy dashboard to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

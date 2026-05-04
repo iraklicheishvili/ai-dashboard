@@ -12,7 +12,7 @@ Cost per weekly run (~$0.20):
   - 6 web searches @ $10/1000 = ~$0.06
   - Sonnet synthesis: ~$0.14
 
-Throttled with 60s sleeps between every Sonnet call to stay under the
+Throttled with 90s sleeps between every Sonnet call to stay under the
 30K tokens/min free-tier rate limit. Total runtime: ~7 min.
 
 Resumable: progress is saved to output/finance-progress.json after every
@@ -38,7 +38,7 @@ SONNET_MODEL = "claude-sonnet-4-6"
 WEB_SEARCH_TOOL = {"type": "web_search_20250305", "name": "web_search", "max_uses": 3}
 
 # Throttle (seconds) before each Sonnet call to stay under 30K input tokens/min
-THROTTLE_SECONDS = 60
+THROTTLE_SECONDS = 90
 
 
 # ============================================================

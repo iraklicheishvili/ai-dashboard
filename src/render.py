@@ -274,7 +274,13 @@ SHELL_HEAD = r"""
   .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
   .source-chip{font-size:10px;color:var(--text-secondary);background:var(--bg-secondary);border-radius:99px;padding:2px 7px;display:inline-block;}
   .bar-track{height:8px;background:var(--bg-secondary);border-radius:99px;overflow:hidden;}
-  .bar-fill{height:100%;border-radius:99px;background:#7F77DD;}
+  .bar-fill{height:100%;border-radius:99px;background:#7F77DD;transition:filter 150ms ease, transform 150ms ease;position:relative;}
+  .bar-track:hover .bar-fill{filter:brightness(1.15);}
+  .split-card-grid{display:grid;grid-template-columns:1fr 1fr;min-height:260px;}
+  .split-panel{padding:16px 18px;display:flex;flex-direction:column;}
+  .split-panel + .split-panel{border-left:0.5px solid var(--border);}
+  .split-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  @media (max-width:760px){.split-card-grid{grid-template-columns:1fr}.split-panel + .split-panel{border-left:none;border-top:0.5px solid var(--border);}}
   .toggle-row{display:inline-flex;gap:4px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:4px;border:0.5px solid var(--border);}
   .toggle-btn{font-family:inherit;font-size:11px;border:none;border-radius:calc(var(--radius-md) - 2px);padding:6px 10px;background:transparent;color:var(--text-secondary);cursor:pointer;}
   .toggle-btn.active{background:var(--bg-primary);color:var(--text-primary);box-shadow:0 1px 2px rgba(0,0,0,0.15);}
@@ -305,7 +311,13 @@ SHELL_HEAD = r"""
   .signal-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;margin-right:6px;font-size:10px;font-weight:600;}
   .signal-icon.up{color:#1D9E75;}
   .signal-icon.down{color:#E24B4A;}
-  .signal-icon.neutral{color:#888780;}
+  .signal-icon.neutral{color:#7F77DD;}
+  .deep-metric .mvalue{font-size:15px!important;line-height:1.25;word-break:break-word;}
+  .deep-metric .metric-note{font-size:10px;color:var(--text-secondary);margin-top:3px;line-height:1.25;}
+  .trait-panel{border-left:3px solid transparent;}
+  .trait-panel.trait-strength{border-left-color:#1D9E75;}
+  .trait-panel.trait-weakness{border-left-color:#E24B4A;}
+  .trait-panel .cap-item{padding-left:0;}
   .pro-foot{margin-top:20px;padding:18px 4px 8px;border-top:0.5px solid var(--border);text-align:center;font-size:11px;color:var(--text-secondary);line-height:1.7;}
   .pro-foot .pf-line1{font-weight:500;color:var(--text-primary);}
   .pro-foot .pf-line2{color:var(--text-secondary);}
@@ -429,19 +441,21 @@ PAGE_1_BODY = r"""
 </div>
 
 <div class="card" style="padding:0">
-  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:240px">
-    <div style="padding:16px 18px;border-right:0.5px solid var(--border)">
+  <div class="split-card-grid">
+    <div class="split-panel">
       <div class="sec-title">Category breakdown</div>
       <div class="sec-sub">Today's curated stories by primary tag</div>
       {% if category_breakdown %}
-      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:10px;position:relative">
-        <canvas id="catDonut" width="160" height="160" style="flex-shrink:0;width:160px;height:160px"></canvas>
-        <div id="catLegend" style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:12px;max-width:100%"></div>
+      <div class="split-body">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;min-height:190px;">
+          <canvas id="catDonut" width="160" height="160" style="flex-shrink:0;width:160px;height:160px"></canvas>
+          <div id="catLegend" style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:12px;max-width:100%"></div>
+        </div>
       </div>
       {% else %}<div class="empty-state">No category mix today</div>{% endif %}
       <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Categories assigned by Claude during scoring</div>
     </div>
-    <div style="padding:16px 18px">
+    <div class="split-panel">
       <div class="sec-title">Trending topics</div>
       <div class="sec-sub">Themes emerging from today's curated stories</div>
       {% set sorted_topics = synthesis.trending_topics | default([]) | sort(attribute='weight', reverse=true) %}
@@ -450,7 +464,7 @@ PAGE_1_BODY = r"""
         {% set w = term.weight | int %}
         <div style="margin:9px 0;">
           <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span>{{ term.term }}</span><span class="source-chip">{{ term.category | default('theme') }}</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:{{ [w * 10, 100] | min }}%;"></div></div>
+          <div class="bar-track" title="{{ w }} discussions / weighted mentions"><div class="bar-fill" style="width:{{ [w * 10, 100] | min }}%;"></div></div>
         </div>
         {% endfor %}
       {% else %}<div class="empty-state">No major trending topics today</div>{% endif %}
@@ -514,7 +528,7 @@ function filterSource(val){document.querySelectorAll('.source-group').forEach(fu
       <div class="story-meta"><span>{{ s.source or s.subreddit }}</span>{% for tag in s.category_tags or [] %}<span class="cat-tag">{{ tag }}</span>{% endfor %}</div>
     </a>
     {% endfor %}
-    {% if synthesis.fintech_implications %}<div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;"><strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications }}</div>{% endif %}
+    {% if synthesis.fintech_implications %}<div style="margin-top:10px;font-size:12px;color:var(--text-primary);line-height:1.5;border-top:0.5px solid var(--border);padding-top:10px;"><strong style="font-weight:500;">Strategic read:</strong> {{ synthesis.fintech_implications | replace('Mastercard', 'international payment schemes') | replace('mastercard', 'international payment schemes') | replace('card networks like Visa/Mastercard', 'international payment schemes') }}</div>{% endif %}
   {% else %}<div class="empty-state">No major fintech AI stories today</div>{% endif %}
   <div class="disclaimer">Sources: Hacker News, arXiv, GitHub Trending · Strategic implications synthesized by Claude Sonnet · Updated daily</div>
 </div>
@@ -536,7 +550,7 @@ PAGE_2_BODY = r"""
       <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-secondary);">
         <span>Buzz <strong style="color:var(--text-primary);font-weight:500;">{{ m.buzz_volume | default(0) }}%</strong></span>
         <span>Mentions <strong style="color:var(--text-primary);font-weight:500;">{{ m.comment_count | default(m.story_count | default(0)) }}</strong></span>
-        {% if m.wow_delta_pct %}<span class="{{ 'up' if m.wow_delta_pct.startswith('+') else 'down' }}" style="font-weight:500;">{{ m.wow_delta_pct }} WoW</span>{% else %}<span class="neu">— WoW</span>{% endif %}
+        {% if m.wow_delta_pct %}<span class="{{ 'up' if m.wow_delta_pct.startswith('+') else 'down' }}" style="font-weight:500;">{{ m.wow_delta_pct }} WoW</span>{% else %}<span class="neu">No prior WoW</span>{% endif %}
       </div>
       {% if not (m.story_count or m.comment_count) %}<div style="font-size:11px;color:var(--text-tertiary);margin-top:6px;">No discussion today</div>{% endif %}
     </div>
@@ -614,14 +628,14 @@ function setTrendMode(mode){
   <div class="model-deep" data-model="{{ m.model_config.name }}"{% if not loop.first %} style="display:none"{% endif %}>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px;">
       <div class="mcard"><div class="mlabel">Sentiment</div><div class="mvalue" style="color:{{ m.model_config.color }};">{{ "%.1f"|format(m.sentiment_score | default(0)) }}</div><div style="font-size:10px;color:var(--text-secondary);">out of 10</div></div>
-      <div class="mcard"><div class="mlabel">{% if model_id == 'llama' %}Downloads{% else %}MAU{% endif %}</div><div class="mvalue" style="font-size:18px;">{{ deep.mau | default('Not disclosed') }}</div><div style="font-size:10px;color:var(--text-secondary);">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}Phase 3 weekly cache{% endif %}</div></div>
-      <div class="mcard"><div class="mlabel">{% if model_id == 'llama' %}Derivatives{% else %}Market share{% endif %}</div><div class="mvalue" style="font-size:18px;">{{ deep.market_share | default('—') }}</div><div style="font-size:10px;color:var(--text-secondary);">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}Phase 3 weekly cache{% endif %}</div></div>
-      <div class="mcard"><div class="mlabel">Buzz volume</div><div class="mvalue" style="font-size:18px;">{{ m.buzz_volume | default(0) }}%</div><div style="font-size:10px;color:var(--text-secondary);">HN discussion</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">{% if model_id == 'llama' %}Downloads{% else %}MAU{% endif %}</div><div class="mvalue">{{ deep.mau | default('Not disclosed') }}</div><div class="metric-note">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}weekly cache{% endif %}</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">{% if model_id == 'llama' %}Derivatives{% else %}Market share{% endif %}</div><div class="mvalue">{{ deep.market_share | default('—') }}</div><div class="metric-note">{% if deep.last_updated %}as of {{ deep.last_updated }}{% else %}weekly cache{% endif %}</div></div>
+      <div class="mcard deep-metric"><div class="mlabel">Buzz volume</div><div class="mvalue">{{ m.buzz_volume | default(0) }}%</div><div class="metric-note">HN discussion</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div class="stat-card"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>{% if deep.strengths %}{% for s in deep.strengths %}<div class="cap-item"><div class="dot-g"></div><div>{{ s }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
-      <div class="stat-card"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>{% if deep.weaknesses %}{% for w in deep.weaknesses %}<div class="cap-item"><div class="dot-r"></div><div>{{ w }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
+      <div class="stat-card trait-panel trait-strength"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Strengths</div>{% if deep.strengths %}{% for s in deep.strengths %}<div class="cap-item"><div>{{ s }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
+      <div class="stat-card trait-panel trait-weakness"><div style="font-size:11px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Weaknesses</div>{% if deep.weaknesses %}{% for w in deep.weaknesses %}<div class="cap-item"><div>{{ w }}</div></div>{% endfor %}{% else %}<div class="empty-state">Not enough discussion this month to synthesize.</div>{% endif %}</div>
     </div>
 
     <div style="margin-bottom:14px;">
@@ -1131,8 +1145,9 @@ PAGE_4_BODY = r"""
   <div class="sec-title">Author spotlight</div>
   <div class="sec-sub">Researchers who published notable work this week</div>
   <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
-    {% if author_spotlight %}
-    {% for a in author_spotlight %}
+    {% set author_items = author_spotlight if author_spotlight else [] %}
+    {% if author_items %}
+    {% for a in author_items %}
     <a class="link-card" href="{{ a.url | default(a.author_url | default('#')) }}"{% if a.url or a.author_url %} target="_blank"{% endif %} style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
       <div class="avatar" style="background:{{ a.color | default('#7F77DD') }}33;color:{{ a.color | default('#7F77DD') }};width:36px;height:36px;font-size:12px;flex-shrink:0;">{{ a.initials }}</div>
       <div style="flex:1;min-width:0;">
@@ -1146,7 +1161,23 @@ PAGE_4_BODY = r"""
       </div>
     </a>
     {% endfor %}
-    {% else %}<div class="empty-state">No author spotlight generated this week.</div>{% endif %}
+    {% else %}
+      {% if top_papers %}
+        {% for p in top_papers[:3] %}
+        <a class="link-card" href="{{ p.url | default('#') }}"{% if p.url %} target="_blank"{% endif %} style="display:flex;gap:12px;background:var(--bg-secondary);border-radius:var(--radius-md);padding:12px 14px;">
+          <div class="avatar" style="background:#7F77DD33;color:#7F77DD;width:36px;height:36px;font-size:12px;flex-shrink:0;">{{ (p.authors | default('AI'))[:2] }}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+              <span style="font-size:13px;font-weight:500;">{{ p.authors | default('Research team') }}</span>
+              <span style="font-size:11px;color:var(--text-secondary);">{{ p.institution | default('arXiv') }}</span>
+            </div>
+            <div style="font-size:13px;font-weight:500;line-height:1.4;margin-bottom:4px;"><span class="linked-title">{{ p.title }}</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic;">Notable paper selected from this week's top arXiv results.</div>
+          </div>
+        </a>
+        {% endfor %}
+      {% else %}<div class="empty-state">No author spotlight generated this week.</div>{% endif %}
+    {% endif %}
   </div>
   <div class="disclaimer">Sources: arXiv author tracking &middot; Synthesized by Claude Sonnet &middot; Updated daily</div>
 </div>

@@ -1,7 +1,11 @@
 """Main orchestrator for the AI Intelligence Dashboard.
 
 Modes:
-  python -m src.main                 # full pipeline
+  python -m src.main                 # full pipeline (manual/local)
+  python -m src.main --daily         # lightweight daily run; skips weekly/monthly web-search caches if fresh
+  python -m src.main --finance-only  # refresh finance cache only, then re-render from saved data
+  python -m src.main --model-only    # refresh model deep/event cache only, then re-render from saved data
+  python -m src.main --monthly-only  # refresh monthly strengths/weaknesses only, then re-render
   python -m src.main --render-only   # $0 local render from saved JSON/caches
 
 Phase 3 additions:
@@ -19,7 +23,7 @@ import json
 import os
 import time
 from collections import Counter
-from datetime import date
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -158,6 +162,59 @@ def _read_json(path: Path, default: Any) -> Any:
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+
+
+def _parse_iso_date(value: Any) -> Optional[date]:
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(str(value)[:10])
+    except (TypeError, ValueError):
+        return None
+
+
+def cache_age_days(path: Path, date_keys: Optional[List[str]] = None) -> Optional[int]:
+    """Return cache age in days using explicit date fields first, then file mtime."""
+    if not path.exists():
+        return None
+    payload = _read_json(path, {})
+    if isinstance(payload, dict):
+        for key in (date_keys or []):
+            parsed = _parse_iso_date(payload.get(key))
+            if parsed:
+                return max((date.today() - parsed).days, 0)
+        parsed = _parse_iso_date(payload.get("last_updated") or payload.get("updated_at") or payload.get("date"))
+        if parsed:
+            return max((date.today() - parsed).days, 0)
+    try:
+        mtime = datetime.fromtimestamp(path.stat().st_mtime).date()
+        return max((date.today() - mtime).days, 0)
+    except OSError:
+        return None
+
+
+def cache_is_fresh(path: Path, max_age_days: int, date_keys: Optional[List[str]] = None) -> bool:
+    age = cache_age_days(path, date_keys=date_keys)
+    return age is not None and age < max_age_days
+
+
+def merge_finance_cache(payload: Dict) -> Dict:
+    """Overlay latest finance cache onto a render payload.
+
+    This lets --finance-only update output/finance-cache.json and then re-render
+    without re-running the full daily pipeline.
+    """
+    finance = _read_json(Path(config.FINANCE_CACHE_PATH), {})
+    if not isinstance(finance, dict) or not finance:
+        return payload
+    merged = dict(payload)
+    for key in [
+        "_finance_updated", "funding_summary", "funding_rounds", "private_ai",
+        "arms_race", "vc_league", "money_flow", "ma_tracker", "fintech_spotlight",
+    ]:
+        if key in finance:
+            merged[key] = finance.get(key)
+    return merged
 
 
 def _normalize_github_history(raw: Any) -> Dict[str, Any]:
@@ -360,7 +417,7 @@ def enrich_payload_for_render(payload: Dict) -> Dict:
     """Attach render-only derived structures and cached Phase 3 data."""
     from src import model_tracker, health
 
-    enriched = dict(payload)
+    enriched = merge_finance_cache(dict(payload))
     backfill_missing_history_files()
     events_history = model_tracker.load_model_events_history()
     deep_cache = model_tracker.load_model_deep_cache()
@@ -408,14 +465,18 @@ def render_only() -> None:
 # Full pipeline
 # ============================================================
 
-def run_pipeline() -> None:
-    """Run the full daily pipeline."""
+def run_pipeline(mode: str = "full", force: bool = False) -> None:
+    """Run the daily/full pipeline.
+
+    mode="daily" keeps the scheduled daily job lightweight by using existing
+    weekly/monthly caches unless forced. mode="full" is for manual local runs.
+    """
     from src import scraper, analyzer, stocks, model_tracker, health
     from src.arxiv_analyzer import analyze_arxiv_papers
     from src.finance_analyzer import analyze_finance
 
     print("=" * 60)
-    print("AI Intelligence Dashboard — daily pipeline")
+    print(f"AI Intelligence Dashboard — {mode} pipeline")
     print(f"Date: {date.today().isoformat()}")
     print("=" * 60)
 
@@ -463,21 +524,33 @@ def run_pipeline() -> None:
     is_monday = date.today().weekday() == 0
     is_monthly = date.today().day == 1
 
-    if is_monday:
+    model_cache_path = Path(config.MODEL_DEEP_CACHE_PATH)
+    model_cache_fresh = cache_is_fresh(model_cache_path, 7, date_keys=["_updated", "last_updated", "_model_updated"])
+    should_refresh_model = force or (is_monday and mode == "full" and not model_cache_fresh)
+    if should_refresh_model:
         print("  Cooling off 60s before model deep-dive pull (rate-limit safety)...")
         time.sleep(60)
         deep_cache = model_tracker.refresh_model_deep_cache(events_history)
     else:
         deep_cache = model_tracker.load_model_deep_cache()
-        print("  Model deep-dive cache loaded")
+        if model_cache_fresh:
+            print("  Model deep-dive cache fresh (<7 days) — skipping web search")
+        else:
+            print("  Model deep-dive cache loaded")
 
-    if is_monthly:
+    strengths_cache_path = Path(config.MODEL_STRENGTHS_CACHE_PATH)
+    strengths_fresh = cache_is_fresh(strengths_cache_path, 28, date_keys=["_updated", "last_updated", "_strengths_updated"])
+    should_refresh_strengths = force or (is_monthly and mode == "full" and not strengths_fresh)
+    if should_refresh_strengths:
         print("  Cooling off 60s before monthly strengths synthesis...")
         time.sleep(60)
         strengths_cache = model_tracker.refresh_model_strengths_cache(sentiment_history)
     else:
         strengths_cache = model_tracker.load_model_strengths_cache()
-        print("  Model strengths cache loaded")
+        if strengths_fresh:
+            print("  Model strengths cache fresh — skipping monthly synthesis")
+        else:
+            print("  Model strengths cache loaded")
 
     model_sentiments = model_tracker.attach_model_intelligence(
         model_sentiments,
@@ -491,7 +564,9 @@ def run_pipeline() -> None:
     finance_cache_path = Path(config.FINANCE_CACHE_PATH)
     finance_payload: Dict = {}
 
-    if is_monday:
+    finance_fresh = cache_is_fresh(finance_cache_path, 7, date_keys=["_finance_updated", "last_updated"])
+    should_refresh_finance = force or (is_monday and mode == "full" and not finance_fresh)
+    if should_refresh_finance:
         print("  Cooling off 90s before finance pull (rate-limit safety after model intelligence)...")
         time.sleep(90)
         print("  Monday — refreshing finance data via web search...")
@@ -506,6 +581,8 @@ def run_pipeline() -> None:
         except Exception as exc:
             print(f"  finance refresh failed: {exc}")
             finance_payload = {}
+    elif finance_fresh:
+        print("  Finance cache fresh (<7 days) — skipping web search")
 
     if not finance_payload and finance_cache_path.exists():
         try:
@@ -570,11 +647,91 @@ def run_pipeline() -> None:
     print("=" * 60)
 
 
+def run_finance_only(force: bool = False) -> None:
+    """Refresh finance cache only, then re-render dashboard from saved JSON/caches."""
+    path = Path(config.FINANCE_CACHE_PATH)
+    if not force and cache_is_fresh(path, 7, date_keys=["_finance_updated", "last_updated"]):
+        print("Finance cache fresh (<7 days) — skipping web search")
+        render_only()
+        return
+    from src.finance_analyzer import analyze_finance
+
+    print("Finance-only refresh — cooling off 90s before web search...")
+    time.sleep(90)
+    try:
+        payload = analyze_finance()
+        _write_json(path, payload)
+        print(f"Finance cache updated: {path}")
+    except Exception as exc:
+        print(f"Finance-only refresh failed: {exc}")
+        print("Keeping existing finance cache and re-rendering.")
+    render_only()
+
+
+def run_model_only(force: bool = False) -> None:
+    """Refresh model deep cache only, then re-render dashboard from saved JSON/caches."""
+    backfill_missing_history_files()
+    path = Path(config.MODEL_DEEP_CACHE_PATH)
+    if not force and cache_is_fresh(path, 7, date_keys=["_updated", "last_updated", "_model_updated"]):
+        print("Model deep cache fresh (<7 days) — skipping web search")
+        render_only()
+        return
+
+    from src import model_tracker
+
+    latest = load_latest_daily_payload()
+    events = model_tracker.append_daily_model_events(latest.get("stories") or [])
+    print("Model-only refresh — cooling off 60s before web search...")
+    time.sleep(60)
+    try:
+        model_tracker.refresh_model_deep_cache(events)
+    except Exception as exc:
+        print(f"Model-only refresh failed: {exc}")
+        print("Keeping existing model cache and re-rendering.")
+    render_only()
+
+
+def run_monthly_only(force: bool = False) -> None:
+    """Refresh monthly strengths/weaknesses only, then re-render dashboard."""
+    backfill_missing_history_files()
+    history = load_model_sentiment_history()
+    path = Path(config.MODEL_STRENGTHS_CACHE_PATH)
+    if not force and cache_is_fresh(path, 28, date_keys=["_updated", "last_updated", "_strengths_updated"]):
+        print("Model strengths cache fresh — skipping monthly synthesis")
+        render_only()
+        return
+
+    from src import model_tracker
+
+    print("Monthly-only refresh — cooling off 60s before synthesis...")
+    time.sleep(60)
+    try:
+        model_tracker.refresh_model_strengths_cache(history)
+    except Exception as exc:
+        print(f"Monthly-only refresh failed: {exc}")
+        print("Keeping existing strengths cache and re-rendering.")
+    render_only()
+
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AI Intelligence Dashboard pipeline")
     parser.add_argument("--render-only", action="store_true", help="Re-render from saved JSON without any API calls")
+    parser.add_argument("--daily", action="store_true", help="Run lightweight daily pipeline using existing weekly/monthly caches")
+    parser.add_argument("--finance-only", action="store_true", help="Refresh finance cache only, then re-render")
+    parser.add_argument("--model-only", action="store_true", help="Refresh model deep cache only, then re-render")
+    parser.add_argument("--monthly-only", action="store_true", help="Refresh monthly strengths/weaknesses only, then re-render")
+    parser.add_argument("--force", action="store_true", help="Bypass cache freshness guards for one-off manual backfills")
     args = parser.parse_args()
     if args.render_only:
         render_only()
+    elif args.finance_only:
+        run_finance_only(force=args.force)
+    elif args.model_only:
+        run_model_only(force=args.force)
+    elif args.monthly_only:
+        run_monthly_only(force=args.force)
+    elif args.daily:
+        run_pipeline(mode="daily", force=args.force)
     else:
-        run_pipeline()
+        run_pipeline(mode="full", force=args.force)
