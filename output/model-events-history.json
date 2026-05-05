@@ -25,6 +25,12 @@
       "text": "DeepClaude – Claude Code agent loop with DeepSeek V4 Pro",
       "url": "https://github.com/aattaran/deepclaude",
       "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-03",
+      "text": "affaan-m/everything-claude-code",
+      "url": "https://github.com/affaan-m/everything-claude-code",
+      "source": "GitHub Trending"
     }
   ],
   "chatgpt": [
@@ -33,6 +39,12 @@
       "text": "f/prompts.chat",
       "url": "https://github.com/f/prompts.chat",
       "source": "GitHub Trending"
+    },
+    {
+      "date": "2026-05-04",
+      "text": "How OpenAI delivers low-latency voice AI at scale",
+      "url": "https://openai.com/index/delivering-low-latency-voice-ai-at-scale/",
+      "source": "Hacker News"
     },
     {
       "date": "2026-05-03",
