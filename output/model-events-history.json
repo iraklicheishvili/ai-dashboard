@@ -15,6 +15,18 @@
   ],
   "claude": [
     {
+      "date": "2026-05-06",
+      "text": "MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents",
+      "url": "http://arxiv.org/abs/2605.03952v1",
+      "source": "arXiv"
+    },
+    {
+      "date": "2026-05-05",
+      "text": "Agents for financial services and insurance",
+      "url": "https://www.anthropic.com/news/finance-agents",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-03",
       "text": "How Kepler built verifiable AI for financial services with Claude",
       "url": "https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude",
@@ -34,6 +46,12 @@
     }
   ],
   "chatgpt": [
+    {
+      "date": "2026-05-05",
+      "text": "GPT‑5.5 Instant",
+      "url": "https://openai.com/index/gpt-5-5-instant/",
+      "source": "Hacker News"
+    },
     {
       "date": "2026-05-04",
       "text": "f/prompts.chat",
@@ -64,6 +82,14 @@
       "date": "2026-05-02",
       "text": "VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage",
       "url": "https://github.com/microsoft/vscode/pull/310226",
+      "source": "Hacker News"
+    }
+  ],
+  "llama": [
+    {
+      "date": "2026-05-05",
+      "text": "Zuckerberg 'Personally Authorized and Encouraged' Meta's Copyright Infringement",
+      "url": "https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/",
       "source": "Hacker News"
     }
   ]
