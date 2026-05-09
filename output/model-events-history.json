@@ -21,6 +21,30 @@
   ],
   "claude": [
     {
+      "date": "2026-05-08",
+      "text": "Teaching Claude Why",
+      "url": "https://www.anthropic.com/research/teaching-claude-why",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-08",
+      "text": "Claude Code CVE-2026-39861:sandbox escape via symlink",
+      "url": "https://github.com/advisories/GHSA-vp62-r36r-9xqp",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-08",
+      "text": "Teaching Claude Why",
+      "url": "https://alignment.anthropic.com/2026/teaching-claude-why/",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-08",
+      "text": "Show HN: Git for AI Agents",
+      "url": "https://github.com/regent-vcs/re_gent",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-07",
       "text": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
       "url": "https://www.anthropic.com/research/natural-language-autoencoders",
