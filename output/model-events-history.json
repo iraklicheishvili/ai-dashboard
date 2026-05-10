@@ -21,6 +21,18 @@
   ],
   "claude": [
     {
+      "date": "2026-05-10",
+      "text": "Anthropic weighs deal for near $1T valuation as revenue surges",
+      "url": "https://www.ft.com/content/a40cafcc-0fa4-4e70-9e24-90d826aea56d",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-09",
+      "text": "Using Claude Code: The unreasonable effectiveness of HTML",
+      "url": "https://twitter.com/trq212/status/2052809885763747935",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-08",
       "text": "Teaching Claude Why",
       "url": "https://www.anthropic.com/research/teaching-claude-why",
@@ -154,6 +166,12 @@
     }
   ],
   "gemini": [
+    {
+      "date": "2026-05-10",
+      "text": "Gemini API File Search is now multimodal",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/",
+      "source": "Hacker News"
+    },
     {
       "date": "2026-05-07",
       "text": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields",
