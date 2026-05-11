@@ -1,16 +1,26 @@
 {
-  "_updated": "2026-05-04",
+  "_updated": "2026-05-11",
   "models": {
     "chatgpt": {
-      "last_updated": "2026-05-04",
-      "mau": "~1 billion MAU (estimated; OpenAI discloses 900M WAU as of Feb 27, 2026, and 50M paying subscribers)",
-      "market_share": "~45.3% of U.S. daily AI chatbot users (mobile); ~60.4% of global AI search market share (Jan 2026)",
-      "buzz_volume_note": "5.35B monthly site visits (Feb 2026, Similarweb); #5 most-visited website globally; 2.5B prompts/day; organized boycott of 4M+ users in Mar 2026 over Pentagon deal",
+      "last_updated": "2026-05-11",
+      "mau": "~900M weekly active users (Feb 27, 2026, per OpenAI); MAU estimated ~1B+ (third-party, not officially disclosed); 50M paying subscribers (Feb 2026)",
+      "market_share": "~60–80% of AI chatbot/search market depending on metric; 45.3% U.S. mobile daily active user share (Jan 2026, Apptopia); 82% of AI-referred web traffic",
+      "buzz_volume_note": "5.35B monthly web visits (Feb 2026, Similarweb); 2.5B daily prompts; ranked #5 globally by Semrush; $110B funding round (Feb 2026) generated major press",
       "recent_changes": [
+        {
+          "date": "2026-05-05",
+          "text": "GPT‑5.5 Instant",
+          "url": "https://openai.com/index/gpt-5-5-instant/"
+        },
         {
           "date": "2026-05-04",
           "text": "f/prompts.chat",
           "url": "https://github.com/f/prompts.chat"
+        },
+        {
+          "date": "2026-05-04",
+          "text": "How OpenAI delivers low-latency voice AI at scale",
+          "url": "https://openai.com/index/delivering-low-latency-voice-ai-at-scale/"
         },
         {
           "date": "2026-05-03",
@@ -23,18 +33,8 @@
           "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses"
         },
         {
-          "date": "2026-03-05",
-          "text": "GPT-5.4 launched for Plus, Team, Pro, and Enterprise subscribers with native computer use and stronger agentic capabilities.",
-          "url": "https://shahidshahmiri.com/chatgpt-users/"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "GPT-5.3 Instant launched with a reported 26.8% reduction in hallucinations when using web search.",
-          "url": "https://shahidshahmiri.com/chatgpt-users/"
-        },
-        {
           "date": "2026-02-27",
-          "text": "OpenAI announces 900M weekly active users and 50M paying subscribers, alongside a $110B funding round at a $730B valuation.",
+          "text": "OpenAI announced 900M weekly active users and 50M paying subscribers alongside a $110B funding round",
           "url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/"
         }
       ],
@@ -42,7 +42,7 @@
         {
           "name": "Sam Altman",
           "role": "CEO, OpenAI",
-          "quote": "January and February 2026 on track to be largest months for new subscribers in OpenAI history.",
+          "quote": "January and February 2026 are on track to be the largest months for new subscribers in our history.",
           "date": "2026-02-27",
           "platform": "blog",
           "source_url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/",
@@ -52,87 +52,107 @@
       ]
     },
     "claude": {
-      "last_updated": "2026-05-04",
-      "mau": "~18.9M MAU (web, third-party estimate); ~12.48M MAU (mobile app, AICPB, Feb 2026, +49% MoM); 300K+ business customers",
-      "market_share": "~3.5–4.5% global consumer AI chatbot market; ~29% enterprise AI market share; used by 70% of Fortune 100",
-      "buzz_volume_note": "Paid subscriptions more than doubled in 2026 (Jan–Feb surge); Super Bowl ads mocking ChatGPT drove consumer signups; Claude Code at $2.5B annualized run-rate; DOD feud boosted brand awareness",
+      "last_updated": "2026-05-11",
+      "mau": "~18.9M web MAU + 12.48M app MAU (Feb 2026, AICPB/Semrush estimates); Anthropic does not officially disclose a single consolidated MAU figure; 300K+ business customers (Oct 2025)",
+      "market_share": "~4.5% global AI chatbot market (web traffic share); ~29% enterprise AI market share; leads in avg. session time at 34.7 min/DAU (Jan 2026, Apptopia)",
+      "buzz_volume_note": "613.7M total site visits in Mar 2026 (SimilarWeb, ranked #3 AI chatbot globally); paid subscriptions more than doubled in 2026; Super Bowl ads vs. ChatGPT drove consumer spike (Jan–Feb 2026)",
       "recent_changes": [
         {
-          "date": "2026-05-03",
-          "text": "How Kepler built verifiable AI for financial services with Claude",
-          "url": "https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude"
+          "date": "2026-05-10",
+          "text": "Anthropic weighs deal for near $1T valuation as revenue surges",
+          "url": "https://www.ft.com/content/a40cafcc-0fa4-4e70-9e24-90d826aea56d"
         },
         {
-          "date": "2026-05-03",
-          "text": "DeepClaude – Claude Code agent loop with DeepSeek V4 Pro",
-          "url": "https://github.com/aattaran/deepclaude"
+          "date": "2026-05-09",
+          "text": "Using Claude Code: The unreasonable effectiveness of HTML",
+          "url": "https://twitter.com/trq212/status/2052809885763747935"
         },
         {
-          "date": "2026-03-28",
-          "text": "TechCrunch reports Claude paid subscriptions more than doubled YTD 2026, driven by Super Bowl ads and DOD controversy.",
-          "url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/"
+          "date": "2026-05-08",
+          "text": "Teaching Claude Why",
+          "url": "https://www.anthropic.com/research/teaching-claude-why"
         },
         {
-          "date": "2026-02-26",
-          "text": "Dario Amodei issues public statement refusing DOD use of Claude for lethal autonomous operations or mass surveillance of U.S. citizens.",
-          "url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/"
+          "date": "2026-05-08",
+          "text": "Claude Code CVE-2026-39861:sandbox escape via symlink",
+          "url": "https://github.com/advisories/GHSA-vp62-r36r-9xqp"
         },
         {
-          "date": "2026-02-01",
-          "text": "Anthropic raises $30B Series G at $380B post-money valuation; annualized revenue run-rate reaches $14B.",
-          "url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/"
+          "date": "2026-05-08",
+          "text": "Teaching Claude Why",
+          "url": "https://alignment.anthropic.com/2026/teaching-claude-why/"
+        },
+        {
+          "date": "2026-05-08",
+          "text": "Show HN: Git for AI Agents",
+          "url": "https://github.com/regent-vcs/re_gent"
+        },
+        {
+          "date": "2026-05-07",
+          "text": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
+          "url": "https://www.anthropic.com/research/natural-language-autoencoders"
+        },
+        {
+          "date": "2026-05-07",
+          "text": "Hardening Firefox with Claude Mythos Preview",
+          "url": "https://hacks.mozilla.org/2026/05/behind-the-scenes-hardening-firefox/"
+        },
+        {
+          "date": "2026-05-06",
+          "text": "MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents",
+          "url": "http://arxiv.org/abs/2605.03952v1"
+        },
+        {
+          "date": "2026-05-06",
+          "text": "Higher usage limits for Claude and a compute deal with SpaceX",
+          "url": "https://www.anthropic.com/news/higher-limits-spacex"
         }
       ],
       "key_people": [
         {
           "name": "Dario Amodei",
           "role": "CEO, Anthropic",
-          "quote": "Anthropic refused to allow the DOD to use its AI for lethal autonomous operations or mass surveillance of American citizens.",
+          "quote": "Anthropic refused to allow the DOD to use its AI models for lethal autonomous operations or mass surveillance of American citizens.",
           "date": "2026-02-26",
           "platform": "blog",
           "source_url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/",
           "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg/330px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg",
           "initials": "DA"
-        },
-        {
-          "name": "Daniela Amodei",
-          "role": "President, Anthropic",
-          "quote": "Co-founder driving enterprise adoption; Anthropic now serves 300K+ business customers globally.",
-          "date": "2026-02-01",
-          "platform": "blog",
-          "source_url": "https://www.demandsage.com/claude-ai-statistics/",
-          "photo_url": null,
-          "initials": "DA"
         }
       ]
     },
     "gemini": {
-      "last_updated": "2026-05-04",
-      "mau": "750M MAU (Gemini app, per Alphabet Q4 2025 earnings, Feb 4 2026); 2B monthly users via AI Overviews in Google Search; Q1 2026 MAU not re-disclosed in Apr 29 earnings",
-      "market_share": "~13.5–21% of global AI chatbot web traffic share (up from ~6% YoY); 25.2% U.S. daily AI chatbot users (mobile, Jan 2026); 40% QoQ growth in Gemini Enterprise paid MAU (Q1 2026)",
-      "buzz_volume_note": "Alphabet Q1 2026 earnings (Apr 29) showed 40% QoQ growth in Enterprise paid MAU and first-party models processing 16B tokens/min via API (+60%); Gemini 3.1 Pro launched Feb 20, 2026; website traffic share rose to 25% from 6% YoY",
+      "last_updated": "2026-05-11",
+      "mau": "750M MAU on the Gemini app (Q4 2025, per Alphabet Q4 earnings); 2B monthly users via AI Overviews in Google Search; 8M+ paid Gemini Enterprise seats across 2,800+ companies",
+      "market_share": "~13.5–22% global AI chatbot market (Wells Fargo/Apptopia data, early 2026); 25.2% U.S. mobile daily AI app share (Jan 2026); Gemini Enterprise paid MAUs grew 40% QoQ in Q1 2026",
+      "buzz_volume_note": "Alphabet Q4 2025 earnings call confirmed 750M MAU milestone; Gemini API hit 85B monthly requests (Jan 2026, +142% YoY); Google Cloud grew 63% YoY to $20B in Q1 2026, largely Gemini-driven",
       "recent_changes": [
         {
-          "date": "2026-04-29",
-          "text": "Alphabet Q1 2026 earnings omit standalone Gemini MAU figure but report 40% QoQ growth in Gemini Enterprise paid MAU and 60% API token growth.",
-          "url": "https://polymarket.com/event/google-reports-gemini-monthly-active-users-above-in-q1"
+          "date": "2026-05-10",
+          "text": "Gemini API File Search is now multimodal",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/"
+        },
+        {
+          "date": "2026-05-07",
+          "text": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields",
+          "url": "https://deepmind.google/blog/alphaevolve-impact/"
         },
         {
           "date": "2026-02-20",
-          "text": "Gemini 3.1 Pro launches with improved coding capabilities, deeper Android integration, and claims leadership in 13 of 16 major benchmarks.",
+          "text": "Gemini 3.1 Pro launched, claiming top position in 13 of 16 major benchmarks including 77.1% on ARC-AGI-2",
           "url": "https://tech-insider.org/google-gemini-750-million-users-march-2026-updates/"
         },
         {
           "date": "2026-02-04",
-          "text": "Google reports Gemini app surpassed 750M MAU in Q4 2025 earnings; Sundar Pichai cites Gemini 3 launch as major milestone.",
+          "text": "Google confirmed Gemini surpassed 750M monthly active users in Q4 2025 earnings; Gemini 3 launched alongside the announcement",
           "url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/"
         }
       ],
       "key_people": [
         {
           "name": "Sundar Pichai",
-          "role": "CEO, Alphabet / Google",
-          "quote": "Our first-party models, like Gemini, now process over 10 billion tokens per minute via direct API use.",
+          "role": "CEO, Alphabet/Google",
+          "quote": "Our first-party models now process over 10 billion tokens per minute via direct API use, and the Gemini App has grown to over 750 million monthly active users.",
           "date": "2026-02-04",
           "platform": "earnings call",
           "source_url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/",
@@ -142,11 +162,16 @@
       ]
     },
     "deepseek": {
-      "last_updated": "2026-05-04",
-      "mau": "~96.88M MAU (Apr 2025, last widely cited estimate); 22.15M DAU (Jan–May 2025 peak); DeepSeek does not disclose current MAU officially",
-      "market_share": "Not disclosed; part of the collective ~14.3% 'others' slice in U.S. mobile AI chatbot DAU market (Jan 2026); banned or restricted in multiple countries",
-      "buzz_volume_note": "DeepSeek V4 and V4-Pro released Apr 24, 2026 (open-source, 1.6T params, 1M token context); 173M total app downloads since Jan 2025 launch; DeepSeek-V4-Pro had 534K HuggingFace downloads last month; banned in 7+ countries; ongoing data security scrutiny",
+      "last_updated": "2026-05-11",
+      "mau": "~130M active users at end of 2025 (Business of Apps); ~96.9M MAU as of Apr 2025 (Backlinko/trackers); 22.15M daily active users (Jan 2025 peak); DeepSeek does not officially disclose MAU",
+      "market_share": "Not disclosed; ~#4 AI app globally by MAU (mid-2025); 35% of MAUs from China, 20% India, 5% US; 38% of new AI research papers on arXiv in Q1 2025 cited DeepSeek tools",
+      "buzz_volume_note": "DeepSeek V4 Pro released Apr 24, 2026 (1.6T param MoE, MMLU-Pro 87.5%); Apr 2, 2026 UI redesign with Fast Mode/Expert Mode; Huawei/Cambricon chip partnership announced Feb 2026; 170K+ GitHub stars",
       "recent_changes": [
+        {
+          "date": "2026-05-07",
+          "text": "ZAYA1-8B matches DeepSeek-R1 on math with less than 1B active parameters",
+          "url": "https://firethering.com/zaya1-8b-open-source-math-coding-model/"
+        },
         {
           "date": "2026-05-04",
           "text": "ollama/ollama",
@@ -159,61 +184,61 @@
         },
         {
           "date": "2026-04-24",
-          "text": "DeepSeek releases DeepSeek-V4 and V4-Pro (1.6T parameter MoE, 1M-token context) as open-source on HuggingFace.",
-          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+          "text": "DeepSeek V4 Pro released: 1.6T parameter MoE, 49B active params, MMLU-Pro 87.5%, GPQA Diamond 90.1%, LiveCodeBench 93.5%, 1M token context window, MIT license",
+          "url": "https://www.gradually.ai/en/deepseek-statistics/"
         },
         {
-          "date": "2025-04-30",
-          "text": "DeepSeek releases DeepSeek-Prover-V2-671B, a math-focused model for formal theorem proving.",
-          "url": "https://en.wikipedia.org/wiki/DeepSeek_(chatbot)"
+          "date": "2026-04-02",
+          "text": "DeepSeek launched first-ever interface redesign with Fast Mode and Expert Mode, powered by DeepSeek-V3.2 (1M token context, knowledge updated to May 2025)",
+          "url": "https://bayelsawatch.com/deepseek-ai-statistics/"
         },
         {
-          "date": "2025-01-20",
-          "text": "DeepSeek-R1 launches globally, surpassing ChatGPT as #1 downloaded app on U.S. App Store within 7 days.",
-          "url": "https://en.wikipedia.org/wiki/DeepSeek_(chatbot)"
+          "date": "2026-02-01",
+          "text": "DeepSeek publicly declared partnership with Huawei and Cambricon to build an independent Chinese chip + AI model ecosystem; V4 architecture ported to indigenous accelerators",
+          "url": "https://bayelsawatch.com/deepseek-ai-statistics/"
         }
       ],
       "key_people": [
         {
           "name": "Liang Wenfeng",
-          "role": "Founder & CEO, DeepSeek / High-Flyer",
-          "quote": "Has made each iteration of DeepSeek open-source and freely available to view, modify, and use.",
-          "date": "2026-01-01",
+          "role": "Founder & CEO, DeepSeek / High-Flyer Capital",
+          "quote": "Not disclosed",
+          "date": "—",
           "platform": "—",
-          "source_url": "https://www.businessofapps.com/data/deepseek-statistics/",
+          "source_url": "https://www.gradually.ai/en/deepseek-statistics/",
           "photo_url": null,
           "initials": "LW"
         }
       ]
     },
     "grok": {
-      "last_updated": "2026-05-04",
-      "mau": "~50–64M MAU (64M reported internally by xAI in Sep 2025; ~50M cited by third-party sources for early 2026; xAI does not regularly publish official user counts)",
-      "market_share": "17.8% U.S. chatbot market share (mobile DAU, Jan 2026, per Reuters/Apptopia) — #3 in U.S. behind ChatGPT and Gemini; ~15.2% of U.S. mobile AI chatbot DAU (separate Apptopia data point)",
-      "buzz_volume_note": "298.6M monthly visits to grok.com (Feb 2026); 326.3M visits in March 2026 (highest ever, +61% YoY); controversial AI-generated image scandal triggered regulatory probes in EU, UK, and multiple countries; xAI merged with SpaceX Feb 2, 2026 at $1.25T combined valuation",
+      "last_updated": "2026-05-11",
+      "mau": "~64M MAU (xAI-reported figure shared with staff, Sep 2025; corroborated by Similarweb/Sensor Tower for early 2026); xAI does not regularly publish official user counts",
+      "market_share": "17.8% U.S. chatbot market share (Jan 2026, Reuters/Apptopia); ~15.2% U.S. mobile AI app daily share (Jan 2026); #3 chatbot in the US behind ChatGPT and Gemini",
+      "buzz_volume_note": "298.6M monthly visits to grok.com (Feb 2026, Similarweb); SpaceX acquired xAI on Feb 2, 2026 at $1.25T combined valuation; Grok 4.3 Beta released Apr 17, 2026; all 11 original co-founders departed by Mar 2026",
       "recent_changes": [
         {
+          "date": "2026-04-17",
+          "text": "xAI released Grok 4.3 Beta, continuing rapid model iteration cycle",
+          "url": "https://sqmagazine.co.uk/grok-ai-statistics/"
+        },
+        {
           "date": "2026-02-02",
-          "text": "Elon Musk merges xAI with SpaceX in an all-stock deal valuing the combined entity at $1.25 trillion, with xAI at $250B.",
+          "text": "SpaceX acquired xAI in an all-stock deal valuing the combined entity at $1.25 trillion — the largest corporate merger by valuation in history",
           "url": "https://fatjoe.com/blog/grok-ai-stats/"
         },
         {
           "date": "2026-01-01",
-          "text": "xAI raises $20B Series E at a $230B valuation; signs $750M, 3-year GPU infrastructure deal with Microsoft Azure.",
-          "url": "https://www.getpanto.ai/blog/grok-ai-statistics"
-        },
-        {
-          "date": "2026-01-01",
-          "text": "Grok 4.1 ranks #1 on LMArena (1483 Elo), preferred 64.78% of the time over previous production model.",
+          "text": "xAI raised $20B Series E at ~$230B valuation in January 2026",
           "url": "https://www.getpanto.ai/blog/grok-ai-statistics"
         }
       ],
       "key_people": [
         {
           "name": "Elon Musk",
-          "role": "Founder & CEO, xAI",
-          "quote": "Cited need to build 'orbital data centres' as rationale for xAI–SpaceX merger.",
-          "date": "2026-02-02",
+          "role": "Founder, xAI / Owner, SpaceX (parent of xAI post-merger)",
+          "quote": "Not disclosed",
+          "date": "—",
           "platform": "X",
           "source_url": "https://fatjoe.com/blog/grok-ai-stats/",
           "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Elon_Musk_-_54820081119_%28cropped%29.jpg/330px-Elon_Musk_-_54820081119_%28cropped%29.jpg",
@@ -222,25 +247,15 @@
       ]
     },
     "copilot": {
-      "last_updated": "2026-05-04",
-      "mau": "Not disclosed (Microsoft does not separately report Copilot MAU; enterprise seats embedded across Microsoft 365, GitHub, Azure, and Windows)",
-      "market_share": "~14.3% global AI chatbot web traffic share (combined with OpenAI API, some estimates); #2 in avg. time-per-DAU at 27.2 min (Jan 2026, Apptopia); 7M+ ChatGPT/Copilot workplace seats reported by OpenAI",
-      "buzz_volume_note": "Microsoft Copilot deeply embedded in Windows 11, Office 365, GitHub, and Azure; Copilot Studio used for enterprise agent building; strong avg. session engagement (27.2 min/DAU per Apptopia Jan 2026)",
+      "last_updated": "2026-05-11",
+      "mau": "Not disclosed by Microsoft as a standalone figure; Apptopia data (Jan 2026) shows Microsoft Copilot at 27.2 avg. minutes/DAU (2nd highest among AI apps); Microsoft reports 300M+ Microsoft 365 commercial seats that include Copilot integration",
+      "market_share": "~14.3–14.4% U.S. AI chatbot market (Nov 2025, Similarweb); combined ChatGPT + Copilot share ~73.3% of AI search market (early 2026, as Copilot runs on OpenAI models)",
+      "buzz_volume_note": "Copilot leads in enterprise stickiness with 27.2 min avg. session per DAU (Jan 2026, Apptopia, 2nd only to Claude); Microsoft 365 Copilot and Copilot Studio deeply embedded across enterprise customers",
       "recent_changes": [
         {
           "date": "2026-05-02",
           "text": "VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage",
           "url": "https://github.com/microsoft/vscode/pull/310226"
-        },
-        {
-          "date": "2026-02-27",
-          "text": "OpenAI discloses 7M+ workplace seats (including Copilot integrations), with enterprise seats up ~9x YoY.",
-          "url": "https://www.getpanto.ai/blog/chatgpt-statistics"
-        },
-        {
-          "date": "2026-01-01",
-          "text": "Microsoft commits $500M+ annually to integrate Claude (Anthropic) into Copilot products alongside existing GPT-4o backbone.",
-          "url": "https://www.demandsage.com/claude-ai-statistics/"
         }
       ],
       "key_people": [
@@ -250,27 +265,27 @@
           "quote": "Not disclosed",
           "date": "—",
           "platform": "—",
-          "source_url": "",
+          "source_url": "https://www.businessofapps.com/data/microsoft-copilot-statistics/",
           "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg/330px-MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg",
           "initials": "SN"
         }
       ]
     },
     "llama": {
-      "last_updated": "2026-05-04",
-      "mau": "Not disclosed (Meta does not report standalone Llama MAU; Meta AI assistant — which runs on Llama — reported 1B+ MAU as of late 2025)",
-      "market_share": "Derivatives: Thousands of fine-tuned/derivative models on HuggingFace; Llama models underpin a large share of open-source AI deployments globally. Meta AI holds an estimated minority slice of global chatbot share (tracked under Meta AI, not Llama directly).",
-      "buzz_volume_note": "Meta AI crossed 1B MAU (late 2025); Llama open weights widely adopted across academic, enterprise, and consumer use cases; no single official download count published for 2026; strong HuggingFace community activity",
+      "last_updated": "2026-05-11",
+      "mau": "Downloads: Meta AI (powered by Llama) surpassed 1 billion MAU (Meta-disclosed, early 2026); Llama model weights downloaded 1B+ times cumulative on Hugging Face/Meta by early 2026 (Meta-disclosed)",
+      "market_share": "Derivatives: Llama-based models account for the largest share of open-source LLM deployments; 13 of 15 Google products with 500M+ users leverage Gemini, while Llama dominates self-hosted/open-source enterprise stacks; exact derivative count not disclosed",
+      "buzz_volume_note": "Meta AI (Llama-powered assistant) reported 1B+ MAU (per Meta; cited by TechCrunch Feb 2026); Llama models remain the most downloaded open-weights family on Hugging Face; Meta continues Llama 4 rollout in 2026",
       "recent_changes": [
         {
-          "date": "2026-02-04",
-          "text": "Meta AI reported at 1B monthly users (cited in TechCrunch Gemini MAU story as comparison point); Llama backbone underpins Meta AI.",
-          "url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/"
+          "date": "2026-05-05",
+          "text": "Zuckerberg 'Personally Authorized and Encouraged' Meta's Copyright Infringement",
+          "url": "https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/"
         },
         {
-          "date": "2025-07-23",
-          "text": "Meta releases Llama 3.3 and Llama 3.1-405B as open-weight models; Meta AI reaches reported 700M+ MAU at time of release.",
-          "url": "https://www.demandsage.com/claude-ai-statistics/"
+          "date": "2026-02-01",
+          "text": "Meta AI surpassed 1 billion monthly active users, powered by Llama models (Meta-disclosed, cited in multiple AI statistics roundups)",
+          "url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/"
         }
       ],
       "key_people": [
@@ -280,7 +295,7 @@
           "quote": "Not disclosed",
           "date": "—",
           "platform": "—",
-          "source_url": "",
+          "source_url": "https://www.demandsage.com/claude-ai-statistics/",
           "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg/330px-Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg",
           "initials": "MZ"
         },
@@ -290,7 +305,7 @@
           "quote": "Not disclosed",
           "date": "—",
           "platform": "—",
-          "source_url": "",
+          "source_url": "https://www.demandsage.com/claude-ai-statistics/",
           "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg/330px-Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg",
           "initials": "YL"
         }
