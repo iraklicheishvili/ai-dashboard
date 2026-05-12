@@ -21,6 +21,18 @@
   ],
   "claude": [
     {
+      "date": "2026-05-12",
+      "text": "Claude Platform on AWS",
+      "url": "https://claude.com/blog/claude-platform-on-aws",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-11",
+      "text": "Show HN: adamsreview – better multi-agent PR reviews for Claude Code",
+      "url": "https://github.com/adamjgmiller/adamsreview",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-10",
       "text": "Anthropic weighs deal for near $1T valuation as revenue surges",
       "url": "https://www.ft.com/content/a40cafcc-0fa4-4e70-9e24-90d826aea56d",
