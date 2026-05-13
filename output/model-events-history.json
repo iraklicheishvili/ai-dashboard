@@ -179,6 +179,12 @@
   ],
   "gemini": [
     {
+      "date": "2026-05-12",
+      "text": "Show HN: Needle: We Distilled Gemini Tool Calling into a 26M Model",
+      "url": "https://github.com/cactus-compute/needle",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-10",
       "text": "Gemini API File Search is now multimodal",
       "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/",
