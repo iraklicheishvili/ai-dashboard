@@ -21,6 +21,12 @@
   ],
   "claude": [
     {
+      "date": "2026-05-14",
+      "text": "Claude for Small Business",
+      "url": "https://www.anthropic.com/news/claude-for-small-business",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-12",
       "text": "Claude Platform on AWS",
       "url": "https://claude.com/blog/claude-platform-on-aws",
