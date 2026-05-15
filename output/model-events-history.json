@@ -21,9 +21,27 @@
   ],
   "claude": [
     {
+      "date": "2026-05-15",
+      "text": "How Claude Code works in large codebases",
+      "url": "https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-14",
       "text": "Claude for Small Business",
       "url": "https://www.anthropic.com/news/claude-for-small-business",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-14",
+      "text": "Bitcoin trader recovers wallet with help of Claude",
+      "url": "https://www.tomshardware.com/tech-industry/cryptocurrency/bitcoin-trader-recovers-usd400-000-using-claude-ai-after-losing-wallet-password-11-years-ago-bot-tried-3-5-trillion-passwords-before-decrypting-an-old-wallet-backup",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-14",
+      "text": "Claude for Legal",
+      "url": "https://github.com/anthropics/claude-for-legal",
       "source": "Hacker News"
     },
     {
@@ -136,6 +154,12 @@
     }
   ],
   "chatgpt": [
+    {
+      "date": "2026-05-14",
+      "text": "Codex is now in the ChatGPT mobile app",
+      "url": "https://openai.com/index/work-with-codex-from-anywhere/",
+      "source": "Hacker News"
+    },
     {
       "date": "2026-05-05",
       "text": "GPT‑5.5 Instant",
