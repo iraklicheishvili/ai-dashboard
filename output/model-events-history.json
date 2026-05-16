@@ -1,6 +1,12 @@
 {
   "deepseek": [
     {
+      "date": "2026-05-15",
+      "text": "DeepSeek V4: The Open-Source Model Frontier Labs Feared",
+      "url": "https://helloai.com/articles/deepseek-v4-open-source-frontier-parity",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-07",
       "text": "ZAYA1-8B matches DeepSeek-R1 on math with less than 1B active parameters",
       "url": "https://firethering.com/zaya1-8b-open-source-math-coding-model/",
