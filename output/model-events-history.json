@@ -1,6 +1,12 @@
 {
   "deepseek": [
     {
+      "date": "2026-05-16",
+      "text": "DeepSeek-V4-Flash means LLM steering is interesting again",
+      "url": "https://www.seangoedecke.com/steering-vectors/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-15",
       "text": "DeepSeek V4: The Open-Source Model Frontier Labs Feared",
       "url": "https://helloai.com/articles/deepseek-v4-open-source-frontier-parity",
@@ -160,6 +166,18 @@
     }
   ],
   "chatgpt": [
+    {
+      "date": "2026-05-16",
+      "text": "OpenAI and Government of Malta partner to roll out ChatGPT Plus to all citizens",
+      "url": "https://openai.com/index/malta-chatgpt-plus-partnership/",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-15",
+      "text": "OpenAI is connecting ChatGPT to bank accounts via Plaid",
+      "url": "https://firethering.com/chatgpt-bank-account-plaid-openai/",
+      "source": "Hacker News"
+    },
     {
       "date": "2026-05-14",
       "text": "Codex is now in the ChatGPT mobile app",
