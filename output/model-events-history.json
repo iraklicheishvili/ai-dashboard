@@ -33,6 +33,12 @@
   ],
   "claude": [
     {
+      "date": "2026-05-17",
+      "text": "Show HN: Semble – Code search for agents that uses 98% fewer tokens than grep",
+      "url": "https://github.com/MinishLab/semble",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-15",
       "text": "How Claude Code works in large codebases",
       "url": "https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start",
