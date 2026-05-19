@@ -33,6 +33,18 @@
   ],
   "claude": [
     {
+      "date": "2026-05-18",
+      "text": "Anthropic acquires Stainless",
+      "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-18",
+      "text": "Show HN: InsForge – Open-source Heroku for coding agents",
+      "url": "https://github.com/InsForge/InsForge",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-17",
       "text": "Show HN: Semble – Code search for agents that uses 98% fewer tokens than grep",
       "url": "https://github.com/MinishLab/semble",
@@ -172,6 +184,12 @@
     }
   ],
   "chatgpt": [
+    {
+      "date": "2026-05-18",
+      "text": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+      "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "source": "Hacker News"
+    },
     {
       "date": "2026-05-16",
       "text": "OpenAI and Government of Malta partner to roll out ChatGPT Plus to all citizens",
