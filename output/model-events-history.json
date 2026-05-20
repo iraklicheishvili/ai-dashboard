@@ -257,6 +257,18 @@
   ],
   "gemini": [
     {
+      "date": "2026-05-19",
+      "text": "Gemini Omni",
+      "url": "https://deepmind.google/models/gemini-omni/",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-19",
+      "text": "Gemini CLI will stop working from June 18, 2026",
+      "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-12",
       "text": "Show HN: Needle: We Distilled Gemini Tool Calling into a 26M Model",
       "url": "https://github.com/cactus-compute/needle",
