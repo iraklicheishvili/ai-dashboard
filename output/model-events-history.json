@@ -33,6 +33,12 @@
   ],
   "claude": [
     {
+      "date": "2026-05-20",
+      "text": "Anthropic is expanding to Colossus2. Will use GB200",
+      "url": "https://twitter.com/nottombrown/status/2057194829986300375",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-18",
       "text": "Anthropic acquires Stainless",
       "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
@@ -185,6 +191,12 @@
   ],
   "chatgpt": [
     {
+      "date": "2026-05-20",
+      "text": "An OpenAI model has disproved a central conjecture in discrete geometry",
+      "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-18",
       "text": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
       "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
@@ -266,6 +278,18 @@
       "date": "2026-05-19",
       "text": "Gemini CLI will stop working from June 18, 2026",
       "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-19",
+      "text": "Gemini 3.5 Flash",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-19",
+      "text": "Google changes its search box",
+      "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
       "source": "Hacker News"
     },
     {

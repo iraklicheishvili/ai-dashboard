@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-05-20T07:01:31.627006Z",
-  "status": "degraded",
+  "timestamp": "2026-05-21T06:56:02.379619Z",
+  "status": "healthy",
   "checks": {
     "curated_stories": {
       "value": 15,
@@ -8,9 +8,9 @@
       "ok": true
     },
     "top_papers": {
-      "value": 1,
+      "value": 7,
       "expected_min": 3,
-      "ok": false
+      "ok": true
     },
     "model_sentiments": {
       "value": 7,
@@ -33,7 +33,5 @@
       "ok": true
     }
   },
-  "warnings": [
-    "top_papers"
-  ]
+  "warnings": []
 }
