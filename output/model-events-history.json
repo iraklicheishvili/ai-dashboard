@@ -33,9 +33,33 @@
   ],
   "claude": [
     {
+      "date": "2026-05-22",
+      "text": "Can AI Make Conflicts Worse? An Alignment Failure in LLM Deployment Across Conflict Contexts",
+      "url": "http://arxiv.org/abs/2605.22720v1",
+      "source": "arXiv"
+    },
+    {
+      "date": "2026-05-22",
+      "text": "Show HN: Spec-Driven Development Workflow for Claude Code",
+      "url": "https://news.ycombinator.com/item?id=48231575",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-21",
+      "text": "Show HN: I Made a Claude Skill for Spec-Driven Development (SDD)",
+      "url": "https://github.com/FredAntB/Spec-Driven-Development",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-20",
       "text": "Anthropic is expanding to Colossus2. Will use GB200",
       "url": "https://twitter.com/nottombrown/status/2057194829986300375",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-20",
+      "text": "Learnings from 100K lines of Rust with AI (2025)",
+      "url": "https://zfhuang99.github.io/rust/claude%20code/codex/contracts/spec-driven%20development/2025/12/01/rust-with-ai.html",
       "source": "Hacker News"
     },
     {
