@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-22T07:01:50.111010Z",
+  "timestamp": "2026-05-23T06:14:34.167724Z",
   "status": "healthy",
   "checks": {
     "curated_stories": {
@@ -8,7 +8,7 @@
       "ok": true
     },
     "top_papers": {
-      "value": 6,
+      "value": 7,
       "expected_min": 3,
       "ok": true
     },

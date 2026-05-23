@@ -1,6 +1,12 @@
 {
   "deepseek": [
     {
+      "date": "2026-05-22",
+      "text": "DeepSeek makes the V4 Pro price discount permanent",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-16",
       "text": "DeepSeek-V4-Flash means LLM steering is interesting again",
       "url": "https://www.seangoedecke.com/steering-vectors/",
@@ -48,6 +54,12 @@
       "date": "2026-05-21",
       "text": "Show HN: I Made a Claude Skill for Spec-Driven Development (SDD)",
       "url": "https://github.com/FredAntB/Spec-Driven-Development",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-21",
+      "text": "Launch HN: Runtime (YC P26) – Sandboxed coding agents for everyone on a team",
+      "url": "https://www.runtm.com/",
       "source": "Hacker News"
     },
     {
@@ -205,12 +217,6 @@
       "text": "DeepClaude – Claude Code agent loop with DeepSeek V4 Pro",
       "url": "https://github.com/aattaran/deepclaude",
       "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-03",
-      "text": "affaan-m/everything-claude-code",
-      "url": "https://github.com/affaan-m/everything-claude-code",
-      "source": "GitHub Trending"
     }
   ],
   "chatgpt": [

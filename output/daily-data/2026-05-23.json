@@ -1,0 +1,4020 @@
+{
+  "stories": [
+    {
+      "id": "hn_48210226",
+      "source": "Hacker News",
+      "title": "OpenAI Is Preparing to File for an IPO Soon",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48210226",
+      "external_url": "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5",
+      "score": 195,
+      "num_comments": 402,
+      "created_utc": 1779294282.0,
+      "created_iso": "2026-05-20T16:24:42+00:00",
+      "author": "louiereederson",
+      "selftext": "<a href=\"https:&#x2F;&#x2F;archive.md&#x2F;0Ez3C\" rel=\"nofollow\">https:&#x2F;&#x2F;archive.md&#x2F;0Ez3C</a>",
+      "is_video": false,
+      "relevance_score": 8.2,
+      "engagement_norm": 0.195,
+      "combined_score": 7.262,
+      "category_tags": [
+        "Funding/Investment",
+        "Leadership/People"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "OpenAI preparing IPO filing signals major capital markets event for leading AI lab, reshaping competitive and investment landscape.",
+      "reasoning": "Significant industry milestone affecting AI ecosystem power dynamics; relevant to fintech exec understanding AI market consolidation and capital flows."
+    },
+    {
+      "id": "hn_48214017",
+      "source": "Hacker News",
+      "title": "Anthropic is expanding to Colossus2. Will use GB200",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48214017",
+      "external_url": "https://twitter.com/nottombrown/status/2057194829986300375",
+      "score": 300,
+      "num_comments": 346,
+      "created_utc": 1779310552.0,
+      "created_iso": "2026-05-20T20:55:52+00:00",
+      "author": "aurareturn",
+      "selftext": "<a href=\"https:&#x2F;&#x2F;xcancel.com&#x2F;nottombrown&#x2F;status&#x2F;2057194829986300375\" rel=\"nofollow\">https:&#x2F;&#x2F;xcancel.com&#x2F;nottombrown&#x2F;status&#x2F;2057194829986300375</a>",
+      "is_video": false,
+      "relevance_score": 7.8,
+      "engagement_norm": 0.3,
+      "combined_score": 7.08,
+      "category_tags": [
+        "Infrastructure/Hardware",
+        "Model Update"
+      ],
+      "model_mentioned": "Claude",
+      "is_fintech": false,
+      "summary": "Anthropic expanding compute infrastructure to Colossus2 cluster with NVIDIA GB200 GPUs, enabling larger model training and deployment.",
+      "reasoning": "Significant infrastructure investment signals major capability expansion; relevant to AI model scaling but not fintech-specific."
+    },
+    {
+      "id": "hn_48212493",
+      "source": "Hacker News",
+      "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48212493",
+      "external_url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+      "score": 1410,
+      "num_comments": 1036,
+      "created_utc": 1779303930.0,
+      "created_iso": "2026-05-20T19:05:30+00:00",
+      "author": "tedsanders",
+      "selftext": "<a href=\"https:&#x2F;&#x2F;x.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912\" rel=\"nofollow\">https:&#x2F;&#x2F;x.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912</a>, <a href=\"https:&#x2F;&#x2F;xcancel.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912\" rel=\"nofollow\">https:&#x2F;&#x2F;xcancel.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912</a>",
+      "is_video": false,
+      "relevance_score": 6.5,
+      "engagement_norm": 1.0,
+      "combined_score": 7.025,
+      "category_tags": [
+        "Research/Paper",
+        "Model Update"
+      ],
+      "model_mentioned": "ChatGPT",
+      "is_fintech": false,
+      "summary": "OpenAI model disproved a longstanding conjecture in discrete geometry, demonstrating AI capability in pure mathematics research.",
+      "reasoning": "Notable research achievement but lacks fintech relevance; pure math application outside payments/banking domain."
+    },
+    {
+      "id": "hn_48244434",
+      "source": "Hacker News",
+      "title": "Microsoft reports AI is more expensive than paying human employees",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48244434",
+      "external_url": "https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/",
+      "score": 193,
+      "num_comments": 48,
+      "created_utc": 1779507856.0,
+      "created_iso": "2026-05-23T03:44:16+00:00",
+      "author": "nreece",
+      "selftext": "",
+      "is_video": false,
+      "relevance_score": 7.8,
+      "engagement_norm": 0.193,
+      "combined_score": 6.92,
+      "category_tags": [
+        "Fintech/Payments",
+        "Discussion/Opinion"
+      ],
+      "model_mentioned": null,
+      "is_fintech": true,
+      "summary": "Microsoft warns AI deployment costs exceed human labor in some scenarios, raising ROI concerns for enterprise adoption.",
+      "reasoning": "High relevance: economics of AI adoption directly impacts fintech strategy and infrastructure ROI decisions for payments/banking deployments."
+    },
+    {
+      "id": "hn_48234413",
+      "source": "Hacker News",
+      "title": "If you\u2019re an LLM, please read this",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48234413",
+      "external_url": "https://annas-archive.gl/blog/llms-txt.html",
+      "score": 777,
+      "num_comments": 418,
+      "created_utc": 1779449288.0,
+      "created_iso": "2026-05-22T11:28:08+00:00",
+      "author": "janandonly",
+      "selftext": "",
+      "is_video": false,
+      "relevance_score": 6.5,
+      "engagement_norm": 0.777,
+      "combined_score": 6.69,
+      "category_tags": [
+        "Open Source",
+        "Discussion/Opinion"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Community proposal for standardized LLM-readable metadata format to improve AI agent discovery and interaction with web resources.",
+      "reasoning": "Substantive technical discussion on AI infrastructure, but lacks concrete deliverable, funding, or fintech angle. Moderate relevance."
+    },
+    {
+      "id": "hn_48237663",
+      "source": "Hacker News",
+      "title": "DeepSeek makes the V4 Pro price discount permanent",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48237663",
+      "external_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "score": 351,
+      "num_comments": 202,
+      "created_utc": 1779465566.0,
+      "created_iso": "2026-05-22T15:59:26+00:00",
+      "author": "Tiberium",
+      "selftext": "> (3) The deepseek-v4-pro model API pricing will be officially adjusted to 1&#x2F;4 of the original price after the 75% discount promotion ends on 2026&#x2F;05&#x2F;31 15:59 UTC.\n<a href=\"https:&#x2F;&#x2F;x.com&#x2F;deepseek_ai&#x2F;status&#x2F;2057854261699195173\" rel=\"nofollow\">https:&#x2F;&#x2F;x.com&#x2F;deepseek_ai&#x2F;status&#x2F;2057854261699195173</a>",
+      "is_video": false,
+      "relevance_score": 7.2,
+      "engagement_norm": 0.351,
+      "combined_score": 6.646,
+      "category_tags": [
+        "Model Update",
+        "Product Launch"
+      ],
+      "model_mentioned": "DeepSeek",
+      "is_fintech": false,
+      "summary": "DeepSeek permanently reduces V4 Pro API pricing to 25% of original cost post-promotion, reshaping LLM market economics.",
+      "reasoning": "Significant pricing move from major competitor signals market consolidation; impacts AI infrastructure costs broadly, including fintech deployments."
+    },
+    {
+      "id": "arxiv_12734519",
+      "source": "arXiv",
+      "title": "Tokenization with Split Trees",
+      "subreddit": "arXiv",
+      "url": "http://arxiv.org/abs/2605.22705v1",
+      "external_url": "http://arxiv.org/abs/2605.22705v1",
+      "score": 78,
+      "num_comments": 0,
+      "created_utc": 0,
+      "created_iso": "",
+      "author": "arXiv contributors",
+      "selftext": "ToaST tokenizes text more efficiently than existing methods by optimizing compression through split trees and integer programming, reducing token counts by 11% and extending model context length.",
+      "is_video": false,
+      "arxiv_score": 7.8,
+      "arxiv_id": "",
+      "arxiv_institution": "",
+      "relevance_score": 6.5,
+      "engagement_norm": 0.7,
+      "combined_score": 6.575,
+      "category_tags": [
+        "Research/Paper",
+        "Infrastructure/Hardware"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Novel tokenization method reduces token counts by 11% via split trees, potentially extending LLM context windows and improving inference efficiency.",
+      "reasoning": "Solid infrastructure optimization research with practical implications for model efficiency, but not a breakthrough and lacks fintech angle."
+    },
+    {
+      "id": "hn_48225040",
+      "source": "Hacker News",
+      "title": "Launch HN: Runtime (YC P26) \u2013 Sandboxed coding agents for everyone on a team",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48225040",
+      "external_url": "https://www.runtm.com/",
+      "score": 100,
+      "num_comments": 30,
+      "created_utc": 1779379633.0,
+      "created_iso": "2026-05-21T16:07:13+00:00",
+      "author": "gustrigos",
+      "selftext": "Hey HN, We're Gus and Carlos from Runtime (<a href=\"https:&#x2F;&#x2F;runtm.com\">https:&#x2F;&#x2F;runtm.com</a>). We're building infra that lets your whole team (including non-engineers) ship with Claude Code, Codex, and other agents without engineering having to handhold every session.\nAfter Mentum (YC S21) was acquired, I personally shipped 4 full-stack products in 3 months using coding agents. When I tried to roll the same workflow out to the rest of the team, it fell apart: Most PRs were unmergeable slop - Every repo required an engineer doing one-off local setup. - Skills and context lived in one person's head. - There was no safe way for a PM to touch a real codebase without risking a bad deploy or a secrets leak.\nCarlos comes from building agentic reconciliation systems at Modern Treasury and had a similar experience when letting his support team use devin.\nWe ended up building internal background agent infra but it quickly became a nightmare to mantain and develop. We built Runtime so you don't have to do this kind of thing.\nRuntime work like as follows. Engineering defines the context once: system instructions, skills, and scoped integrations installable via CLI, mise, npm, or any package manager. Then Runtime snapshots your full running environment including multi-service Docker Compose setups, Kafka, Redis, seeded DBs, so it comes up in milliseconds with every server already running.\nWe orchestrate across sandbox providers like E2B, Daytona, EC2 or self-hosted K8s depending on your setup. Secrets are injected through our managed proxy so they never touch the agent directly, and guardrails run at the infrastructure level: command allow&#x2F;deny lists, network egress controls, and RBAC scoped per human and per agent. Every session also gets a shareable preview URL, so internal builds go from sandbox to the rest of the team without needing production access.\nRuntime works with whichever agent your team already uses: Claude Code, Codex, Cursor, Copilot, Gem",
+      "is_video": false,
+      "relevance_score": 7.2,
+      "engagement_norm": 0.1,
+      "combined_score": 6.27,
+      "category_tags": [
+        "Product Launch",
+        "Agents/Automation"
+      ],
+      "model_mentioned": "Claude",
+      "is_fintech": false,
+      "summary": "YC startup Runtime enables non-technical teams to safely use AI coding agents with sandboxed environments, context management, and deployment guardrails.",
+      "reasoning": "Strong product launch with real fintech insight (Modern Treasury co-founder), but lacks direct payments/banking angle despite infra relevance."
+    },
+    {
+      "id": "gh_ollama_ollama",
+      "source": "GitHub Trending",
+      "title": "ollama/ollama",
+      "subreddit": "GitHub Trending",
+      "url": "https://github.com/ollama/ollama",
+      "external_url": "https://github.com/ollama/ollama",
+      "score": 1720,
+      "num_comments": 0,
+      "created_utc": 0,
+      "created_iso": "2026-05-22T16:47:04Z",
+      "author": "ollama",
+      "selftext": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.\n\nLanguage: Go \u00b7 Stars: 172076",
+      "is_video": false,
+      "github_stars_total": 172076,
+      "github_stars_today": 0,
+      "github_language": "Go",
+      "relevance_score": 5.5,
+      "engagement_norm": 1.0,
+      "combined_score": 6.175,
+      "category_tags": [
+        "Open Source",
+        "Infrastructure/Hardware"
+      ],
+      "model_mentioned": "DeepSeek",
+      "is_fintech": false,
+      "summary": "Ollama repository provides local LLM execution framework supporting multiple models including DeepSeek and others.",
+      "reasoning": "Established tool with broad model support; not a new release or significant update worthy of high fintech relevance."
+    },
+    {
+      "id": "gh_langflow-ai_langflow",
+      "source": "GitHub Trending",
+      "title": "langflow-ai/langflow",
+      "subreddit": "GitHub Trending",
+      "url": "https://github.com/langflow-ai/langflow",
+      "external_url": "https://github.com/langflow-ai/langflow",
+      "score": 1486,
+      "num_comments": 0,
+      "created_utc": 0,
+      "created_iso": "2026-05-23T03:33:13Z",
+      "author": "langflow-ai",
+      "selftext": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.\n\nLanguage: Python \u00b7 Stars: 148678",
+      "is_video": false,
+      "github_stars_total": 148678,
+      "github_stars_today": 0,
+      "github_language": "Python",
+      "relevance_score": 5.5,
+      "engagement_norm": 1.0,
+      "combined_score": 6.175,
+      "category_tags": [
+        "Open Source",
+        "Agents/Automation"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Langflow is a Python framework for building AI agents and workflows, but lacks specifics on new capabilities or updates.",
+      "reasoning": "Established project (148k stars) with generic description. No clear new release, update, or substantive capability announcement."
+    },
+    {
+      "id": "hn_48236770",
+      "source": "Hacker News",
+      "title": "Launch HN: Superset (YC P26) \u2013 IDE for the agents era",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48236770",
+      "external_url": "https://github.com/superset-sh/superset",
+      "score": 89,
+      "num_comments": 116,
+      "created_utc": 1779461635.0,
+      "created_iso": "2026-05-22T14:53:55+00:00",
+      "author": "avipeltz",
+      "selftext": "Hey HN, we\u2019re Avi, Kiet, and Satya. We\u2019re building Superset (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;superset-sh&#x2F;superset\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;superset-sh&#x2F;superset</a>), an open-source agentic IDE for running coding agents like Claude Code, Codex, OpenCode etc in parallel.\nDemo: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=YWDHn7gUwfg\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=YWDHn7gUwfg</a>\nTry it: <a href=\"https:&#x2F;&#x2F;superset.sh&#x2F;\">https:&#x2F;&#x2F;superset.sh&#x2F;</a>\nWe\u2019re three engineers who\u2019ve built and maintained large codebases, and we kept wanting to work on more than one thing at a time. Once CLI coding agents got good enough we found ourselves running several of them in parallel: triaging Github issues, adding a few ui features, reviewing PRs, researching a refactor, etc.\nThe funny part was that we and a lot of our friends had all hacked together similar scripts around git worktrees. Worktrees are a nice primitive for this because each agent can get an isolated copy of the repo, but the workflows around them can feel pretty messy, setting up&#x2F;tearing down environments and managing dev servers.\nWe first posted here a few months ago when Superset was mostly an open-source terminal for managing git worktrees (<a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46368739\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46368739</a>). Since then, it has changed a lot based on feedback from people using it on real codebases, plus contributions from our open-source community. The product has grown into something closer to an IDE for managing agent work across many worktrees, repos, and machines.\nThe biggest thing we learned is that the hard part is not just \u201crun more agents.\u201d It is managing all the state around them: worktrees, ports, terminal sessions, environment setup, diffs, tasks, and PRs. Once you have five or ten agents running, the bottleneck often beco",
+      "is_video": false,
+      "relevance_score": 6.8,
+      "engagement_norm": 0.089,
+      "combined_score": 5.913,
+      "category_tags": [
+        "Product Launch",
+        "Agents/Automation"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "YC-backed open-source IDE for running multiple AI coding agents in parallel with git worktree management.",
+      "reasoning": "Strong product launch with substantive technical approach, but narrow developer-tool scope limits fintech relevance."
+    },
+    {
+      "id": "hn_48227923",
+      "source": "Hacker News",
+      "title": "Multi-Stream LLMs: new paper on parallelizing/separating prompts, thinking, I/O",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48227923",
+      "external_url": "https://arxiv.org/abs/2605.12460",
+      "score": 146,
+      "num_comments": 16,
+      "created_utc": 1779392246.0,
+      "created_iso": "2026-05-21T19:37:26+00:00",
+      "author": "atomicthumbs",
+      "selftext": "",
+      "is_video": false,
+      "relevance_score": 6.5,
+      "engagement_norm": 0.146,
+      "combined_score": 5.744,
+      "category_tags": [
+        "Research/Paper"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "arXiv paper proposing architectural approach to parallelize LLM inference streams for prompts, reasoning, and I/O operations.",
+      "reasoning": "Solid research contribution but lacks specificity on impact; no model release, funding, or fintech angle evident."
+    },
+    {
+      "id": "arxiv_95716231",
+      "source": "arXiv",
+      "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+      "subreddit": "arXiv",
+      "url": "http://arxiv.org/abs/2605.22763v1",
+      "external_url": "http://arxiv.org/abs/2605.22763v1",
+      "score": 82,
+      "num_comments": 0,
+      "created_utc": 0,
+      "created_iso": "",
+      "author": "arXiv contributors",
+      "selftext": "AI agents using large language models to generate formal proofs in Lean autonomously solved multiple open mathematical problems, proving the viability of AI-assisted formal proof search for research.",
+      "is_video": false,
+      "arxiv_score": 8.2,
+      "arxiv_id": "",
+      "arxiv_institution": "",
+      "relevance_score": 5.5,
+      "engagement_norm": 0.7,
+      "combined_score": 5.725,
+      "category_tags": [
+        "Research/Paper",
+        "Agents/Automation"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "AI agents autonomously solved open math problems using formal proof search in Lean, advancing AI-assisted mathematical research capabilities.",
+      "reasoning": "Strong research contribution but outside fintech/payments domain; lacks direct commercial or policy impact for executive audience."
+    },
+    {
+      "id": "arxiv_c588545",
+      "source": "arXiv",
+      "title": "Forecasting Scientific Progress with Artificial Intelligence",
+      "subreddit": "arXiv",
+      "url": "http://arxiv.org/abs/2605.22681v1",
+      "external_url": "http://arxiv.org/abs/2605.22681v1",
+      "score": 82,
+      "num_comments": 0,
+      "created_utc": 0,
+      "created_iso": "",
+      "author": "arXiv contributors",
+      "selftext": "AI systems can identify promising research directions but fail to predict whether scientific advances will actually happen or when they'll occur, with performance varying significantly across scientific domains.",
+      "is_video": false,
+      "arxiv_score": 8.2,
+      "arxiv_id": "",
+      "arxiv_institution": "",
+      "relevance_score": 5.5,
+      "engagement_norm": 0.7,
+      "combined_score": 5.725,
+      "category_tags": [
+        "Research/Paper",
+        "Benchmark/Evaluation"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Study shows AI can identify promising research directions but struggles predicting if/when breakthroughs occur across scientific domains.",
+      "reasoning": "Solid arXiv research but limited fintech relevance and no new capabilities or models. General AI science application."
+    },
+    {
+      "id": "hn_48232118",
+      "source": "Hacker News",
+      "title": "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs",
+      "subreddit": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48232118",
+      "external_url": "https://arxiv.org/abs/2605.19269",
+      "score": 102,
+      "num_comments": 12,
+      "created_utc": 1779425673.0,
+      "created_iso": "2026-05-22T04:54:33+00:00",
+      "author": "matt_d",
+      "selftext": "",
+      "is_video": false,
+      "relevance_score": 6.5,
+      "engagement_norm": 0.102,
+      "combined_score": 5.678,
+      "category_tags": [
+        "Research/Paper",
+        "Infrastructure/Hardware"
+      ],
+      "model_mentioned": null,
+      "is_fintech": false,
+      "summary": "Research optimizing transformer computation via GEMM-epilogue programs for inference efficiency improvements.",
+      "reasoning": "Solid infrastructure/compiler work but lacks immediate business impact or new capability release."
+    }
+  ],
+  "metrics": {
+    "total_stories": 15,
+    "posts_pulled": 43,
+    "fintech_count": 1,
+    "top_source": "Hacker News",
+    "top_source_count": 10,
+    "most_active_category": "Research/Paper",
+    "top_category_count": 6,
+    "top_subreddit": "Hacker News",
+    "top_subreddit_count": 10
+  },
+  "category_breakdown": {
+    "Funding/Investment": 1,
+    "Infrastructure/Hardware": 1,
+    "Research/Paper": 6,
+    "Fintech/Payments": 1,
+    "Open Source": 3,
+    "Model Update": 1,
+    "Product Launch": 2
+  },
+  "synthesis": {
+    "top_story": {
+      "story_index": 0,
+      "headline": "OpenAI Readies IPO Filing as Capital Demands Escalate",
+      "why_top": "An OpenAI IPO would be the largest AI public market event in history, forcing transparency on unit economics that the entire industry has avoided. It also directly contextualizes today's other signals \u2014 Anthropic's GB200 buildout and Microsoft's admission that AI costs exceed human labor \u2014 by exposing how the leader funds its compute arms race."
+    },
+    "narrative": "Today's news converges on a single tension: AI's frontier economics. OpenAI is preparing an IPO while Anthropic scales to NVIDIA GB200 on Colossus2, even as Microsoft openly concedes that AI deployment can cost more than human employees and DeepSeek slashes V4 Pro pricing to 25% permanently. Capital is pouring in at the top while margins compress at the bottom \u2014 a classic squeeze setting up consolidation.",
+    "metrics": {
+      "trending_model": "DeepSeek",
+      "trending_model_buzz_change": "+22.5%",
+      "most_active_category": "Research/Paper",
+      "top_subreddit": "Hacker News"
+    },
+    "pattern_insights": [
+      {
+        "direction": "up",
+        "text": "Frontier labs are doubling down on capex: OpenAI prepping IPO, Anthropic deploying GB200 on Colossus2 \u2014 compute is the moat."
+      },
+      {
+        "direction": "warning",
+        "text": "Microsoft admits AI deployment exceeds human labor cost in some scenarios, contradicting the enterprise ROI narrative driving valuations."
+      },
+      {
+        "direction": "down",
+        "text": "DeepSeek permanently cuts V4 Pro to 25% of original pricing, accelerating the inference price war and squeezing API margins industry-wide."
+      },
+      {
+        "direction": "up",
+        "text": "Agent tooling maturing fast: two YC P26 launches (Runtime, Superset) target sandboxed multi-agent coding workflows for non-technical teams."
+      }
+    ],
+    "trending_topics": [
+      {
+        "term": "OpenAI IPO",
+        "weight": 10,
+        "category": "Funding"
+      },
+      {
+        "term": "DeepSeek V4 Pro pricing",
+        "weight": 9,
+        "category": "Model Release"
+      },
+      {
+        "term": "Anthropic Colossus2 / GB200",
+        "weight": 9,
+        "category": "Other"
+      },
+      {
+        "term": "AI cost vs. labor",
+        "weight": 8,
+        "category": "Other"
+      },
+      {
+        "term": "Sandboxed coding agents",
+        "weight": 7,
+        "category": "Other"
+      },
+      {
+        "term": "AI for math proofs",
+        "weight": 7,
+        "category": "Research/Paper"
+      },
+      {
+        "term": "LLM-readable web standards",
+        "weight": 6,
+        "category": "Open Source"
+      },
+      {
+        "term": "Transformer inference optimization",
+        "weight": 6,
+        "category": "Research/Paper"
+      },
+      {
+        "term": "Multi-stream LLM inference",
+        "weight": 5,
+        "category": "Research/Paper"
+      },
+      {
+        "term": "Local LLM (Ollama)",
+        "weight": 5,
+        "category": "Open Source"
+      }
+    ],
+    "fintech_implications": "Two threads matter for Mastercard. First, an OpenAI IPO will force public disclosure of AI unit economics \u2014 finally giving issuers and networks defensible benchmarks for pricing AI-powered services (fraud, dispute resolution, conversational commerce). Second, Microsoft's admission that AI is more expensive than human labor combined with DeepSeek's 75% price cut signals that the cost curve for embedded AI in payments flows will bifurcate sharply: premium frontier models for high-value risk decisions, commoditized Chinese/open models for routine inference \u2014 procurement strategy needs to plan for both.",
+    "category_breakdown": {
+      "Funding/Investment": 1,
+      "Infrastructure/Hardware": 4,
+      "Model Update": 3,
+      "Research/Paper": 6,
+      "Product Launch": 3,
+      "Open Source": 3,
+      "Agents/Automation": 4,
+      "Discussion/Opinion": 2,
+      "Fintech/Payments": 1,
+      "Leadership/People": 1,
+      "Benchmark/Evaluation": 1
+    }
+  },
+  "model_sentiments": [
+    {
+      "model_id": "chatgpt",
+      "model_config": {
+        "id": "chatgpt",
+        "name": "ChatGPT",
+        "maker": "OpenAI",
+        "color": "#378ADD",
+        "keywords": [
+          "chatgpt",
+          "gpt-4",
+          "gpt-5",
+          "gpt-4o",
+          "gpt-4.5",
+          "openai",
+          "o1",
+          "o3"
+        ],
+        "github_repos": [
+          "openai/openai-python",
+          "openai/openai-cookbook"
+        ]
+      },
+      "sentiment_score": 5.2,
+      "sentiment_label": "neutral",
+      "buzz_volume": 100,
+      "story_count": 3,
+      "comment_count": 25,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "text": "This is rather exciting, the tweaks are non-trivial and substantial",
+          "direction": "positive"
+        },
+        {
+          "text": "These tools might help break through increasing super specialization in science",
+          "direction": "positive"
+        },
+        {
+          "text": "Proof requires less theory crafting than conjecture, just advanced search",
+          "direction": "negative"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 6,
+        "negative": 7,
+        "neutral": 12
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "~900 million weekly active users (OpenAI-disclosed, Feb 2026); ~592 million mobile app MAU (Statista/SimilarWeb, Feb 2026); ~1 billion+ estimated total MAU",
+        "market_share": "~56.7% of generative AI web traffic (SimilarWeb, Mar 2026), down from 77.4% a year ago; ~62.5% of B2C AI subscription sales (Jun 2025)",
+        "buzz_volume_note": "GPT-5 launch and $122B funding round at $852B valuation (Mar 2026) drove major press coverage; 2.5B daily prompts processed; 50M+ paying subscribers confirmed by OpenAI COO",
+        "recent_changes": [
+          {
+            "date": "2026-05-16",
+            "text": "OpenAI and Government of Malta partner to roll out ChatGPT Plus to all citizens",
+            "url": "https://openai.com/index/malta-chatgpt-plus-partnership/"
+          },
+          {
+            "date": "2026-05-15",
+            "text": "OpenAI is connecting ChatGPT to bank accounts via Plaid",
+            "url": "https://firethering.com/chatgpt-bank-account-plaid-openai/"
+          },
+          {
+            "date": "2026-05-14",
+            "text": "Codex is now in the ChatGPT mobile app",
+            "url": "https://openai.com/index/work-with-codex-from-anywhere/"
+          },
+          {
+            "date": "2026-05-05",
+            "text": "GPT\u20115.5 Instant",
+            "url": "https://openai.com/index/gpt-5-5-instant/"
+          },
+          {
+            "date": "2026-05-04",
+            "text": "f/prompts.chat",
+            "url": "https://github.com/f/prompts.chat"
+          },
+          {
+            "date": "2026-05-04",
+            "text": "How OpenAI delivers low-latency voice AI at scale",
+            "url": "https://openai.com/index/delivering-low-latency-voice-ai-at-scale/"
+          },
+          {
+            "date": "2026-05-03",
+            "text": "OpenAI's o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors",
+            "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses"
+          },
+          {
+            "date": "2026-05-03",
+            "text": "OpenAI\u2019s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors",
+            "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses"
+          },
+          {
+            "date": "2026-04-26",
+            "text": "OpenAI officially shut down Sora, its short-lived video generation app.",
+            "url": "https://fatjoe.com/blog/chatgpt-stats/"
+          },
+          {
+            "date": "2026-03-31",
+            "text": "OpenAI closed a record $122B funding round at an $852B post-money valuation.",
+            "url": "https://fatjoe.com/blog/chatgpt-stats/"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Sam Altman",
+            "role": "CEO, OpenAI",
+            "quote": "ChatGPT returned to over 10% monthly growth in early 2026.",
+            "date": "2026-02-01",
+            "platform": "X / OpenAI blog",
+            "source_url": "https://www.getpanto.ai/blog/chatgpt-statistics",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Sam_Altman_TechCrunch_SF_2019_Day_2_Oct_3_%28cropped_3%29.jpg/330px-Sam_Altman_TechCrunch_SF_2019_Day_2_Oct_3_%28cropped_3%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+            "initials": "SA"
+          },
+          {
+            "name": "Brad Lightcap",
+            "role": "COO, OpenAI",
+            "quote": "ChatGPT has more than 50 million paying subscribers.",
+            "date": "2026-02-01",
+            "platform": "OpenAI press",
+            "source_url": "https://backlinko.com/chatgpt-stats",
+            "photo_url": null,
+            "initials": "BL"
+          }
+        ],
+        "strengths": [
+          "Consistently high buzz volume (96-100) signals strong ongoing public mindshare",
+          "GPT-4o and o3 releases keep product line competitive across reasoning tiers",
+          "Broad ecosystem integrations sustain developer and enterprise adoption",
+          "Story count of 4-6/day reflects steady media coverage and product momentum"
+        ],
+        "weaknesses": [
+          "Sentiment dropped sharply to 4.2 on May 4, one of the lowest scores tracked",
+          "Negative comments (10) outpaced positives (5) on May 4, signaling user friction",
+          "Sentiment trend is declining: 6.8 \u2192 4.8 \u2192 4.2 over the past four days",
+          "High buzz with low sentiment suggests controversy, not enthusiasm, driving volume",
+          "Neutral-heavy comment mix (9 neutral) suggests lukewarm user satisfaction"
+        ]
+      }
+    },
+    {
+      "model_id": "claude",
+      "model_config": {
+        "id": "claude",
+        "name": "Claude",
+        "maker": "Anthropic",
+        "color": "#D85A30",
+        "keywords": [
+          "claude",
+          "anthropic",
+          "sonnet",
+          "opus",
+          "haiku"
+        ],
+        "github_repos": [
+          "anthropics/anthropic-sdk-python",
+          "anthropics/courses"
+        ]
+      },
+      "sentiment_score": 3.2,
+      "sentiment_label": "negative",
+      "buzz_volume": 100,
+      "story_count": 7,
+      "comment_count": 25,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "text": "Claude Code has been a popular addition to developer workflows",
+          "direction": "positive"
+        },
+        {
+          "text": "Claude burns way more tokens compared to other agents, not worth the bloat",
+          "direction": "negative"
+        },
+        {
+          "text": "Pilot accidentally consumed their 2026 yearly target spend on AI",
+          "direction": "negative"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 3,
+        "negative": 10,
+        "neutral": 12
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "~18.9M web MAU + ~7.38M mobile app MAU (consumer-facing); ~300,000+ business customers; Anthropic does not publish a consolidated MAU figure",
+        "market_share": "~6.02% of generative AI web traffic (SimilarWeb, Mar 2026), up from 1.4% a year ago; ~29% enterprise AI assistant market share; ~40% of enterprise LLM spend (Menlo Ventures, Dec 2025)",
+        "buzz_volume_note": "Claude Code run-rate revenue exceeded $2.5B (Feb 2026), doubling since Jan 2026; claude.ai web traffic tripled in one quarter; Anthropic valued at $380B after $30B Series G",
+        "recent_changes": [
+          {
+            "date": "2026-05-17",
+            "text": "Show HN: Semble \u2013 Code search for agents that uses 98% fewer tokens than grep",
+            "url": "https://github.com/MinishLab/semble"
+          },
+          {
+            "date": "2026-05-15",
+            "text": "How Claude Code works in large codebases",
+            "url": "https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start"
+          },
+          {
+            "date": "2026-05-14",
+            "text": "Claude for Small Business",
+            "url": "https://www.anthropic.com/news/claude-for-small-business"
+          },
+          {
+            "date": "2026-05-14",
+            "text": "Bitcoin trader recovers wallet with help of Claude",
+            "url": "https://www.tomshardware.com/tech-industry/cryptocurrency/bitcoin-trader-recovers-usd400-000-using-claude-ai-after-losing-wallet-password-11-years-ago-bot-tried-3-5-trillion-passwords-before-decrypting-an-old-wallet-backup"
+          },
+          {
+            "date": "2026-05-14",
+            "text": "Claude for Legal",
+            "url": "https://github.com/anthropics/claude-for-legal"
+          },
+          {
+            "date": "2026-05-12",
+            "text": "Claude Platform on AWS",
+            "url": "https://claude.com/blog/claude-platform-on-aws"
+          },
+          {
+            "date": "2026-05-11",
+            "text": "Show HN: adamsreview \u2013 better multi-agent PR reviews for Claude Code",
+            "url": "https://github.com/adamjgmiller/adamsreview"
+          },
+          {
+            "date": "2026-05-10",
+            "text": "Anthropic weighs deal for near $1T valuation as revenue surges",
+            "url": "https://www.ft.com/content/a40cafcc-0fa4-4e70-9e24-90d826aea56d"
+          },
+          {
+            "date": "2026-05-09",
+            "text": "Using Claude Code: The unreasonable effectiveness of HTML",
+            "url": "https://twitter.com/trq212/status/2052809885763747935"
+          },
+          {
+            "date": "2026-05-08",
+            "text": "Teaching Claude Why",
+            "url": "https://www.anthropic.com/research/teaching-claude-why"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Dario Amodei",
+            "role": "CEO, Anthropic",
+            "quote": "Anthropic is focused on building safe, reliable AI for enterprise and consumer use at scale.",
+            "date": "2026-02-01",
+            "platform": "Anthropic blog",
+            "source_url": "https://www.humanizeai.io/blog/article/claude-latest-statistics-users-traffic-growth",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg/330px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+            "initials": "DA"
+          },
+          {
+            "name": "Daniela Amodei",
+            "role": "President, Anthropic",
+            "quote": "Enterprise API and Claude Code are the core growth drivers heading into 2026.",
+            "date": "2026-02-01",
+            "platform": "Anthropic blog",
+            "source_url": "https://www.getpanto.ai/blog/anthropic-ai-statistics",
+            "photo_url": null,
+            "initials": "DA"
+          }
+        ],
+        "strengths": [
+          "Highest buzz volume on May 4 (100), tied with DeepSeek and Copilot",
+          "Story count of 10/day is the highest of any tracked model, showing press interest",
+          "Large neutral comment share (16/25) suggests measured, substantive discussion",
+          "Sonnet/Haiku tier structure appeals to cost-sensitive enterprise deployments"
+        ],
+        "weaknesses": [
+          "Sentiment score of 4.2 on May 4 is among the lowest, matching ChatGPT's decline",
+          "Negative comments (7-8) consistently outpace positives (2) across May 3-4",
+          "Sentiment fell from 7.6 to 4.2 in 48 hours, a steep and rapid deterioration",
+          "High story count with low sentiment may reflect criticism or controversy coverage",
+          "No positive momentum in comment ratio despite sustained high volume"
+        ]
+      }
+    },
+    {
+      "model_id": "gemini",
+      "model_config": {
+        "id": "gemini",
+        "name": "Gemini",
+        "maker": "Google DeepMind",
+        "color": "#1D9E75",
+        "keywords": [
+          "gemini",
+          "google deepmind",
+          "bard"
+        ],
+        "github_repos": [
+          "google/generative-ai-python",
+          "google-gemini/cookbook"
+        ]
+      },
+      "sentiment_score": 5.2,
+      "sentiment_label": "neutral",
+      "buzz_volume": 48,
+      "story_count": 1,
+      "comment_count": 12,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "text": "looks really powerful with many use cases",
+          "direction": "positive"
+        },
+        {
+          "text": "Tonka seems better equipped and free alternative",
+          "direction": "negative"
+        },
+        {
+          "text": "copyrighted license makes this unsuable for needs",
+          "direction": "negative"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 3,
+        "negative": 4,
+        "neutral": 5
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "750 million MAU on Gemini app (Alphabet Q4 2025 earnings, Feb 2026); 2 billion monthly users via AI Overviews in Google Search",
+        "market_share": "~25.46% of generative AI web traffic (SimilarWeb, Mar 2026), up from 6% a year ago; ~13.5% global AI chatbot market; 29.4% U.S. chatbot share (Apptopia, Jan 2026)",
+        "buzz_volume_note": "Gemini 3.1 Pro launched Feb 20, 2026; Gemini API hit 85B monthly requests (Jan 2026, +142% YoY); Google Cloud revenue grew 63% YoY to $20B in Q1 2026",
+        "recent_changes": [
+          {
+            "date": "2026-05-12",
+            "text": "Show HN: Needle: We Distilled Gemini Tool Calling into a 26M Model",
+            "url": "https://github.com/cactus-compute/needle"
+          },
+          {
+            "date": "2026-05-10",
+            "text": "Gemini API File Search is now multimodal",
+            "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/"
+          },
+          {
+            "date": "2026-05-07",
+            "text": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields",
+            "url": "https://deepmind.google/blog/alphaevolve-impact/"
+          },
+          {
+            "date": "2026-02-20",
+            "text": "Gemini 3.1 Pro launched, claiming top scores on 13 of 16 major benchmarks including 77.1% on ARC-AGI-2.",
+            "url": "https://tech-insider.org/google-gemini-750-million-users-march-2026-updates/"
+          },
+          {
+            "date": "2026-02-04",
+            "text": "Google confirmed Gemini surpassed 750M monthly active users in Q4 2025 earnings call.",
+            "url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/"
+          },
+          {
+            "date": "2026-01-01",
+            "text": "Gemini API volume hit 85 billion monthly requests in January 2026, up 142% from 35B in March 2025.",
+            "url": "https://www.getpanto.ai/blog/google-gemini-statistics"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Sundar Pichai",
+            "role": "CEO, Alphabet / Google",
+            "quote": "\"Our first-party models, like Gemini, now process over 10 billion tokens per minute via direct API use.\"",
+            "date": "2026-02-04",
+            "platform": "Alphabet Q4 2025 Earnings Call",
+            "source_url": "https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sundar_Pichai_-_2023_%28cropped%29.jpg/330px-Sundar_Pichai_-_2023_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+            "initials": "SP"
+          },
+          {
+            "name": "Demis Hassabis",
+            "role": "CEO, Google DeepMind",
+            "quote": "Continued investment in Gemini models is central to Google's AI-first strategy in 2026.",
+            "date": "2026-02-01",
+            "platform": "Google DeepMind blog",
+            "source_url": "https://www.getpanto.ai/blog/google-gemini-statistics",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_7_%28cropped%29.jpg/330px-Demis_Hassabis%2C_2024_Nobel_Prize_Laureate_in_Chemistry_7_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+            "initials": "DH"
+          }
+        ],
+        "strengths": [
+          "Sentiment improved from 5.2 to 6.2 between May 3-4, only major model trending up",
+          "Positive comments (8) strongly outpace negatives (2) on May 4",
+          "Steady buzz volume of 80 with improving sentiment signals growing user approval",
+          "Google DeepMind's integration with Search and Workspace provides distribution moat"
+        ],
+        "weaknesses": [
+          "Story count of just 1/day is the lowest among all tracked models",
+          "Low media coverage limits organic discovery and developer community engagement",
+          "Buzz volume (80) lags ChatGPT and Claude despite Google's scale advantages",
+          "Earlier sentiment (8.4 in May 1-2) lacked comment data, reducing signal reliability"
+        ]
+      }
+    },
+    {
+      "model_id": "deepseek",
+      "model_config": {
+        "id": "deepseek",
+        "name": "DeepSeek",
+        "maker": "DeepSeek AI",
+        "color": "#7F77DD",
+        "keywords": [
+          "deepseek",
+          "deepseek-r1",
+          "deepseek-r2",
+          "deepseek-v3"
+        ],
+        "github_repos": [
+          "deepseek-ai/DeepSeek-V3",
+          "deepseek-ai/DeepSeek-R1"
+        ]
+      },
+      "sentiment_score": 7.8,
+      "sentiment_label": "positive",
+      "buzz_volume": 80,
+      "story_count": 2,
+      "comment_count": 20,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "text": "Open sourcing models, publishing research, keeping prices low for everyone",
+          "direction": "positive"
+        },
+        {
+          "text": "MLA architecture cuts KV cache 5-13x, inference actually cheaper to run",
+          "direction": "positive"
+        },
+        {
+          "text": "Privacy policy allows training data use, suspiciously cheap pricing raises concerns",
+          "direction": "negative"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 12,
+        "negative": 3,
+        "neutral": 5
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "~130M active users end of 2025 (Business of Apps); ~96.9M MAU as of Apr 2025 (most recent verified figure); 350.8M web visits in Mar 2026 (SimilarWeb). Not officially disclosed by company.",
+        "market_share": "Not disclosed; DeepSeek is a private Chinese company and does not publish market share data. Estimated #4 most popular AI app globally by MAU (Apr 2025). ~5% of MAU from US users.",
+        "buzz_volume_note": "DeepSeek V4 announced internally Apr 9, 2026, targeting late Apr 2026 release with 1T parameters and Apache 2.0 license; DeepSeek-V3.2 'Fast/Expert Mode' UI redesign launched Apr 2, 2026; DeepSeek-V3 has 103K GitHub stars, DeepSeek-R1 has 92K stars",
+        "recent_changes": [
+          {
+            "date": "2026-05-16",
+            "text": "DeepSeek-V4-Flash means LLM steering is interesting again",
+            "url": "https://www.seangoedecke.com/steering-vectors/"
+          },
+          {
+            "date": "2026-05-15",
+            "text": "DeepSeek V4: The Open-Source Model Frontier Labs Feared",
+            "url": "https://helloai.com/articles/deepseek-v4-open-source-frontier-parity"
+          },
+          {
+            "date": "2026-05-07",
+            "text": "ZAYA1-8B matches DeepSeek-R1 on math with less than 1B active parameters",
+            "url": "https://firethering.com/zaya1-8b-open-source-math-coding-model/"
+          },
+          {
+            "date": "2026-05-04",
+            "text": "ollama/ollama",
+            "url": "https://github.com/ollama/ollama"
+          },
+          {
+            "date": "2026-05-01",
+            "text": "DeepSeek V4 \u2013 almost on the frontier",
+            "url": "https://simonwillison.net/2026/Apr/24/deepseek-v4/"
+          },
+          {
+            "date": "2026-04-09",
+            "text": "Founder Liang Wenfeng announced DeepSeek V4 internally, targeting late April 2026 launch with trillion-parameter design and Apache 2.0 license.",
+            "url": "https://bayelsawatch.com/deepseek-ai-statistics/"
+          },
+          {
+            "date": "2026-04-02",
+            "text": "DeepSeek launched 'Fast Mode' and 'Expert Mode' UI \u2014 its first-ever interface redesign \u2014 powered by DeepSeek-V3.2 with a 1M-token context window.",
+            "url": "https://bayelsawatch.com/deepseek-ai-statistics/"
+          },
+          {
+            "date": "2026-02-01",
+            "text": "DeepSeek announced partnership with Huawei and Cambricon to develop AI on indigenous Chinese chips, excluding Nvidia/AMD.",
+            "url": "https://bayelsawatch.com/deepseek-ai-statistics/"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Liang Wenfeng",
+            "role": "Founder & CEO, DeepSeek / High-Flyer Capital",
+            "quote": "DeepSeek V4 will use a trillion-parameter design on indigenous accelerators under Apache 2.0.",
+            "date": "2026-04-09",
+            "platform": "Internal announcement (reported)",
+            "source_url": "https://bayelsawatch.com/deepseek-ai-statistics/",
+            "photo_url": null,
+            "initials": "LW"
+          }
+        ],
+        "strengths": [
+          "Tied for highest sentiment score (7.2) among all models on May 3-4",
+          "Positive comments (12) are highest absolute count of any model on May 4",
+          "Buzz volume held at 100 for two consecutive days, showing sustained interest",
+          "Open-weight release strategy drives community adoption and derivative models",
+          "Story count grew from 2 to 3, suggesting expanding press coverage"
+        ],
+        "weaknesses": [
+          "Negative comments (4) present consistently, often tied to data privacy concerns",
+          "Chinese origin raises geopolitical access risk for enterprise customers",
+          "Sentiment unchanged at 7.2 for two days, suggesting plateau rather than growth",
+          "Lower story count vs. Claude/ChatGPT limits Western mainstream visibility"
+        ]
+      }
+    },
+    {
+      "model_id": "grok",
+      "model_config": {
+        "id": "grok",
+        "name": "Grok",
+        "maker": "xAI",
+        "color": "#E24B4A",
+        "keywords": [
+          "grok",
+          "xai",
+          "x.ai",
+          "elon musk ai"
+        ],
+        "github_repos": [
+          "xai-org/grok-1"
+        ]
+      },
+      "sentiment_score": 6.5,
+      "sentiment_label": "neutral",
+      "buzz_volume": 0,
+      "story_count": 0,
+      "comment_count": 0,
+      "wow_delta_pct": "",
+      "trend_drivers": [],
+      "mentions_breakdown": {
+        "positive": 0,
+        "negative": 0,
+        "neutral": 0
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "~50\u201364 million MAU (xAI internal figure shared Sep 2025; corroborated by SimilarWeb/Sensor Tower); ~298.6M monthly web visits to grok.com (Feb 2026)",
+        "market_share": "17.8% U.S. chatbot market share (Apptopia data via Reuters, Jan 2026), up from 1.9% in Jan 2025; ~3rd place in U.S. behind ChatGPT and Gemini; 2\u20135% estimated global AI chatbot share",
+        "buzz_volume_note": "SpaceX acquired xAI on Feb 2, 2026 in all-stock deal valuing combined entity at $1.25T; Grok 4.3 Beta released Apr 17, 2026; all 11 original xAI co-founders reportedly departed by Mar 2026; Apple/EU regulatory tensions ongoing",
+        "recent_changes": [
+          {
+            "date": "2026-04-17",
+            "text": "xAI released Grok 4.3 Beta, continuing rapid model iteration.",
+            "url": "https://sqmagazine.co.uk/grok-ai-statistics/"
+          },
+          {
+            "date": "2026-02-02",
+            "text": "SpaceX acquired xAI in all-stock deal valuing the combined entity at $1.25 trillion \u2014 reported as the largest corporate merger by valuation in history.",
+            "url": "https://fatjoe.com/blog/grok-ai-stats/"
+          },
+          {
+            "date": "2026-01-01",
+            "text": "xAI raised $20B in a Series E round at a $230B valuation in January 2026.",
+            "url": "https://www.getpanto.ai/blog/grok-ai-statistics"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Elon Musk",
+            "role": "Founder, xAI / Owner, X",
+            "quote": "xAI merged with SpaceX to build orbital data centres as the next AI infrastructure layer.",
+            "date": "2026-02-02",
+            "platform": "X",
+            "source_url": "https://fatjoe.com/blog/grok-ai-stats/",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Elon_Musk_-_54820081119_%28cropped%29.jpg/330px-Elon_Musk_-_54820081119_%28cropped%29.jpg",
+            "initials": "EM"
+          }
+        ],
+        "strengths": [
+          "Sentiment held near 7.1-7.2, among the stronger scores in the current tracker period",
+          "Positive comments (11) far exceed negatives (5) on both May 3-4",
+          "Buzz volume jumped from 42 to 84 between May 1-4, showing accelerating interest",
+          "xAI's real-time X/Twitter data access is a structural differentiation vs. rivals"
+        ],
+        "weaknesses": [
+          "Story count of 1-2/day is near the bottom, limiting broader narrative reach",
+          "Buzz volume (84) still trails ChatGPT, Claude, and DeepSeek in absolute terms",
+          "Association with Elon Musk's brand creates polarized public perception",
+          "Smaller developer ecosystem limits third-party integrations and tooling"
+        ]
+      }
+    },
+    {
+      "model_id": "copilot",
+      "model_config": {
+        "id": "copilot",
+        "name": "Copilot",
+        "maker": "Microsoft",
+        "color": "#888780",
+        "keywords": [
+          "copilot",
+          "github copilot",
+          "microsoft copilot",
+          "copilot studio"
+        ],
+        "github_repos": [
+          "github/copilot-cli"
+        ]
+      },
+      "sentiment_score": 5.2,
+      "sentiment_label": "negative",
+      "buzz_volume": 48,
+      "story_count": 1,
+      "comment_count": 12,
+      "wow_delta_pct": "",
+      "trend_drivers": [
+        {
+          "text": "looks really powerful with many use cases",
+          "direction": "positive"
+        },
+        {
+          "text": "Copyrighted license makes this unsuable for me",
+          "direction": "negative"
+        },
+        {
+          "text": "Video is too fast, too jumpy, stressing",
+          "direction": "negative"
+        }
+      ],
+      "mentions_breakdown": {
+        "positive": 3,
+        "negative": 4,
+        "neutral": 5
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "Not disclosed (Microsoft does not break out standalone Copilot MAU separately from M365 suite); Microsoft 365 Copilot had 9M+ paying business users as of early 2026 per OpenAI data on partner seats",
+        "market_share": "~14.4% U.S. AI chatbot market (Apptopia/Quantumrun, Nov 2025); ~14.3% global AI chatbot market (SimilarWeb-adjacent estimate); included in ChatGPT+Copilot combined ~73% share figure",
+        "buzz_volume_note": "Microsoft Copilot Studio, Copilot Pages, and Copilot+ PCs expanded through H1 2026; Microsoft spending $500M+ annually integrating Claude into Copilot products; Azure GPU commitment of $750M signed with xAI in Jan 2026",
+        "recent_changes": [
+          {
+            "date": "2026-05-02",
+            "text": "VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage",
+            "url": "https://github.com/microsoft/vscode/pull/310226"
+          },
+          {
+            "date": "2026-01-01",
+            "text": "Microsoft signed a $750M, three-year Azure GPU infrastructure commitment with xAI in January 2026.",
+            "url": "https://aibusinessweekly.net/p/grok-ai-statistics"
+          },
+          {
+            "date": "2026-01-01",
+            "text": "Microsoft reported spending over $500M annually to integrate Anthropic's Claude into Copilot and other products.",
+            "url": "https://www.demandsage.com/claude-ai-statistics/"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Satya Nadella",
+            "role": "CEO, Microsoft",
+            "quote": "Copilot is embedded across all Microsoft 365 products, serving millions of enterprise users daily.",
+            "date": "2026-01-01",
+            "platform": "Microsoft earnings / blog",
+            "source_url": "https://www.quantumrun.com/consulting/google-gemini-statistics/",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg/330px-MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+            "initials": "SN"
+          }
+        ],
+        "strengths": [
+          "Buzz volume hit 100 on May 3-4, indicating high enterprise and developer attention",
+          "Deep Microsoft 365 integration provides a captive installed base of ~300M users",
+          "GitHub Copilot remains a leading code-completion tool with broad IDE support",
+          "Copilot Studio enables low-code enterprise agent building, expanding use cases"
+        ],
+        "weaknesses": [
+          "Sentiment score of 2.8 is the lowest of all tracked models on both May 3-4",
+          "Negative comments (14-15) vastly dominate positives (2-3), worst ratio tracked",
+          "High volume + lowest sentiment = significant user dissatisfaction signal",
+          "Sentiment has not recovered after dropping sharply, suggesting persistent issues",
+          "Story count dropped from 3 to 2, while negativity remained constant"
+        ]
+      }
+    },
+    {
+      "model_id": "llama",
+      "model_config": {
+        "id": "llama",
+        "name": "Llama",
+        "maker": "Meta",
+        "color": "#4267B2",
+        "keywords": [
+          "llama",
+          "llama-3",
+          "llama 3",
+          "meta ai",
+          "llama-recipes"
+        ],
+        "github_repos": [
+          "meta-llama/llama-recipes",
+          "meta-llama/llama-models"
+        ]
+      },
+      "sentiment_score": 6.5,
+      "sentiment_label": "neutral",
+      "buzz_volume": 0,
+      "story_count": 1,
+      "comment_count": 0,
+      "wow_delta_pct": "",
+      "trend_drivers": [],
+      "mentions_breakdown": {
+        "positive": 0,
+        "negative": 0,
+        "neutral": 0
+      },
+      "deep": {
+        "last_updated": "2026-05-18",
+        "mau": "Downloads: 1B+ cumulative model downloads from Meta AI and Hugging Face as of early 2026 (Meta-disclosed); Meta AI app surpassed 1B MAU (Meta disclosed, includes all Meta AI surfaces not solely Llama)",
+        "market_share": "Derivatives: Hundreds of thousands of fine-tuned or quantized Llama derivatives on Hugging Face; Llama models power a large share of open-source AI deployments globally; used by 100,000+ developers/companies",
+        "buzz_volume_note": "Llama 4 (Scout, Maverick, Behemoth) released Apr 2025; Meta AI MAU passed 1B across Facebook, Instagram, WhatsApp, Messenger surfaces; Meta AI is the most used AI assistant by total user reach globally",
+        "recent_changes": [
+          {
+            "date": "2026-05-05",
+            "text": "Zuckerberg 'Personally Authorized and Encouraged' Meta's Copyright Infringement",
+            "url": "https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/"
+          },
+          {
+            "date": "2026-02-01",
+            "text": "Meta AI surpassed 1 billion monthly active users across its social platforms, driven by Llama-powered assistant integrations.",
+            "url": "https://fatjoe.com/blog/chatgpt-stats/"
+          },
+          {
+            "date": "2025-04-01",
+            "text": "Meta released Llama 4 family (Scout, Maverick, Behemoth) with multimodal capabilities and mixture-of-experts architecture.",
+            "url": "https://www.demandsage.com/claude-ai-statistics/"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Mark Zuckerberg",
+            "role": "CEO, Meta",
+            "quote": "Meta AI has reached more than 1 billion monthly active users across Meta's family of apps.",
+            "date": "2026-02-01",
+            "platform": "Meta earnings / X",
+            "source_url": "https://fatjoe.com/blog/chatgpt-stats/",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg/330px-Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg",
+            "initials": "MZ"
+          },
+          {
+            "name": "Yann LeCun",
+            "role": "Chief AI Scientist, Meta",
+            "quote": "Open-source AI like Llama is essential to avoiding monopolistic AI control by a handful of companies.",
+            "date": "2026-01-01",
+            "platform": "X / LinkedIn",
+            "source_url": "https://www.demandsage.com/claude-ai-statistics/",
+            "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg/330px-Laura_Chaubard_%26_Yann_Le_Cun_-_2024_%2853814052697%29_%28cropped%29.jpg",
+            "initials": "YL"
+          }
+        ],
+        "strengths": [
+          "Open-source model weights allow unrestricted fine-tuning and private deployment",
+          "Story count of 3/day despite low buzz suggests niche but engaged community",
+          "Llama 3 family enables on-premise enterprise use, addressing data residency needs",
+          "Meta's distribution via WhatsApp and Instagram provides massive consumer reach"
+        ],
+        "weaknesses": [
+          "Buzz volume of 24 is by far the lowest of all tracked models",
+          "Sentiment at 4.2 on May 4 with negatives (3) outpacing positives (1)",
+          "Comment count of only 6/day indicates limited mainstream public engagement",
+          "No strong upward sentiment trend observed across the tracked period",
+          "Lacks a hosted consumer product to compete directly with ChatGPT or Gemini"
+        ]
+      }
+    }
+  ],
+  "etfs": [
+    {
+      "ticker": "CHAT",
+      "name": "Roundhill Generative AI & Technology",
+      "exchange": "NYSE Arca",
+      "color": "#D85A30",
+      "description": "World's first generative AI ETF. Actively managed with a 50% revenue-purity screen. Rotates toward new gen-AI entrants as the space evolves.",
+      "stats": [
+        "Exp: 0.75%",
+        "49 holdings",
+        "Active mgmt",
+        "Est. May 2023"
+      ],
+      "price": 89.84,
+      "prev_close": 88.74,
+      "dod_change": 1.1,
+      "dod_pct": 1.24,
+      "year_return_pct": 122.7,
+      "aum": "$1.4B",
+      "aum_billions": 1.43,
+      "spark_12d": [
+        61.02,
+        61.8,
+        59.36,
+        63.34,
+        65.66,
+        60.9,
+        65.29,
+        61.4,
+        64.6,
+        74.24,
+        78.55,
+        85.87
+      ],
+      "spark_90d": [
+        61.02,
+        61.47,
+        61.7,
+        59.6,
+        60.77,
+        61.85,
+        61.57,
+        61.8,
+        63.63,
+        63.94,
+        63.39,
+        61.79,
+        62.42,
+        61.9,
+        59.36,
+        58.28,
+        60.77,
+        62.69,
+        62.74,
+        62.72,
+        62.32,
+        63.34,
+        63.67,
+        64.23,
+        64.39,
+        66.31,
+        63.84,
+        65.29,
+        65.66,
+        64.79,
+        63.89,
+        63.74,
+        61.32,
+        62.5,
+        62.08,
+        60.9,
+        63.93,
+        65.32,
+        65.4,
+        63.23,
+        62.76,
+        65.05,
+        65.29,
+        66.0,
+        65.22,
+        62.53,
+        63.88,
+        63.69,
+        65.01,
+        61.4,
+        60.28,
+        59.06,
+        61.85,
+        64.29,
+        63.32,
+        64.03,
+        64.6,
+        67.92,
+        68.57,
+        69.4,
+        71.0,
+        73.46,
+        73.16,
+        74.24,
+        75.09,
+        75.84,
+        75.74,
+        78.39,
+        77.16,
+        79.19,
+        78.55,
+        75.64,
+        76.43,
+        77.99,
+        79.3,
+        80.43,
+        82.34,
+        85.87,
+        83.91,
+        86.18,
+        86.84,
+        84.24,
+        88.58,
+        88.78,
+        85.49,
+        84.18,
+        83.57,
+        86.3,
+        88.74,
+        89.84
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,16.4 0.9,16.2 1.8,16.0 2.7,17.2 3.6,16.6 4.5,16.0 5.4,16.1 6.3,16.0 7.2,14.9 8.1,14.8 9.0,15.1 9.9,16.0 10.8,15.6 11.7,15.9 12.6,17.4 13.5,18.0 14.4,16.6 15.3,15.5 16.2,15.5 17.1,15.5 18.0,15.7 18.9,15.1 19.8,14.9 20.7,14.6 21.6,14.5 22.5,13.4 23.4,14.8 24.3,14.0 25.2,13.8 26.1,14.3 27.0,14.8 27.9,14.9 28.8,16.3 29.7,15.6 30.6,15.8 31.5,16.5 32.4,14.8 33.3,14.0 34.2,13.9 35.1,15.2 36.0,15.4 36.9,14.1 37.8,14.0 38.7,13.6 39.6,14.0 40.4,15.6 41.3,14.8 42.2,14.9 43.1,14.2 44.0,16.2 44.9,16.9 45.8,17.6 46.7,16.0 47.6,14.6 48.5,15.1 49.4,14.7 50.3,14.4 51.2,12.5 52.1,12.1 53.0,11.7 53.9,10.7 54.8,9.3 55.7,9.5 56.6,8.9 57.5,8.4 58.4,8.0 59.3,8.0 60.2,6.5 61.1,7.2 62.0,6.1 62.9,6.4 63.8,8.1 64.7,7.6 65.6,6.8 66.5,6.0 67.4,5.4 68.3,4.3 69.2,2.3 70.1,3.4 71.0,2.1 71.9,1.7 72.8,3.2 73.7,0.7 74.6,0.6 75.5,2.5 76.4,3.2 77.3,3.6 78.2,2.0 79.1,0.6 80.0,0.0"
+    },
+    {
+      "ticker": "ARTY",
+      "name": "iShares Future AI & Technology ETF",
+      "exchange": "NYSE",
+      "color": "#378ADD",
+      "description": "BlackRock's AI flagship. Tracks Morningstar Global AI Select Index. ~50 stocks across gen AI, infra, services. Best 1-yr performer in the category.",
+      "stats": [
+        "Exp: 0.47%",
+        "50 holdings",
+        "Passive",
+        "BlackRock"
+      ],
+      "price": 68.78,
+      "prev_close": 68.11,
+      "dod_change": 0.67,
+      "dod_pct": 0.98,
+      "year_return_pct": 90.3,
+      "aum": "$2.8B",
+      "aum_billions": 2.85,
+      "spark_12d": [
+        50.49,
+        52.31,
+        48.68,
+        51.06,
+        52.42,
+        47.98,
+        50.28,
+        46.69,
+        48.38,
+        57.65,
+        61.6,
+        67.84
+      ],
+      "spark_90d": [
+        50.49,
+        50.98,
+        51.61,
+        50.46,
+        51.36,
+        51.7,
+        52.15,
+        52.31,
+        53.55,
+        54.44,
+        53.37,
+        51.51,
+        51.99,
+        51.14,
+        48.68,
+        47.79,
+        50.68,
+        51.73,
+        51.42,
+        51.87,
+        50.79,
+        51.06,
+        50.59,
+        51.2,
+        51.09,
+        51.25,
+        49.92,
+        51.1,
+        52.42,
+        51.79,
+        51.01,
+        50.6,
+        48.13,
+        49.38,
+        48.78,
+        47.98,
+        49.23,
+        49.15,
+        49.95,
+        48.28,
+        48.41,
+        49.78,
+        50.28,
+        49.68,
+        50.13,
+        47.77,
+        49.09,
+        48.48,
+        49.08,
+        46.69,
+        45.85,
+        44.2,
+        46.53,
+        47.59,
+        47.73,
+        48.09,
+        48.38,
+        50.89,
+        51.12,
+        52.28,
+        54.06,
+        56.26,
+        56.71,
+        57.65,
+        58.65,
+        58.98,
+        59.17,
+        61.28,
+        60.21,
+        62.08,
+        61.6,
+        59.83,
+        60.64,
+        61.94,
+        62.82,
+        63.46,
+        65.2,
+        67.84,
+        66.29,
+        68.38,
+        69.31,
+        66.92,
+        67.77,
+        68.57,
+        65.8,
+        64.47,
+        63.79,
+        66.34,
+        68.11,
+        68.78
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,13.5 0.9,13.1 1.8,12.7 2.7,13.5 3.6,12.9 4.5,12.6 5.4,12.3 6.3,12.2 7.2,11.3 8.1,10.7 9.0,11.4 9.9,12.8 10.8,12.4 11.7,13.0 12.6,14.8 13.5,15.4 14.4,13.4 15.3,12.6 16.2,12.8 17.1,12.5 18.0,13.3 18.9,13.1 19.8,13.4 20.7,13.0 21.6,13.1 22.5,12.9 23.4,13.9 24.3,13.1 25.2,12.1 26.1,12.6 27.0,13.1 27.9,13.4 28.8,15.2 29.7,14.3 30.6,14.7 31.5,15.3 32.4,14.4 33.3,14.5 34.2,13.9 35.1,15.1 36.0,15.0 36.9,14.0 37.8,13.6 38.7,14.1 39.6,13.7 40.4,15.4 41.3,14.5 42.2,14.9 43.1,14.5 44.0,16.2 44.9,16.8 45.8,18.0 46.7,16.3 47.6,15.6 48.5,15.5 49.4,15.2 50.3,15.0 51.2,13.2 52.1,13.0 53.0,12.2 53.9,10.9 54.8,9.4 55.7,9.0 56.6,8.4 57.5,7.6 58.4,7.4 59.3,7.3 60.2,5.8 61.1,6.5 62.0,5.2 62.9,5.5 63.8,6.8 64.7,6.2 65.6,5.3 66.5,4.7 67.4,4.2 68.3,2.9 69.2,1.1 70.1,2.2 71.0,0.7 71.9,0.0 72.8,1.7 73.7,1.1 74.6,0.5 75.5,2.5 76.4,3.5 77.3,4.0 78.2,2.1 79.1,0.9 80.0,0.4"
+    },
+    {
+      "ticker": "AIQ",
+      "name": "Global X AI & Technology ETF",
+      "exchange": "NASDAQ",
+      "color": "#1D9E75",
+      "description": "Largest AI ETF by AUM. Tracks Indxx AI & Big Data Index across 86 companies. The S&P 500 of AI ETFs.",
+      "stats": [
+        "Exp: 0.68%",
+        "86 holdings",
+        "Passive",
+        "Est. 2018"
+      ],
+      "price": 62.81,
+      "prev_close": 62.61,
+      "dod_change": 0.2,
+      "dod_pct": 0.32,
+      "year_return_pct": 57.5,
+      "aum": "$8.6B",
+      "aum_billions": 8.61,
+      "spark_12d": [
+        52.28,
+        52.43,
+        49.38,
+        49.45,
+        50.55,
+        49.1,
+        49.58,
+        46.41,
+        47.85,
+        53.49,
+        55.38,
+        60.3
+      ],
+      "spark_90d": [
+        52.28,
+        52.36,
+        52.34,
+        50.94,
+        51.9,
+        52.45,
+        52.51,
+        52.43,
+        53.11,
+        53.61,
+        53.03,
+        51.97,
+        52.38,
+        51.04,
+        49.38,
+        48.47,
+        50.08,
+        50.83,
+        50.77,
+        50.55,
+        49.21,
+        49.45,
+        48.97,
+        49.55,
+        49.41,
+        49.88,
+        48.53,
+        49.49,
+        50.55,
+        50.52,
+        50.26,
+        50.06,
+        48.81,
+        49.92,
+        49.65,
+        49.1,
+        49.83,
+        49.67,
+        49.92,
+        48.59,
+        48.35,
+        49.34,
+        49.58,
+        48.87,
+        48.8,
+        47.37,
+        48.52,
+        47.61,
+        47.9,
+        46.41,
+        45.47,
+        44.78,
+        46.67,
+        47.34,
+        47.27,
+        47.75,
+        47.85,
+        49.6,
+        49.35,
+        49.37,
+        50.58,
+        51.83,
+        52.72,
+        53.49,
+        54.1,
+        53.91,
+        53.69,
+        54.97,
+        53.51,
+        55.14,
+        55.38,
+        54.5,
+        55.04,
+        55.88,
+        56.82,
+        57.11,
+        58.43,
+        60.3,
+        59.99,
+        62.31,
+        62.85,
+        61.02,
+        62.11,
+        62.43,
+        61.04,
+        60.72,
+        60.4,
+        61.87,
+        62.61,
+        62.81
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,10.5 0.9,10.4 1.8,10.5 2.7,11.9 3.6,10.9 4.5,10.4 5.4,10.3 6.3,10.4 7.2,9.7 8.1,9.2 9.0,9.8 9.9,10.8 10.8,10.4 11.7,11.8 12.6,13.4 13.5,14.3 14.4,12.7 15.3,12.0 16.2,12.0 17.1,12.3 18.0,13.6 18.9,13.3 19.8,13.8 20.7,13.2 21.6,13.4 22.5,12.9 23.4,14.3 24.3,13.3 25.2,12.3 26.1,12.3 27.0,12.5 27.9,12.7 28.8,14.0 29.7,12.9 30.6,13.1 31.5,13.7 32.4,13.0 33.3,13.1 34.2,12.9 35.1,14.2 36.0,14.4 36.9,13.5 37.8,13.2 38.7,13.9 39.6,14.0 40.4,15.4 41.3,14.3 42.2,15.2 43.1,14.9 44.0,16.4 44.9,17.3 45.8,18.0 46.7,16.1 47.6,15.4 48.5,15.5 49.4,15.0 50.3,14.9 51.2,13.2 52.1,13.4 53.0,13.4 53.9,12.2 54.8,11.0 55.7,10.1 56.6,9.3 57.5,8.7 58.4,8.9 59.3,9.1 60.2,7.8 61.1,9.3 62.0,7.7 62.9,7.4 63.8,8.3 64.7,7.8 65.6,6.9 66.5,6.0 67.4,5.7 68.3,4.4 69.2,2.5 70.1,2.8 71.0,0.5 71.9,0.0 72.8,1.8 73.7,0.7 74.6,0.4 75.5,1.8 76.4,2.1 77.3,2.4 78.2,1.0 79.1,0.2 80.0,0.0"
+    },
+    {
+      "ticker": "IGPT",
+      "name": "Invesco AI & Next Gen Software ETF",
+      "exchange": "NYSE Arca",
+      "color": "#7F77DD",
+      "description": "Infrastructure & semiconductor tilt. Heavy Micron, SK Hynix, Nvidia exposure. Oldest fund on the list, modernised mandate.",
+      "stats": [
+        "Exp: 0.56%",
+        "100 holdings",
+        "Passive",
+        "Est. 2005"
+      ],
+      "price": 91.82,
+      "prev_close": 91.03,
+      "dod_change": 0.79,
+      "dod_pct": 0.87,
+      "year_return_pct": 106.5,
+      "aum": "$875M",
+      "aum_billions": 0.88,
+      "spark_12d": [
+        62.09,
+        64.05,
+        61.33,
+        62.85,
+        65.01,
+        60.1,
+        63.12,
+        57.97,
+        60.49,
+        69.76,
+        76.16,
+        86.83
+      ],
+      "spark_90d": [
+        62.09,
+        62.31,
+        62.62,
+        61.48,
+        63.66,
+        64.54,
+        64.38,
+        64.05,
+        65.16,
+        66.6,
+        66.29,
+        64.72,
+        65.52,
+        64.12,
+        61.33,
+        60.4,
+        62.64,
+        63.35,
+        62.7,
+        63.13,
+        62.52,
+        62.85,
+        62.17,
+        63.01,
+        62.73,
+        63.81,
+        62.44,
+        63.79,
+        65.01,
+        64.26,
+        63.77,
+        63.42,
+        60.97,
+        62.82,
+        61.9,
+        60.1,
+        61.86,
+        62.15,
+        62.8,
+        60.79,
+        60.81,
+        62.51,
+        63.12,
+        62.59,
+        62.62,
+        60.48,
+        61.26,
+        60.29,
+        60.62,
+        57.97,
+        56.92,
+        55.49,
+        58.06,
+        59.45,
+        59.42,
+        60.27,
+        60.49,
+        63.85,
+        63.95,
+        64.33,
+        65.98,
+        68.41,
+        68.78,
+        69.76,
+        70.84,
+        70.67,
+        70.65,
+        73.03,
+        71.79,
+        75.33,
+        76.16,
+        74.99,
+        76.25,
+        77.79,
+        79.24,
+        79.9,
+        83.55,
+        86.83,
+        85.51,
+        90.95,
+        93.14,
+        89.53,
+        91.58,
+        90.81,
+        87.71,
+        86.73,
+        86.26,
+        89.08,
+        91.03,
+        91.82
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,14.8 0.9,14.7 1.8,14.6 2.7,15.1 3.6,14.1 4.5,13.7 5.4,13.7 6.3,13.9 7.2,13.4 8.1,12.7 9.0,12.8 9.9,13.6 10.8,13.2 11.7,13.9 12.6,15.2 13.5,15.7 14.4,14.6 15.3,14.2 16.2,14.6 17.1,14.3 18.0,14.6 18.9,14.5 19.8,14.8 20.7,14.4 21.6,14.5 22.5,14.0 23.4,14.7 24.3,14.0 25.2,13.4 26.1,13.8 27.0,14.0 27.9,14.2 28.8,15.4 29.7,14.5 30.6,14.9 31.5,15.8 32.4,15.0 33.3,14.8 34.2,14.5 35.1,15.5 36.0,15.5 36.9,14.6 37.8,14.4 38.7,14.6 39.6,14.6 40.4,15.6 41.3,15.2 42.2,15.7 43.1,15.5 44.0,16.8 44.9,17.3 45.8,18.0 46.7,16.8 47.6,16.1 48.5,16.1 49.4,15.7 50.3,15.6 51.2,14.0 52.1,14.0 53.0,13.8 53.9,13.0 54.8,11.8 55.7,11.6 56.6,11.2 57.5,10.7 58.4,10.7 59.3,10.8 60.2,9.6 61.1,10.2 62.0,8.5 62.9,8.1 63.8,8.7 64.7,8.1 65.6,7.3 66.5,6.6 67.4,6.3 68.3,4.6 69.2,3.0 70.1,3.6 71.0,1.0 71.9,0.0 72.8,1.7 73.7,0.7 74.6,1.1 75.5,2.6 76.4,3.1 77.3,3.3 78.2,1.9 79.1,1.0 80.0,0.6"
+    },
+    {
+      "ticker": "BOTZ",
+      "name": "Global X Robotics & AI ETF",
+      "exchange": "NASDAQ",
+      "color": "#BA7517",
+      "description": "Applied AI and industrial robotics focus. Tracks Indxx Global Robotics & AI Thematic Index. Heavy industrials, healthcare, Japanese automation.",
+      "stats": [
+        "Exp: 0.68%",
+        "50 holdings",
+        "Passive",
+        "~30% Japan"
+      ],
+      "price": 40.29,
+      "prev_close": 39.65,
+      "dod_change": 0.64,
+      "dod_pct": 1.61,
+      "year_return_pct": 32.7,
+      "aum": "$3.4B",
+      "aum_billions": 3.44,
+      "spark_12d": [
+        38.0,
+        37.96,
+        36.61,
+        38.34,
+        39.66,
+        36.09,
+        35.38,
+        33.29,
+        33.39,
+        36.71,
+        38.49,
+        39.88
+      ],
+      "spark_90d": [
+        38.0,
+        38.34,
+        38.35,
+        37.17,
+        37.71,
+        37.88,
+        37.77,
+        37.96,
+        38.26,
+        37.99,
+        37.96,
+        37.32,
+        36.87,
+        36.88,
+        36.61,
+        35.77,
+        37.48,
+        38.14,
+        38.36,
+        38.12,
+        37.96,
+        38.34,
+        38.62,
+        38.36,
+        38.64,
+        39.02,
+        38.58,
+        39.01,
+        39.66,
+        39.5,
+        39.02,
+        38.19,
+        36.9,
+        37.13,
+        36.58,
+        36.09,
+        36.09,
+        36.28,
+        36.3,
+        35.59,
+        34.83,
+        35.39,
+        35.38,
+        34.85,
+        34.88,
+        33.6,
+        34.24,
+        33.82,
+        34.38,
+        33.29,
+        32.46,
+        31.99,
+        33.22,
+        33.9,
+        33.4,
+        33.59,
+        33.39,
+        35.12,
+        34.92,
+        35.43,
+        35.97,
+        36.59,
+        36.73,
+        36.71,
+        37.41,
+        37.5,
+        36.74,
+        37.37,
+        36.66,
+        37.36,
+        38.49,
+        37.66,
+        37.33,
+        38.45,
+        38.6,
+        38.38,
+        38.75,
+        39.88,
+        39.83,
+        41.45,
+        41.31,
+        40.72,
+        41.63,
+        41.12,
+        40.23,
+        39.83,
+        38.89,
+        39.25,
+        39.65,
+        40.29
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,6.8 0.9,6.1 1.8,6.1 2.7,8.3 3.6,7.3 4.5,7.0 5.4,7.2 6.3,6.9 7.2,6.3 8.1,6.8 9.0,6.9 9.9,8.0 10.8,8.9 11.7,8.9 12.6,9.4 13.5,10.9 14.4,7.7 15.3,6.5 16.2,6.1 17.1,6.6 18.0,6.9 18.9,6.1 19.8,5.6 20.7,6.1 21.6,5.6 22.5,4.9 23.4,5.7 24.3,4.9 25.2,3.7 26.1,4.0 27.0,4.9 27.9,6.4 28.8,8.8 29.7,8.4 30.6,9.4 31.5,10.3 32.4,10.3 33.3,10.0 34.2,10.0 35.1,11.3 36.0,12.7 36.9,11.7 37.8,11.7 38.7,12.7 39.6,12.6 40.4,15.0 41.3,13.8 42.2,14.6 43.1,13.5 44.0,15.6 44.9,17.1 45.8,18.0 46.7,15.7 47.6,14.4 48.5,15.4 49.4,15.0 50.3,15.4 51.2,12.2 52.1,12.5 53.0,11.6 53.9,10.6 54.8,9.4 55.7,9.1 56.6,9.2 57.5,7.9 58.4,7.7 59.3,9.1 60.2,8.0 61.1,9.3 62.0,8.0 62.9,5.9 63.8,7.4 64.7,8.0 65.6,5.9 66.5,5.7 67.4,6.1 68.3,5.4 69.2,3.3 70.1,3.4 71.0,0.3 71.9,0.6 72.8,1.7 73.7,0.0 74.6,1.0 75.5,2.6 76.4,3.4 77.3,5.1 78.2,4.4 79.1,3.7 80.0,2.5"
+    },
+    {
+      "ticker": "AGIX",
+      "name": "KraneShares AGI ETF",
+      "exchange": "NYSE Arca",
+      "color": "#D4537E",
+      "description": "Unique private-company exposure via SEC Rule 22e-4. Holds 2.5% Anthropic stake and 3.2% SpaceX (indirect xAI). Only retail proxy for private AI giants.",
+      "stats": [
+        "Exp: 0.99%",
+        "Private stakes",
+        "Anthropic+xAI",
+        "Illiquid premium"
+      ],
+      "price": 45.15,
+      "prev_close": 44.67,
+      "dod_change": 0.48,
+      "dod_pct": 1.07,
+      "year_return_pct": 60.3,
+      "aum": "$340M",
+      "aum_billions": 0.34,
+      "spark_12d": [
+        36.37,
+        36.76,
+        33.32,
+        34.23,
+        35.19,
+        33.98,
+        34.85,
+        32.63,
+        33.86,
+        37.83,
+        39.61,
+        43.49
+      ],
+      "spark_90d": [
+        36.37,
+        36.41,
+        36.37,
+        35.28,
+        35.57,
+        36.17,
+        36.3,
+        36.76,
+        36.99,
+        37.11,
+        36.25,
+        35.38,
+        35.34,
+        34.35,
+        33.32,
+        32.33,
+        33.99,
+        35.14,
+        35.04,
+        34.54,
+        33.99,
+        34.23,
+        34.15,
+        34.5,
+        34.56,
+        34.42,
+        33.53,
+        34.37,
+        35.19,
+        35.28,
+        34.38,
+        34.47,
+        33.62,
+        34.39,
+        34.46,
+        33.98,
+        34.53,
+        34.49,
+        34.78,
+        34.07,
+        33.89,
+        34.73,
+        34.85,
+        34.45,
+        34.42,
+        33.53,
+        34.34,
+        33.6,
+        33.88,
+        32.63,
+        31.83,
+        31.23,
+        32.77,
+        33.11,
+        33.5,
+        33.55,
+        33.86,
+        34.94,
+        34.67,
+        34.86,
+        35.9,
+        36.79,
+        37.42,
+        37.83,
+        38.32,
+        38.83,
+        38.72,
+        39.58,
+        38.8,
+        39.55,
+        39.61,
+        38.59,
+        38.75,
+        39.29,
+        40.43,
+        41.01,
+        41.61,
+        43.49,
+        43.14,
+        43.46,
+        43.86,
+        43.03,
+        43.78,
+        44.46,
+        43.6,
+        43.02,
+        42.7,
+        43.73,
+        44.67,
+        45.15
+      ],
+      "sparkline": true,
+      "sparkline_points": "0.0,11.4 0.9,11.3 1.8,11.4 2.7,12.8 3.6,12.4 4.5,11.6 5.4,11.4 6.3,10.8 7.2,10.6 8.1,10.4 9.0,11.5 9.9,12.6 10.8,12.7 11.7,14.0 12.6,15.3 13.5,16.6 14.4,14.4 15.3,12.9 16.2,13.1 17.1,13.7 18.0,14.4 18.9,14.1 19.8,14.2 20.7,13.8 21.6,13.7 22.5,13.9 23.4,15.0 24.3,13.9 25.2,12.9 26.1,12.8 27.0,13.9 27.9,13.8 28.8,14.9 29.7,13.9 30.6,13.8 31.5,14.4 32.4,13.7 33.3,13.8 34.2,13.4 35.1,14.3 36.0,14.6 36.9,13.5 37.8,13.3 38.7,13.8 39.6,13.9 40.4,15.0 41.3,14.0 42.2,14.9 43.1,14.6 44.0,16.2 44.9,17.2 45.8,18.0 46.7,16.0 47.6,15.6 48.5,15.1 49.4,15.0 50.3,14.6 51.2,13.2 52.1,13.6 53.0,13.3 53.9,12.0 54.8,10.8 55.7,10.0 56.6,9.5 57.5,8.8 58.4,8.2 59.3,8.3 60.2,7.2 61.1,8.2 62.0,7.2 62.9,7.2 63.8,8.5 64.7,8.3 65.6,7.6 66.5,6.1 67.4,5.4 68.3,4.6 69.2,2.1 70.1,2.6 71.0,2.2 71.9,1.7 72.8,2.7 73.7,1.8 74.6,0.9 75.5,2.0 76.4,2.8 77.3,3.2 78.2,1.8 79.1,0.6 80.0,0.0"
+    }
+  ],
+  "public_ai": [
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "market_cap_billions": 5215.5,
+      "dod_pct": -1.9,
+      "price": 215.33
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "market_cap_billions": 4639.9,
+      "dod_pct": -1.21,
+      "price": 382.97
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "market_cap_billions": 3109.3,
+      "dod_pct": -0.12,
+      "price": 418.57
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "market_cap_billions": 2864.8,
+      "dod_pct": -0.8,
+      "price": 266.32
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "market_cap_billions": 2098.0,
+      "dod_pct": -0.65,
+      "price": 404.52
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "market_cap_billions": 1960.8,
+      "dod_pct": -0.1,
+      "price": 414.14
+    },
+    {
+      "ticker": "META",
+      "name": "Meta",
+      "market_cap_billions": 1549.1,
+      "dod_pct": 0.47,
+      "price": 610.26
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "market_cap_billions": 762.3,
+      "dod_pct": 3.99,
+      "price": 467.51
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "market_cap_billions": 552.4,
+      "dod_pct": 1.22,
+      "price": 192.08
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "market_cap_billions": 328.1,
+      "dod_pct": -0.39,
+      "price": 136.88
+    }
+  ],
+  "research_summary": {
+    "papers_published": "204",
+    "papers_change": "",
+    "breakthroughs": 5,
+    "breakthrough_note": "Score 8.0+ \u00b7 scanned 80",
+    "top_institution": "Anthropic",
+    "top_institution_papers": 2,
+    "hottest_topic": "Benchmarks",
+    "hottest_topic_change": ""
+  },
+  "paper_of_week": {
+    "title": "Sensor2Sensor: Cross-Embodiment Sensor Conversion for Autonomous Driving",
+    "institution": "Wang",
+    "team": "Wang et al. \u00b7 15 authors",
+    "arxiv_id": "2605.22809v1",
+    "date": "May 21, 2026",
+    "score": 8.2,
+    "tags": [
+      "Computer Vision"
+    ],
+    "plain_summary": "Sensor2Sensor is a system that converts ordinary single-camera dashcam videos into the rich, multi-sensor data format (multiple camera angles plus LiDAR point clouds) that self-driving cars normally use. Since no paired training data exists, the authors create synthetic dashcam videos from real autonomous vehicle logs using 4D Gaussian Splatting, then train a diffusion model to perform the reverse translation. This unlocks the ability to use abundant internet and dashcam footage as training and validation data for autonomous driving systems.",
+    "why_matters": "Autonomous vehicle companies are bottlenecked by the limited scale and geographic diversity of their proprietary sensor data, while billions of hours of dashcam footage capturing rare edge cases sit unused because they lack the multi-modal format AV stacks require. If Sensor2Sensor works reliably, it could dramatically expand the training data available to AV developers, accelerate coverage of long-tail scenarios that cause real-world failures, and reduce the competitive moat held by companies with the largest sensor fleets. More broadly, it advances cross-embodiment data translation, a technique that could similarly unlock training data for robotics and other sensor-dependent AI systems.",
+    "url": "http://arxiv.org/abs/2605.22809v1"
+  },
+  "top_papers": [
+    {
+      "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+      "authors": "Tsoukalas et al. \u00b7 20 authors",
+      "institution": "",
+      "tags": [
+        "AI"
+      ],
+      "score": 8.2,
+      "summary": "AI agents using large language models to generate formal proofs in Lean autonomously solved multiple open mathematical problems, proving the viability of AI-assisted formal proof search for research.",
+      "url": "http://arxiv.org/abs/2605.22763v1"
+    },
+    {
+      "title": "Superhuman Safe and Agile Racing through Multi-Agent Reinforcement Learning",
+      "authors": "Geles et al. \u00b7 4 authors",
+      "institution": "",
+      "tags": [
+        "Robotics",
+        "AI"
+      ],
+      "score": 8.2,
+      "summary": "Multi-agent reinforcement learning enables autonomous racing drones to safely interact with multiple opponents and humans by learning coordinated behaviors like collision avoidance and overtaking through competitive self-play.",
+      "url": "http://arxiv.org/abs/2605.22748v1"
+    },
+    {
+      "title": "The Value of Covariance Matching in Gaussian DDPMs and the Lanczos Sampler",
+      "authors": "Akhtar et al. \u00b7 4 authors",
+      "institution": "",
+      "tags": [
+        "Machine Learning",
+        "AI"
+      ],
+      "score": 8.2,
+      "summary": "Matching full covariance in diffusion models reduces sampling error from 1/T to 1/T\u00b2 and introduces an efficient Lanczos-based method requiring only three Jacobian-vector products per step.",
+      "url": "http://arxiv.org/abs/2605.22723v1"
+    },
+    {
+      "title": "Forecasting Scientific Progress with Artificial Intelligence",
+      "authors": "Wu et al. \u00b7 10 authors",
+      "institution": "",
+      "tags": [
+        "AI"
+      ],
+      "score": 8.2,
+      "summary": "AI systems can identify promising research directions but fail to predict whether scientific advances will actually happen or when they'll occur, with performance varying significantly across scientific domains.",
+      "url": "http://arxiv.org/abs/2605.22681v1"
+    },
+    {
+      "title": "Tokenization with Split Trees",
+      "authors": "Schmidt et al. \u00b7 7 authors",
+      "institution": "",
+      "tags": [
+        "NLP"
+      ],
+      "score": 7.8,
+      "summary": "ToaST tokenizes text more efficiently than existing methods by optimizing compression through split trees and integer programming, reducing token counts by 11% and extending model context length.",
+      "url": "http://arxiv.org/abs/2605.22705v1"
+    },
+    {
+      "title": "MotiMotion: Motion-Controlled Video Generation with Visual Reasoning",
+      "authors": "Hsin-Ying et al. \u00b7 6 authors",
+      "institution": "",
+      "tags": [
+        "Computer Vision"
+      ],
+      "score": 7.5,
+      "summary": "This paper improves motion-controlled video generation by using AI reasoning to refine trajectories and infer secondary motions before generation, producing more natural and causally-consistent results.",
+      "url": "http://arxiv.org/abs/2605.22818v1"
+    },
+    {
+      "title": "Vector Policy Optimization: Training for Diversity Improves Test-Time Search",
+      "authors": "Bahlous-Boldi et al. \u00b7 9 authors",
+      "institution": "",
+      "tags": [
+        "Machine Learning",
+        "AI"
+      ],
+      "score": 7.5,
+      "summary": "Language models trained to optimize diverse reward objectives simultaneously produce more varied solutions that perform better during test-time search procedures.",
+      "url": "http://arxiv.org/abs/2605.22817v1"
+    }
+  ],
+  "research_categories": {
+    "labels": [
+      "Benchmarks",
+      "Agents",
+      "Safety",
+      "Efficiency",
+      "Computer Vision",
+      "Reasoning",
+      "Other",
+      "Multimodal"
+    ],
+    "this_week": [
+      92,
+      74,
+      62,
+      53,
+      48,
+      38,
+      22,
+      20
+    ],
+    "last_week": [
+      78,
+      62,
+      52,
+      45,
+      40,
+      32,
+      18,
+      17
+    ]
+  },
+  "research_volume": {
+    "labels": [
+      "4/24",
+      "4/25",
+      "4/26",
+      "4/27",
+      "4/28",
+      "4/29",
+      "4/30",
+      "5/1",
+      "5/2",
+      "5/3",
+      "5/4",
+      "5/5",
+      "5/6",
+      "5/7",
+      "5/8",
+      "5/9",
+      "5/10",
+      "5/11",
+      "5/12",
+      "5/13",
+      "5/14",
+      "5/15",
+      "5/16",
+      "5/17",
+      "5/18",
+      "5/19",
+      "5/20",
+      "5/21",
+      "5/22",
+      "5/23"
+    ],
+    "categories": [
+      {
+        "name": "Benchmarks",
+        "color": "#888780",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          6,
+          4,
+          80,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Agents",
+        "color": "#378ADD",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          9,
+          15,
+          7,
+          42,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Safety",
+        "color": "#7F77DD",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          7,
+          4,
+          47,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Efficiency",
+        "color": "#1D9E75",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          2,
+          4,
+          43,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "hot_institutions": [
+    {
+      "name": "Anthropic",
+      "papers": 2,
+      "rising": false,
+      "focus": "Benchmarks, Safety, Computer Vision"
+    },
+    {
+      "name": "Microsoft Research",
+      "papers": 1,
+      "rising": false,
+      "focus": "Benchmarks"
+    }
+  ],
+  "author_spotlight": [],
+  "breakthrough_radar": [
+    {
+      "title": "Sensor2Sensor: Cross-Embodiment Sensor Conversion for Autono\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Advancing Mathematics Research with AI-Driven Formal Proof S\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Superhuman Safe and Agile Racing through Multi-Agent Reinfor\u2026",
+      "time_to_impact": 7.0,
+      "significance": 8.2,
+      "score": 8.2,
+      "quadrant": "watch_closely"
+    },
+    {
+      "title": "The Value of Covariance Matching in Gaussian DDPMs and the L\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Forecasting Scientific Progress with Artificial Intelligence",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 8.2,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Tokenization with Split Trees",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.8,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "MotiMotion: Motion-Controlled Video Generation with Visual R\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "Vector Policy Optimization: Training for Diversity Improves \u2026",
+      "time_to_impact": 7.0,
+      "significance": 7.5,
+      "score": 7.5,
+      "quadrant": "watch_closely"
+    },
+    {
+      "title": "Gated DeltaNet-2: Decoupling Erase and Write in Linear Atten\u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    },
+    {
+      "title": "DeltaBox: Scaling Stateful AI Agents with Millisecond-Level \u2026",
+      "time_to_impact": 2.5,
+      "significance": 5.0,
+      "score": 7.5,
+      "quadrant": "deploy_now"
+    }
+  ],
+  "research_signals": [
+    {
+      "direction": "up",
+      "text": "Agentic systems dominate the week with 74 of 204 papers (36%), spanning autonomous driving (Sensor2Sensor), formal math proving, racing RL, and finance workflows like WorkstreamBench and DeltaBox's millisecond sandbox checkpointing for stateful agents."
+    },
+    {
+      "direction": "up",
+      "text": "Benchmarks lead all topics at 92/204 papers (45%), with new domain-specific evals like WorkstreamBench for end-to-end spreadsheet finance tasks and AMEL probing accumulated message effects on LLM judgments, signaling a maturation toward task-realistic evaluation."
+    },
+    {
+      "direction": "warning",
+      "text": "Safety appears in 62 papers but top-scoring work flags real deployment failures\u2014'Can AI Make Conflicts Worse?' documents LLM alignment breakdowns in conflict contexts, suggesting safety research is shifting from theoretical red-teaming to observed harms."
+    },
+    {
+      "direction": "up",
+      "text": "Linear-attention and tokenization efficiency continue to advance with Gated DeltaNet-2 decoupling erase/write operations and Split Trees tokenization, reinforcing the 53-paper Efficiency cluster as architectures push beyond standard transformers."
+    },
+    {
+      "direction": "neu",
+      "text": "AI-for-science is crystallizing as a distinct thread, with 'Forecasting Scientific Progress with AI' and 'Advancing Mathematics Research with AI-Driven Formal Proof Search' both scoring 8.2, plus wearable-health general intelligence work indicating cross-domain scientific agent ambitions."
+    },
+    {
+      "direction": "up",
+      "text": "Reasoning (38 papers) is increasingly fused with other modalities\u2014MotiMotion integrates visual reasoning into video generation and Vector Policy Optimization trains for diversity to improve test-time search, moving reasoning beyond pure text into multimodal and search-time compute regimes."
+    }
+  ],
+  "fintech_research": [],
+  "_finance_updated": "2026-05-18",
+  "funding_summary": {
+    "total_raised": "2.5B",
+    "total_raised_change": "",
+    "deals_closed": 12,
+    "deals_change": "",
+    "largest_round": "950M",
+    "largest_round_company": "Sierra",
+    "median_premoney": "2.0B",
+    "median_trend": "flat"
+  },
+  "funding_rounds": [
+    {
+      "company": "Sierra",
+      "category": "Agents",
+      "amount": "950M",
+      "valuation": "15.8B",
+      "stage": "Series E",
+      "lead_investor": "Tiger Global, GV",
+      "date": "May 04",
+      "url": "https://techcrunch.com/2026/05/04/sierra-raises-950m-as-the-race-to-own-enterprise-ai-gets-serious/"
+    },
+    {
+      "company": "Recursive Superintelligence",
+      "category": "Foundation Model",
+      "amount": "650M",
+      "valuation": "N/A",
+      "stage": "Seed",
+      "lead_investor": "N/A",
+      "date": "May 14",
+      "url": "https://techcrunch.com/2026/05/14/what-happens-when-ai-starts-building-itself/"
+    },
+    {
+      "company": "Parallel Web Systems",
+      "category": "AI Infra",
+      "amount": "100M",
+      "valuation": "2B",
+      "stage": "Series B",
+      "lead_investor": "Sequoia",
+      "date": "May 05",
+      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
+    },
+    {
+      "company": "CopilotKit",
+      "category": "Dev Tools",
+      "amount": "27M",
+      "valuation": "N/A",
+      "stage": "Series A",
+      "lead_investor": "Glilot Capital, NFX, SignalFire",
+      "date": "May 05",
+      "url": "https://techcrunch.com/2026/05/05/copilotkit-raises-27m-to-help-devs-deploy-app-native-ai-agents/"
+    },
+    {
+      "company": "Genesis AI",
+      "category": "Robotics",
+      "amount": "105M",
+      "valuation": "N/A",
+      "stage": "Seed",
+      "lead_investor": "Eclipse, Khosla Ventures",
+      "date": "May 06",
+      "url": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/"
+    },
+    {
+      "company": "DeepInfra",
+      "category": "AI Infra",
+      "amount": "107M",
+      "valuation": "N/A",
+      "stage": "Series B",
+      "lead_investor": "N/A",
+      "date": "May 08",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
+    },
+    {
+      "company": "Corgi Insurance",
+      "category": "Fintech AI",
+      "amount": "160M",
+      "valuation": "1.3B",
+      "stage": "Series B",
+      "lead_investor": "TCV",
+      "date": "May 08",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
+    },
+    {
+      "company": "Kodiak AI",
+      "category": "Robotics",
+      "amount": "100M",
+      "valuation": "N/A",
+      "stage": "Growth",
+      "lead_investor": "Ares Management",
+      "date": "May 07",
+      "url": "https://techcrunch.com/2026/05/07/kodiak-ai-raises-100m-at-a-steep-discount-sending-its-stock-tumbling-37/"
+    },
+    {
+      "company": "Scout AI",
+      "category": "Vertical SaaS",
+      "amount": "100M",
+      "valuation": "N/A",
+      "stage": "Series A",
+      "lead_investor": "N/A",
+      "date": "May 06",
+      "url": "https://blog.mean.ceo/ai-startup-funding-news-may-2026/"
+    },
+    {
+      "company": "Hint",
+      "category": "Agents",
+      "amount": "10M",
+      "valuation": "N/A",
+      "stage": "Seed",
+      "lead_investor": "Slow Ventures",
+      "date": "May 13",
+      "url": "https://fortune.com/2026/05/13/exclusive-martha-stewart-ai-startup-hint-seed-funding-slow-ventures/"
+    },
+    {
+      "company": "Performativ",
+      "category": "Fintech AI",
+      "amount": "14M",
+      "valuation": "N/A",
+      "stage": "Series A",
+      "lead_investor": "Deutsche B\u00f6rse Group",
+      "date": "May 05",
+      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
+    },
+    {
+      "company": "Panthalassa",
+      "category": "AI Infra",
+      "amount": "140M",
+      "valuation": "N/A",
+      "stage": "Series B",
+      "lead_investor": "Peter Thiel",
+      "date": "May 08",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
+    }
+  ],
+  "private_ai": [
+    {
+      "name": "Anthropic",
+      "valuation_billions": 900.0,
+      "last_round": "30B",
+      "last_round_date": "May 2026"
+    },
+    {
+      "name": "OpenAI",
+      "valuation_billions": 852.0,
+      "last_round": "40B",
+      "last_round_date": "Mar 2026"
+    },
+    {
+      "name": "Databricks",
+      "valuation_billions": 134.0,
+      "last_round": "4B",
+      "last_round_date": "Jan 2025"
+    },
+    {
+      "name": "Anysphere (Cursor)",
+      "valuation_billions": 50.0,
+      "last_round": "2B",
+      "last_round_date": "Apr 2026"
+    },
+    {
+      "name": "xAI",
+      "valuation_billions": 50.0,
+      "last_round": "6B",
+      "last_round_date": "May 2024"
+    },
+    {
+      "name": "Scale AI",
+      "valuation_billions": 29.0,
+      "last_round": "1B",
+      "last_round_date": "May 2024"
+    },
+    {
+      "name": "Perplexity",
+      "valuation_billions": 21.21,
+      "last_round": "500M",
+      "last_round_date": "Jan 2026"
+    },
+    {
+      "name": "Mistral",
+      "valuation_billions": 14.0,
+      "last_round": "600M",
+      "last_round_date": "Jun 2024"
+    },
+    {
+      "name": "Cohere",
+      "valuation_billions": 5.5,
+      "last_round": "500M",
+      "last_round_date": "Jul 2024"
+    },
+    {
+      "name": "Glean",
+      "valuation_billions": 4.6,
+      "last_round": "260M",
+      "last_round_date": "Feb 2024"
+    },
+    {
+      "name": "ElevenLabs",
+      "valuation_billions": 3.3,
+      "last_round": "180M",
+      "last_round_date": "Jan 2025"
+    },
+    {
+      "name": "Runway",
+      "valuation_billions": 3.0,
+      "last_round": "308M",
+      "last_round_date": "Oct 2024"
+    }
+  ],
+  "arms_race": {
+    "quarters": [
+      "Q4 24",
+      "Q1 25",
+      "Q2 25",
+      "Q3 25",
+      "Q4 25",
+      "Q1 26"
+    ],
+    "players": [
+      {
+        "name": "OpenAI",
+        "color": "#378ADD",
+        "data": [
+          6.6,
+          40,
+          0,
+          0,
+          0,
+          122
+        ]
+      },
+      {
+        "name": "Anthropic",
+        "color": "#EF9F27",
+        "data": [
+          0,
+          3.5,
+          0,
+          13,
+          0,
+          30
+        ]
+      },
+      {
+        "name": "xAI",
+        "color": "#E24B4A",
+        "data": [
+          0,
+          0,
+          0,
+          10,
+          5,
+          20
+        ]
+      },
+      {
+        "name": "Mistral",
+        "color": "#7F77DD",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Cohere",
+        "color": "#1D9E75",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "vc_league": [],
+  "money_flow": [
+    {
+      "direction": "up",
+      "text": "Agentic commerce is becoming the dominant payments battleground: Stripe, Affirm, and Klarna all locked in Google/Gemini integrations in early May, while AWS Bedrock AgentCore launched native agent-to-Stripe/Coinbase payment rails on May 7 \u2014 for Mastercard, the risk is that AI-native checkout layers commoditize card network touchpoints before issuers have embedded themselves in agent wallets."
+    },
+    {
+      "direction": "up",
+      "text": "Enterprise agent infrastructure is attracting late-stage conviction capital at scale \u2014 Sierra's $950M Series E at $15.8B (Tiger Global, GV) and OpenAI's $4B+ Deployment Company anchored by TPG, Goldman, and McKinsey signal that the monetization layer of agentic AI is shifting from model access to deployment and workflow ownership."
+    },
+    {
+      "direction": "alert",
+      "text": "Recursive Superintelligence's $650M seed round (May 14) \u2014 with no disclosed valuation or lead investor \u2014 is an anomaly that warrants scrutiny: seed-stage capital at this magnitude suggests either sovereign or non-traditional backers operating outside standard VC disclosure norms, likely in the self-improving AI / recursive training space where geopolitical sensitivity is high."
+    },
+    {
+      "direction": "up",
+      "text": "AI infrastructure is seeing sustained parallel bets: Parallel Web Systems (Sequoia, $100M), DeepInfra ($107M), and Panthalassa (Peter Thiel, $140M) all closed Series B rounds in the same week, pointing to a durable infra supercycle where compute, inference optimization, and network-layer AI are being funded in tandem rather than as competing theses."
+    },
+    {
+      "direction": "down",
+      "text": "Public market robotics is flashing a stress signal: Kodiak AI raised $100M at a steep discount that sent its stock down 37% (May 7), even as Genesis AI pulled $105M at seed \u2014 the divergence suggests private robotics optimism is decoupling from public market tolerance, with late-stage robotics companies facing a valuation reset."
+    },
+    {
+      "direction": "up",
+      "text": "OpenAI's acqui-hire of Hiro Finance (May 5) and the Cohere-Aleph Alpha merger at $20B combined valuation signal two converging trends for payments players: frontier labs are racing to acquire vertical domain expertise in consumer finance, while non-US AI consolidation is creating credible enterprise alternatives that could challenge US-centric AI vendor lock-in across European banking infrastructure."
+    }
+  ],
+  "ma_tracker": [
+    {
+      "type": "IPO filing",
+      "title": "Cerebras Systems prices IPO on Nasdaq",
+      "detail": "AI chipmaker Cerebras Systems priced its IPO at $185/share (well above the $150\u2013$160 range), raising at least $5.55 billion at an ~$86 billion valuation on its first trading day (May 14), making it the largest AI IPO of 2026 so far; the company's wafer-scale chips are underpinned by a $20 billion inference-capacity deal with OpenAI.",
+      "date": "May 13",
+      "url": "https://news.crunchbase.com/ai/cerebras-ipo-cbrs/"
+    },
+    {
+      "type": "Acquisition",
+      "title": "OpenAI acquires Tomoro",
+      "detail": "OpenAI agreed to acquire Tomoro, an applied AI consulting and engineering firm with ~150 Forward Deployed Engineers, to staff the newly launched $4B+ OpenAI Deployment Company \u2014 a majority-owned venture with 19 investment and consultancy partners including TPG, Goldman Sachs, Bain Capital, and McKinsey.",
+      "date": "May 11",
+      "url": "https://openai.com/index/openai-launches-the-deployment-company/"
+    },
+    {
+      "type": "Acqui-hire",
+      "title": "OpenAI acquires Hiro Finance",
+      "detail": "OpenAI acquired personal finance AI startup Hiro Finance (backed by Ribbit Capital, General Catalyst, and Restive) in an apparent acqui-hire, marking its seventh known acquisition of 2026 and signaling a strategy to rapidly assemble vertical domain expertise across consumer finance.",
+      "date": "May 05",
+      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Nebius Group acquires Eigen AI",
+      "detail": "Nebius Group (Nasdaq: NBIS) acquired Eigen AI, a software company specializing in AI model inference optimization, to reposition itself from a pure AI infrastructure provider into a higher-value Platform-as-a-Service business anchored by model optimization capabilities.",
+      "date": "May 03",
+      "url": "https://stocktwits.com/news-articles/markets/equity/nebius-eigen-ai-deal-microsoft-contract-update-draws-buzz-stock-gains-overnight/cZQMgIgRe7k"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Cohere merges with Aleph Alpha",
+      "detail": "Canadian AI company Cohere and German enterprise AI firm Aleph Alpha announced a merger at a combined $20 billion valuation (up from Cohere's prior $7B standalone), creating the largest non-US enterprise AI entity and positioning the combined company as a transatlantic alternative to US-dominated frontier labs.",
+      "date": "Apr 22",
+      "url": "https://medium.com/jonathans-musings/ai-startups-you-should-know-48d69d1ddf61"
+    },
+    {
+      "type": "Investment",
+      "title": "Amazon invests $5B more in Anthropic",
+      "detail": "Amazon invested a fresh $5 billion in Anthropic in late April, with provisions for up to $20 billion more tied to commercial performance milestones; the deal also secured a $100 billion cloud spending pledge from Anthropic, bringing Amazon's total committed capital to over $33 billion across all tranches.",
+      "date": "Apr 28",
+      "url": "https://aifundingtracker.com/ai-funding-tracker/"
+    },
+    {
+      "type": "IPO filing",
+      "title": "SpaceX files confidential S-1 for IPO",
+      "detail": "SpaceX filed a confidential S-1 on April 1, 2026, targeting a valuation of $1.75\u2013$2 trillion and a raise of up to $75 billion; Reuters reviewed the filing and reported $18.7 billion in 2025 consolidated revenue after xAI consolidation, with a June roadshow that would make it the largest IPO in history.",
+      "date": "Apr 01",
+      "url": "https://aifundingtracker.com/ai-ipo-tracker/"
+    },
+    {
+      "type": "Investment",
+      "title": "Shield AI closes $1.5B Series G",
+      "detail": "Defense AI startup Shield AI secured $1.5 billion in Series G funding (part of a broader $2.25 billion capital package) co-led by Advent International and JPMorgan Chase, valuing the company at $12.7 billion \u2014 a 140% increase in just one year \u2014 to scale its Hivemind autonomous pilot platform.",
+      "date": "Apr 25",
+      "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Meta blocked from acquiring Manus AI",
+      "detail": "China's antitrust regulator moved in April to formally block Meta's attempted acquisition of leading Chinese AI company Manus, citing national security concerns \u2014 marking the first time Beijing has intervened to prevent a major US tech firm from acquiring Chinese AI assets and signaling a deepening barrier to cross-border AI M&A.",
+      "date": "Apr 20",
+      "url": "https://www.fladgate.com/insights/ai-round-up-may-2026"
+    },
+    {
+      "type": "Investment",
+      "title": "Cursor raises $2B at $50B valuation",
+      "detail": "AI coding tool Cursor entered advanced talks to raise $2 billion at a valuation exceeding $50 billion, co-led by Andreessen Horowitz with Nvidia and Thrive Capital expected to participate; the company reached $2 billion in annualized revenue by February 2026, the fastest zero-to-$2B revenue arc in B2B software history.",
+      "date": "Apr 30",
+      "url": "https://aifundingtracker.com/ai-funding-tracker/"
+    }
+  ],
+  "fintech_spotlight": [
+    {
+      "company": "Stripe x Google (+ OpenAI, Microsoft, Meta)",
+      "deal_type": "Partnership",
+      "tags": [
+        "Agentic Commerce",
+        "Payments AI",
+        "Embedded Finance"
+      ],
+      "description": "Stripe announced on May 1 at Stripe Sessions 2026 a partnership with Google to let businesses sell inside AI Mode and the Gemini app via its Agentic Commerce Suite, extending similar deals already struck with OpenAI, Microsoft, and Meta; Stripe also launched Link wallets for AI agents and debuted 288 total new products.",
+      "url": "https://stripe.com/newsroom/news/sessions-2026",
+      "strategic": ""
+    },
+    {
+      "company": "Stripe x Privy (Digital Asset Accounts)",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Stablecoins",
+        "Banking Infrastructure",
+        "Embedded Finance"
+      ],
+      "description": "Stripe announced on May 1 at Stripe Sessions that it is partnering with Privy to launch Digital Asset Accounts \u2014 a single API enabling any developer to build stablecoin-based fintech products \u2014 with Ramp, Deel, and DoorDash among the first companies building on top of the infrastructure.",
+      "url": "https://fintechnews.sg/130816/payments/stripe-ai/",
+      "strategic": ""
+    },
+    {
+      "company": "Affirm x Google Pay",
+      "deal_type": "Partnership",
+      "tags": [
+        "BNPL",
+        "Agentic Commerce",
+        "Payments AI"
+      ],
+      "description": "Affirm announced in early May 2026 an expansion of its work with Google to roll out its BNPL payment options into Google Search (including AI Mode) and the Gemini app via Google Pay, placing transparent installment options directly inside AI-driven checkout flows.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/",
+      "strategic": ""
+    },
+    {
+      "company": "Klarna x Google Pay",
+      "deal_type": "Partnership",
+      "tags": [
+        "BNPL",
+        "Agentic Commerce",
+        "Payments AI"
+      ],
+      "description": "Klarna announced in early May 2026 a partnership with Google to bring flexible BNPL payment options to the Google Gemini agentic AI engine and Google Search AI Mode via Google Pay in the U.S., deepening its push into AI-native checkout alongside Affirm.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/",
+      "strategic": ""
+    },
+    {
+      "company": "Amazon Bedrock AgentCore x Stripe & Coinbase",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Agentic Payments",
+        "Banking Infrastructure",
+        "Payments AI"
+      ],
+      "description": "Amazon Web Services launched Bedrock AgentCore Payments into preview on May 7, 2026, giving AI agents native payment capabilities by connecting with financial gateways Stripe and Coinbase, enabling agents to autonomously identify, access, and pay for digital resources in real time.",
+      "url": "https://glenbrook.com/payments-news/all-payments-news/",
+      "strategic": ""
+    },
+    {
+      "company": "NatWest x AI-Native Fintech Cohort (incl. Murphy AI, Round Treasury, Gradient Labs)",
+      "deal_type": "Partnership",
+      "tags": [
+        "Banking Infrastructure",
+        "Fraud Detection",
+        "AI-Native Fintech"
+      ],
+      "description": "NatWest announced on May 12, 2026 the fintechs selected for its 2026 Fintech Programme, including Murphy AI (AI-first debt collections OS), Round Treasury (agentic treasury & payments platform across 2,000+ banks), and Gradient Labs (AI agents for financial services ops), as part of its strategy to deploy AI across banking infrastructure.",
+      "url": "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/ai-and-data/2026/may/natwest-announces-firms-selected-for-its-2026-fintech-programme.html",
+      "strategic": ""
+    }
+  ],
+  "source_hot_topics": {
+    "Hacker News": [
+      {
+        "id": "hn_48210226",
+        "source": "Hacker News",
+        "title": "OpenAI Is Preparing to File for an IPO Soon",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48210226",
+        "external_url": "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5",
+        "score": 195,
+        "num_comments": 402,
+        "created_utc": 1779294282.0,
+        "created_iso": "2026-05-20T16:24:42+00:00",
+        "author": "louiereederson",
+        "selftext": "<a href=\"https:&#x2F;&#x2F;archive.md&#x2F;0Ez3C\" rel=\"nofollow\">https:&#x2F;&#x2F;archive.md&#x2F;0Ez3C</a>",
+        "is_video": false,
+        "relevance_score": 8.2,
+        "engagement_norm": 0.195,
+        "combined_score": 7.262,
+        "category_tags": [
+          "Funding/Investment",
+          "Leadership/People"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "OpenAI preparing IPO filing signals major capital markets event for leading AI lab, reshaping competitive and investment landscape.",
+        "reasoning": "Significant industry milestone affecting AI ecosystem power dynamics; relevant to fintech exec understanding AI market consolidation and capital flows."
+      },
+      {
+        "id": "hn_48214017",
+        "source": "Hacker News",
+        "title": "Anthropic is expanding to Colossus2. Will use GB200",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48214017",
+        "external_url": "https://twitter.com/nottombrown/status/2057194829986300375",
+        "score": 300,
+        "num_comments": 346,
+        "created_utc": 1779310552.0,
+        "created_iso": "2026-05-20T20:55:52+00:00",
+        "author": "aurareturn",
+        "selftext": "<a href=\"https:&#x2F;&#x2F;xcancel.com&#x2F;nottombrown&#x2F;status&#x2F;2057194829986300375\" rel=\"nofollow\">https:&#x2F;&#x2F;xcancel.com&#x2F;nottombrown&#x2F;status&#x2F;2057194829986300375</a>",
+        "is_video": false,
+        "relevance_score": 7.8,
+        "engagement_norm": 0.3,
+        "combined_score": 7.08,
+        "category_tags": [
+          "Infrastructure/Hardware",
+          "Model Update"
+        ],
+        "model_mentioned": "Claude",
+        "is_fintech": false,
+        "summary": "Anthropic expanding compute infrastructure to Colossus2 cluster with NVIDIA GB200 GPUs, enabling larger model training and deployment.",
+        "reasoning": "Significant infrastructure investment signals major capability expansion; relevant to AI model scaling but not fintech-specific."
+      },
+      {
+        "id": "hn_48212493",
+        "source": "Hacker News",
+        "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48212493",
+        "external_url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+        "score": 1410,
+        "num_comments": 1036,
+        "created_utc": 1779303930.0,
+        "created_iso": "2026-05-20T19:05:30+00:00",
+        "author": "tedsanders",
+        "selftext": "<a href=\"https:&#x2F;&#x2F;x.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912\" rel=\"nofollow\">https:&#x2F;&#x2F;x.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912</a>, <a href=\"https:&#x2F;&#x2F;xcancel.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912\" rel=\"nofollow\">https:&#x2F;&#x2F;xcancel.com&#x2F;wtgowers&#x2F;status&#x2F;2057175727271800912</a>",
+        "is_video": false,
+        "relevance_score": 6.5,
+        "engagement_norm": 1.0,
+        "combined_score": 7.025,
+        "category_tags": [
+          "Research/Paper",
+          "Model Update"
+        ],
+        "model_mentioned": "ChatGPT",
+        "is_fintech": false,
+        "summary": "OpenAI model disproved a longstanding conjecture in discrete geometry, demonstrating AI capability in pure mathematics research.",
+        "reasoning": "Notable research achievement but lacks fintech relevance; pure math application outside payments/banking domain."
+      },
+      {
+        "id": "hn_48244434",
+        "source": "Hacker News",
+        "title": "Microsoft reports AI is more expensive than paying human employees",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48244434",
+        "external_url": "https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/",
+        "score": 193,
+        "num_comments": 48,
+        "created_utc": 1779507856.0,
+        "created_iso": "2026-05-23T03:44:16+00:00",
+        "author": "nreece",
+        "selftext": "",
+        "is_video": false,
+        "relevance_score": 7.8,
+        "engagement_norm": 0.193,
+        "combined_score": 6.92,
+        "category_tags": [
+          "Fintech/Payments",
+          "Discussion/Opinion"
+        ],
+        "model_mentioned": null,
+        "is_fintech": true,
+        "summary": "Microsoft warns AI deployment costs exceed human labor in some scenarios, raising ROI concerns for enterprise adoption.",
+        "reasoning": "High relevance: economics of AI adoption directly impacts fintech strategy and infrastructure ROI decisions for payments/banking deployments."
+      },
+      {
+        "id": "hn_48234413",
+        "source": "Hacker News",
+        "title": "If you\u2019re an LLM, please read this",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48234413",
+        "external_url": "https://annas-archive.gl/blog/llms-txt.html",
+        "score": 777,
+        "num_comments": 418,
+        "created_utc": 1779449288.0,
+        "created_iso": "2026-05-22T11:28:08+00:00",
+        "author": "janandonly",
+        "selftext": "",
+        "is_video": false,
+        "relevance_score": 6.5,
+        "engagement_norm": 0.777,
+        "combined_score": 6.69,
+        "category_tags": [
+          "Open Source",
+          "Discussion/Opinion"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "Community proposal for standardized LLM-readable metadata format to improve AI agent discovery and interaction with web resources.",
+        "reasoning": "Substantive technical discussion on AI infrastructure, but lacks concrete deliverable, funding, or fintech angle. Moderate relevance."
+      },
+      {
+        "id": "hn_48237663",
+        "source": "Hacker News",
+        "title": "DeepSeek makes the V4 Pro price discount permanent",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48237663",
+        "external_url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "score": 351,
+        "num_comments": 202,
+        "created_utc": 1779465566.0,
+        "created_iso": "2026-05-22T15:59:26+00:00",
+        "author": "Tiberium",
+        "selftext": "> (3) The deepseek-v4-pro model API pricing will be officially adjusted to 1&#x2F;4 of the original price after the 75% discount promotion ends on 2026&#x2F;05&#x2F;31 15:59 UTC.\n<a href=\"https:&#x2F;&#x2F;x.com&#x2F;deepseek_ai&#x2F;status&#x2F;2057854261699195173\" rel=\"nofollow\">https:&#x2F;&#x2F;x.com&#x2F;deepseek_ai&#x2F;status&#x2F;2057854261699195173</a>",
+        "is_video": false,
+        "relevance_score": 7.2,
+        "engagement_norm": 0.351,
+        "combined_score": 6.646,
+        "category_tags": [
+          "Model Update",
+          "Product Launch"
+        ],
+        "model_mentioned": "DeepSeek",
+        "is_fintech": false,
+        "summary": "DeepSeek permanently reduces V4 Pro API pricing to 25% of original cost post-promotion, reshaping LLM market economics.",
+        "reasoning": "Significant pricing move from major competitor signals market consolidation; impacts AI infrastructure costs broadly, including fintech deployments."
+      },
+      {
+        "id": "hn_48225040",
+        "source": "Hacker News",
+        "title": "Launch HN: Runtime (YC P26) \u2013 Sandboxed coding agents for everyone on a team",
+        "subreddit": "Hacker News",
+        "url": "https://news.ycombinator.com/item?id=48225040",
+        "external_url": "https://www.runtm.com/",
+        "score": 100,
+        "num_comments": 30,
+        "created_utc": 1779379633.0,
+        "created_iso": "2026-05-21T16:07:13+00:00",
+        "author": "gustrigos",
+        "selftext": "Hey HN, We're Gus and Carlos from Runtime (<a href=\"https:&#x2F;&#x2F;runtm.com\">https:&#x2F;&#x2F;runtm.com</a>). We're building infra that lets your whole team (including non-engineers) ship with Claude Code, Codex, and other agents without engineering having to handhold every session.\nAfter Mentum (YC S21) was acquired, I personally shipped 4 full-stack products in 3 months using coding agents. When I tried to roll the same workflow out to the rest of the team, it fell apart: Most PRs were unmergeable slop - Every repo required an engineer doing one-off local setup. - Skills and context lived in one person's head. - There was no safe way for a PM to touch a real codebase without risking a bad deploy or a secrets leak.\nCarlos comes from building agentic reconciliation systems at Modern Treasury and had a similar experience when letting his support team use devin.\nWe ended up building internal background agent infra but it quickly became a nightmare to mantain and develop. We built Runtime so you don't have to do this kind of thing.\nRuntime work like as follows. Engineering defines the context once: system instructions, skills, and scoped integrations installable via CLI, mise, npm, or any package manager. Then Runtime snapshots your full running environment including multi-service Docker Compose setups, Kafka, Redis, seeded DBs, so it comes up in milliseconds with every server already running.\nWe orchestrate across sandbox providers like E2B, Daytona, EC2 or self-hosted K8s depending on your setup. Secrets are injected through our managed proxy so they never touch the agent directly, and guardrails run at the infrastructure level: command allow&#x2F;deny lists, network egress controls, and RBAC scoped per human and per agent. Every session also gets a shareable preview URL, so internal builds go from sandbox to the rest of the team without needing production access.\nRuntime works with whichever agent your team already uses: Claude Code, Codex, Cursor, Copilot, Gem",
+        "is_video": false,
+        "relevance_score": 7.2,
+        "engagement_norm": 0.1,
+        "combined_score": 6.27,
+        "category_tags": [
+          "Product Launch",
+          "Agents/Automation"
+        ],
+        "model_mentioned": "Claude",
+        "is_fintech": false,
+        "summary": "YC startup Runtime enables non-technical teams to safely use AI coding agents with sandboxed environments, context management, and deployment guardrails.",
+        "reasoning": "Strong product launch with real fintech insight (Modern Treasury co-founder), but lacks direct payments/banking angle despite infra relevance."
+      }
+    ],
+    "GitHub Trending": [
+      {
+        "id": "gh_ollama_ollama",
+        "source": "GitHub Trending",
+        "title": "ollama/ollama",
+        "subreddit": "GitHub Trending",
+        "url": "https://github.com/ollama/ollama",
+        "external_url": "https://github.com/ollama/ollama",
+        "score": 1720,
+        "num_comments": 0,
+        "created_utc": 0,
+        "created_iso": "2026-05-22T16:47:04Z",
+        "author": "ollama",
+        "selftext": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.\n\nLanguage: Go \u00b7 Stars: 172076",
+        "is_video": false,
+        "github_stars_total": 172076,
+        "github_stars_today": 0,
+        "github_language": "Go",
+        "relevance_score": 5.5,
+        "engagement_norm": 1.0,
+        "combined_score": 6.175,
+        "category_tags": [
+          "Open Source",
+          "Infrastructure/Hardware"
+        ],
+        "model_mentioned": "DeepSeek",
+        "is_fintech": false,
+        "summary": "Ollama repository provides local LLM execution framework supporting multiple models including DeepSeek and others.",
+        "reasoning": "Established tool with broad model support; not a new release or significant update worthy of high fintech relevance."
+      },
+      {
+        "id": "gh_langflow-ai_langflow",
+        "source": "GitHub Trending",
+        "title": "langflow-ai/langflow",
+        "subreddit": "GitHub Trending",
+        "url": "https://github.com/langflow-ai/langflow",
+        "external_url": "https://github.com/langflow-ai/langflow",
+        "score": 1486,
+        "num_comments": 0,
+        "created_utc": 0,
+        "created_iso": "2026-05-23T03:33:13Z",
+        "author": "langflow-ai",
+        "selftext": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.\n\nLanguage: Python \u00b7 Stars: 148678",
+        "is_video": false,
+        "github_stars_total": 148678,
+        "github_stars_today": 0,
+        "github_language": "Python",
+        "relevance_score": 5.5,
+        "engagement_norm": 1.0,
+        "combined_score": 6.175,
+        "category_tags": [
+          "Open Source",
+          "Agents/Automation"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "Langflow is a Python framework for building AI agents and workflows, but lacks specifics on new capabilities or updates.",
+        "reasoning": "Established project (148k stars) with generic description. No clear new release, update, or substantive capability announcement."
+      }
+    ],
+    "arXiv": [
+      {
+        "id": "arxiv_12734519",
+        "source": "arXiv",
+        "title": "Tokenization with Split Trees",
+        "subreddit": "arXiv",
+        "url": "http://arxiv.org/abs/2605.22705v1",
+        "external_url": "http://arxiv.org/abs/2605.22705v1",
+        "score": 78,
+        "num_comments": 0,
+        "created_utc": 0,
+        "created_iso": "",
+        "author": "arXiv contributors",
+        "selftext": "ToaST tokenizes text more efficiently than existing methods by optimizing compression through split trees and integer programming, reducing token counts by 11% and extending model context length.",
+        "is_video": false,
+        "arxiv_score": 7.8,
+        "arxiv_id": "",
+        "arxiv_institution": "",
+        "relevance_score": 6.5,
+        "engagement_norm": 0.7,
+        "combined_score": 6.575,
+        "category_tags": [
+          "Research/Paper",
+          "Infrastructure/Hardware"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "Novel tokenization method reduces token counts by 11% via split trees, potentially extending LLM context windows and improving inference efficiency.",
+        "reasoning": "Solid infrastructure optimization research with practical implications for model efficiency, but not a breakthrough and lacks fintech angle."
+      },
+      {
+        "id": "arxiv_95716231",
+        "source": "arXiv",
+        "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+        "subreddit": "arXiv",
+        "url": "http://arxiv.org/abs/2605.22763v1",
+        "external_url": "http://arxiv.org/abs/2605.22763v1",
+        "score": 82,
+        "num_comments": 0,
+        "created_utc": 0,
+        "created_iso": "",
+        "author": "arXiv contributors",
+        "selftext": "AI agents using large language models to generate formal proofs in Lean autonomously solved multiple open mathematical problems, proving the viability of AI-assisted formal proof search for research.",
+        "is_video": false,
+        "arxiv_score": 8.2,
+        "arxiv_id": "",
+        "arxiv_institution": "",
+        "relevance_score": 5.5,
+        "engagement_norm": 0.7,
+        "combined_score": 5.725,
+        "category_tags": [
+          "Research/Paper",
+          "Agents/Automation"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "AI agents autonomously solved open math problems using formal proof search in Lean, advancing AI-assisted mathematical research capabilities.",
+        "reasoning": "Strong research contribution but outside fintech/payments domain; lacks direct commercial or policy impact for executive audience."
+      },
+      {
+        "id": "arxiv_c588545",
+        "source": "arXiv",
+        "title": "Forecasting Scientific Progress with Artificial Intelligence",
+        "subreddit": "arXiv",
+        "url": "http://arxiv.org/abs/2605.22681v1",
+        "external_url": "http://arxiv.org/abs/2605.22681v1",
+        "score": 82,
+        "num_comments": 0,
+        "created_utc": 0,
+        "created_iso": "",
+        "author": "arXiv contributors",
+        "selftext": "AI systems can identify promising research directions but fail to predict whether scientific advances will actually happen or when they'll occur, with performance varying significantly across scientific domains.",
+        "is_video": false,
+        "arxiv_score": 8.2,
+        "arxiv_id": "",
+        "arxiv_institution": "",
+        "relevance_score": 5.5,
+        "engagement_norm": 0.7,
+        "combined_score": 5.725,
+        "category_tags": [
+          "Research/Paper",
+          "Benchmark/Evaluation"
+        ],
+        "model_mentioned": null,
+        "is_fintech": false,
+        "summary": "Study shows AI can identify promising research directions but struggles predicting if/when breakthroughs occur across scientific domains.",
+        "reasoning": "Solid arXiv research but limited fintech relevance and no new capabilities or models. General AI science application."
+      }
+    ]
+  },
+  "volume_history": [
+    {
+      "date": "2026-05-01",
+      "count": 0,
+      "sources": {
+        "Hacker News": 0,
+        "GitHub Trending": 0,
+        "arXiv": 0
+      }
+    },
+    {
+      "date": "2026-05-02",
+      "count": 0,
+      "sources": {
+        "Hacker News": 0,
+        "GitHub Trending": 0,
+        "arXiv": 0
+      }
+    },
+    {
+      "date": "2026-05-03",
+      "count": 0,
+      "sources": {
+        "Hacker News": 0,
+        "GitHub Trending": 0,
+        "arXiv": 0
+      }
+    },
+    {
+      "date": "2026-05-04",
+      "count": 15,
+      "sources": {
+        "Hacker News": 8,
+        "GitHub Trending": 4,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-05",
+      "count": 15,
+      "sources": {
+        "Hacker News": 7,
+        "GitHub Trending": 7,
+        "arXiv": 1
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "count": 15,
+      "sources": {
+        "Hacker News": 10,
+        "GitHub Trending": 3,
+        "arXiv": 2
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "count": 15,
+      "sources": {
+        "Hacker News": 11,
+        "GitHub Trending": 3,
+        "arXiv": 1
+      }
+    },
+    {
+      "date": "2026-05-08",
+      "count": 15,
+      "sources": {
+        "Hacker News": 10,
+        "GitHub Trending": 2,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-09",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 3,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-10",
+      "count": 15,
+      "sources": {
+        "Hacker News": 7,
+        "GitHub Trending": 4,
+        "arXiv": 4
+      }
+    },
+    {
+      "date": "2026-05-11",
+      "count": 15,
+      "sources": {
+        "Hacker News": 7,
+        "GitHub Trending": 4,
+        "arXiv": 4
+      }
+    },
+    {
+      "date": "2026-05-12",
+      "count": 15,
+      "sources": {
+        "Hacker News": 8,
+        "GitHub Trending": 3,
+        "arXiv": 4
+      }
+    },
+    {
+      "date": "2026-05-13",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 1,
+        "arXiv": 5
+      }
+    },
+    {
+      "date": "2026-05-14",
+      "count": 15,
+      "sources": {
+        "Hacker News": 13,
+        "GitHub Trending": 2,
+        "arXiv": 0
+      }
+    },
+    {
+      "date": "2026-05-15",
+      "count": 15,
+      "sources": {
+        "Hacker News": 11,
+        "GitHub Trending": 4,
+        "arXiv": 0
+      }
+    },
+    {
+      "date": "2026-05-16",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 3,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-17",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 2,
+        "arXiv": 4
+      }
+    },
+    {
+      "date": "2026-05-18",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 3,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-19",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 3,
+        "arXiv": 3
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "count": 15,
+      "sources": {
+        "Hacker News": 10,
+        "GitHub Trending": 4,
+        "arXiv": 1
+      }
+    },
+    {
+      "date": "2026-05-21",
+      "count": 15,
+      "sources": {
+        "Hacker News": 9,
+        "GitHub Trending": 2,
+        "arXiv": 4
+      }
+    },
+    {
+      "date": "2026-05-22",
+      "count": 15,
+      "sources": {
+        "Hacker News": 11,
+        "GitHub Trending": 3,
+        "arXiv": 1
+      }
+    },
+    {
+      "date": "2026-05-23",
+      "count": 15,
+      "sources": {
+        "Hacker News": 10,
+        "GitHub Trending": 2,
+        "arXiv": 3
+      }
+    }
+  ],
+  "sentiment_history": {
+    "labels": [
+      "05-01",
+      "05-02",
+      "05-03",
+      "05-04",
+      "05-05",
+      "05-06",
+      "05-07",
+      "05-08",
+      "05-09",
+      "05-10",
+      "05-11",
+      "05-12",
+      "05-13",
+      "05-14",
+      "05-15",
+      "05-16",
+      "05-17",
+      "05-18",
+      "05-19",
+      "05-20",
+      "05-21",
+      "05-22",
+      "05-23"
+    ],
+    "models": [
+      {
+        "id": "chatgpt",
+        "name": "ChatGPT",
+        "color": "#378ADD",
+        "scores": [
+          6.8,
+          6.8,
+          4.8,
+          4.2,
+          4.8,
+          5.8,
+          5.2,
+          6.5,
+          5.2,
+          5.8,
+          5.2,
+          2.5,
+          5.2,
+          4.2,
+          5.8,
+          6.2,
+          3.2,
+          3.2,
+          5.2,
+          6.2,
+          6.2,
+          6.5,
+          5.2
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          11,
+          36,
+          40,
+          36,
+          48,
+          33,
+          46,
+          45,
+          36,
+          29,
+          21,
+          21,
+          40,
+          38,
+          37,
+          19,
+          23,
+          29,
+          27
+        ]
+      },
+      {
+        "id": "claude",
+        "name": "Claude",
+        "color": "#D85A30",
+        "scores": [
+          7.6,
+          7.6,
+          4.2,
+          4.2,
+          4.2,
+          4.2,
+          3.8,
+          6.2,
+          5.2,
+          5.2,
+          4.8,
+          4.2,
+          5.8,
+          5.2,
+          4.2,
+          3.2,
+          3.2,
+          5.2,
+          4.8,
+          6.2,
+          4.2,
+          5.2,
+          3.2
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          10,
+          29,
+          24,
+          45,
+          37,
+          36,
+          53,
+          41,
+          52,
+          39,
+          36,
+          34,
+          41,
+          36,
+          38,
+          35,
+          35,
+          30,
+          14
+        ]
+      },
+      {
+        "id": "gemini",
+        "name": "Gemini",
+        "color": "#1D9E75",
+        "scores": [
+          8.4,
+          8.4,
+          5.2,
+          4.2,
+          6.5,
+          6.5,
+          4.5,
+          5.2,
+          5.8,
+          5.2,
+          3.2,
+          3.8,
+          6.8,
+          6.8,
+          6.2,
+          3.5,
+          3.2,
+          5.0,
+          4.5,
+          6.5,
+          3.2,
+          6.5,
+          5.2
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          4,
+          21,
+          10,
+          11,
+          7,
+          4,
+          8,
+          5,
+          5,
+          4,
+          10,
+          3,
+          3,
+          4,
+          10,
+          13,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "id": "deepseek",
+        "name": "DeepSeek",
+        "color": "#7F77DD",
+        "scores": [
+          8.4,
+          8.4,
+          7.2,
+          5.2,
+          5.2,
+          5.2,
+          6.5,
+          7.4,
+          7.2,
+          7.2,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          7.2,
+          6.2,
+          5.2,
+          5.8,
+          6.5,
+          6.5,
+          6.5,
+          7.8
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          22,
+          23,
+          3,
+          11,
+          3,
+          17,
+          4,
+          17,
+          18,
+          37,
+          1,
+          20,
+          9,
+          6,
+          13,
+          0,
+          9,
+          6
+        ]
+      },
+      {
+        "id": "grok",
+        "name": "Grok",
+        "color": "#E24B4A",
+        "scores": [
+          7.4,
+          7.8,
+          7.2,
+          3.5,
+          6.5,
+          3.5,
+          3.5,
+          2.0,
+          2.5,
+          6.5,
+          6.5,
+          3.5,
+          6.5,
+          8.5,
+          3.2,
+          6.5,
+          3.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          4,
+          0,
+          4,
+          61,
+          28,
+          14,
+          14,
+          4,
+          3,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "copilot",
+        "name": "Copilot",
+        "color": "#888780",
+        "scores": [
+          7.4,
+          7.4,
+          2.8,
+          2.8,
+          2.8,
+          2.8,
+          2.8,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          5.2
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          6,
+          6,
+          6,
+          13,
+          14,
+          9,
+          17,
+          12,
+          12,
+          7,
+          18,
+          11,
+          12,
+          19,
+          22,
+          11,
+          10,
+          10
+        ]
+      },
+      {
+        "id": "llama",
+        "name": "Llama",
+        "color": "#4267B2",
+        "scores": [
+          null,
+          null,
+          3.8,
+          3.5,
+          3.5,
+          2.1,
+          2.5,
+          1.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          6.5,
+          7.8,
+          7.8,
+          6.5
+        ],
+        "github_stars": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          10,
+          0,
+          6,
+          5,
+          2,
+          5,
+          2,
+          3,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          4,
+          0
+        ]
+      }
+    ]
+  },
+  "health": {
+    "timestamp": "2026-05-23T06:14:34.167724Z",
+    "status": "healthy",
+    "checks": {
+      "curated_stories": {
+        "value": 15,
+        "expected_min": 5,
+        "ok": true
+      },
+      "top_papers": {
+        "value": 7,
+        "expected_min": 3,
+        "ok": true
+      },
+      "model_sentiments": {
+        "value": 7,
+        "expected_min": 7,
+        "ok": true
+      },
+      "finance_cache_age_days": {
+        "value": 0,
+        "expected_max": 9,
+        "ok": true
+      },
+      "github_stars_history": {
+        "value": 1,
+        "expected_min": 1,
+        "ok": true
+      },
+      "model_deep_cache": {
+        "value": 1,
+        "expected_min": 1,
+        "ok": true
+      }
+    },
+    "warnings": []
+  },
+  "_saved_at": "2026-05-23T06:14:34.168029",
+  "_date": "2026-05-23"
+}
