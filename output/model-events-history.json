@@ -1,6 +1,12 @@
 {
   "deepseek": [
     {
+      "date": "2026-05-24",
+      "text": "DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost",
+      "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-22",
       "text": "DeepSeek makes the V4 Pro price discount permanent",
       "url": "https://api-docs.deepseek.com/quick_start/pricing",
