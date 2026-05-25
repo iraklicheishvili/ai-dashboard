@@ -1,25 +1,65 @@
 {
-  "_finance_updated": "2026-05-18",
+  "_finance_updated": "2026-05-25",
   "funding_summary": {
-    "total_raised": "2.5B",
+    "total_raised": "32.9B",
     "total_raised_change": "",
-    "deals_closed": 12,
+    "deals_closed": 10,
     "deals_change": "",
-    "largest_round": "950M",
-    "largest_round_company": "Sierra",
-    "median_premoney": "2.0B",
+    "largest_round": "30B",
+    "largest_round_company": "Anthropic",
+    "median_premoney": "6.0B",
     "median_trend": "flat"
   },
   "funding_rounds": [
     {
-      "company": "Sierra",
-      "category": "Agents",
-      "amount": "950M",
-      "valuation": "15.8B",
-      "stage": "Series E",
-      "lead_investor": "Tiger Global, GV",
-      "date": "May 04",
-      "url": "https://techcrunch.com/2026/05/04/sierra-raises-950m-as-the-race-to-own-enterprise-ai-gets-serious/"
+      "company": "Anthropic",
+      "category": "Foundation Model",
+      "amount": "30B",
+      "valuation": "900B",
+      "stage": "Growth",
+      "lead_investor": "Sequoia Capital, Dragoneer Investment Group, Altimeter Capital, Greenoaks Capital Partners",
+      "date": "May 22",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-22/anthropic-to-close-over-30-billion-round-as-soon-as-next-week"
+    },
+    {
+      "company": "Hark",
+      "category": "Foundation Model",
+      "amount": "700M",
+      "valuation": "6B",
+      "stage": "Series A",
+      "lead_investor": "Parkway Venture Capital",
+      "date": "May 21",
+      "url": "https://techcrunch.com/2026/05/21/hark-raises-700m-series-a-for-its-secretive-universal-ai-interface/"
+    },
+    {
+      "company": "Exa Labs",
+      "category": "AI Infra",
+      "amount": "250M",
+      "valuation": "2.2B",
+      "stage": "Growth",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "May 20",
+      "url": "https://techcrunch.com/2026/05/20/ai-search-startups-are-blowing-up/"
+    },
+    {
+      "company": "Parallel Web Systems",
+      "category": "AI Infra",
+      "amount": "100M",
+      "valuation": "2B",
+      "stage": "Growth",
+      "lead_investor": "Sequoia Capital",
+      "date": "May 20",
+      "url": "https://techcrunch.com/2026/05/20/ai-search-startups-are-blowing-up/"
+    },
+    {
+      "company": "Mercury",
+      "category": "Fintech AI",
+      "amount": "200M",
+      "valuation": "5.2B",
+      "stage": "Series D",
+      "lead_investor": "N/A",
+      "date": "May 20",
+      "url": "https://techstartups.com/2026/05/20/venture-capital-startup-funding-roundup-may-20-2026/"
     },
     {
       "company": "Recursive Superintelligence",
@@ -32,14 +72,14 @@
       "url": "https://techcrunch.com/2026/05/14/what-happens-when-ai-starts-building-itself/"
     },
     {
-      "company": "Parallel Web Systems",
-      "category": "AI Infra",
-      "amount": "100M",
-      "valuation": "2B",
-      "stage": "Series B",
-      "lead_investor": "Sequoia",
-      "date": "May 05",
-      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
+      "company": "NanoCo (NanoClaw)",
+      "category": "Agents",
+      "amount": "12M",
+      "valuation": "N/A",
+      "stage": "Seed",
+      "lead_investor": "Valley Capital Partners",
+      "date": "May 20",
+      "url": "https://techcrunch.com/2026/05/20/nanoclaw-creator-turns-down-20m-buyout-offer-raises-12m-seed-instead/"
     },
     {
       "company": "CopilotKit",
@@ -48,96 +88,36 @@
       "valuation": "N/A",
       "stage": "Series A",
       "lead_investor": "Glilot Capital, NFX, SignalFire",
-      "date": "May 05",
+      "date": "May 13",
       "url": "https://techcrunch.com/2026/05/05/copilotkit-raises-27m-to-help-devs-deploy-app-native-ai-agents/"
     },
     {
-      "company": "Genesis AI",
-      "category": "Robotics",
-      "amount": "105M",
-      "valuation": "N/A",
-      "stage": "Seed",
-      "lead_investor": "Eclipse, Khosla Ventures",
-      "date": "May 06",
-      "url": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/"
-    },
-    {
-      "company": "DeepInfra",
-      "category": "AI Infra",
-      "amount": "107M",
-      "valuation": "N/A",
-      "stage": "Series B",
-      "lead_investor": "N/A",
-      "date": "May 08",
-      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
-    },
-    {
-      "company": "Corgi Insurance",
-      "category": "Fintech AI",
-      "amount": "160M",
-      "valuation": "1.3B",
-      "stage": "Series B",
-      "lead_investor": "TCV",
-      "date": "May 08",
-      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
-    },
-    {
-      "company": "Kodiak AI",
-      "category": "Robotics",
-      "amount": "100M",
-      "valuation": "N/A",
-      "stage": "Growth",
-      "lead_investor": "Ares Management",
-      "date": "May 07",
-      "url": "https://techcrunch.com/2026/05/07/kodiak-ai-raises-100m-at-a-steep-discount-sending-its-stock-tumbling-37/"
-    },
-    {
-      "company": "Scout AI",
+      "company": "Steno",
       "category": "Vertical SaaS",
-      "amount": "100M",
+      "amount": "49M",
       "valuation": "N/A",
-      "stage": "Series A",
+      "stage": "Series C",
       "lead_investor": "N/A",
-      "date": "May 06",
-      "url": "https://blog.mean.ceo/ai-startup-funding-news-may-2026/"
+      "date": "May 19",
+      "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
     },
     {
-      "company": "Hint",
+      "company": "Sierra",
       "category": "Agents",
-      "amount": "10M",
-      "valuation": "N/A",
-      "stage": "Seed",
-      "lead_investor": "Slow Ventures",
-      "date": "May 13",
-      "url": "https://fortune.com/2026/05/13/exclusive-martha-stewart-ai-startup-hint-seed-funding-slow-ventures/"
-    },
-    {
-      "company": "Performativ",
-      "category": "Fintech AI",
-      "amount": "14M",
-      "valuation": "N/A",
-      "stage": "Series A",
-      "lead_investor": "Deutsche Börse Group",
-      "date": "May 05",
-      "url": "https://blog.mean.ceo/tech-startup-funding-news-may-2026/"
-    },
-    {
-      "company": "Panthalassa",
-      "category": "AI Infra",
-      "amount": "140M",
-      "valuation": "N/A",
-      "stage": "Series B",
-      "lead_investor": "Peter Thiel",
-      "date": "May 08",
-      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-sierra-astrani-anagram-therapeutics/"
+      "amount": "950M",
+      "valuation": "15B",
+      "stage": "Growth",
+      "lead_investor": "Tiger Global, GV",
+      "date": "May 11",
+      "url": "https://techcrunch.com/2026/05/04/sierra-raises-950m-as-the-race-to-own-enterprise-ai-gets-serious/"
     }
   ],
   "private_ai": [
     {
       "name": "Anthropic",
       "valuation_billions": 900.0,
-      "last_round": "30B",
-      "last_round_date": "May 2026"
+      "last_round": "40B",
+      "last_round_date": "Apr 2026"
     },
     {
       "name": "OpenAI",
@@ -146,22 +126,22 @@
       "last_round_date": "Mar 2026"
     },
     {
+      "name": "xAI",
+      "valuation_billions": 200.0,
+      "last_round": "20B",
+      "last_round_date": "Jan 2026"
+    },
+    {
       "name": "Databricks",
       "valuation_billions": 134.0,
-      "last_round": "4B",
-      "last_round_date": "Jan 2025"
+      "last_round": "5B",
+      "last_round_date": "Feb 2026"
     },
     {
       "name": "Anysphere (Cursor)",
       "valuation_billions": 50.0,
       "last_round": "2B",
       "last_round_date": "Apr 2026"
-    },
-    {
-      "name": "xAI",
-      "valuation_billions": 50.0,
-      "last_round": "6B",
-      "last_round_date": "May 2024"
     },
     {
       "name": "Scale AI",
@@ -171,32 +151,32 @@
     },
     {
       "name": "Perplexity",
-      "valuation_billions": 21.21,
+      "valuation_billions": 21.2,
       "last_round": "500M",
-      "last_round_date": "Jan 2026"
+      "last_round_date": "Dec 2025"
     },
     {
       "name": "Mistral",
-      "valuation_billions": 14.0,
-      "last_round": "600M",
+      "valuation_billions": 8.0,
+      "last_round": "1.1B",
       "last_round_date": "Jun 2024"
     },
     {
-      "name": "Cohere",
-      "valuation_billions": 5.5,
-      "last_round": "500M",
-      "last_round_date": "Jul 2024"
+      "name": "Glean",
+      "valuation_billions": 7.2,
+      "last_round": "260M",
+      "last_round_date": "Feb 2025"
     },
     {
-      "name": "Glean",
-      "valuation_billions": 4.6,
-      "last_round": "260M",
-      "last_round_date": "Feb 2024"
+      "name": "Cohere",
+      "valuation_billions": 7.0,
+      "last_round": "500M",
+      "last_round_date": "Sep 2025"
     },
     {
       "name": "ElevenLabs",
       "valuation_billions": 3.3,
-      "last_round": "180M",
+      "last_round": "250M",
       "last_round_date": "Jan 2025"
     },
     {
@@ -244,11 +224,11 @@
         "name": "xAI",
         "color": "#E24B4A",
         "data": [
-          0,
-          0,
-          0,
-          10,
           5,
+          0,
+          0,
+          0,
+          0,
           20
         ]
       },
@@ -271,7 +251,7 @@
           0,
           0,
           0,
-          0,
+          0.5,
           0,
           0
         ]
@@ -282,172 +262,172 @@
   "money_flow": [
     {
       "direction": "up",
-      "text": "Agentic commerce is becoming the dominant payments battleground: Stripe, Affirm, and Klarna all locked in Google/Gemini integrations in early May, while AWS Bedrock AgentCore launched native agent-to-Stripe/Coinbase payment rails on May 7 — for Mastercard, the risk is that AI-native checkout layers commoditize card network touchpoints before issuers have embedded themselves in agent wallets."
-    },
-    {
-      "direction": "up",
-      "text": "Enterprise agent infrastructure is attracting late-stage conviction capital at scale — Sierra's $950M Series E at $15.8B (Tiger Global, GV) and OpenAI's $4B+ Deployment Company anchored by TPG, Goldman, and McKinsey signal that the monetization layer of agentic AI is shifting from model access to deployment and workflow ownership."
+      "text": "Foundation model funding is in a class of its own: Anthropic's $30B round at a $900B valuation — led by Sequoia, Dragoneer, and Altimeter — alongside Hark's $700M Series A and Recursive Superintelligence's $650M seed signal that capital is concentrating at both the frontier and the speculative edge, leaving mid-tier model players increasingly squeezed out of the fundraising narrative."
     },
     {
       "direction": "alert",
-      "text": "Recursive Superintelligence's $650M seed round (May 14) — with no disclosed valuation or lead investor — is an anomaly that warrants scrutiny: seed-stage capital at this magnitude suggests either sovereign or non-traditional backers operating outside standard VC disclosure norms, likely in the self-improving AI / recursive training space where geopolitical sensitivity is high."
+      "text": "The OpenAI confidential S-1 filing targeting a $852B–$1T IPO valuation in Q4 2026, stacked against Anthropic's near-simultaneous $900B private valuation, creates a dangerous comparables problem for public market investors — if OpenAI prices aggressively, it could reset expectations for every downstream AI equity and compress fintech-AI multiples that have been riding the AI wave."
     },
     {
       "direction": "up",
-      "text": "AI infrastructure is seeing sustained parallel bets: Parallel Web Systems (Sequoia, $100M), DeepInfra ($107M), and Panthalassa (Peter Thiel, $140M) all closed Series B rounds in the same week, pointing to a durable infra supercycle where compute, inference optimization, and network-layer AI are being funded in tandem rather than as competing theses."
-    },
-    {
-      "direction": "down",
-      "text": "Public market robotics is flashing a stress signal: Kodiak AI raised $100M at a steep discount that sent its stock down 37% (May 7), even as Genesis AI pulled $105M at seed — the divergence suggests private robotics optimism is decoupling from public market tolerance, with late-stage robotics companies facing a valuation reset."
+      "text": "Agentic commerce infrastructure is becoming payments' most contested layer: Mastercard's Agent Pay expansion to Hong Kong, Visa's Trusted Agent Protocol rollout with Ramp across 50,000+ corporates, and Stripe enabling AI agent-initiated BNPL via SPTs with both Affirm and Klarna in the same month suggest the rails for autonomous spend are being locked in now — operators who don't establish agent identity and trust standards in 2026 will be accepting someone else's."
     },
     {
       "direction": "up",
-      "text": "OpenAI's acqui-hire of Hiro Finance (May 5) and the Cohere-Aleph Alpha merger at $20B combined valuation signal two converging trends for payments players: frontier labs are racing to acquire vertical domain expertise in consumer finance, while non-US AI consolidation is creating credible enterprise alternatives that could challenge US-centric AI vendor lock-in across European banking infrastructure."
+      "text": "AI inference and search infrastructure is attracting serious growth capital: Exa Labs ($250M, a16z) and Parallel Web Systems ($100M, Sequoia) both closed in the same week, and Nebius paid ~$643M to acquire Eigen AI for inference optimization — signaling that the market views retrieval and inference efficiency as the next infrastructure bottleneck after training compute."
+    },
+    {
+      "direction": "up",
+      "text": "Enterprise AI agent platforms are commanding growth-stage multiples: Sierra's $950M round at $15B (Tiger Global, GV) and the NanoCo/NanoClaw founder turning down a $20M acqui-hire to raise a $12M seed instead both point to founders and investors betting that agent-layer ownership — not the underlying model — is where durable enterprise value accrues."
+    },
+    {
+      "direction": "alert",
+      "text": "The $67B NextEra-Dominion deal — framed explicitly around AI power demand — is the clearest signal yet that AI infrastructure investment has broken out of tech balance sheets into regulated utility M&A; for payments operators, this means AI compute cost structures will be increasingly tied to energy policy risk, not just semiconductor supply chains."
     }
   ],
   "ma_tracker": [
     {
       "type": "IPO filing",
-      "title": "Cerebras Systems prices IPO on Nasdaq",
-      "detail": "AI chipmaker Cerebras Systems priced its IPO at $185/share (well above the $150–$160 range), raising at least $5.55 billion at an ~$86 billion valuation on its first trading day (May 14), making it the largest AI IPO of 2026 so far; the company's wafer-scale chips are underpinned by a $20 billion inference-capacity deal with OpenAI.",
-      "date": "May 13",
-      "url": "https://news.crunchbase.com/ai/cerebras-ipo-cbrs/"
+      "title": "OpenAI files confidentially for IPO",
+      "detail": "OpenAI confidentially filed its S-1 IPO prospectus with the SEC on May 22, 2026, targeting a Q4 2026 public listing at a valuation between $852 billion and $1 trillion, with Goldman Sachs and Morgan Stanley leading the deal.",
+      "date": "May 22",
+      "url": "https://www.cnbc.com/2026/05/20/openai-ipo-filing.html"
+    },
+    {
+      "type": "IPO filing",
+      "title": "SpaceX files public S-1 for IPO",
+      "detail": "SpaceX filed its public S-1 on May 20, 2026, positioning itself as a vertically integrated AI infrastructure company with a claimed $28.5 trillion total addressable market spanning space, AI, and connectivity.",
+      "date": "May 20",
+      "url": "https://www.pymnts.com/news/ipo/2026/spacex-ipo-filing-reveals-ai-next-frontier-is-out-this-world/"
     },
     {
       "type": "Acquisition",
       "title": "OpenAI acquires Tomoro",
-      "detail": "OpenAI agreed to acquire Tomoro, an applied AI consulting and engineering firm with ~150 Forward Deployed Engineers, to staff the newly launched $4B+ OpenAI Deployment Company — a majority-owned venture with 19 investment and consultancy partners including TPG, Goldman Sachs, Bain Capital, and McKinsey.",
+      "detail": "OpenAI agreed to acquire AI consulting firm Tomoro to staff its newly launched $4 billion OpenAI Deployment Company, gaining approximately 150 Forward Deployed Engineers from day one; the partnership is co-led by TPG, Bain Capital, Advent, and Brookfield.",
       "date": "May 11",
       "url": "https://openai.com/index/openai-launches-the-deployment-company/"
     },
     {
-      "type": "Acqui-hire",
-      "title": "OpenAI acquires Hiro Finance",
-      "detail": "OpenAI acquired personal finance AI startup Hiro Finance (backed by Ribbit Capital, General Catalyst, and Restive) in an apparent acqui-hire, marking its seventh known acquisition of 2026 and signaling a strategy to rapidly assemble vertical domain expertise across consumer finance.",
-      "date": "May 05",
-      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
-    },
-    {
       "type": "Acquisition",
-      "title": "Nebius Group acquires Eigen AI",
-      "detail": "Nebius Group (Nasdaq: NBIS) acquired Eigen AI, a software company specializing in AI model inference optimization, to reposition itself from a pure AI infrastructure provider into a higher-value Platform-as-a-Service business anchored by model optimization capabilities.",
+      "title": "Nebius acquires Eigen AI for ~$643M",
+      "detail": "Nvidia-backed Nebius agreed to acquire Eigen AI, an AI inference and model optimization startup, for approximately $643 million in cash and stock, integrating Eigen's capabilities into Nebius Token Factory, its managed inference platform.",
       "date": "May 03",
       "url": "https://stocktwits.com/news-articles/markets/equity/nebius-eigen-ai-deal-microsoft-contract-update-draws-buzz-stock-gains-overnight/cZQMgIgRe7k"
     },
     {
       "type": "Acquisition",
-      "title": "Cohere merges with Aleph Alpha",
-      "detail": "Canadian AI company Cohere and German enterprise AI firm Aleph Alpha announced a merger at a combined $20 billion valuation (up from Cohere's prior $7B standalone), creating the largest non-US enterprise AI entity and positioning the combined company as a transatlantic alternative to US-dominated frontier labs.",
-      "date": "Apr 22",
+      "title": "Coupa acquires Tonkean",
+      "detail": "Coupa acquired Tonkean, a workflow automation platform, as part of its broader AI expansion strategy unveiled at its Inspire 2026 conference, marking its fourth strategic acquisition tied to an autonomous spend management strategy following Cirtuo, Scoutbee, and Rossum.",
+      "date": "May 23",
+      "url": "https://www.freightwaves.com/news/coupa-adds-tonkean-in-latest-ai-acquisition-push"
+    },
+    {
+      "type": "Acquisition",
+      "title": "Coupa acquires Rossum",
+      "detail": "Coupa acquired Rossum, an intelligent document processing firm, announced at its Inspire 2026 conference in Las Vegas as part of a multi-acquisition AI expansion push to build AI-native procurement and supply chain applications.",
+      "date": "May 12",
+      "url": "https://www.freightwaves.com/news/coupa-adds-tonkean-in-latest-ai-acquisition-push"
+    },
+    {
+      "type": "Acquisition",
+      "title": "NextEra Energy acquires Dominion Energy for $67B",
+      "detail": "NextEra Energy announced a $67 billion deal for Dominion Energy — the largest utility acquisition in US history — driven by surging AI-related power demand and the need for scale to fund over $1.1 trillion in projected US grid investment over the next five years.",
+      "date": "May 18",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-18/nextera-dominion-deal-signals-new-era-of-ai-utility-mega-mergers"
+    },
+    {
+      "type": "Acqui-hire",
+      "title": "OpenAI acqui-hires Hiro Finance",
+      "detail": "OpenAI completed an acqui-hire of Hiro Finance on April 13, its seventh known acquisition of 2026, as the company accelerates assembling specialized vertical operator teams faster than any peer AI lab.",
+      "date": "Apr 13",
+      "url": "https://aifundingtracker.com/ai-startup-funding-news-today/"
+    },
+    {
+      "type": "Investment",
+      "title": "Sierra raises $950M at $15B+ valuation",
+      "detail": "Sierra, the AI customer experience agent company founded by Bret Taylor and Clay Bavor, raised a $950 million round announced May 4, 2026, pushing its valuation above $15 billion as the company scales AI agents for enterprise support workflows.",
+      "date": "May 04",
       "url": "https://medium.com/jonathans-musings/ai-startups-you-should-know-48d69d1ddf61"
     },
     {
       "type": "Investment",
-      "title": "Amazon invests $5B more in Anthropic",
-      "detail": "Amazon invested a fresh $5 billion in Anthropic in late April, with provisions for up to $20 billion more tied to commercial performance milestones; the deal also secured a $100 billion cloud spending pledge from Anthropic, bringing Amazon's total committed capital to over $33 billion across all tranches.",
-      "date": "Apr 28",
-      "url": "https://aifundingtracker.com/ai-funding-tracker/"
-    },
-    {
-      "type": "IPO filing",
-      "title": "SpaceX files confidential S-1 for IPO",
-      "detail": "SpaceX filed a confidential S-1 on April 1, 2026, targeting a valuation of $1.75–$2 trillion and a raise of up to $75 billion; Reuters reviewed the filing and reported $18.7 billion in 2025 consolidated revenue after xAI consolidation, with a June roadshow that would make it the largest IPO in history.",
-      "date": "Apr 01",
-      "url": "https://aifundingtracker.com/ai-ipo-tracker/"
-    },
-    {
-      "type": "Investment",
-      "title": "Shield AI closes $1.5B Series G",
-      "detail": "Defense AI startup Shield AI secured $1.5 billion in Series G funding (part of a broader $2.25 billion capital package) co-led by Advent International and JPMorgan Chase, valuing the company at $12.7 billion — a 140% increase in just one year — to scale its Hivemind autonomous pilot platform.",
-      "date": "Apr 25",
+      "title": "Cohere raises $500M at $6.8B valuation",
+      "detail": "Toronto-based enterprise AI startup Cohere secured $500 million co-led by Radical Ventures and Inovia Capital, with participation from AMD Ventures, Nvidia, and Salesforce Ventures, to accelerate global expansion of its sovereign, privacy-focused agentic AI for enterprises.",
+      "date": "May 01",
       "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
-    },
-    {
-      "type": "Acquisition",
-      "title": "Meta blocked from acquiring Manus AI",
-      "detail": "China's antitrust regulator moved in April to formally block Meta's attempted acquisition of leading Chinese AI company Manus, citing national security concerns — marking the first time Beijing has intervened to prevent a major US tech firm from acquiring Chinese AI assets and signaling a deepening barrier to cross-border AI M&A.",
-      "date": "Apr 20",
-      "url": "https://www.fladgate.com/insights/ai-round-up-may-2026"
-    },
-    {
-      "type": "Investment",
-      "title": "Cursor raises $2B at $50B valuation",
-      "detail": "AI coding tool Cursor entered advanced talks to raise $2 billion at a valuation exceeding $50 billion, co-led by Andreessen Horowitz with Nvidia and Thrive Capital expected to participate; the company reached $2 billion in annualized revenue by February 2026, the fastest zero-to-$2B revenue arc in B2B software history.",
-      "date": "Apr 30",
-      "url": "https://aifundingtracker.com/ai-funding-tracker/"
     }
   ],
   "fintech_spotlight": [
     {
-      "company": "Stripe x Google (+ OpenAI, Microsoft, Meta)",
-      "deal_type": "Partnership",
-      "tags": [
-        "Agentic Commerce",
-        "Payments AI",
-        "Embedded Finance"
-      ],
-      "description": "Stripe announced on May 1 at Stripe Sessions 2026 a partnership with Google to let businesses sell inside AI Mode and the Gemini app via its Agentic Commerce Suite, extending similar deals already struck with OpenAI, Microsoft, and Meta; Stripe also launched Link wallets for AI agents and debuted 288 total new products.",
-      "url": "https://stripe.com/newsroom/news/sessions-2026",
-      "strategic": ""
-    },
-    {
-      "company": "Stripe x Privy (Digital Asset Accounts)",
+      "company": "Experian x Resistant AI",
       "deal_type": "Product Launch",
       "tags": [
-        "Stablecoins",
-        "Banking Infrastructure",
-        "Embedded Finance"
-      ],
-      "description": "Stripe announced on May 1 at Stripe Sessions that it is partnering with Privy to launch Digital Asset Accounts — a single API enabling any developer to build stablecoin-based fintech products — with Ramp, Deel, and DoorDash among the first companies building on top of the infrastructure.",
-      "url": "https://fintechnews.sg/130816/payments/stripe-ai/",
-      "strategic": ""
-    },
-    {
-      "company": "Affirm x Google Pay",
-      "deal_type": "Partnership",
-      "tags": [
-        "BNPL",
-        "Agentic Commerce",
-        "Payments AI"
-      ],
-      "description": "Affirm announced in early May 2026 an expansion of its work with Google to roll out its BNPL payment options into Google Search (including AI Mode) and the Gemini app via Google Pay, placing transparent installment options directly inside AI-driven checkout flows.",
-      "url": "https://glenbrook.com/payments-news/all-payments-news/",
-      "strategic": ""
-    },
-    {
-      "company": "Klarna x Google Pay",
-      "deal_type": "Partnership",
-      "tags": [
-        "BNPL",
-        "Agentic Commerce",
-        "Payments AI"
-      ],
-      "description": "Klarna announced in early May 2026 a partnership with Google to bring flexible BNPL payment options to the Google Gemini agentic AI engine and Google Search AI Mode via Google Pay in the U.S., deepening its push into AI-native checkout alongside Affirm.",
-      "url": "https://glenbrook.com/payments-news/all-payments-news/",
-      "strategic": ""
-    },
-    {
-      "company": "Amazon Bedrock AgentCore x Stripe & Coinbase",
-      "deal_type": "Product Launch",
-      "tags": [
-        "Agentic Payments",
-        "Banking Infrastructure",
-        "Payments AI"
-      ],
-      "description": "Amazon Web Services launched Bedrock AgentCore Payments into preview on May 7, 2026, giving AI agents native payment capabilities by connecting with financial gateways Stripe and Coinbase, enabling agents to autonomously identify, access, and pay for digital resources in real time.",
-      "url": "https://glenbrook.com/payments-news/all-payments-news/",
-      "strategic": ""
-    },
-    {
-      "company": "NatWest x AI-Native Fintech Cohort (incl. Murphy AI, Round Treasury, Gradient Labs)",
-      "deal_type": "Partnership",
-      "tags": [
-        "Banking Infrastructure",
         "Fraud Detection",
-        "AI-Native Fintech"
+        "Banking Infrastructure",
+        "AI-Native"
       ],
-      "description": "NatWest announced on May 12, 2026 the fintechs selected for its 2026 Fintech Programme, including Murphy AI (AI-first debt collections OS), Round Treasury (agentic treasury & payments platform across 2,000+ banks), and Gradient Labs (AI agents for financial services ops), as part of its strategy to deploy AI across banking infrastructure.",
-      "url": "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/ai-and-data/2026/may/natwest-announces-firms-selected-for-its-2026-fintech-programme.html",
+      "description": "Experian launched 'Transaction Forensics' on Apr 24, an AI fraud detection tool for UK banks built on 80+ AI models combining Resistant AI's behavioural analytics with Experian's proprietary data — pilot testing showed a 200% uplift in APP fraud detection and 80% drop in false positives.",
+      "url": "https://fintech.global/2026/04/23/experian-launches-ai-fraud-detection-tool-for-uk-banks/",
+      "strategic": ""
+    },
+    {
+      "company": "Visa x Ramp",
+      "deal_type": "Partnership",
+      "tags": [
+        "Payments AI",
+        "Corporate Spend",
+        "Agentic Commerce"
+      ],
+      "description": "Visa announced on Apr 2 a partnership with Ramp to deploy Visa's 'Trusted Agent Protocol' across Ramp's 50,000+ corporate clients, creating an AI-powered suite combining expense management, bill pay, travel booking, treasury, and bookkeeping.",
+      "url": "https://www.americanbanker.com/payments/news/visa-mastercard-expand-agentic-ai-deployments",
+      "strategic": ""
+    },
+    {
+      "company": "Mastercard",
+      "deal_type": "Product Launch",
+      "tags": [
+        "Agentic Commerce",
+        "Banking Infrastructure",
+        "Payments AI"
+      ],
+      "description": "Mastercard announced on Apr 2 the expansion of its Agent Pay agentic payments network to Hong Kong as part of a broader international rollout, while also advancing its 'Verifiable Intent' trust layer — built with partners including Adyen, OpenAI, Google, and Cloudflare — for agent-led commerce.",
+      "url": "https://www.digitalcommerce360.com/2026/04/02/visa-mastercard-in-agentic-commerce/",
+      "strategic": ""
+    },
+    {
+      "company": "Stripe x Affirm",
+      "deal_type": "Partnership",
+      "tags": [
+        "BNPL",
+        "Agentic Commerce",
+        "Payments AI"
+      ],
+      "description": "Affirm announced on Mar 3 an expanded partnership with Stripe to support Shared Payment Tokens (SPTs), enabling AI agents to initiate pay-over-time purchases using a shopper's saved payment method without exposing sensitive credentials across Stripe's merchant base.",
+      "url": "https://investors.affirm.com/news-releases/news-release-details/affirm-expands-stripe-partnership-support-shared-payment-tokens",
+      "strategic": ""
+    },
+    {
+      "company": "Stripe x Klarna",
+      "deal_type": "Partnership",
+      "tags": [
+        "BNPL",
+        "Agentic Commerce",
+        "Embedded Finance"
+      ],
+      "description": "Klarna announced on Mar 3 a partnership with Stripe to make its flexible payment options available for AI agent-initiated purchases at U.S. merchants via Stripe's Shared Payment Token infrastructure, extending BNPL into agentic commerce checkout flows.",
+      "url": "https://www.pymnts.com/digital-payments/2026/klarna-and-stripe-prepare-flexible-payments-for-ai-agents/",
+      "strategic": ""
+    },
+    {
+      "company": "Finastra x FraudAverse",
+      "deal_type": "Partnership",
+      "tags": [
+        "Fraud Detection",
+        "Banking Infrastructure",
+        "Real-Time Payments"
+      ],
+      "description": "Finastra announced on Mar 10 a partnership with FraudAverse, pre-integrating FraudAverse's AI fraud detection platform directly into Finastra Financial Messaging to give banks real-time fraud monitoring for instant payments without extensive internal IT deployment.",
+      "url": "https://fintech.global/2026/03/10/finastra-teams-with-fraudaverse-on-ai-fraud-detection/",
       "strategic": ""
     }
   ]
