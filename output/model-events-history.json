@@ -289,6 +289,12 @@
   ],
   "copilot": [
     {
+      "date": "2026-05-25",
+      "text": "Microsoft Copilot Cowork Exfiltrates Files",
+      "url": "https://www.promptarmor.com/resources/microsoft-copilot-cowork-exfiltrates-files",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-02",
       "text": "VS Code inserting 'Co-Authored-by Copilot' into commits regardless of usage",
       "url": "https://github.com/microsoft/vscode/pull/310226",
