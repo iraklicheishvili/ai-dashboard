@@ -45,6 +45,12 @@
   ],
   "claude": [
     {
+      "date": "2026-05-26",
+      "text": "Launch HN: Minicor (YC P26) – Windows desktop automations at scale",
+      "url": "https://www.minicor.com/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-22",
       "text": "Can AI Make Conflicts Worse? An Alignment Failure in LLM Deployment Across Conflict Contexts",
       "url": "http://arxiv.org/abs/2605.22720v1",
@@ -217,12 +223,6 @@
       "text": "Agents for financial services and insurance",
       "url": "https://www.anthropic.com/news/finance-agents",
       "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-03",
-      "text": "How Kepler built verifiable AI for financial services with Claude",
-      "url": "https://claude.com/blog/how-kepler-built-verifiable-ai-for-financial-services-with-claude",
-      "source": "Hacker News"
     }
   ],
   "chatgpt": [
@@ -310,6 +310,12 @@
     }
   ],
   "gemini": [
+    {
+      "date": "2026-05-27",
+      "text": "Gemini Embedding 2: A Native Multimodal Embedding Model from Gemini",
+      "url": "http://arxiv.org/abs/2605.27295v1",
+      "source": "arXiv"
+    },
     {
       "date": "2026-05-19",
       "text": "Gemini Omni",
