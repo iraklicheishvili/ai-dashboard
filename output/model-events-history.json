@@ -45,6 +45,12 @@
   ],
   "claude": [
     {
+      "date": "2026-05-27",
+      "text": "Claude Code as a Daily Driver: Claude.md, Skills, Subagents, Plugins, and MCPs",
+      "url": "https://arps18.github.io/posts/claude-code-mastery/",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-26",
       "text": "Launch HN: Minicor (YC P26) – Windows desktop automations at scale",
       "url": "https://www.minicor.com/",
@@ -216,12 +222,6 @@
       "date": "2026-05-06",
       "text": "Anthropic raises Claude Code usage limits, credits new deal with SpaceX",
       "url": "https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/",
-      "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-05",
-      "text": "Agents for financial services and insurance",
-      "url": "https://www.anthropic.com/news/finance-agents",
       "source": "Hacker News"
     }
   ],

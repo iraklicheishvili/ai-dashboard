@@ -215,6 +215,15 @@
       "grok": 51690,
       "copilot": 10620,
       "llama": 25947
+    },
+    "2026-05-28": {
+      "chatgpt": 104651,
+      "claude": 25157,
+      "gemini": 19614,
+      "deepseek": 195649,
+      "grok": 51694,
+      "copilot": 10630,
+      "llama": 25950
     }
   },
   "daily_deltas": {
@@ -433,6 +442,15 @@
       "grok": 6,
       "copilot": 10,
       "llama": 2
+    },
+    "2026-05-28": {
+      "chatgpt": 28,
+      "claude": 24,
+      "gemini": 10,
+      "deepseek": 0,
+      "grok": 4,
+      "copilot": 10,
+      "llama": 3
     }
   }
 }
