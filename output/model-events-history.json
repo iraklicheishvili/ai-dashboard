@@ -45,6 +45,30 @@
   ],
   "claude": [
     {
+      "date": "2026-05-28",
+      "text": "Claude Opus 4.8",
+      "url": "https://www.anthropic.com/news/claude-opus-4-8",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-28",
+      "text": "Anthropic raises $65B in Series H funding at $965B post-money valuation",
+      "url": "https://www.anthropic.com/news/series-h",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-28",
+      "text": "Dynamic Workflows in Claude Code",
+      "url": "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code",
+      "source": "Hacker News"
+    },
+    {
+      "date": "2026-05-28",
+      "text": "Show HN: Ktx – Open-source executable context layer for data agents",
+      "url": "https://github.com/Kaelio/ktx",
+      "source": "Hacker News"
+    },
+    {
       "date": "2026-05-27",
       "text": "Claude Code as a Daily Driver: Claude.md, Skills, Subagents, Plugins, and MCPs",
       "url": "https://arps18.github.io/posts/claude-code-mastery/",
@@ -198,30 +222,6 @@
       "date": "2026-05-07",
       "text": "Hardening Firefox with Claude Mythos Preview",
       "url": "https://hacks.mozilla.org/2026/05/behind-the-scenes-hardening-firefox/",
-      "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-06",
-      "text": "MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents",
-      "url": "http://arxiv.org/abs/2605.03952v1",
-      "source": "arXiv"
-    },
-    {
-      "date": "2026-05-06",
-      "text": "Higher usage limits for Claude and a compute deal with SpaceX",
-      "url": "https://www.anthropic.com/news/higher-limits-spacex",
-      "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-06",
-      "text": "SpaceXAI will provide Anthropic with access to Colossus 1",
-      "url": "https://twitter.com/xai/status/2052060350770515978",
-      "source": "Hacker News"
-    },
-    {
-      "date": "2026-05-06",
-      "text": "Anthropic raises Claude Code usage limits, credits new deal with SpaceX",
-      "url": "https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/",
       "source": "Hacker News"
     }
   ],
