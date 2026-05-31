@@ -1930,5 +1930,70 @@
       "comment_count": 4,
       "story_count": 2
     }
+  },
+  "2026-05-31": {
+    "chatgpt": {
+      "sentiment_score": 4.2,
+      "buzz_volume": 80,
+      "positive": 3,
+      "negative": 8,
+      "neutral": 9,
+      "comment_count": 20,
+      "story_count": 1
+    },
+    "claude": {
+      "sentiment_score": 3.8,
+      "buzz_volume": 100,
+      "positive": 5,
+      "negative": 11,
+      "neutral": 9,
+      "comment_count": 25,
+      "story_count": 10
+    },
+    "gemini": {
+      "sentiment_score": 6.5,
+      "buzz_volume": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0,
+      "comment_count": 0,
+      "story_count": 0
+    },
+    "deepseek": {
+      "sentiment_score": 6.5,
+      "buzz_volume": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0,
+      "comment_count": 0,
+      "story_count": 0
+    },
+    "grok": {
+      "sentiment_score": 6.5,
+      "buzz_volume": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0,
+      "comment_count": 0,
+      "story_count": 1
+    },
+    "copilot": {
+      "sentiment_score": 6.5,
+      "buzz_volume": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0,
+      "comment_count": 0,
+      "story_count": 0
+    },
+    "llama": {
+      "sentiment_score": 6.5,
+      "buzz_volume": 0,
+      "positive": 0,
+      "negative": 0,
+      "neutral": 0,
+      "comment_count": 0,
+      "story_count": 0
+    }
   }
 }
